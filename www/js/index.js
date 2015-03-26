@@ -24,6 +24,12 @@
 //     });
 // }
 
+function DOMLoaded() {
+
+    document.addEventListener("deviceready", phonegapLoaded, false);
+
+}
+
 function phonegapLoaded() {
     navigator.geolocation.getCurrentPosition(onSuccess);
 }

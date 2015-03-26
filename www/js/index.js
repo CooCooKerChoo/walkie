@@ -30,7 +30,7 @@ var onSuccess = function(position) {
     //       'Longitude: '         + position.coords.longitude         + '\n' +
     //       'Timestamp: '         + position.timestamp                + '\n');
 
-    var centerCoords = new google.maps.LatLng(position.latitude, position.longitude);
+    var centerCoords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
     var mapOptions = {
         zoom: 17,

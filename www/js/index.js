@@ -24,15 +24,30 @@
 //     });
 // }
 
+
 var onSuccess = function(position) {
     alert('Latitude: '          + position.coords.latitude          + '\n' +
           'Longitude: '         + position.coords.longitude         + '\n' +
-          'Altitude: '          + position.coords.altitude          + '\n' +
-          'Accuracy: '          + position.coords.accuracy          + '\n' +
-          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-          'Heading: '           + position.coords.heading           + '\n' +
-          'Speed: '             + position.coords.speed             + '\n' +
           'Timestamp: '         + position.timestamp                + '\n');
+
+    var centerCoords = new google.maps.LatLng(position.latitude, position.longitude);
+
+    var mapOptions = {
+        zoom: 17,
+        center: centerCoords,
+        mapTypeControl: true,
+        mapTideID: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map {
+        document.getElementById("mapPlaceholder"), mapOptions
+    };
+
+    var marker = new google.maps.Marker({
+        position: centerCoords,
+        map: map,
+    });
+
 };
 
 // onError Callback receives a PositionError object

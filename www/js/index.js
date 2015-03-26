@@ -30,22 +30,27 @@ var onSuccess = function(position) {
     //       'Longitude: '         + position.coords.longitude         + '\n' +
     //       'Timestamp: '         + position.timestamp                + '\n');
 
-    var centerCoords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    var coords = new google.maps.LatLng(latitude, longitude);
 
     var mapOptions = {
         zoom: 17,
-        center: centerCoords,
+        center: coords,
         mapTypeControl: true,
-        mapTideID: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-    map = new google.maps.Map {
+    //create the map, and place it in the HTML map div
+    map = new google.maps.Map(
         document.getElementById("mapPlaceholder"), mapOptions
-    };
+        );
 
+    //place the initial marker
     var marker = new google.maps.Marker({
-        position: centerCoords,
+        position: coords,
         map: map,
+        title: "Current location!"
     });
 
 };

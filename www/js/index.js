@@ -26,9 +26,28 @@
 
 
 var onSuccess = function(position) {
-    alert('Latitude: '          + position.coords.latitude          + '\n' +
-          'Longitude: '         + position.coords.longitude         + '\n' +
-          'Timestamp: '         + position.timestamp                + '\n');
+    // alert('Latitude: '          + position.coords.latitude          + '\n' +
+    //       'Longitude: '         + position.coords.longitude         + '\n' +
+    //       'Timestamp: '         + position.timestamp                + '\n');
+
+    var centerCoords = new google.maps.LatLng(position.latitude, position.longitude);
+
+    var mapOptions = {
+        zoom: 17,
+        center: centerCoords,
+        mapTypeControl: true,
+        mapTideID: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map {
+        document.getElementById("mapPlaceholder"), mapOptions
+    };
+
+    var marker = new google.maps.Marker({
+        position: centerCoords,
+        map: map,
+    });
+
 };
 
 // onError Callback receives a PositionError object

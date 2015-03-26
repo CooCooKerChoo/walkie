@@ -36,5 +36,6 @@ function phonegapLoaded() {
 
 function onSuccess(position) {
 
-    alert("Timestamp: " + new Date(position.timestamp));
+    alert("Latitude: " + position.coords.latitude + "\n" +
+        "Timestamp: " + new Date(position.timestamp));
 }

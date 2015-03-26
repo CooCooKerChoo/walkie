@@ -24,9 +24,8 @@
 //     });
 // }
 
-function phoneGapLoaded() {
+function phonegapLoaded() {
     navigator.geolocation.getCurrentPosition(onSuccess);
-
 }
 
 function onSuccess(position) {

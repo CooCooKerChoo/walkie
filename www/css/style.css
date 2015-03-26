@@ -75,11 +75,11 @@ button.facebook_login {
 button.facebook_login:hover {
   background: #2f4779; }
 
-.tab-bar {
+nav.tab-bar {
   background: #4CAF50; }
-  .tab-bar a {
+  nav.tab-bar a {
     color: #FFF; }
-  .tab-bar a:hover {
+  nav.tab-bar a:hover {
     color: purple; }
 
 .splashscreen {
@@ -334,4 +334,5 @@ button.facebook_login:hover {
     color: #F05448; }
   .view_routes .route_info .icon-walkie_icon {
     line-height: 40px; }
+
 /*# sourceMappingURL=style.css.map */

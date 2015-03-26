@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+    <div class="off-canvas-wrap" data-offcanvas>
+        <div class="inner-wrap">
+            <aside class="left-off-canvas-menu">
+                <div class="profile_area">
+                    <div class="row">
+                        <div class="small-3 columns">
+                            <div class="profile_picture">
+                                <img src="img/profile_picture.png" alt="profile picture"/>
+                            </div>
+                        </div>
+                        <div class="small-9 columns">
+                            <div class="user_info">
+                                <p>Joe Bloggs</p>
+                                <p class="location">Stafford,
+                                    England</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="off-canvas-list">
+                        <li>
+                            <a class="active" href="home.html">Record</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="my_routes.html">My Routes</a>
+                        </li>
+                        <li>
+                            <a href="view_routes.html">View Routes</a>
+                        </li>
+                    </ul>
+                </aside>
+                <nav class="tab-bar">
+                    <a class="left-off-canvas-toggle menu-icon" aria-expanded="false"><span></span></a>
+                    <section class="middle tab-bar-section">
+                        <h1 class="title">Record</h1>
+                    </section>
+                </nav>
+                <section id="main-content">
+                    <div class="content_container">
+                        <div class="small-6 columns home_btns">
+                            <p>Distance <br/><span class="value">0.0 km</span></p>
+                        </div>
+                        <div class="small-6 columns home_btns">
+                            <p>Duration <br/><span class="value" id="duration">00:00:00</span></p>
+                        </div>
+                    </div>
+                    <div id="mapPlaceholder" style="height:100%; width: 100%;"></div>
+                    <div class="record_footer">
+                        <div class="row collapse">
+                            <div class="small-4 columns">
+                                <div class="camera_button">
+                                    <i class="fi-camera size-36"></i>
+                                </div>
+                            </div>
+                            <div class="small-4 columns">
+                                <span class="border_record_button">
+                                    <button id="watchButton">
+                                        <i class="fi-record size-48"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <div class="small-4 columns">
+                                <div class="map_marker">
+                                    <i class="fi-marker size-36"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="exit-off-canvas" href="#"></a>
+                </div>
+            </section>
+        </div>
+    </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>

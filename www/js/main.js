@@ -69,7 +69,7 @@
         // Get the most accurate position updates available on the
         // device.
         var options = { enableHighAccuracy: true };
-        watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+        watchID = navigator.geolocation.watchPosition(onSuccess, onError, maximumAge: 10000);
     }
 
     // onSuccess Geolocation

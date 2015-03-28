@@ -68,7 +68,7 @@
     function onDeviceReady() {
         // Get the most accurate position updates available on the
         // device.
-        var options = { enableHighAccuracy: true, maximumAge: 10000 };
+        var options = { enableHighAccuracy: true, timeout: 10000 };
         watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
     }
 

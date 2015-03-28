@@ -3,68 +3,69 @@ document.addEventListener("deviceready", onDeviceReady, false);
     // device APIs are available
     //
     function onDeviceReady() {
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
     }
 
-    function showCurrentLocation(position)
-     {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        var coords = new google.maps.LatLng(latitude, longitude);
+    // function showCurrentLocation(position)
+    //  {
+    //     var latitude = position.coords.latitude;
+    //     var longitude = position.coords.longitude;
+    //     var coords = new google.maps.LatLng(latitude, longitude);
 
-        var mapOptions = {
-            zoom: 17,
-            center: coords,
-            mapTypeControl: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+    //     var mapOptions = {
+    //         zoom: 17,
+    //         center: coords,
+    //         mapTypeControl: true,
+    //         mapTypeId: google.maps.MapTypeId.ROADMAP
+    //     };
 
-        //create the map, and place it in the HTML map div
-        map = new google.maps.Map(
-            document.getElementById("mapPlaceholder"), mapOptions
-            );
+    //     //create the map, and place it in the HTML map div
+    //     map = new google.maps.Map(
+    //         document.getElementById("mapPlaceholder"), mapOptions
+    //         );
 
-        //place the initial marker
-        var marker = new google.maps.Marker({
-            position: coords,
-            map: map,
-            title: "Current location!"
-        });
-    }
+    //     //place the initial marker
+    //     var marker = new google.maps.Marker({
+    //         position: coords,
+    //         map: map,
+    //         title: "Current location!"
+    //     });
+    // }
 
 
-    var onSuccess = function(position) {
+    // var onSuccess = function(position) {
 
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        var coords = new google.maps.LatLng(latitude, longitude);
+    //     var latitude = position.coords.latitude;
+    //     var longitude = position.coords.longitude;
+    //     var coords = new google.maps.LatLng(latitude, longitude);
 
-        var mapOptions = {
-            zoom: 17,
-            center: coords,
-            mapTypeControl: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+    //     var mapOptions = {
+    //         zoom: 17,
+    //         center: coords,
+    //         mapTypeControl: true,
+    //         mapTypeId: google.maps.MapTypeId.ROADMAP
+    //     };
 
-        //create the map, and place it in the HTML map div
-        map = new google.maps.Map(
-            document.getElementById("mapPlaceholder"), mapOptions
-            );
+    //     //create the map, and place it in the HTML map div
+    //     map = new google.maps.Map(
+    //         document.getElementById("mapPlaceholder"), mapOptions
+    //         );
 
-        //place the initial marker
-        var marker = new google.maps.Marker({
-            position: coords,
-            map: map,
-            title: "Current location!"
-        });
+    //     //place the initial marker
+    //     var marker = new google.maps.Marker({
+    //         position: coords,
+    //         map: map,
+    //         title: "Current location!"
+    //     });
 
-    };
+    // };
     
 
 
   // START OF LOCATION TRACK //
 
     var watchID = null;
+    var mapArray = [];
 
     // device APIs are available
     //
@@ -78,10 +79,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
     // onSuccess Geolocation
     //
     function onSuccess(position) {
-        var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
-                            'Longitude: ' + position.coords.longitude     + '<br />' +
-                            '<hr />'      + element.innerHTML;
+         mapArray.push(position.coords.latitude, position.coords.longitude);
+
+        alert(mapArray);
+
     }
 
     // clear the watch that was started earlier

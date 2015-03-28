@@ -56,7 +56,7 @@
 
     // onError Callback receives a PositionError object
     //
-function StartButtons() {
+document.addEventListener("deviceready", onDeviceReady, false);
 
     var watchID = null;
 
@@ -93,13 +93,3 @@ function StartButtons() {
           alert('code: '    + error.code    + '\n' +
                 'message: ' + error.message + '\n');
         }
-}
-
-
-function onDeviceReady() {
-    document.getElementById("watchButton").addEventListener("click", StartButtons, false);
-}
-
-function init() {
-        document.addEventListener("deviceready", onDeviceReady, false);
-}

@@ -1,4 +1,4 @@
-function onDeviceReady() {
+
 
     function showCurrentLocation(position)
      {
@@ -65,25 +65,24 @@ function onDeviceReady() {
 
 // END OF GET CURRENT POSITION AND SHOW ON MAP //
 
-    document.getElementById("watchButton").addEventListener("click", trackLocation, false);
+document.getElementById("watchButton").addEventListener("click", trackLocation, false);
 
-    var watchID = null;
+var watchID = null;
 
-    function trackLocation() {
+function trackLocation() {
 
-        var options = { timeout: 30000 };
+    var options = { timeout: 30000 };
 
-        watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
-    }
-
-    function onSuccess() {
-        alert('Latitude: '  + position.coords.latitude      + '<br />' +
-              'Longitude: ' + position.coords.longitude     + '<br />' +
-                '<hr />');
-    }
-
-        function onError(error) {
-            alert('code: '    + error.code    + '\n' +
-                  'message: ' + error.message + '\n');
-        }
+    watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
 }
+
+function onSuccess() {
+    alert('Latitude: '  + position.coords.latitude      + '<br />' +
+          'Longitude: ' + position.coords.longitude     + '<br />' +
+            '<hr />');
+}
+
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }

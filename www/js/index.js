@@ -61,8 +61,6 @@
 
 // navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
-$('#trackLocation').on('touchstart click', function (){
-    
 var watchID = null;
 
 function trackLocation() {
@@ -82,4 +80,3 @@ function onSuccess() {
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
-})

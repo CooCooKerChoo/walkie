@@ -59,16 +59,16 @@
 
   // START OF LOCATION TRACK //
 
-    document.addEventListener("deviceready", onDeviceReady, false);
+    document.getElementbyID("watchButton").addEventListener("click", startTrack);
 
     var watchID = null;
 
     // device APIs are available
     //
-    function onDeviceReady() {
+    function startTrack() {
         // Get the most accurate position updates available on the
         // device.
-        var options = { enableHighAccuracy: true, timeout: 10000 };
+        var options = { enableHighAccuracy: true, maximumAge: 10000 };
         watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
     }
 

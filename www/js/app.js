@@ -87,6 +87,7 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
+};
 
     // START OF LOCATION TRACK //
 
@@ -126,4 +127,3 @@ var app = {
                 'message: ' + error.message + '\n');
         }
 
-};

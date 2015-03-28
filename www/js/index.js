@@ -69,10 +69,9 @@ function trackLocation() {
 }
 
 function onSuccess() {
-    var element = document.getElementById('geolocation');
-    element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
-                        'Longitude: ' + position.coords.longitude     + '<br />' +
-                        '<hr />'      + element.innerHTML;
+    alert('Latitude: '  + position.coords.latitude      + '<br />' +
+          'Longitude: ' + position.coords.longitude     + '<br />' +
+            '<hr />');
 }
 
     function onError(error) {

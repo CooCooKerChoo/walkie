@@ -61,6 +61,10 @@
 
 // navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
+$('#trackLocation').on('touchstart click', function (){
+    
+var watchID = null;
+
 function trackLocation() {
 
     var options = { timeout: 30000 };
@@ -78,3 +82,4 @@ function onSuccess() {
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
+})

@@ -59,8 +59,6 @@
 
   // START OF LOCATION TRACK //
 
-    document.getElementbyID("watchButton").addEventListener("click", startTrack);
-
     var watchID = null;
 
     // device APIs are available

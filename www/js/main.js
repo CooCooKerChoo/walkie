@@ -44,27 +44,23 @@
         var options = { enableHighAccuracy: true, maximumAge: 10000 };
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, options);
 
-        var PolyOptions = new google.maps.Polyline({
-            strokeColor: '#FF0000',
-            strokeOpacity: 1.0,
-            strokeWeight: 2
-        });
-
-        poly = new google.maps.Polyline(PolyOptions);
-        poly.setMap(map);
     }
 
     function onSuccessTrack(position) {
-        // mapArray.push(position.coords.latitude, position.coords.longitude);
+    // mapArray.push(position.coords.latitude, position.coords.longitude);
 
-    var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    poly.getPath().push(latLng);  
+        var trackPathCoordinates = [
+            new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+        ];
 
-    var marker = new google.maps.Marker({
-        position: latLng,
-        map: map,
-        title:"Point"
-    });
+         var polyOptions = {
+            strokeColor: '#000000',
+            path: trackPathCoordinates,
+            strokeOpacity: 1.0,
+            strokeWeight: 3
+          };
+          poly = new google.maps.Polyline(polyOptions);
+          poly.setMap(map);
     }
 
         // onError Callback receives a PositionError object

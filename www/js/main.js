@@ -65,7 +65,7 @@ navigator.geolocation.getCurrentPosition(onSuccess, onError, posOptions);
 
     function startTrack() {
         var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
-        watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, options);
+        watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
     }
 
     // mapArray.push(position.coords.latitude, position.coords.longitude);

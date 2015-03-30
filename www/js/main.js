@@ -59,9 +59,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
     //
     function onSuccessTrack(position) {
 
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-
         mapArray.push(position.coords.latitude, position.coords.longitude);
 
         alert(mapArray);

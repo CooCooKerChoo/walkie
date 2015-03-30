@@ -48,7 +48,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     // device APIs are available
     //
-    function startTrack(onSuccessTrack, onErrorTrack) {
+    function startTrack() {
         // Get the most accurate position updates available on the
         // device.
         var options = { enableHighAccuracy: true, maximumAge: 10000 };
@@ -64,8 +64,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         mapArray.push(position.coords.latitude, position.coords.longitude);
 
-        window.sessionStorage.setItem("latitude", latitude);
-        window.sessionStoage.setItem("longitude", longitude);
+        alert(mapArray);
 
         // onError Callback receives a PositionError object
         //

@@ -57,13 +57,19 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     // onSuccess Geolocation
     //
-    function onSuccessTrack(position, longitude, latitude) {
-        mapArray.push(latitude, longitude);
+    function onSuccessTrack(position) {
+
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+
+        mapArray.push(position.coords.latitude, position.coords.longitude);
 
         window.localStorage.setItem("latitude", latitude);
         window.localStoage.setItem("longitude", longitude);
 
-        alert(mapArray);
+        $('localStoage').htmml("Latitude Stored:" + window.localStorage.getItem("latitude") + "<br />" + 
+            "Longitude Storage: " + window.localStorage.getItem("longitude")
+            );
     }
 
         // onError Callback receives a PositionError object

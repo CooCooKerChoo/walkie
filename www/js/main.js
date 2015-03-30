@@ -58,18 +58,16 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function onSuccessTrack(position) {
         mapArray.push(position.coords.latitude, position.coords.longitude);
 
-        window.localStorage.setItem("latitude", position.coords.latitude);
-        window.localStorage.setItem("longitude", position.coords.longitude);
-
-        var flightPath = new google.maps.Polyline({
-            path: flightPlanCoordinates,
-            geodesic: true,
+        var polyOptions = {
             strokeColor: '#FF0000',
             strokeOpacity: 1.0,
             strokeWeight: 2
-        });
+        };
 
-        var path = poly.getPath().mapArray();
+        poly = new google.maps.Polyline(polyOptions);
+        poly.setMap(map);
+
+        var path = mapArray();
 
         path.push(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
 

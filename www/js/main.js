@@ -5,6 +5,15 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
         var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
         navigator.geolocation.getCurrentPosition(onSuccess, onError, posOptions);
+
+        var fbLoginSuccess = function (userData) {
+            alert("UserInfo: " + JSON.stringify(userData));
+        }
+
+        facebookConnectPlugin.login(["public_profile"],
+            fbLoginSuccess,
+            function (error) { alert("" + error) }
+        );
     }
 
 

@@ -25,15 +25,5 @@
             $(document).foundation();
             app.initialize();
         </script>
-        <script>
-        var fbLoginSuccess = function (userData) {
-            alert("UserInfo: " + JSON.stringify(userData));
-        }
-
-        facebookConnectPlugin.login(["public_profile"],
-            fbLoginSuccess,
-            function (error) { alert("" + error) }
-        );
-        </script>
     </body>
 </html>

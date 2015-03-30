@@ -35,15 +35,6 @@
 
     }
 
-    // clear the watch that was started earlier
-    //
-    function clearWatch() {
-        if (watchID != null) {
-            navigator.geolocation.clearWatch(watchID);
-            watchID = null;
-        }
-    }
-
         // onError Callback receives a PositionError object
         //
         function onError(error) {

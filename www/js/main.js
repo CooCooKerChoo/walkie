@@ -2,6 +2,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     function onDeviceReady() {
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        watchID = navigator
     }
 
     // onSuccess Geolocation
@@ -38,65 +39,32 @@ document.addEventListener("deviceready", onDeviceReady, false);
               'message: ' + error.message + '\n');
     }
 
+  // START OF LOCATION TRACK //
 
-    // // device APIs are available
-    // //
-    // function onDeviceReady() {
-    //     navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
-    // }
+    var watchID = null;
+    var mapArray = [];
 
-    // function showCurrentLocation(position)
-    //  {
-    //     var latitude = position.coords.latitude;
-    //     var longitude = position.coords.longitude;
-    //     var coords = new google.maps.LatLng(latitude, longitude);
+    // device APIs are available
+    //
+    function startTrack() {
+        // Get the most accurate position updates available on the
+        // device.
+        var options = { enableHighAccuracy: true, maximumAge: 10000 };
+        watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+    }
 
-    //     var mapOptions = {
-    //         zoom: 17,
-    //         center: coords,
-    //         mapTypeControl: true,
-    //         mapTypeId: google.maps.MapTypeId.ROADMAP
-    //     };
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+        mapArray.push(position.coords.latitude, position.coords.longitude);
 
-    //     //create the map, and place it in the HTML map div
-    //     map = new google.maps.Map(
-    //         document.getElementById("mapPlaceholder"), mapOptions
-    //         );
+        alert(mapArray);
 
-    //     //place the initial marker
-    //     var marker = new google.maps.Marker({
-    //         position: coords,
-    //         map: map,
-    //         title: "Current location!"
-    //     });
-    // }
+    }
 
-
-    // var onSuccess = function(position) {
-
-    //     var latitude = position.coords.latitude;
-    //     var longitude = position.coords.longitude;
-    //     var coords = new google.maps.LatLng(latitude, longitude);
-
-    //     var mapOptions = {
-    //         zoom: 17,
-    //         center: coords,
-    //         mapTypeControl: true,
-    //         mapTypeId: google.maps.MapTypeId.ROADMAP
-    //     };
-
-    //     //create the map, and place it in the HTML map div
-    //     map = new google.maps.Map(
-    //         document.getElementById("mapPlaceholder"), mapOptions
-    //         );
-
-    //     //place the initial marker
-    //     var marker = new google.maps.Marker({
-    //         position: coords,
-    //         map: map,
-    //         title: "Current location!"
-    //     });
-
-    // };
-    
-
+        // onError Callback receives a PositionError object
+        //
+        function onError(error) {
+          alert('code: '    + error.code    + '\n' +
+                'message: ' + error.message + '\n');
+        }

@@ -1,63 +1,102 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
-    // device APIs are available
-    //
     function onDeviceReady() {
-        navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
 
-    function showCurrentLocation(position)
-     {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        var coords = new google.maps.LatLng(latitude, longitude);
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var coords = new google.maps.LatLng(latitude, longitude);
 
-        var mapOptions = {
-            zoom: 17,
-            center: coords,
-            mapTypeControl: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+            var mapOptions = {
+                zoom: 17,
+                center: coords,
+                mapTypeControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
 
-        //create the map, and place it in the HTML map div
-        map = new google.maps.Map(
-            document.getElementById("mapPlaceholder"), mapOptions
-            );
+            //create the map, and place it in the HTML map div
+            map = new google.maps.Map(
+                document.getElementById("mapPlaceholder"), mapOptions
+                );
 
-        //place the initial marker
-        var marker = new google.maps.Marker({
-            position: coords,
-            map: map,
-            title: "Current location!"
-        });
+            //place the initial marker
+            var marker = new google.maps.Marker({
+                position: coords,
+                map: map,
+                title: "Current location!"
+            });
+    }
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
     }
 
 
-    var onSuccess = function(position) {
+    // // device APIs are available
+    // //
+    // function onDeviceReady() {
+    //     navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+    // }
 
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        var coords = new google.maps.LatLng(latitude, longitude);
+    // function showCurrentLocation(position)
+    //  {
+    //     var latitude = position.coords.latitude;
+    //     var longitude = position.coords.longitude;
+    //     var coords = new google.maps.LatLng(latitude, longitude);
 
-        var mapOptions = {
-            zoom: 17,
-            center: coords,
-            mapTypeControl: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+    //     var mapOptions = {
+    //         zoom: 17,
+    //         center: coords,
+    //         mapTypeControl: true,
+    //         mapTypeId: google.maps.MapTypeId.ROADMAP
+    //     };
 
-        //create the map, and place it in the HTML map div
-        map = new google.maps.Map(
-            document.getElementById("mapPlaceholder"), mapOptions
-            );
+    //     //create the map, and place it in the HTML map div
+    //     map = new google.maps.Map(
+    //         document.getElementById("mapPlaceholder"), mapOptions
+    //         );
 
-        //place the initial marker
-        var marker = new google.maps.Marker({
-            position: coords,
-            map: map,
-            title: "Current location!"
-        });
+    //     //place the initial marker
+    //     var marker = new google.maps.Marker({
+    //         position: coords,
+    //         map: map,
+    //         title: "Current location!"
+    //     });
+    // }
 
-    };
+
+    // var onSuccess = function(position) {
+
+    //     var latitude = position.coords.latitude;
+    //     var longitude = position.coords.longitude;
+    //     var coords = new google.maps.LatLng(latitude, longitude);
+
+    //     var mapOptions = {
+    //         zoom: 17,
+    //         center: coords,
+    //         mapTypeControl: true,
+    //         mapTypeId: google.maps.MapTypeId.ROADMAP
+    //     };
+
+    //     //create the map, and place it in the HTML map div
+    //     map = new google.maps.Map(
+    //         document.getElementById("mapPlaceholder"), mapOptions
+    //         );
+
+    //     //place the initial marker
+    //     var marker = new google.maps.Marker({
+    //         position: coords,
+    //         map: map,
+    //         title: "Current location!"
+    //     });
+
+    // };
     
 

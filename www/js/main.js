@@ -67,8 +67,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
         window.localStorage.setItem("latitude", latitude);
         window.localStoage.setItem("longitude", longitude);
 
-        $('localStoage').htmml("Latitude Stored:" + window.localStorage.getItem("latitude") + "<br />" + 
-            "Longitude Storage: " + window.localStorage.getItem("longitude")
+        alert(
+            window.localStorage.getItem("latitude") + window.localStorage.getItem("longitude")
             );
     }
 

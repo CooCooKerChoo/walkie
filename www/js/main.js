@@ -6,59 +6,59 @@ document.addEventListener("deviceready", onDeviceReady, false);
         navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
     }
 
-    // function showCurrentLocation(position)
-    //  {
-    //     var latitude = position.coords.latitude;
-    //     var longitude = position.coords.longitude;
-    //     var coords = new google.maps.LatLng(latitude, longitude);
+    function showCurrentLocation(position)
+     {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var coords = new google.maps.LatLng(latitude, longitude);
 
-    //     var mapOptions = {
-    //         zoom: 17,
-    //         center: coords,
-    //         mapTypeControl: true,
-    //         mapTypeId: google.maps.MapTypeId.ROADMAP
-    //     };
+        var mapOptions = {
+            zoom: 17,
+            center: coords,
+            mapTypeControl: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
 
-    //     //create the map, and place it in the HTML map div
-    //     map = new google.maps.Map(
-    //         document.getElementById("mapPlaceholder"), mapOptions
-    //         );
+        //create the map, and place it in the HTML map div
+        map = new google.maps.Map(
+            document.getElementById("mapPlaceholder"), mapOptions
+            );
 
-    //     //place the initial marker
-    //     var marker = new google.maps.Marker({
-    //         position: coords,
-    //         map: map,
-    //         title: "Current location!"
-    //     });
-    // }
+        //place the initial marker
+        var marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            title: "Current location!"
+        });
+    }
 
 
-    // var onSuccess = function(position) {
+    var onSuccess = function(position) {
 
-    //     var latitude = position.coords.latitude;
-    //     var longitude = position.coords.longitude;
-    //     var coords = new google.maps.LatLng(latitude, longitude);
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var coords = new google.maps.LatLng(latitude, longitude);
 
-    //     var mapOptions = {
-    //         zoom: 17,
-    //         center: coords,
-    //         mapTypeControl: true,
-    //         mapTypeId: google.maps.MapTypeId.ROADMAP
-    //     };
+        var mapOptions = {
+            zoom: 17,
+            center: coords,
+            mapTypeControl: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
 
-    //     //create the map, and place it in the HTML map div
-    //     map = new google.maps.Map(
-    //         document.getElementById("mapPlaceholder"), mapOptions
-    //         );
+        //create the map, and place it in the HTML map div
+        map = new google.maps.Map(
+            document.getElementById("mapPlaceholder"), mapOptions
+            );
 
-    //     //place the initial marker
-    //     var marker = new google.maps.Marker({
-    //         position: coords,
-    //         map: map,
-    //         title: "Current location!"
-    //     });
+        //place the initial marker
+        var marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            title: "Current location!"
+        });
 
-    // };
+    };
     
 
 
@@ -84,16 +84,16 @@ document.addEventListener("deviceready", onDeviceReady, false);
         // device.
         var options = { enableHighAccuracy: true, maximumAge: 10000 };
         watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
-
-        path.push(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-
-        poly.setPath(path);
     }
 
     // onSuccess Geolocation
     //
     function onSuccess(position) {
-         mapArray.push(position.coords.latitude, position.coords.longitude);
+        mapArray.push(position.coords.latitude, position.coords.longitude);
+
+        path.push(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+
+        poly.setPath(path);
 
         // alert(mapArray);
 

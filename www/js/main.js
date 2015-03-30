@@ -41,7 +41,7 @@
     var mapArray = [];
 
     function startTrack() {
-        var options = { enableHighAccuracy: true, maximumAge: 10000 };
+        var options = { enableHighAccuracy: true, maximumAge: 0, timeout : 5000 };
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, options);
 
         var polyOptions = {

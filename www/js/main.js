@@ -44,27 +44,28 @@ document.addEventListener("deviceready", onDeviceReady, false);
     var watchID = null;
     var mapArray = [];
 
+    var path = poly.getPath();
+
     // device APIs are available
     //
     function startTrack() {
         // Get the most accurate position updates available on the
         // device.
         var options = { enableHighAccuracy: true, maximumAge: 10000 };
-        watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+        watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, options);
     }
 
     // onSuccess Geolocation
     //
-    function onSuccess(position) {
+    function onSuccessTrack(position) {
         mapArray.push(position.coords.latitude, position.coords.longitude);
 
         alert(mapArray);
-
     }
 
         // onError Callback receives a PositionError object
         //
-        function onError(error) {
+        function onErrorTrack(error) {
           alert('code: '    + error.code    + '\n' +
                 'message: ' + error.message + '\n');
         }

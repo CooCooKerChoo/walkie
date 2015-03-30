@@ -13,9 +13,56 @@
         <title>Walkie</title>
     </head>
     <body id="deviceready">
-        <div class="row">
-            <div class="small-12 columns">
-                <button class="event listening button" onclick="login();">Login with Facebook</button>
+    <div class="off-canvas-wrap" data-offcanvas>
+        <div class="inner-wrap">
+            <aside class="left-off-canvas-menu">
+                <div class="profile_area">
+                    <div class="row">
+                        <div class="small-3 columns">
+                            <div class="profile_picture">
+                                <img src="img/profile_picture.png" alt="profile picture"/>
+                            </div>
+                        </div>
+                        <div class="small-9 columns">
+                            <div class="user_info">
+                                <p>Joe Bloggs</p>
+                                <p class="location">Stafford,
+                                    England</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="off-canvas-list">
+                        <li>
+                            <a class="active" href="home.html">Record</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="my_routes.html">My Routes</a>
+                        </li>
+                        <li>
+                            <a href="view_routes.html">View Routes</a>
+                        </li>
+                        <li>
+                            <a href="login.html">Login</a>
+                        </li>
+                    </ul>
+                </aside>
+                <nav class="tab-bar">
+                    <a class="left-off-canvas-toggle menu-icon" aria-expanded="false"><span></span></a>
+                    <section class="middle tab-bar-section">
+                        <h1 class="title">Record</h1>
+                    </section>
+                </nav>
+                <section id="main-content">
+                    <div class="content_container">
+                        <div class="row">
+                            <div class="small-12 columns">
+                                <button class="event listening button" onclick="login();">Login with Facebook</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
@@ -26,6 +73,21 @@
         <script type="text/javascript">
             $(document).foundation();
             app.initialize();
+        </script>
+        <script>
+        function onDeviceReady() {
+            var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
+            navigator.geolocation.getCurrentPosition(onSuccess, onError, posOptions);
+
+            var fbLoginSuccess = function (userData) {
+                alert("UserInfo: " + JSON.stringify(userData));
+            }
+
+            facebookConnectPlugin.login(["public_profile"],
+                fbLoginSuccess,
+                function (error) { alert("" + error) }
+            );
+        }
         </script>
     </body>
 </html>

@@ -67,7 +67,7 @@
     var watchID = null;
 
     function startTrack() {
-        var options = { enableHighAccuracy: true, maximumAge: 0, timeout : 5000 };
+        var options = {    enableHighAccuracy: true, timeout : 10000, maximumAge: 0};
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, options);
     }
 

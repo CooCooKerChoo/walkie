@@ -41,33 +41,29 @@
   // START OF LOCATION TRACK //
 
     var watchID = null;
-    var latlngs = [];
 
     function startTrack() {
         var options = { enableHighAccuracy: true, maximumAge: 0, timeout : 5000 };
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, options);
 
+        var polyOptions = {
+            strokeColor: '#000000',
+            strokeOpacity: 1.0,
+            strokeWeight: 3
+        };
+        poly = new google.maps.Polyline(polyOptions);
+        poly.setMap(map);
+
     }
 
     function onSuccessTrack(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
 
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-        var latlng = new google.maps.LatLng(lat, lon);
-        
-        if (latlngs.length > 0) {
-              var prevLatlng = latlngs[latlngs.length -1];
-              var pathLatlng = [prevLatlng, latlng];
-              var path = new google.maps.Polyline({
-                path: pathLatlng,
-                strokeColor: "#FF0000",
-                strokeOpacity: 1.0,
-                strokeWeight: 2
-              });
-              path.setMap(map);
-            }
-            latlngs.push(latlng);
+      var path = poly.getPath();
 
+      path.push(google.maps.LatLng(latitude, longitude));
+      poly.setPath(path); // ** update path for polyline **
     }
 
         // onError Callback receives a PositionError object

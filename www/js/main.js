@@ -22,13 +22,6 @@
             map = new google.maps.Map(
                 document.getElementById("mapPlaceholder"), mapOptions
                 );
-
-            //place the initial marker
-            var marker = new google.maps.Marker({
-                position: coords,
-                map: map,
-                title: "Current location!"
-            });
     }
 
     // onError Callback receives a PositionError object
@@ -40,25 +33,10 @@
 
   // START OF LOCATION TRACK //
 
-    var watchID = null;
-
-    function startTrack() {
-        var options = { enableHighAccuracy: true, maximumAge: 0, timeout : 5000 };
-        watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, options);
-
-        var polyOptions = {
-            strokeColor: '#000000',
-            strokeOpacity: 1.0,
-            strokeWeight: 3
-        };
-        poly = new google.maps.Polyline(polyOptions);
-        poly.setMap(map);
-
-    }
 
     function onSuccessTrack(position) {
 
-        var latlngs = [];
+    var latlngs = [];
 
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
@@ -75,6 +53,7 @@
       });
       path.setMap(map);
     }
+
     latlngs.push(latlng);
     }
 
@@ -85,5 +64,11 @@
                 'message: ' + error.message + '\n');
         }
 
+    var watchID = null;
+
+    function startTrack() {
+        var options = { enableHighAccuracy: true, maximumAge: 0, timeout : 5000 };
+        watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, options);
+    }
 
     // mapArray.push(position.coords.latitude, position.coords.longitude);

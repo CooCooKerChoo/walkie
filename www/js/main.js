@@ -1,9 +1,6 @@
 
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    
-    // onSuccess Geolocation
-    //
-
+var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
+navigator.geolocation.getCurrentPosition(onSuccess, onError, posOptions);
 
     function onSuccess(position) {
 
@@ -31,8 +28,9 @@
               'message: ' + error.message + '\n');
     }
 
+
   // START OF LOCATION TRACK //
-  
+
     var watchID;
     var latlngs = [];
 
@@ -66,7 +64,7 @@
 
 
     function startTrack() {
-        var options = {    enableHighAccuracy: true, timeout : 10000, maximumAge: 0};
+        var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, options);
     }
 

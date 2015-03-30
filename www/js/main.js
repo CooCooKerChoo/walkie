@@ -60,7 +60,12 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function onSuccessTrack(position) {
         mapArray.push(position.coords.latitude, position.coords.longitude);
 
-        alert(mapArray);
+        window.localStorage.setItem("latitude", position.coords.latitude);
+        window.localStoage.setItem("longitude", position.coords.longitude);
+
+        alert("Latitude Storage: " + window.localStorage.getItem("latitude") + "<br />" +
+                "Longitude Storage: " + window.localStorage.getItem("longitude")
+                )
     }
 
         // onError Callback receives a PositionError object

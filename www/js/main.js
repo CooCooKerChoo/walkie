@@ -61,17 +61,19 @@ document.addEventListener("deviceready", onDeviceReady, false);
         window.localStorage.setItem("latitude", position.coords.latitude);
         window.localStorage.setItem("longitude", position.coords.longitude);
 
-        // var flightPath = new google.maps.Polyline({
-        //     path: flightPlanCoordinates,
-        //     geodesic: true,
-        //     strokeColor: '#FF0000',
-        //     strokeOpacity: 1.0,
-        //     strokeWeight: 2
-        // });
+        var flightPath = new google.maps.Polyline({
+            path: flightPlanCoordinates,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+        });
 
-        // flightPath.setMap(map);
+        var path = poly.getPath().mapArray();
 
-        // var flightPlanCoordinates = [new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        path.push(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+
+        poly.setPath(path);
 
         // alert(window.localStorage.getItem("latitude", position.coords.latitude) + window.localStorage.getItem("longitude", position.coords.longitude));
     }

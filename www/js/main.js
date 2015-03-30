@@ -7,13 +7,13 @@
 
     function onSuccess(position) {
 
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-        var latlng = new google.maps.LatLng(lat, lon);
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
             var mapOptions = {
                 zoom: 17,
-                center: latlng,
+                center: coords,
                 mapTypeControl: true,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
@@ -25,7 +25,7 @@
 
             //place the initial marker
             var marker = new google.maps.Marker({
-                position: latlng,
+                position: coords,
                 map: map,
                 title: "Current location!"
             });
@@ -57,13 +57,25 @@
     }
 
     function onSuccessTrack(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
 
-      var path = poly.getPath();
+        var latlngs = [];
 
-      path.push(google.maps.LatLng(latitude, longitude));
-      poly.setPath(path); // ** update path for polyline **
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    var latlng = new google.maps.LatLng(lat, lon);
+
+    if (latlngs.length > 0) {
+      var prevLatlng = latlngs[latlngs.length -1];
+      var pathLatlng = [prevLatlng, latlng];
+      var path = new google.maps.Polyline({
+        path: pathLatlng,
+        strokeColor: "#FF0000",
+        strokeOpacity: 1.0,
+        strokeWeight: 10
+      });
+      path.setMap(map);
+    }
+    latlngs.push(latlng);
     }
 
         // onError Callback receives a PositionError object

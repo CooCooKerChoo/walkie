@@ -1,6 +1,12 @@
+document.addEventListener("deviceready", onDeviceReady, false);
 
-var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
-navigator.geolocation.getCurrentPosition(onSuccess, onError, posOptions);
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
+        navigator.geolocation.getCurrentPosition(onSuccess, onError, posOptions);
+    }
+
 
     function onSuccess(position) {
 

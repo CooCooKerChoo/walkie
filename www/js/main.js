@@ -67,9 +67,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         window.sessionStorage.setItem("latitude", latitude);
         window.sessionStoage.setItem("longitude", longitude);
 
-        alert(
-            window.sessionStorage.getItem("latitude") + window.sessionStorage.getItem("longitude")
-            );
+        alert(longitude + latitude);
     }
 
         // onError Callback receives a PositionError object

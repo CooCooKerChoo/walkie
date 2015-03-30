@@ -58,10 +58,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
     // onSuccess Geolocation
     //
     function onSuccessTrack(position) {
-
         mapArray.push(position.coords.latitude, position.coords.longitude);
 
         alert(mapArray);
+    }
 
         // onError Callback receives a PositionError object
         //

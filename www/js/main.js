@@ -64,11 +64,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         mapArray.push(position.coords.latitude, position.coords.longitude);
 
-        window.localStorage.setItem("latitude", latitude);
-        window.localStoage.setItem("longitude", longitude);
+        window.sessionStorage.setItem("latitude", latitude);
+        window.sessionStoage.setItem("longitude", longitude);
 
         alert(
-            window.localStorage.getItem("latitude") + window.localStorage.getItem("longitude")
+            window.sessionStorage.getItem("latitude") + window.sessionStorage.getItem("longitude")
             );
     }
 

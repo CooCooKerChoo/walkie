@@ -67,6 +67,16 @@ document.addEventListener("deviceready", onDeviceReady, false);
     var watchID = null;
     var mapArray = [];
 
+    var path = poly.getPath();
+
+    var walkRoute = new google.maps.Polyline({
+    path: path,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+    });
+
     // device APIs are available
     //
     function startTrack() {
@@ -74,6 +84,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
         // device.
         var options = { enableHighAccuracy: true, maximumAge: 10000 };
         watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+
+        path.push(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+
+        poly.setPath(path);
     }
 
     // onSuccess Geolocation
@@ -81,7 +95,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function onSuccess(position) {
          mapArray.push(position.coords.latitude, position.coords.longitude);
 
-        alert(mapArray);
+        // alert(mapArray);
 
     }
 

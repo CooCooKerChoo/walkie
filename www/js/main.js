@@ -84,29 +84,28 @@ document.addEventListener("deviceready", onDeviceReady, false);
         // device.
         var options = { enableHighAccuracy: true, maximumAge: 10000 };
         watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
-    }
 
-    // onSuccess Geolocation
-    //
-    function onSuccess(position) {
-        mapArray.push(position.coords.latitude, position.coords.longitude);
+        // onSuccess Geolocation
+        //
+        function onSuccess(position) {
+            mapArray.push(position.coords.latitude, position.coords.longitude);
 
-        path.push(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+            path.push(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
 
-        poly.setPath(path);
+            poly.setPath(path);
 
-        // alert(mapArray);
+            // alert(mapArray);
 
-    }
-
-    // clear the watch that was started earlier
-    //
-    function clearWatch() {
-        if (watchID != null) {
-            navigator.geolocation.clearWatch(watchID);
-            watchID = null;
         }
-    }
+
+        // clear the watch that was started earlier
+        //
+        function clearWatch() {
+            if (watchID != null) {
+                navigator.geolocation.clearWatch(watchID);
+                watchID = null;
+            }
+        }
 
         // onError Callback receives a PositionError object
         //
@@ -114,3 +113,4 @@ document.addEventListener("deviceready", onDeviceReady, false);
           alert('code: '    + error.code    + '\n' +
                 'message: ' + error.message + '\n');
         }
+    }

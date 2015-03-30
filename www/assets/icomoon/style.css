@@ -1,0 +1,55 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-hovf1a');
+	src:url('fonts/icomoon.eot?#iefix-hovf1a') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-hovf1a') format('woff'),
+		url('fonts/icomoon.ttf?-hovf1a') format('truetype'),
+		url('fonts/icomoon.svg?-hovf1a#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-walkie_icon:before {
+	content: "\e603";
+}
+
+.icon-bridge_icon:before {
+	content: "\e600";
+}
+
+.icon-landslide_icon:before {
+	content: "\e601";
+}
+
+.icon-uneven_surfaces_icon:before {
+	content: "\e602";
+}
+
+.icon-water_icon .path1:before {
+	content: "\e604";
+	color: rgb(0, 0, 0);
+}
+.icon-water_icon .path2:before {
+	content: "\e605";
+	margin-left: -2.095703125em;
+	color: rgb(255, 255, 255);
+}
+
+.icon-droplet:before {
+	content: "\e90b";
+}
+

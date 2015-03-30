@@ -44,8 +44,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
     var watchID = null;
     var mapArray = [];
 
-    var path = poly.getPath();
-
     // device APIs are available
     //
     function startTrack() {
@@ -60,7 +58,22 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function onSuccessTrack(position) {
         mapArray.push(position.coords.latitude, position.coords.longitude);
 
-        alert(mapArray);
+        window.localStorage.setItem("latitude", position.coords.latitude);
+        window.localStorage.setItem("longitude", position.coords.longitude);
+
+        var flightPath = new google.maps.Polyline({
+            path: flightPlanCoordinates,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+        });
+
+        flightPath.setMap(map);
+
+        var flightPlanCoordinates = [new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+        // alert(window.localStorage.getItem("latitude", position.coords.latitude) + window.localStorage.getItem("longitude", position.coords.longitude));
     }
 
         // onError Callback receives a PositionError object

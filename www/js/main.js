@@ -32,11 +32,11 @@
     }
 
   // START OF LOCATION TRACK //
-
+  
+    var watchID;
+    var latlngs = [];
 
     function onSuccessTrack(position) {
-
-    var latlngs = [];
 
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
@@ -64,7 +64,6 @@
                 'message: ' + error.message + '\n');
         }
 
-    var watchID = null;
 
     function startTrack() {
         var options = {    enableHighAccuracy: true, timeout : 10000, maximumAge: 0};

@@ -124,10 +124,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
             setTimeout(function(){
                 distance ++;
 
-                if(speed === undefined)
-                {
-                    speed = 0;
-                }
+                // if(speed === undefined)
+                // {
+                //     speed = 0;
+                // }
 
                 distance = speed * totalSeconds;
             document.getElementById("speed").innerHTML = speed;

@@ -58,7 +58,7 @@
                     <div class="content_container">
                         <div class="row">
                             <div class="small-12 columns">
-                                <button onclick="login();">Login with Facebook</button>
+                                <button id="fbLogin" onclick="login();">Login with Facebook</button>
                             </div>
                         </div>
                     </div>
@@ -72,6 +72,9 @@
         <script type="text/javascript">
             $(document).foundation();
             app.initialize();
+            $(#fbLogin).click function() {
+            FacebookConnectPlugin.login
+            });
         </script>
     </body>
 </html>

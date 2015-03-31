@@ -4,7 +4,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     //
     function onDeviceReady() {
         var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
-        navigator.geolocation.getCurrentPosition(onSuccess, onError, posOptions);
+        navigator.geolocation.getCurrentPosition(onSuccess, distanceCalculate, onError, posOptions);
     }
 
 
@@ -37,6 +37,16 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 // ====================================================== START OF LOCATION TRACK ====================================================== //
 
+    function startTrack() {
+        var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
+        watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
+
+        timerIncrement();
+        distanceCalculate();
+
+        $("#watchButton").attr("onclick","stopTrack()");
+    }
+
     var watchID;
     var latlngs = [];
 
@@ -59,6 +69,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
     }
 
     latlngs.push(latlng);
+
+    var speed = position.coords.speed;
     }
 
         // onError Callback receives a PositionError object
@@ -68,12 +80,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
                 'message: ' + error.message + '\n');
         }
 
-
-    function startTrack() {
-        var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
-        watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
-    }
-
     // mapArray.push(position.coords.latitude, position.coords.longitude);
 
 
@@ -81,4 +87,49 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // ====================================================== END OF LOCATION TRACK ====================================================== //
 
 
-// ====================================================== START OF FACEBOOK LOGIN ====================================================== //
+// ====================================================== START OF STOPWATCH LOGIN ====================================================== //
+
+    
+        time = 0;
+
+        function timerIncrement() {
+            setTimeout(function(){
+                time ++;
+                var hours = Math.floor(time/10/60/60)
+                var mins = Math.floor(time/10/60);
+                var secs = Math.floor(time/10 % 60);
+                var totalSeconds = Math.floor(time/10);
+
+                if(hours < 10)
+                {
+                    hours = "0" + hours;
+                }
+                if(mins < 10)
+                {
+                    mins = "0" + mins;
+                }
+                if(secs < 10)
+                {
+                    secs = "0" + secs;
+                }
+                document.getElementById("duration").innerHTML = hours + ":" + mins + ":" + secs;
+
+                timerIncrement();
+            }, 
+            100)
+        }
+
+        function distanceCalculate(speed, totalSeconds) {
+            distance = 0;
+            setTimeout(function(){
+                distance ++;
+                distance = speed * totalSeconds;
+
+                if(speed === undefined)
+                {
+                    speed = 0;
+                }
+            document.getElementById("speed").innerHTML = speed;
+            distanceCalculate();
+            })
+        }

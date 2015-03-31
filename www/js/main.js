@@ -131,6 +131,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
                 distance = speed * totalSeconds;
             document.getElementById("speed").innerHTML = speed;
+            document.getElementById("distance").innerHTML = distance;
             distanceCalculate();
             })
         }

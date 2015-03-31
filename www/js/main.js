@@ -63,7 +63,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         path: pathLatlng,
         strokeColor: "#FF0000",
         strokeOpacity: 1.0,
-        strokeWeight: 10
+        strokeWeight: 5
       });
       path.setMap(map);
     }

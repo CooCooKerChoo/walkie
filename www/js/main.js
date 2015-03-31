@@ -123,12 +123,13 @@ document.addEventListener("deviceready", onDeviceReady, false);
             distance = 0;
             setTimeout(function(){
                 distance ++;
-                distance = speed * totalSeconds;
 
                 if(speed === undefined)
                 {
                     speed = 0;
                 }
+
+                distance = speed * totalSeconds;
             document.getElementById("speed").innerHTML = speed;
             distanceCalculate();
             })

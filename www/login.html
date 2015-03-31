@@ -9,7 +9,6 @@
         <link rel="stylesheet" type="text/css" href="assets/icomoon/style.css"/>
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/foundation.css" />
-        <script src="http://maps.googleapis.com/maps/api/js"></script>
         <title>Walkie</title>
     </head>
     <body id="deviceready">
@@ -58,12 +57,24 @@
                     <div class="content_container">
                         <div class="row">
                             <div class="small-12 columns">
-                                <div class="event listening button" onclick="showDialog();">Show Dialog with Facebook</div>
-                                <div class="event listening button" onclick="apiTest();">Test API with Facebook</div>
-                                <div class="event listening button" onclick="getAccessToken();">Get access token with Facebook</div>
-                                <div class="event listening button" onclick="getStatus();">Get login status with Facebook</div>
-                                <div class="event listening button" onclick="logout();">Logout with Facebook</div>
-                                <div class="event listening button" onclick="login();">Login with Facebook</div>
+                                <button class="btn btn-block" onclick="login()">Login with Facebook</button>
+                                <hr/>
+
+                                <button class="btn btn-block" onclick="getInfo()">Get My Info</button>
+                                <p>Name: <span id="userName"></span></p>
+                                <img id="userPic"/>
+                                <hr/>
+
+                                <textarea id="Message" placeholder="What's on your mind?" rows="5"></textarea>
+                                <button class="btn btn-block" onclick="share()">Share</button>
+                                <hr/>
+
+                                <p>Complete Facebook Logout. After logging out, you'll have to login again and provide your Facebook credentials.</p>
+                                <button class="btn btn-block" onclick="logout()">Logout</button>
+                                <hr/>
+
+                                <p>Revoke App Permissions. After revoking permissions, you'll have to grant permissions again when logging in.</p>
+                                <button class="btn btn-block" onclick="revoke()">Revoke Permissions</button>
                             </div>
                         </div>
                     </div>
@@ -72,51 +83,74 @@
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="js/facebookConnectPlugin.js"></script>
+        <script src="js/openfb.js"></script>
         <script type="text/javascript" src="js/vendor/jquery.js"></script>
         <script type="text/javascript" src="js/foundation.min.js"></script>
         <script type="text/javascript">
             $(document).foundation();
             app.initialize();
+        </script>
+        <script>
 
-            var login = function () {
-                if (!window.cordova) {
-                    var appId = prompt("Enter FB Application ID", "");
-                    facebookConnectPlugin.browserInit(appId);
-                }
-                facebookConnectPlugin.login( ["email"], 
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
-            }
-            
-            var showDialog = function () { 
-                facebookConnectPlugin.showDialog( { method: "feed" }, 
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
-            }
-            
-            var apiTest = function () { 
-                facebookConnectPlugin.api( "me/?fields=id,email", ["user_birthday"],
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) }); 
+             // Defaults to sessionStorage for storing the Facebook token
+             openFB.init({appId: '292811390842470'});
+
+            //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
+            //  openFB.init({appId: 'YOUR_FB_APP_ID', tokenStore: window.localStorage});
+
+            function login() {
+                openFB.login(
+                        function(response) {
+                            if(response.status === 'connected') {
+                                alert('Facebook login succeeded, got access token: ' + response.authResponse.token);
+                            } else {
+                                alert('Facebook login failed: ' + response.error);
+                            }
+                        }, {scope: 'email,read_stream,publish_stream'});
             }
 
-            var getAccessToken = function () { 
-                facebookConnectPlugin.getAccessToken( 
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
-            }
-            
-            var getStatus = function () { 
-                facebookConnectPlugin.getLoginStatus( 
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
+            function getInfo() {
+                openFB.api({
+                    path: '/me',
+                    success: function(data) {
+                        console.log(JSON.stringify(data));
+                        document.getElementById("userName").innerHTML = data.name;
+                        document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+                    },
+                    error: errorHandler});
             }
 
-            var logout = function () { 
-                facebookConnectPlugin.logout( 
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) });
+            function share() {
+                openFB.api({
+                    method: 'POST',
+                    path: '/me/feed',
+                    params: {
+                        message: document.getElementById('Message').value || 'Testing Facebook APIs'
+                    },
+                    success: function() {
+                        alert('the item was posted on Facebook');
+                    },
+                    error: errorHandler});
+            }
+
+            function revoke() {
+                openFB.revokePermissions(
+                        function() {
+                            alert('Permissions revoked');
+                        },
+                        errorHandler);
+            }
+
+            function logout() {
+                openFB.logout(
+                        function() {
+                            alert('Logout successful');
+                        },
+                        errorHandler);
+            }
+
+            function errorHandler(error) {
+                alert(error.message);
             }
         </script>
     </body>

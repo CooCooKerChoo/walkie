@@ -138,14 +138,16 @@ document.addEventListener("deviceready", onDeviceReady, false);
         clearInterval(theTimer);
     }
 
-    distance = 0;
+    totalDistance = 0;
 
     function distanceCalculate() {
-        if(speed === null) {
-            speed = 0;
-        }
-        distanceCalc = speed * totalSeconds;
-        distance += distanceCalc;
-
-        document.getElementById("distance").innerHTML = distance + "m";
+        setTimeout(function() {
+            totalDistance ++;
+            if(speed === null) {
+                speed = 0;
+            }
+            totalDistance = speed * totalSeconds;
+            distanceCalculate();
+        }, 1);
+        document.getElementById("distance").innerHTML = totalDistance + "m";
     }

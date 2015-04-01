@@ -91,7 +91,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     
         ime = 0;
-        totalSeconds = Math.floor(time/10);
 
         function timerIncrement() {
             setTimeout(function(){
@@ -99,7 +98,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
                 var hours = Math.floor(time/10/60/60)
                 var mins = Math.floor(time/10/60);
                 var secs = Math.floor(time/10 % 60);
-
+                totalSeconds = Math.floor(time/10);
+                
                 if(hours < 10)
                 {
                     hours = "0" + hours;

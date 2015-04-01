@@ -116,12 +116,17 @@ document.addEventListener("deviceready", onDeviceReady, false);
             timerIncrement();
         }, 
         100)
-        var totalSeconds = Math.floor(time/10);
+        totalSeconds = Math.floor(time/10);
     }
 
 
     function distanceCalculate(watchID) {
         var speed = position.coords.speed;
-        document.getElementById("speed").innerHTML = speed;
+        var distance = 0;
+        setTimeout(function(){
+            distance ++;
+
+        },10)
+        document.getElementById("speed").innerHTML = speed + totalSeconds;
 
     }

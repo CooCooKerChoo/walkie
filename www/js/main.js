@@ -142,5 +142,5 @@ document.addEventListener("deviceready", onDeviceReady, false);
     // Vibrate for 2 seconds
     //
     function vibrate() {
-        navigator.notification.vibrate(2000);
+        navigator.notification.vibrate(1000);
     }

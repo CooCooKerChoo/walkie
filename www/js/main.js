@@ -42,6 +42,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
 
         timerIncrement();
+        distanceCalculate();
 
         $("#watchButton").attr("onclick","stopTrack()");
     }
@@ -69,10 +70,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         latlngs.push(latlng);
 
-            function distanceCalculate() {
-                var speed = position.coords.speed;
-                document.getElementById("speed").innerHTML = speed;
-            }
         }
 
         function onErrorTrack(error) {
@@ -119,3 +116,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var totalSeconds = Math.floor(time/10);
     }
 
+
+    function distanceCalculate() {
+        var speed = position.coords.speed;
+        document.getElementById("speed").innerHTML = speed;
+    }

@@ -135,5 +135,4 @@ document.addEventListener("deviceready", onDeviceReady, false);
             document.getElementById("distance").innerHTML = distance;
             distanceCalculate();
             }, 10)
-                alert(totalSeconds);
         }

@@ -131,16 +131,15 @@ document.addEventListener("deviceready", onDeviceReady, false);
             'Done'                  // buttonName
         );
         vibrate();
-    }
-
-    // Beep three times
-    //
-    function playBeep() {
-        navigator.notification.beep(3);
+        playBeep();
     }
 
     // Vibrate for 2 seconds
     //
     function vibrate() {
         navigator.notification.vibrate(1000);
+    }
+
+    function playBeep() {
+        navigator.notification.beep(3);
     }

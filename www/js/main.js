@@ -141,6 +141,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     function distanceCalculate() {
         distance = 0;
+        if(speed === null)
+        {
+            speed = 0;
+        }
         var distanceCalc = speed * totalSeconds;
         totalDistance = distance += distanceCalc;
 

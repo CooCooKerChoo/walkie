@@ -113,11 +113,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
             }
             document.getElementById("duration").innerHTML = hours + ":" + mins + ":" + secs;
             totalSeconds = Math.floor(time/10);
-            distanceCalculate(totalSeconds);
 
             timerIncrement();
         }, 
         100)
+            distanceCalculate(totalSeconds);
     }
 
 

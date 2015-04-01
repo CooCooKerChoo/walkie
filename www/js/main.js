@@ -42,7 +42,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
 
         timerIncrement();
-        distanceCalculate();
 
         $("#watchButton").attr("onclick","stopTrack()");
     }

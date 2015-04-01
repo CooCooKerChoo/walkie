@@ -41,10 +41,20 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 1000};
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
 
+        $("#watchButton").attr("onclick","stopTrack();");
+        $("#watchButton i").attr("class","size-48 fi-pause");
+
         timerIncrement();
         distanceCalculate();
 
-        $("#watchButton").attr("onclick","stopTrack()");
+    }
+
+    function stopTrack() {
+
+        $("#watchButton").attr("onclick","startTrack();");
+        $("#watchButton i").attr("class","size-48 fi-record");
+
+        timerPause();
     }
 
         var watchID;
@@ -70,7 +80,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         latlngs.push(latlng);
 
-        speed = position.coords.speed;
+        speed = position.coords/speed;
         distanceCalculate(speed);
 
         }
@@ -89,10 +99,14 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 // ====================================================== START OF STOPWATCH LOGIN ====================================================== //
 
-    
+
+
     time = 0;
+    var theTimer;
+
 
     function timerIncrement() {
+        theTimer =
         setTimeout(function(){
             time ++;
             var hours = Math.floor(time/10/60/60)
@@ -120,14 +134,20 @@ document.addEventListener("deviceready", onDeviceReady, false);
         100)
     }
 
+    function timerPause () {
+        clearInterval(theTimer);
+    }
+
+    totalDistance = 0;
 
     function distanceCalculate() {
-        distance = 0;
-        if(speed === null) {
-            speed = 0;
-        }
-        distanceCalc = speed * totalSeconds;
-        distance += distanceCalc;
-        document.getElementById("speed").innerHTML = speed + "m/s";
-        document.getElementById("distance").innerHTML = distance.toFixed(1); + "m";
+        setTimeout(function() {
+            totalDistance ++;
+            if(speed === null) {
+                speed = 0;
+            }
+            totalDistance = speed * totalSeconds;
+            distanceCalculate();
+        }, 1);
+        document.getElementById("distance").innerHTML = totalDistance + "m";
     }

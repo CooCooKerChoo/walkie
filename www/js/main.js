@@ -120,8 +120,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
     }
 
 
-    function distanceCalculate() {
-        var watchID;
+    function distanceCalculate(watchID) {
         var speed = position.coords.speed;
         document.getElementById("speed").innerHTML = speed;
+
     }

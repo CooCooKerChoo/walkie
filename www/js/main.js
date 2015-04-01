@@ -120,9 +120,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
         100)
     }
 
+    totalDistance = 0;
 
     function distanceCalculate() {
-        var totalDistance = 0;
         setTimeout(function(){
             totalDistance ++;
             if(speed === null) {

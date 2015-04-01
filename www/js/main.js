@@ -121,7 +121,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             distanceCalculate(totalSeconds);
         }
 
-        function distanceCalculate(secs, travelspeed) {
+        function distanceCalculate(travelspeed) {
             distance = 0;
             setTimeout(function(){
                 distance ++;
@@ -133,8 +133,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
                 // {
                 //     document.getElementById("speed").innerHTML = speed;
                 // }
-            document.getElementById("speed").innerHTML = travelspeed;
             document.getElementById("distance").innerHTML = distance;
             distanceCalculate();
             }, 10)
+
+            document.getElementById("speed").innerHTML = travelspeed;
         }

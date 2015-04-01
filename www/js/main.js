@@ -41,9 +41,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
 
-        timerIncrement();
-        distanceCalculate();
-
         $("#watchButton").attr("onclick","stopTrack()");
     }
 
@@ -71,29 +68,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
     latlngs.push(latlng);
 
     var speed = position.coords.speed;
-    document.getElementById("speed").innerHTML = speed;
-    }
 
-        // onError Callback receives a PositionError object
-        //
-        function onErrorTrack(error) {
-          alert('code: '    + error.code    + '\n' +
-                'message: ' + error.message + '\n');
-        }
-
-    // mapArray.push(position.coords.latitude, position.coords.longitude);
-
-
-
-// ====================================================== END OF LOCATION TRACK ====================================================== //
-
-
-// ====================================================== START OF STOPWATCH LOGIN ====================================================== //
-
-    
         time = 0;
-
-        function timerIncrement() {
             setTimeout(function(){
                 time ++;
                 var hours = Math.floor(time/10/60/60)
@@ -113,19 +89,41 @@ document.addEventListener("deviceready", onDeviceReady, false);
                     secs = "0" + secs;
                 }
                 document.getElementById("duration").innerHTML = hours + ":" + mins + ":" + secs;
-
-                timerIncrement();
             }, 
             100)
-            var totalSeconds = Math.floor(time/10);
-            distanceCalculate(totalSeconds);
-        }
 
-        function distanceCalculate() {
+            var totalSeconds = Math.floor(time/10);
+
             distance = 0;
             setTimeout(function(){
                 distance ++;
-            document.getElementById("distance").innerHTML = distance;
-            distanceCalculate();
+                if(speed === null || speed === undefined)
+                {
+                    speed =0;
+                }
+                else {
+                    speed = position.coords.speed;
+                }
+                distance = (speed * totalSeconds);
+                document.getElementById("distance").innerHTML = distance;
             }, 10)
+
+    }
+
+        // onError Callback receives a PositionError object
+        //
+        function onErrorTrack(error) {
+          alert('code: '    + error.code    + '\n' +
+                'message: ' + error.message + '\n');
         }
+
+    // mapArray.push(position.coords.latitude, position.coords.longitude);
+
+
+
+// ====================================================== END OF LOCATION TRACK ====================================================== //
+
+
+// ====================================================== START OF STOPWATCH LOGIN ====================================================== //
+
+    

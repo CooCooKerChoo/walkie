@@ -70,7 +70,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         latlngs.push(latlng);
 
         var speed = position.coords.speed;
-                document.getElementById("speed").innerHTML = currentSpeed;
+                document.getElementById("speed").innerHTML = speed;
 
         }
 

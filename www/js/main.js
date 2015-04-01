@@ -127,11 +127,5 @@ document.addEventListener("deviceready", onDeviceReady, false);
             document.getElementById("distance").innerHTML = distance;
             distanceCalculate();
             }, 10)
-                if(speed === undefined)
-                {
-                    document.getElementById("speed").innerHTML = "You are standing still";
-                } else 
-                {
-                    document.getElementById("speed").innerHTML = speed;
-                }
+                document.getElementById("speed").innerHTML = speed;
         }

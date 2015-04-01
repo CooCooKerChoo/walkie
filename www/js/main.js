@@ -70,7 +70,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         latlngs.push(latlng);
 
         var speed = position.coords.speed;
-        document.getElementById("speed").innerHTML = speed; 
+        document.getElementById("speed").innerHTML = speed;  
 
         }
 
@@ -80,6 +80,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         }
 
     // mapArray.push(position.coords.latitude, position.coords.longitude);
+
 
 
 // ====================================================== END OF LOCATION TRACK ====================================================== //
@@ -116,3 +117,4 @@ document.addEventListener("deviceready", onDeviceReady, false);
         100)
         var totalSeconds = Math.floor(time/10);
     }
+

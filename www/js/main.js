@@ -62,27 +62,31 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         function onSuccessTrack(position) {
 
-        lat = position.coords.latitude;
-        lon = position.coords.longitude;
-        latlng = new google.maps.LatLng(lat, lon);
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            latlng = new google.maps.LatLng(lat, lon);
 
-        if (latlngs.length > 0) {
-          prevLatlng = latlngs[latlngs.length -1];
-          pathLatlng = [prevLatlng, latlng];
-          var path = new google.maps.Polyline({
-            path: pathLatlng,
-            strokeColor: "#FF0000",
-            strokeOpacity: 1.0,
-            strokeWeight: 5
-          });
-          path.setMap(map);
-        }
+            if (latlngs.length > 0) {
+              prevLatlng = latlngs[latlngs.length -1];
+              pathLatlng = [prevLatlng, latlng];
+              var path = new google.maps.Polyline({
+                path: pathLatlng,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 5
+              });
+              path.setMap(map);
+            }
 
-        latlngs.push(latlng);
+            latlngs.push(latlng);
 
-        speed = position.coords.speed;
-        distanceCalculate(speed);
-
+            if(speed === null || speed === undefined)
+            {
+                speed = 0;
+            } else {
+                speed = position.coords.speed;
+            }
+            distanceCalculate(speed);
         }
 
         function onErrorTrack(error) {
@@ -126,29 +130,27 @@ document.addEventListener("deviceready", onDeviceReady, false);
                 secs = "0" + secs;
             }
             document.getElementById("duration").innerHTML = hours + ":" + mins + ":" + secs;
-            totalSeconds = Math.floor(time/10);
 
             timerIncrement();
-            distanceCalculate(totalSeconds);
         }, 
         100)
+            totalSeconds = Math.floor(time/10);
+            distanceCalculate(totalSeconds);
     }
+
 
     function timerPause () {
         clearInterval(theTimer);
     }
 
-        distance = 0;
-        distanceCalc = speed * totalSeconds;
+        totalDistance = 0;
 
     function distanceCalculate() {
-        if(speed === null)
-        {
-            speed = 0;
-        }
-        totalDistance = distance += distanceCalc;
+        distanceCalc = speed * totalSeconds;
+        totalDistance =+ distanceCalc;
+        distanceOutput();
+    }
 
+    function distanceOutput() {
         document.getElementById("distance").innerHTML = totalDistance + " m";
-        document.getElementById("speed").innerHTML = speed + " m/s";
-        console.log(distance);
     }

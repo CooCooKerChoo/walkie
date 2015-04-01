@@ -123,23 +123,3 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var speed = position.coords.speed;
     }
 
-
-    function showAlert() {
-        navigator.notification.alert(
-            'You are the winner!',  // message
-            'Game Over',            // title
-            'Done'                  // buttonName
-        );
-        vibrate();
-        playBeep();
-    }
-
-    // Vibrate for 2 seconds
-    //
-    function vibrate() {
-        navigator.notification.vibrate(1000);
-    }
-
-    function playBeep() {
-        navigator.notification.beep(3);
-    }

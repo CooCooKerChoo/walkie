@@ -142,11 +142,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function distanceCalculate() {
     var totalDistance;
         setTimeout(function() {
-            totalDistance ++;
-            if(speed === null) {
-                speed = 0;
-            }
-            totalDistance = speed * totalSeconds;
+            distanceCalc = speed * totalSeconds;
+            distance =+ distanceCalc;
             distanceCalculate();
         }, 100);
         document.getElementById("distance").innerHTML = totalDistance + " m";

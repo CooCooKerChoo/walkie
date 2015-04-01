@@ -128,7 +128,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         setTimeout(function(){
             distance ++;
             var totalDistance = totalSeconds * speed;
-        document.getElementById("distance").innerHTML = totalDistance;
+        document.getElementById("distance").innerHTML = totalDistance + "m";
         distanceCalculate();
         },10)
         document.getElementById("speed").innerHTML = totalSeconds;

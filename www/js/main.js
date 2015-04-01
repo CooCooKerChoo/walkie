@@ -140,13 +140,16 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 
     function distanceCalculate() {
+        var distanceArray = [];
         setTimeout(function() {
             if(speed === null)
             {
                 speed = 0;
             }
             distanceCalc = speed * totalSeconds;
-            distance =+ distanceCalc;
+            distance = distanceCalc;
+            distanceArray.push(distance);
+            for(var i in distanceArray){distance += distanceArray[i];}
             distanceCalculate();
         }, 100);
         document.getElementById("distance").innerHTML = distance + " m";

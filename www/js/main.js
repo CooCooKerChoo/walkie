@@ -139,13 +139,13 @@ document.addEventListener("deviceready", onDeviceReady, false);
     }
 
         distance = 0;
+        distanceCalc = speed * totalSeconds;
 
     function distanceCalculate() {
         if(speed === null)
         {
             speed = 0;
         }
-        var distanceCalc = speed * totalSeconds;
         totalDistance = distance += distanceCalc;
 
         document.getElementById("distance").innerHTML = totalDistance + " m";

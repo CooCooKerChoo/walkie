@@ -71,7 +71,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
     latlngs.push(latlng);
 
     var speed = position.coords.speed;
-    distanceCalculate(speed);
     }
 
         // onError Callback receives a PositionError object
@@ -121,21 +120,18 @@ document.addEventListener("deviceready", onDeviceReady, false);
             distanceCalculate(totalSeconds);
         }
 
-        function distanceCalculate(travelspeed) {
+        function distanceCalculate(speed) {
             distance = 0;
             setTimeout(function(){
                 distance ++;
-
-                // if(speed === null || speed === 0)
-                // {
-                //     document.getElementById("speed").innerHTML = "You are standing still";
-                // } else 
-                // {
-                //     document.getElementById("speed").innerHTML = speed;
-                // }
             document.getElementById("distance").innerHTML = distance;
             distanceCalculate();
             }, 10)
-
-            document.getElementById("speed").innerHTML = travelspeed;
+                if(speed === undefined)
+                {
+                    document.getElementById("speed").innerHTML = "You are standing still";
+                } else 
+                {
+                    document.getElementById("speed").innerHTML = speed;
+                }
         }

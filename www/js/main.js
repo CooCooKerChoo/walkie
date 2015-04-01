@@ -148,7 +148,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             }
             totalDistance = speed * totalSeconds;
             distanceCalculate();
-        }, 1);
+        }, 100);
         document.getElementById("distance").innerHTML = totalDistance + " m";
         document.getElementById("speed").innerHTML = speed + " m/s";
     }

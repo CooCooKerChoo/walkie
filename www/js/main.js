@@ -70,8 +70,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         latlngs.push(latlng);
 
         var speed = position.coords.speed;
-
-        distanceCalculate(speed);
+                document.getElementById("speed").innerHTML = currentSpeed; 
 
         }
 
@@ -120,8 +119,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
     }
 
 
-    function distanceCalculate(currentSpeed) {
-        document.getElementById("speed").innerHTML = currentSpeed;
-        distanceCalculate(currentSpeed);
-    }
 
+            function distanceCalculate(currentSpeed) {
+                document.getElementById("speed").innerHTML = currentSpeed;  
+                distanceCalculate(currentSpeed);
+            }

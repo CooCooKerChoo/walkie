@@ -130,6 +130,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             'Game Over',            // title
             'Done'                  // buttonName
         );
+        vibrate();
     }
 
     // Beep three times

@@ -70,8 +70,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         latlngs.push(latlng);
 
-        var speed = position.coords.speed;
-        document.getElementById("speed").innerHTML = speed;
+        speed = position.coords.speed;
+        distanceCalculate(speed);
 
         }
 
@@ -121,11 +121,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
     }
 
 
-    function distanceCalculate(watchID) {
-        var mySpeed = position.coords.speed;
+    function distanceCalculate() {
         var distance = 0;
-        var totalDistance = mySpeed * totalSeconds;
+        var totalDistance = speed * totalSeconds;
         distance += totalDistance;
         document.getElementById("distance").innerHTML = totalDistance + "m";
-        document.getElementById("speed").innerHTML = mySpeed + "m/s";
+        document.getElementById("speed").innerHTML = Speed + "m/s";
     }

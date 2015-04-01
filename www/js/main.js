@@ -123,7 +123,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     function distanceCalculate() {
         var watchID;
-        var mySpeed = position.coords.speed;
+        var mySpeed = 0;
         var distance = 0;
         var totalDistance = mySpeed * totalSeconds;
         distance += totalDistance;

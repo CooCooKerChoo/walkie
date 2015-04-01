@@ -126,5 +126,5 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var totalDistance = speed * totalSeconds;
         distance += totalDistance;
         document.getElementById("distance").innerHTML = totalDistance + "m";
-        document.getElementById("speed").innerHTML = Speed + "m/s";
+        document.getElementById("speed").innerHTML = speed + "m/s";
     }

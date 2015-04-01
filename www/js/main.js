@@ -115,9 +115,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
             totalSeconds = Math.floor(time/10);
 
             timerIncrement();
+            distanceCalculate(totalSeconds);
         }, 
         100)
-            distanceCalculate(totalSeconds);
     }
 
 
@@ -127,8 +127,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var distance = 0;
         setTimeout(function(){
             distance ++;
-            var distance = totalSeconds * speed;
-        document.getElementById("distance").innerHTML = distance;
+            var totalDistance = totalSeconds * speed;
+        document.getElementById("distance").innerHTML = totalDistance;
         distanceCalculate();
         },10)
         document.getElementById("speed").innerHTML = totalSeconds;

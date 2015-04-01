@@ -138,9 +138,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
         clearInterval(theTimer);
     }
 
+        distance = 0;
 
     function distanceCalculate() {
-        distance = 0;
         if(speed === null)
         {
             speed = 0;

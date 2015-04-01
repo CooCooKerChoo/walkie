@@ -38,7 +38,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // ====================================================== START OF LOCATION TRACK ====================================================== //
 
     function startTrack() {
-        var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
+        var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 1000};
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
 
         timerIncrement();

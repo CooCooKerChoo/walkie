@@ -42,6 +42,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
 
         timerIncrement();
+        distanceCalculate();
 
         $("#watchButton").attr("onclick","stopTrack()");
     }
@@ -70,7 +71,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         latlngs.push(latlng);
 
         var speed = position.coords.speed;
-        document.getElementById("speed").innerHTML = speed;  
+        document.getElementById("speed").innerHTML = speed;
 
         }
 
@@ -117,4 +118,3 @@ document.addEventListener("deviceready", onDeviceReady, false);
         100)
         var totalSeconds = Math.floor(time/10);
     }
-

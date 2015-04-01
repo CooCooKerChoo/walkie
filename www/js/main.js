@@ -47,33 +47,33 @@ document.addEventListener("deviceready", onDeviceReady, false);
         $("#watchButton").attr("onclick","stopTrack()");
     }
 
-    var watchID;
-    var latlngs = [];
+        var watchID;
+        var latlngs = [];
 
-    function onSuccessTrack(position) {
+        function onSuccessTrack(position) {
 
-    var lat = position.coords.latitude;
-    var lon = position.coords.longitude;
-    var latlng = new google.maps.LatLng(lat, lon);
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        var latlng = new google.maps.LatLng(lat, lon);
 
-    if (latlngs.length > 0) {
-      var prevLatlng = latlngs[latlngs.length -1];
-      var pathLatlng = [prevLatlng, latlng];
-      var path = new google.maps.Polyline({
-        path: pathLatlng,
-        strokeColor: "#FF0000",
-        strokeOpacity: 1.0,
-        strokeWeight: 5
-      });
-      path.setMap(map);
-    }
+        if (latlngs.length > 0) {
+          var prevLatlng = latlngs[latlngs.length -1];
+          var pathLatlng = [prevLatlng, latlng];
+          var path = new google.maps.Polyline({
+            path: pathLatlng,
+            strokeColor: "#FF0000",
+            strokeOpacity: 1.0,
+            strokeWeight: 5
+          });
+          path.setMap(map);
+        }
 
-    latlngs.push(latlng);
+        latlngs.push(latlng);
 
-    }
+        var speed = position.coords.speed;
 
-        // onError Callback receives a PositionError object
-        //
+        }
+
         function onErrorTrack(error) {
           alert('code: '    + error.code    + '\n' +
                 'message: ' + error.message + '\n');
@@ -89,37 +89,36 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // ====================================================== START OF STOPWATCH LOGIN ====================================================== //
 
     
-        time = 0;
+    time = 0;
 
-        function timerIncrement() {
-            setTimeout(function(){
-                time ++;
-                var hours = Math.floor(time/10/60/60)
-                var mins = Math.floor(time/10/60);
-                var secs = Math.floor(time/10 % 60);
+    function timerIncrement() {
+        setTimeout(function(){
+            time ++;
+            var hours = Math.floor(time/10/60/60)
+            var mins = Math.floor(time/10/60);
+            var secs = Math.floor(time/10 % 60);
 
-                if(hours < 10)
-                {
-                    hours = "0" + hours;
-                }
-                if(mins < 10)
-                {
-                    mins = "0" + mins;
-                }
-                if(secs < 10)
-                {
-                    secs = "0" + secs;
-                }
-                document.getElementById("duration").innerHTML = hours + ":" + mins + ":" + secs;
+            if(hours < 10)
+            {
+                hours = "0" + hours;
+            }
+            if(mins < 10)
+            {
+                mins = "0" + mins;
+            }
+            if(secs < 10)
+            {
+                secs = "0" + secs;
+            }
+            document.getElementById("duration").innerHTML = hours + ":" + mins + ":" + secs;
 
-                timerIncrement();
-            }, 
-            100)
-            var totalSeconds = Math.floor(time/10);
-        }
+            timerIncrement();
+        }, 
+        100)
+        var totalSeconds = Math.floor(time/10);
+    }
 
-        var speed = position.coords.speed;
 
-        function distanceCalculate() {
-            document.getElementById("speed").innerHTML = speed;
-        }
+    function distanceCalculate() {
+        document.getElementById("speed").innerHTML = speed;
+    }

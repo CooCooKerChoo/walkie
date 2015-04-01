@@ -80,7 +80,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         latlngs.push(latlng);
 
-        speed = position.coords/speed;
+        speed = position.coords.speed;
         distanceCalculate(speed);
 
         }
@@ -138,11 +138,14 @@ document.addEventListener("deviceready", onDeviceReady, false);
         clearInterval(theTimer);
     }
 
-    totalDistance = 0;
+    distance = 0;
 
     function distanceCalculate() {
+        totalSeconds = totalSeconds;
+        if(speed === null) {
+            speed = 0;
+        }
         distanceCalc = speed * totalSeconds;
-
         distance += distanceCalc;
 
         document.getElementById("distance").innerHTML = distance + "m";

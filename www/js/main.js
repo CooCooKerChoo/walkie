@@ -42,7 +42,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
 
         timerIncrement();
-        distanceCalculate();
 
         $("#watchButton").attr("onclick","stopTrack()");
     }
@@ -70,6 +69,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         latlngs.push(latlng);
 
+        var speed = position.coords.speed;
         document.getElementById("speed").innerHTML = speed;
 
         }
@@ -118,29 +118,3 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var totalSeconds = Math.floor(time/10);
     }
 
-
-    function distanceCalculate() {
-        var speed = position.coords.speed;
-    }
-
-
-    function showAlert() {
-        navigator.notification.alert(
-            'You are the winner!',  // message
-            'Game Over',            // title
-            'Done'                  // buttonName
-        );
-        vibrate();
-    }
-
-    // Beep three times
-    //
-    function playBeep() {
-        navigator.notification.beep(3);
-    }
-
-    // Vibrate for 2 seconds
-    //
-    function vibrate() {
-        navigator.notification.vibrate(1000);
-    }

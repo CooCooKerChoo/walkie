@@ -70,6 +70,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         latlngs.push(latlng);
 
+        document.getElementById("speed").innerHTML = speed;
+
         }
 
         function onErrorTrack(error) {
@@ -119,5 +121,25 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     function distanceCalculate() {
         var speed = position.coords.speed;
-        document.getElementById("speed").innerHTML = speed;
+    }
+
+
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
+
+    // Beep three times
+    //
+    function playBeep() {
+        navigator.notification.beep(3);
+    }
+
+    // Vibrate for 2 seconds
+    //
+    function vibrate() {
+        navigator.notification.vibrate(2000);
     }

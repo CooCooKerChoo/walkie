@@ -70,8 +70,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     latlngs.push(latlng);
 
-    var speed = position.coords.speed;
-    document.getElementById("speed").innerHTML = speed;
+    speed = position.coords.speed;
     }
 
         // onError Callback receives a PositionError object
@@ -91,10 +90,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // ====================================================== START OF STOPWATCH LOGIN ====================================================== //
 
     
-        time = 0;
+        ime = 0;
+        totalSeconds = Math.floor(time/10);
 
         function timerIncrement() {
-            var totalSeconds = Math.floor(time/10);
             setTimeout(function(){
                 time ++;
                 var hours = Math.floor(time/10/60/60)
@@ -132,7 +131,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
                 // {
                 //     document.getElementById("speed").innerHTML = speed;
                 // }
+            document.getElementById("speed").innerHTML = speed;
             document.getElementById("distance").innerHTML = distance;
             distanceCalculate();
+            alert(totalSeconds);
             }, 10)
         }

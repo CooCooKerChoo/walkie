@@ -125,11 +125,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var watchID;
         var speed = position.coords.speed;
         var distance = 0;
-        setTimeout(function(){
-            distance ++;
-            var totalDistance = totalSeconds * speed;
+        var totalDistance = speed * totalSeconds;
+
+        distance += totalDistance;
         document.getElementById("distance").innerHTML = totalDistance + "m";
-        distanceCalculate();
-        },10)
-        document.getElementById("speed").innerHTML = totalSeconds;
     }

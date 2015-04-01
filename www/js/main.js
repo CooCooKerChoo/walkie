@@ -71,6 +71,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     latlngs.push(latlng);
 
     var speed = position.coords.speed;
+    document.getElementById("speed").innerHTML = speed;
     }
 
         // onError Callback receives a PositionError object
@@ -93,12 +94,12 @@ document.addEventListener("deviceready", onDeviceReady, false);
         time = 0;
 
         function timerIncrement() {
+            var totalSeconds = Math.floor(time/10);
             setTimeout(function(){
                 time ++;
                 var hours = Math.floor(time/10/60/60)
                 var mins = Math.floor(time/10/60);
                 var secs = Math.floor(time/10 % 60);
-                var totalSeconds = Math.floor(time/10);
 
                 if(hours < 10)
                 {
@@ -124,14 +125,15 @@ document.addEventListener("deviceready", onDeviceReady, false);
             setTimeout(function(){
                 distance ++;
 
-                // if(speed === undefined)
+                // if(speed === null || speed === 0)
                 // {
-                //     speed = 0;
+                //     document.getElementById("speed").innerHTML = "You are standing still";
+                // } else 
+                // {
+                //     document.getElementById("speed").innerHTML = speed;
                 // }
-
-                distance = speed * totalSeconds;
-            document.getElementById("speed").innerHTML = speed;
             document.getElementById("distance").innerHTML = distance;
             distanceCalculate();
-            })
+            }, 10)
+                alert(totalSeconds);
         }

@@ -122,5 +122,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     function distanceCalculate(currentSpeed) {
         document.getElementById("speed").innerHTML = currentSpeed;
+        distanceCalculate();
     }
 

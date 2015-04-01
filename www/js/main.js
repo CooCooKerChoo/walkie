@@ -41,6 +41,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
         watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
 
+        timerIncrement();
+        distanceCalculate();
+
         $("#watchButton").attr("onclick","stopTrack()");
     }
 
@@ -67,47 +70,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     latlngs.push(latlng);
 
-    var speed = position.coords.speed;
-
-        time = 0;
-            setTimeout(function(){
-                time ++;
-                var hours = Math.floor(time/10/60/60)
-                var mins = Math.floor(time/10/60);
-                var secs = Math.floor(time/10 % 60);
-
-                if(hours < 10)
-                {
-                    hours = "0" + hours;
-                }
-                if(mins < 10)
-                {
-                    mins = "0" + mins;
-                }
-                if(secs < 10)
-                {
-                    secs = "0" + secs;
-                }
-                document.getElementById("duration").innerHTML = hours + ":" + mins + ":" + secs;
-            }, 
-            100)
-
-            var totalSeconds = Math.floor(time/10);
-
-            distance = 0;
-            setTimeout(function(){
-                distance ++;
-                if(speed === null || speed === undefined)
-                {
-                    speed =0;
-                }
-                else {
-                    speed = position.coords.speed;
-                }
-                distance = (speed * totalSeconds);
-                document.getElementById("distance").innerHTML = distance;
-            }, 10)
-
     }
 
         // onError Callback receives a PositionError object
@@ -127,3 +89,36 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // ====================================================== START OF STOPWATCH LOGIN ====================================================== //
 
     
+        time = 0;
+
+        function timerIncrement() {
+            setTimeout(function(){
+                time ++;
+                var hours = Math.floor(time/10/60/60)
+                var mins = Math.floor(time/10/60);
+                var secs = Math.floor(time/10 % 60);
+
+                if(hours < 10)
+                {
+                    hours = "0" + hours;
+                }
+                if(mins < 10)
+                {
+                    mins = "0" + mins;
+                }
+                if(secs < 10)
+                {
+                    secs = "0" + secs;
+                }
+                document.getElementById("duration").innerHTML = hours + ":" + mins + ":" + secs;
+
+                timerIncrement();
+            }, 
+            100)
+            var totalSeconds = Math.floor(time/10);
+            distanceCalculate(totalSeconds);
+        }
+
+        function distanceCalculate() {
+            document.getElementById("speed").innerHTML = speed;
+        }

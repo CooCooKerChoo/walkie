@@ -52,13 +52,13 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         function onSuccessTrack(position) {
 
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-        var latlng = new google.maps.LatLng(lat, lon);
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        latlng = new google.maps.LatLng(lat, lon);
 
         if (latlngs.length > 0) {
-          var prevLatlng = latlngs[latlngs.length -1];
-          var pathLatlng = [prevLatlng, latlng];
+          prevLatlng = latlngs[latlngs.length -1];
+          pathLatlng = [prevLatlng, latlng];
           var path = new google.maps.Polyline({
             path: pathLatlng,
             strokeColor: "#FF0000",
@@ -120,17 +120,14 @@ document.addEventListener("deviceready", onDeviceReady, false);
         100)
     }
 
-    totalDistance = 0;
 
     function distanceCalculate() {
-        setTimeout(function(){
-            totalDistance ++;
-            if(speed === null) {
-                speed = 0;
-            }
-        totalDistance = speed * totalSeconds;
+        distance = 0;
+        if(speed === null) {
+            speed = 0;
+        }
+        distanceCalc = speed * totalSeconds;
+        distance += distanceCalc;
         document.getElementById("speed").innerHTML = speed + "m/s";
-        distanceCalculate();
-    }, 1)
-        document.getElementById("distance").innerHTML = totalDistance + "m";
+        document.getElementById("distance").innerHTML = distance.toFixed(1); + "m";
     }

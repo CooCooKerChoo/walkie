@@ -116,8 +116,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
             }, 
             100)
             var totalSeconds = Math.floor(time/10);
-            distanceCalculate(totalSeconds);
         }
+
+        var speed = position.coords.speed;
 
         function distanceCalculate() {
             document.getElementById("speed").innerHTML = speed;

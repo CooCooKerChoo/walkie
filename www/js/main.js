@@ -71,6 +71,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     latlngs.push(latlng);
 
     var speed = position.coords.speed;
+    document.getElementById("speed").innerHTML = speed;
     }
 
         // onError Callback receives a PositionError object
@@ -120,12 +121,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
             distanceCalculate(totalSeconds);
         }
 
-        function distanceCalculate(speed) {
+        function distanceCalculate() {
             distance = 0;
             setTimeout(function(){
                 distance ++;
             document.getElementById("distance").innerHTML = distance;
             distanceCalculate();
             }, 10)
-                document.getElementById("speed").innerHTML = speed;
         }

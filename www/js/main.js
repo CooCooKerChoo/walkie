@@ -112,21 +112,24 @@ document.addEventListener("deviceready", onDeviceReady, false);
                 secs = "0" + secs;
             }
             document.getElementById("duration").innerHTML = hours + ":" + mins + ":" + secs;
+            totalSeconds = Math.floor(time/10);
+            distanceCalculate(totalSeconds);
 
             timerIncrement();
         }, 
         100)
-        totalSeconds = Math.floor(time/10);
     }
 
 
-    function distanceCalculate(watchID) {
+    function distanceCalculate() {
+        var watchID;
         var speed = position.coords.speed;
         var distance = 0;
         setTimeout(function(){
             distance ++;
-
+            var distance = totalSeconds * speed;
+        document.getElementById("distance").innerHTML = distance;
+        distanceCalculate();
         },10)
-        document.getElementById("speed").innerHTML = speed + totalSeconds;
-
+        document.getElementById("speed").innerHTML = totalSeconds;
     }

@@ -44,7 +44,23 @@ document.addEventListener("deviceready", onDeviceReady, false);
               'message: ' + error.message + '\n');
     }
 
+// ====================================================== START OF CAMERA ====================================================== //
 
+    function capturePhoto() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoaSuccess, onPhotoFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
+    }
+
+
+    function onPhotoSuccess(imageData) {
+        var image = document.getElementById('myImage');
+        image.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    function onPhotoFail(message) {
+        alert('Failed because: ' + message);
+    }
 // ====================================================== START OF LOCATION TRACK ====================================================== //
 
     var startTime, currentTime,
@@ -125,7 +141,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
             document.getElementById("duration").innerHTML = toDate(time);
 
-            distanceCalculate('km/h');
+            distanceCalculate('m/s');
             timerIncrement();
         },
         100)
@@ -172,24 +188,27 @@ document.addEventListener("deviceready", onDeviceReady, false);
         }
     }
 
-function distanceOutput( current, measurements ) {
-    var pastDistance = 0;
-    for( var i = 0, c = speedTime.length; i < c; i++) {
-        pastDistance += calculate_metres(speedTime[i].speed, speedTime[i].time);
+    function distanceOutput( current, measurements ) {
+        var pastDistance = 0;
+        for( var i = 0, c = speedTime.length; i < c; i++) {
+            pastDistance += calculate_metres(speedTime[i].speed, speedTime[i].time);
+        }
+        document.getElementById("distance").innerHTML = (pastDistance + current).toFixed(12) + ' ' + measurements;
+        document.getElementById("speed").innerHTML = speed;
     }
-    document.getElementById("distance").innerHTML = (pastDistance + current).toFixed(12) + ' ' + measurements;
-    document.getElementById("speed").innerHTML = speed;
-}
 
 
-// function takePicture() {
-//     navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70});
-// }
+    function handleSpeedChange( oldSpeed ) {
+        speedTime.push({ speed: oldSpeed, time: time });
+    }
 
-// function onCameraSuccess(imageURI) {
-//     var image = document.getElementById('image');
+    function calculate_metres( speed, time ) {
+        return speed * time;
+    }
+    function calculate_kilometres( speed, time ) {}
+    function calculate_miles( speed, time ) {}
 
-//     image.src = imageURI;
+// ====================================================== END OF LOCATION TRACK ====================================================== //
 
-//     image.style.display = 'block';
-// }
+
+// ====================================================== START OF CAMERA API ====================================================== //

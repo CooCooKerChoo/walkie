@@ -93,7 +93,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
               });
               path.setMap(map);
             }
-
+            
             speed = position.coords.speed;
         }
 
@@ -159,5 +159,13 @@ function distanceOutput( current, measurements ) {
     for( var i = 0, c = distance.length; i < c; i++) {
         pastDistance += distance[i];
     }
+<<<<<<< HEAD
     document.getElementById("distance").innerHTML = (pastDistance + current).toFixed(12) + ' ' + measurements;
 }
+=======
+
+
+    function distanceOutput( distance, measurements ) {
+        document.getElementById("distance").innerHTML = distance.toFixed(4) + ' ' + measurements;
+    }
+>>>>>>> 06dc3f0a90bd45df22c66f720bec5ee6645b99df

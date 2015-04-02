@@ -69,13 +69,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
             startTime = new Date();
             timerIncrement();
             distanceCalculate();
-            button.innerHTML = 'Pause';
         } else { // Pause/Stop
             running = false;
             clearInterval(theTimer);
             past = time;
             $("#watchButton i").attr("class","size-48 fi-record");
-            button.innerHTML = 'Start';
         }
     }
 
@@ -134,6 +132,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         return (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds  < 10 ? "0" + seconds : seconds);
     }
+
+    var totalDistance = 0;
 
     function distanceCalculate( measurement ) {
         measurement = measurement || 'm/s';

@@ -51,7 +51,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         time = 0,
         totalSeconds = 0,
         theTimer,
-        speed = position.coords.speed, 
+        speed = 0, 
         past = 0,
         watchID,
         running = false,
@@ -95,6 +95,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
               });
               path.setMap(map);
             }
+            speed = position.coords.speed;
         }
 
         function onErrorTrack(error) {

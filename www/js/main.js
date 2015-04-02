@@ -1,3 +1,11 @@
+var googleLatLng = [],
+    latlngs = [];
+
+    function storeLatLng( lat, lng ) {
+        googleLatLng.push(new google.maps.LatLng(lat, lng));
+        latlngs.push([lat, lng]);
+    }
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
     // device APIs are available
@@ -13,6 +21,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
         var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+        storeLatLng(latitude, longitude);
 
             var mapOptions = {
                 zoom: 17,
@@ -37,64 +47,60 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 // ====================================================== START OF LOCATION TRACK ====================================================== //
 
-    function startTrack() {
-        var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 1000};
-        watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
+    var startTime, currentTime,
+        time = 0,
+        totalSeconds = 0,
+        theTimer,
+        speed = position.coords.speed, 
+        past = 0,
+        watchID,
+        running = false,
+        latlngs = [];
 
-        $("#watchButton").attr("onclick","stopTrack();");
-        $("#watchButton i").attr("class","size-48 fi-pause");
-
-        timerIncrement();
-        distanceCalculate();
-
+    function track(button) {
+        // Start/Resume
+        if( !running ) {
+            var watchOptions = { enableHighAccuracy: true, timeout : 5000, maximumAge: 10000};
+            watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
+            
+            $("#watchButton i").attr("class","size-48 fi-pause");
+            
+            running = true;
+            startTime = new Date();
+            timerIncrement();
+            distanceCalculate();
+            button.innerHTML = 'Pause';
+        } else { // Pause/Stop
+            running = false;
+            clearInterval(theTimer);
+            past = time;
+            $("#watchButton i").attr("class","size-48 fi-record");
+            button.innerHTML = 'Start';
+        }
     }
-
-    function stopTrack() {
-
-        $("#watchButton").attr("onclick","startTrack();");
-        $("#watchButton i").attr("class","size-48 fi-record");
-
-        timerPause();
-    }
-
-        var watchID;
-        var latlngs = [];
 
         function onSuccessTrack(position) {
 
             lat = position.coords.latitude;
             lon = position.coords.longitude;
-            latlng = new google.maps.LatLng(lat, lon);
+    
+            storeLatLng(lat, lon);
 
-            if (latlngs.length > 0) {
-              prevLatlng = latlngs[latlngs.length -1];
-              pathLatlng = [prevLatlng, latlng];
+            if (googleLatLng.length > 0) {
               var path = new google.maps.Polyline({
-                path: pathLatlng,
+                path: googleLatLng,
                 strokeColor: "#FF0000",
                 strokeOpacity: 1.0,
                 strokeWeight: 5
               });
               path.setMap(map);
             }
-
-            latlngs.push(latlng);
-
-            if(speed === null || speed === undefined)
-            {
-                speed = 0;
-            } else {
-                speed = position.coords.speed;
-            }
-            distanceCalculate(speed);
         }
 
         function onErrorTrack(error) {
           alert('code: '    + error.code    + '\n' +
                 'message: ' + error.message + '\n');
         }
-
-    // mapArray.push(position.coords.latitude, position.coords.longitude);
 
 
 
@@ -105,52 +111,52 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 
 
-    time = 0;
-    var theTimer;
-
-
     function timerIncrement() {
-        theTimer =
-        setTimeout(function(){
-            time ++;
-            var hours = Math.floor(time/10/60/60)
-            var mins = Math.floor(time/10/60);
-            var secs = Math.floor(time/10 % 60);
+        theTimer = setTimeout(function () {
+            currentTime = new Date();
+            // Past is used as a store of the last total seconds when paused.
+            time = past + parseInt(((currentTime.getTime() - startTime.getTime()) / 1000), 10);
 
-            if(hours < 10)
-            {
-                hours = "0" + hours;
-            }
-            if(mins < 10)
-            {
-                mins = "0" + mins;
-            }
-            if(secs < 10)
-            {
-                secs = "0" + secs;
-            }
-            document.getElementById("duration").innerHTML = hours + ":" + mins + ":" + secs;
+            document.getElementById("duration").innerHTML = toDate(time);
 
+            distanceCalculate('km/h');
             timerIncrement();
-        }, 
+        },
         100)
-            totalSeconds = Math.floor(time/10);
-            distanceCalculate(totalSeconds);
+    }
+
+    function toDate( totalSec ) {
+        var hours = parseInt( totalSec / 3600 ) % 24,
+            minutes = parseInt( totalSec / 60 ) % 60,
+            seconds = totalSec % 60;
+
+        return (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds  < 10 ? "0" + seconds : seconds);
+    }
+
+    function distanceCalculate( measurement ) {
+        measurement = measurement || 'm/s';
+        switch( measurement ) {
+            case 'km/h':
+                totalDistance = (speed * 3.6) * ( time / 60 / 60 );
+                distanceOutput(totalDistance, "km");
+                break;
+            case 'mph':
+                totalDistance = (speed * 2.236936) * (time /60 / 60);
+                distanceOutput(totalDistance, "miles");
+                break;
+            case 'm/s':
+            default:
+                totalDistance = (speed * time);
+                distanceOutput(totalDistance, "m");
+                break;
+        }
+    }
+
+    function distanceOutput( distance, measurements ) {
+        document.getElementById("distance").innerHTML = distance.toFixed(4) + ' ' + measurements;
     }
 
 
-    function timerPause () {
-        clearInterval(theTimer);
-    }
-
-        totalDistance = 0;
-
-    function distanceCalculate() {
-        distanceCalc = speed * totalSeconds;
-        totalDistance =+ distanceCalc;
-        distanceOutput();
-    }
-
-    function distanceOutput() {
-        document.getElementById("distance").innerHTML = totalDistance + " m";
+    function distanceOutput( distance, measurements ) {
+        document.getElementById("distance").innerHTML = distance.toFixed(4) + ' ' + measurements;
     }

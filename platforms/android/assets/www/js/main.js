@@ -48,10 +48,19 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     function capturePhoto() {
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+      navigator.camera.getPicture(onPhotoaSuccess, onPhotoFail, { quality: 50,
         destinationType: destinationType.DATA_URL });
     }
 
+
+    function onPhotoSuccess(imageData) {
+        var image = document.getElementById('myImage');
+        image.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    function onPhotoFail(message) {
+        alert('Failed because: ' + message);
+    }
 // ====================================================== START OF LOCATION TRACK ====================================================== //
 
     var startTime, currentTime,

@@ -51,11 +51,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
         time = 0,
         totalSeconds = 0,
         theTimer,
-        speed = position.coords.speed, 
+        speed = 0, 
         past = 0,
         watchID,
         running = false,
-        latlngs = [];
+        distance = [];
 
     function track(button) {
         // Start/Resume
@@ -95,6 +95,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
               });
               path.setMap(map);
             }
+
+            speed = position.coords.speed;
         }
 
         function onErrorTrack(error) {
@@ -152,11 +154,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
         }
     }
 
-    function distanceOutput( distance, measurements ) {
-        document.getElementById("distance").innerHTML = distance.toFixed(4) + ' ' + measurements;
+function distanceOutput( current, measurements ) {
+    var pastDistance = 0;
+    for( var i = 0, c = distance.length; i < c; i++) {
+        pastDistance += distance[i];
     }
-
-
-    function distanceOutput( distance, measurements ) {
-        document.getElementById("distance").innerHTML = distance.toFixed(4) + ' ' + measurements;
-    }
+    document.getElementById("distance").innerHTML = (pastDistance + current).toFixed(4) + ' ' + measurements;
+}

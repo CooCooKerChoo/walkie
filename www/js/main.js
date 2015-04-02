@@ -182,14 +182,14 @@ function distanceOutput( current, measurements ) {
 }
 
 
-function takePicture() {
-    navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70});
-}
+// function takePicture() {
+//     navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70});
+// }
 
-function onCameraSuccess(imageURI) {
-    var image = document.getElementById('image');
+// function onCameraSuccess(imageURI) {
+//     var image = document.getElementById('image');
 
-    image.src = imageURI;
+//     image.src = imageURI;
 
-    image.style.display = 'block';
-}
+//     image.style.display = 'block';
+// }

@@ -159,5 +159,5 @@ function distanceOutput( current, measurements ) {
     for( var i = 0, c = distance.length; i < c; i++) {
         pastDistance += distance[i];
     }
-    document.getElementById("distance").innerHTML = (pastDistance + current).toFixed(4) + ' ' + measurements;
+    document.getElementById("distance").innerHTML = (pastDistance + current).toFixed(12) + ' ' + measurements;
 }

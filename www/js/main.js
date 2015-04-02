@@ -161,3 +161,17 @@ function distanceOutput( current, measurements ) {
     }
     document.getElementById("distance").innerHTML = (pastDistance + current).toFixed(12) + ' ' + measurements;
 }
+
+
+function takePicture () {
+    navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70, destinationType: Camera.DestinationType.FILE_URI, sourceType: Camera.PictureSourceType.PHOTOLIBRARY});
+
+}
+
+function onCameraSuccess(imageURI) {
+    var image = document.getElementById('image');
+
+    image.src = imageURI;
+
+    image.style.display = 'block';
+}

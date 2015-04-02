@@ -55,7 +55,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
         past = 0,
         watchID,
         running = false,
-        distance = [];
+        distance = [],
+        speedTime = [];
 
     function track(button) {
         // Start/Resume
@@ -137,6 +138,18 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     function distanceCalculate( measurement ) {
         measurement = measurement || 'm/s';
+
+    var tempTime = 0;
+    for( var i = 0, c = speedTime.length; i < c; i++) {
+        tempTime += speedTime[i].time;
+    }
+
+    if(speed < speedTime[speedTime.length - 1]) {
+        handleSpeedChange();
+    } else if(speed > speedTime[speedTime.length - 1]){
+        handleSpeedChange();
+    }
+
         switch( measurement ) {
             case 'km/h':
                 totalDistance = (speed * 3.6) * ( time / 60 / 60 );
@@ -156,17 +169,16 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function distanceOutput( current, measurements ) {
     var pastDistance = 0;
-    for( var i = 0, c = distance.length; i < c; i++) {
-        pastDistance += distance[i];
+    for( var i = 0, c = speedTime.length; i < c; i++) {
+        pastDistance += calculate_metres(speedTime[i].speed, speedTime[i].time);
     }
     document.getElementById("distance").innerHTML = (pastDistance + current).toFixed(12) + ' ' + measurements;
     document.getElementById("speed").innerHTML = speed;
 }
 
 
-function takePicture () {
-    navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70, destinationType: Camera.DestinationType.FILE_URI, sourceType: Camera.PictureSourceType.PHOTOLIBRARY});
-
+function takePicture() {
+    navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70});
 }
 
 function onCameraSuccess(imageURI) {

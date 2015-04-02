@@ -160,6 +160,7 @@ function distanceOutput( current, measurements ) {
         pastDistance += distance[i];
     }
     document.getElementById("distance").innerHTML = (pastDistance + current).toFixed(12) + ' ' + measurements;
+    document.getElementById("speed").innerHTML = speed;
 }
 
 

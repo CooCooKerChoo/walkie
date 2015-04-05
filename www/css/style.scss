@@ -12,6 +12,9 @@
 .size-60 { font-size: 60px; }
 .size-72 { font-size: 72px; }
 
+$link-color: #4CAF50;
+
+
 @keyframes fadein {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -33,20 +36,21 @@ h1, h2, h3, h4, h5, h6, p, a, ul, li {
 .center {text-align: center;}
 
 
-button {
-    background-color: #4CAF50;
+button, .button {
+    background-color: $link-color;
     width: 100%;
     padding: 5px 10px;
     line-height: 35px;
     margin:0;
+    color: #FFF;
 }
 
-button:hover {
+button:hover, .button:hover {
     background-color: #66BB6A;
     color: purple;
 }
 
-a {color: #4CAF50;}
+a {color: $link-color;}
 
 a:hover {color: purple;}
 
@@ -179,16 +183,6 @@ nav.tab-bar {
     z-index: 5;
     text-align: center;
     background: #4CAF50;
-    .camera_button {
-        width: 100%;
-        color: #FFF;
-    }
-
-    .camera_button:hover {
-        background: #66BB6A;
-        cursor: pointer;
-        color: purple;
-    }
     button#watchButton {
         width: 75px;
         height: 75px;
@@ -216,16 +210,6 @@ nav.tab-bar {
             position: absolute;
             top: 7px;
         }
-    }
-    .map_marker {
-        width: 100%;
-        color: #FFF;
-    }
-
-    .map_marker:hover {
-        cursor: pointer;
-        background: #66BB6A;
-        color: purple;
     }
 }
 

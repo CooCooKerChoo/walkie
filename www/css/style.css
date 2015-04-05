@@ -51,14 +51,15 @@ h1, h2, h3, h4, h5, h6, p, a, ul, li {
 .center {
   text-align: center; }
 
-button {
+button, .button {
   background-color: #4CAF50;
   width: 100%;
   padding: 5px 10px;
   line-height: 35px;
-  margin: 0; }
+  margin: 0;
+  color: #FFF; }
 
-button:hover {
+button:hover, .button:hover {
   background-color: #66BB6A;
   color: purple; }
 
@@ -161,13 +162,6 @@ nav.tab-bar {
   z-index: 5;
   text-align: center;
   background: #4CAF50; }
-  .record_footer .camera_button {
-    width: 100%;
-    color: #FFF; }
-  .record_footer .camera_button:hover {
-    background: #66BB6A;
-    cursor: pointer;
-    color: purple; }
   .record_footer button#watchButton {
     width: 75px;
     height: 75px;
@@ -193,13 +187,6 @@ nav.tab-bar {
       right: 0;
       position: absolute;
       top: 7px; }
-  .record_footer .map_marker {
-    width: 100%;
-    color: #FFF; }
-  .record_footer .map_marker:hover {
-    cursor: pointer;
-    background: #66BB6A;
-    color: purple; }
 
 .my_routes {
   height: auto; }

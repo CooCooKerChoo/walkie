@@ -52,14 +52,14 @@ h1, h2, h3, h4, h5, h6, p, a, ul, li {
   text-align: center; }
 
 button {
-  background: #4CAF50;
+  background-color: #4CAF50;
   width: 100%;
   padding: 5px 10px;
   line-height: 35px;
   margin: 0; }
 
 button:hover {
-  background: #66BB6A;
+  background-color: #66BB6A;
   color: purple; }
 
 a {

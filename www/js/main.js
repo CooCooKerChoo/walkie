@@ -47,19 +47,21 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // ====================================================== START OF CAMERA ====================================================== //
 
     function capturePhoto() {
-      // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoSuccess, onPhotoFail, { quality: 50,destinationType: destinationType.DATA_URL });
+        navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70});
     }
 
+    function onCameraSuccess(imageData) {
+        var image = document.getElementById('image');
 
-    function onPhotoSuccess(imageData) {
-        var image = document.getElementById('myImage');
-        image.src = "data:image/jpeg;base64," + imageData;
+        image.src = "data:image/jpg;base64, " + imageData;
+
+        image.style.display = 'block';
     }
 
-    function onPhotoFail(message) {
-        alert('Failed because: ' + message);
+    function onCameraFail(message) {
+        alert('Fail because: ' + message);
     }
+
 // ====================================================== START OF LOCATION TRACK ====================================================== //
 
     var startTime, currentTime,

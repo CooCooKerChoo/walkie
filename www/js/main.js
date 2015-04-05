@@ -48,8 +48,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     function capturePhoto() {
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoaSuccess, onPhotoFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
+      navigator.camera.getPicture(onPhotoSuccess, onPhotoFail, { quality: 50,destinationType: destinationType.DATA_URL });
     }
 
 

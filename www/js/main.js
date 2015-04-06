@@ -253,13 +253,44 @@ function addBlockageIcon(position) {
 // ====================================================== START OF CAMERA ====================================================== //
 
     function capturePhoto() {
-        navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70, destinationType : Camera.DestinationType.FILE_URL});
+        navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70, destinationType : Camera.DestinationType.DATA_URL});
     }
 
     function onCameraSuccess(imageURI) {
-        imageArray.push(imageURI);
-        localStorage.setItem('photoArray', imageURI);
-        document.getElementById("imageURI").innerHTML = localStorage.getItem("photoArray");
+        var image = document.getElementById(‘imageURI′);
+        image.src = “data:image/jpeg;base64,” + imageData;
+
+        //Create a new canvas for our image holder
+
+        var imgCanvas = document.createElement(“canvas”),
+        imgContext = imgCanvas.getContext(“2d”);
+
+        // Make sure canvas is as big as the picture
+        imgCanvas.width = image.width;
+        imgCanvas.height = image.height;
+
+        // Draw image into canvas element
+        imgContext.drawImage(image, 0, 0, image.width, image.height);
+
+        // Get canvas contents as a data URL
+        var imgAsDataURL = imgCanvas.toDataURL(“image/png”);
+
+        // Save image into localStorage
+        try {
+        // localStorage.setItem(“savedImage”, imgAsDataURL);
+        localStorage.setItem(“savedImage”, imageData);
+        alert(‘Image Saved’);
+        }
+        catch (e) {
+        alert(“Storage failed: ” + e);
+        }
+
+        }
+        var imageStorage = localStorage.getItem(“savedImage”);
+        // myCardHolder= document.getElementById(“m1-cardStorage-image1″);
+        // Reuse existing Data URL from localStorage
+        var image = document.getElementById(‘imageURI′);
+        image.src = “data:image/jpeg;base64,” + imageStorage;
     }
 
     function onCameraFail(message) {

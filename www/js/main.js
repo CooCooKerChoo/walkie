@@ -259,7 +259,7 @@ function addBlockageIcon(position) {
     function onCameraSuccess(imageData) {
         imageArray.push(imageURI);
         localStorage.setItem('imageArray',JSON.stringify(imageArray));
-        alert(JSON.stringify(imageArray));
+        alert(imageArray);
     }
 
     function onCameraFail(message) {

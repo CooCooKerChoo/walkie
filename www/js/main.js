@@ -262,10 +262,9 @@ function addBlockageIcon(position) {
 
         localStorage.setItem("IMG", base64);
         alert(localStorage.getItem("IMG"));
-
     }
 
-    function onCameraFail(message) {i wou
+    function onCameraFail(message) {
         alert('Fail because: ' + message);
     }
 

@@ -52,10 +52,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     function onCameraSuccess(imageData) {
         var image = document.getElementById('image');
-
-        image.src = "data:image/png;base64, " + imageData;
-
-        image.style.display = 'block';
+        image.src = "data:image/jpeg;base64," + imageData;
     }
 
     function onCameraFail(message) {

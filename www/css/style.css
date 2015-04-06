@@ -192,7 +192,6 @@ nav.tab-bar {
   position: absolute;
   bottom: 75px;
   width: 100%;
-  height: 75px;
   background: #FFF;
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
   overflow-y: hidden;
@@ -200,9 +199,18 @@ nav.tab-bar {
   white-space: nowrap;
   -webkit-overflow-scrolling: touch; }
   #map_marker_container .map_marker_btn {
+    color: #4CAF50;
     display: inline;
     width: 100px;
-    height: 50px; }
+    background: none;
+    position: relative; }
+    #map_marker_container .map_marker_btn img {
+      width: 75px;
+      height: 75px;
+      margin: 0 auto; }
+
+#map_marker_container::-webkit-scrollbar {
+  display: none; }
 
 .my_routes {
   height: auto; }

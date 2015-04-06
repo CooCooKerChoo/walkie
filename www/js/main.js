@@ -253,7 +253,7 @@ function addBlockageIcon(position) {
 // ====================================================== START OF CAMERA ====================================================== //
 
     function capturePhoto() {
-        navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70, destinationType : Camera.DestinationType.FILE_URI,});
+        navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70, destinationType : Camera.DestinationType.FILE_URI, sourceType: pictureSource.PHOTOLIBRARY});
     }
 
     function onCameraSuccess(imageData) {

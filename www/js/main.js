@@ -256,7 +256,9 @@ function addBlockageIcon(position) {
         navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70, destinationType : Camera.DestinationType.DATA_URL});
     }
 
-    function onCameraSuccess(imageURI) {
+    function onCameraSuccess(imageData) {
+        //In our success call we want to first process the image to save in our image box on the screen.
+
         var image = document.getElementById(‘imageURI′);
         image.src = “data:image/jpeg;base64,” + imageData;
 
@@ -285,7 +287,6 @@ function addBlockageIcon(position) {
         alert(“Storage failed: ” + e);
         }
 
-        }
         var imageStorage = localStorage.getItem(“savedImage”);
         // myCardHolder= document.getElementById(“m1-cardStorage-image1″);
         // Reuse existing Data URL from localStorage

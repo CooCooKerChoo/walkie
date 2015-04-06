@@ -253,14 +253,14 @@ function addBlockageIcon(position) {
 // ====================================================== START OF CAMERA ====================================================== //
 
     function capturePhoto() {
-        navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70, destinationType : Camera.DestinationType.DATA_URL});
+        navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70, destinationType : Camera.DestinationType.FILE_URI,});
     }
 
     function onCameraSuccess(imageData) {
         var image = document.getElementById('cameraImage');
-
-        localStorage.setItem("IMG", imageData);
-        alert(localStorage.getItem("IMG"));
+        photoArray.push(image_URI);
+        localStorage.setItem('imageArray', JSON.stringifiy(photoArray));
+        alert(JSON.stringify(photoArray));
     }
 
     function onCameraFail(message) {

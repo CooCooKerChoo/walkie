@@ -111,6 +111,7 @@ function addBlockageIcon(position) {
         watchID,
         running = false,
         distance = [],
+        photoArray = [],
         speedTime = [];
 
     function track(button) {
@@ -260,11 +261,11 @@ function addBlockageIcon(position) {
         // image.src = "data:image/jpeg;base64," + imageData;
 
         localStorage.setItem("IMG", base64);
-        image.src = localStorage.getItem("IMG");
+        alert(localStorage.getItem("IMG"));
 
     }
 
-    function onCameraFail(message) {
+    function onCameraFail(message) {i wou
         alert('Fail because: ' + message);
     }
 

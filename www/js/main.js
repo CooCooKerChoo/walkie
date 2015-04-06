@@ -20,7 +20,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
-        var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
         storeLatLng(latitude, longitude);
 
@@ -49,18 +49,56 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 $(document).ready(function() {
     $("#map_marker").click(function(){
-        $(".icon_holder").show('slow');
+        $("#map_marker_container").show('slow');
     });
 });
 
-function addBridgeIcon(position){
-    var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    var marker = new google.maps.Marker({
-        position: userLatLng,
+
+function addBridgeIcon(position) {
+        var bridgeIcon = new google.maps.MarkerImage("img/map_markers/bridge_map_marker.svg", null, null, null, new google.maps.Size(100, 50));
+        var bridgeMarker = new google.maps.Marker({
+        position: coords,
         map: map,
-        icon: 'img/map_markers/bridge_map_marker.svg'
+        icon: bridgeIcon
     });
 }
+
+function addWaterIcon(position) {
+        var waterIcon = new google.maps.MarkerImage("img/map_markers/water_map_marker.svg", null, null, null, new google.maps.Size(100, 50));
+        var waterMarker = new google.maps.Marker({
+        position: coords,
+        map: map,
+        icon: waterIcon
+    });
+}
+
+function addRocksIcon(position) {
+        var rocksIcon = new google.maps.MarkerImage("img/map_markers/rocks_map_marker.svg", null, null, null, new google.maps.Size(100, 50));
+        var rocksMarker = new google.maps.Marker({
+        position: coords,
+        map: map,
+        icon: rocksIcon
+    });
+}
+
+function addUnevenIcon(position) {
+        var unevenIcon = new google.maps.MarkerImage("img/map_markers/uneven_map_marker.svg", null, null, null, new google.maps.Size(100, 50));
+        var unevenMarker = new google.maps.Marker({
+        position: coords,
+        map: map,
+        icon: unevenIcon
+    });
+}
+
+function addBlockageIcon(position) {
+        var blockageIcon = new google.maps.MarkerImage("img/map_markers/path_blockage_map_marker.svg", null, null, null, new google.maps.Size(100, 50));
+        var blockageMarker = new google.maps.Marker({
+        position: coords,
+        map: map,
+        icon: blockageIcon
+    });
+}
+
 // ====================================================== START OF CAMERA ====================================================== //
 
     function capturePhoto() {

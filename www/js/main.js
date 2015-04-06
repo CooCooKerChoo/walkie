@@ -259,13 +259,13 @@ function addBlockageIcon(position) {
     function onCameraSuccess(imageData) {
         //In our success call we want to first process the image to save in our image box on the screen.
 
-        var image = document.getElementById(‘image′);
-        image.src = “data:image/jpeg;base64,” + imageData;
+        var image = document.getElementById('image');
+        image.src = "data:image/jpeg;base64," + imageData;
 
         //Create a new canvas for our image holder
 
-        var imgCanvas = document.createElement(“canvas”),
-        imgContext = imgCanvas.getContext(“2d”);
+        var imgCanvas = document.createElement("canvas"),
+        imgContext = imgCanvas.getContext("2d");
 
         // Make sure canvas is as big as the picture
         imgCanvas.width = image.width;
@@ -275,23 +275,23 @@ function addBlockageIcon(position) {
         imgContext.drawImage(image, 0, 0, image.width, image.height);
 
         // Get canvas contents as a data URL
-        var imgAsDataURL = imgCanvas.toDataURL(“image/png”);
+        var imgAsDataURL = imgCanvas.toDataURL("image/png");
 
         // Save image into localStorage
         try {
         // localStorage.setItem(“savedImage”, imgAsDataURL);
-        localStorage.setItem(“savedImage”, imageData);
-        alert(‘Image Saved’);
+        localStorage.setItem("savedImage", imageData);
+        alert('Image Saved');
         }
         catch (e) {
-        alert(“Storage failed: ” + e);
+        alert("Storage failed: " + e);
         }
 
-        var imageStorage = localStorage.getItem(“savedImage”);
+        var imageStorage = localStorage.getItem("savedImage");
         // myCardHolder= document.getElementById(“m1-cardStorage-image1″);
         // Reuse existing Data URL from localStorage
-        var image = document.getElementById(‘imageURI′);
-        image.src = “data:image/jpeg;base64,” + imageStorage;
+        var image = document.getElementById('image');
+        image.src = "data:image/jpeg;base64," + imageStorage;
     }
 
     function onCameraFail(message) {

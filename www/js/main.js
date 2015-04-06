@@ -55,7 +55,7 @@ $(document).ready(function() {
 
 
 function addBridgeIcon(position) {
-        var bridgeIcon = new google.maps.MarkerImage("img/map_markers/bridge_map_marker.svg", null, null, null, new google.maps.Size(75, 50));
+        var bridgeIcon = new google.maps.MarkerImage("img/map_markers/bridge_map_marker.svg", null, null, null, new google.maps.Size(50, 50));
         var bridgeMarker = new google.maps.Marker({
         position: coords,
         map: map,
@@ -64,7 +64,7 @@ function addBridgeIcon(position) {
 }
 
 function addWaterIcon(position) {
-        var waterIcon = new google.maps.MarkerImage("img/map_markers/water_map_marker.svg", null, null, null, new google.maps.Size(75, 50));
+        var waterIcon = new google.maps.MarkerImage("img/map_markers/water_map_marker.svg", null, null, null, new google.maps.Size(50, 50));
         var waterMarker = new google.maps.Marker({
         position: coords,
         map: map,
@@ -73,7 +73,7 @@ function addWaterIcon(position) {
 }
 
 function addRocksIcon(position) {
-        var rocksIcon = new google.maps.MarkerImage("img/map_markers/rocks_map_marker.svg", null, null, null, new google.maps.Size(75, 50));
+        var rocksIcon = new google.maps.MarkerImage("img/map_markers/rocks_map_marker.svg", null, null, null, new google.maps.Size(50, 50));
         var rocksMarker = new google.maps.Marker({
         position: coords,
         map: map,
@@ -82,7 +82,7 @@ function addRocksIcon(position) {
 }
 
 function addUnevenIcon(position) {
-        var unevenIcon = new google.maps.MarkerImage("img/map_markers/uneven_map_marker.svg", null, null, null, new google.maps.Size(75, 50));
+        var unevenIcon = new google.maps.MarkerImage("img/map_markers/uneven_map_marker.svg", null, null, null, new google.maps.Size(50, 50));
         var unevenMarker = new google.maps.Marker({
         position: coords,
         map: map,
@@ -91,7 +91,7 @@ function addUnevenIcon(position) {
 }
 
 function addBlockageIcon(position) {
-        var blockageIcon = new google.maps.MarkerImage("img/map_markers/path_blockage_map_marker.svg", null, null, null, new google.maps.Size(75, 50));
+        var blockageIcon = new google.maps.MarkerImage("img/map_markers/path_blockage_map_marker.svg", null, null, null, new google.maps.Size(50, 50));
         var blockageMarker = new google.maps.Marker({
         position: coords,
         map: map,

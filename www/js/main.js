@@ -44,6 +44,23 @@ document.addEventListener("deviceready", onDeviceReady, false);
               'message: ' + error.message + '\n');
     }
 
+
+// =================================================== START OF CUSTOM MARKERS ================================================== //
+
+$(document).ready(function() {
+    $("#map_marker").click(function(){
+        $(".icon_holder").show('slow');
+    });
+});
+
+function addBridgeIcon(position){
+    var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var marker = new google.maps.Marker({
+        position: userLatLng,
+        map: map,
+        icon: 'img/map_markers/bridge_map_marker.svg'
+    });
+}
 // ====================================================== START OF CAMERA ====================================================== //
 
     function capturePhoto() {

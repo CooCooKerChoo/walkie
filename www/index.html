@@ -88,14 +88,8 @@
                                 <p>Duration <br/><span class="value" id="duration">00:00:00</span></p>
                             </div>
                         </div>
-                        <div class="row">
-                            <p>Speed: <span id="speed"></span></p>
-                        </div>
                     </div>
-                    <img id="image" src=""/>
                     <div id="mapPlaceholder" style="height:100%; width: 100%;"></div>
-                    <div class="icon_holder">
-                    </div>
                     <div class="record_footer">
                         <div class="row collapse">
                             <div class="small-4 columns">
@@ -111,10 +105,15 @@
                                 </span>
                             </div>
                             <div class="small-4 columns">
-                                <button class="map_marker">
+                                <button id="map_marker">
                                     <i class="fi-marker size-36"></i>
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                    <div class="icon_holder" style="display:none;">
+                        <div class="small-3 columns">
+                            <button onclick="addBridgeIcon()"><img src="img/map_markers/bridge_map_marker.svg"/></button>
                         </div>
                     </div>
                 </div>
@@ -123,8 +122,8 @@
     </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/vendor/jquery.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/foundation.min.js"></script>
         <script type="text/javascript">
             $(document).foundation();

@@ -265,7 +265,3 @@ function addBlockageIcon(position) {
     }
 
 // ====================================================== FINISH WALK ====================================================== //
-
-function stopSession() {
-    var 
-}

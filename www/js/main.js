@@ -258,7 +258,7 @@ function addBlockageIcon(position) {
 
     function onCameraSuccess(imageData) {
         var image = document.getElementById('cameraImage');
-        imageInfo = "data:image/jpeg;base64," + imageData;
+        var imageInfo = "data:image/jpeg;base64," + imageData;
 
         localStorage.setItem("IMG", imageInfo);
         alert(localStorage.getItem("IMG"));

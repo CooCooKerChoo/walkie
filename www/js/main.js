@@ -47,7 +47,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // ====================================================== START OF CAMERA ====================================================== //
 
     function capturePhoto() {
-        navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70});
+        navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70, destinationType : Camera.DestinationType.DATA_URL});
     }
 
     function onCameraSuccess(imageData) {

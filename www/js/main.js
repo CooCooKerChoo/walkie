@@ -99,21 +99,6 @@ function addBlockageIcon(position) {
     });
 }
 
-// ====================================================== START OF CAMERA ====================================================== //
-
-    function capturePhoto() {
-        navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70, destinationType : Camera.DestinationType.DATA_URL});
-    }
-
-    function onCameraSuccess(imageData) {
-        var image = document.getElementById('myImage');
-        image.src = "data:image/jpeg;base64," + imageData;
-    }
-
-    function onCameraFail(message) {
-        alert('Fail because: ' + message);
-    }
-
 // ====================================================== START OF LOCATION TRACK ====================================================== //
 
     var startTime, currentTime,
@@ -135,16 +120,18 @@ function addBlockageIcon(position) {
             watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
             
             $("#watchButton i").attr("class","size-48 fi-pause");
-            
+            $("#stopWalk").fadeOut('fast');
             running = true;
             startTime = new Date();
             timerIncrement();
             distanceCalculate();
         } else { // Pause/Stop
             running = false;
+            navigator.geolocation.clearWatch(watchID);
             clearInterval(theTimer);
             past = time;
             $("#watchButton i").attr("class","size-48 fi-record");
+            $("#stopWalk").fadeIn('fast');
         }
     }
 
@@ -247,7 +234,6 @@ function addBlockageIcon(position) {
             pastDistance += calculate_metres(speedTime[i].speed, speedTime[i].time);
         }
         document.getElementById("distance").innerHTML = (pastDistance + current).toFixed(3) + ' ' + measurements;
-        document.getElementById("speed").innerHTML = speed;
     }
 
 
@@ -263,5 +249,23 @@ function addBlockageIcon(position) {
 
 // ====================================================== END OF LOCATION TRACK ====================================================== //
 
+// ====================================================== START OF CAMERA ====================================================== //
 
-// ====================================================== START OF CAMERA API ====================================================== //
+    function capturePhoto() {
+        navigator.camera.getPicture(onCameraSuccess, onCameraFail, {quality: 70, destinationType : Camera.DestinationType.DATA_URL});
+    }
+
+    function onCameraSuccess(imageData) {
+        localStorage.setItem("image", base64);
+        cameraImage.src = localStorage.getItem("image");
+    }
+
+    function onCameraFail(message) {
+        alert('Fail because: ' + message);
+    }
+
+// ====================================================== FINISH WALK ====================================================== //
+
+function stopSession() {
+    var 
+}

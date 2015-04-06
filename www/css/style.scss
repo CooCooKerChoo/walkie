@@ -169,10 +169,7 @@ nav.tab-bar {
         }
 }
 
-.home_btns:hover .value{
-	color: #66BB6A;
-}
-
+    .mapRow {height:100%;}
 
 
 .record_footer {
@@ -239,6 +236,10 @@ nav.tab-bar {
         text-align: center;
         }
     }
+}
+
+#stopWalk {
+    width: 100%;
 }
 
 #map_marker_container::-webkit-scrollbar {

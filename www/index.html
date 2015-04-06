@@ -79,79 +79,93 @@
                     </section>
                 </nav>
                 <section id="main-content">
-                    <div class="content_container">
+                    <div class="row">
+                        <div class="content_container">
+                            <div class="row">
+                                <div class="small-6 columns home_btns">
+                                    <p>Distance <br/><span id="distance" class="value">0.0 m</span></p>
+                                </div>
+                                <div class="small-6 columns home_btns">
+                                    <p>Duration <br/><span class="value" id="duration">00:00:00</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button id="stopWalk" onclick="stopSession" style="display: none;">Finish</button>
+                    </div>
+                    <div class="row mapRow">
+                        <div id="mapPlaceholder" style="height:100%; width: 100%;"></div>
                         <div class="row">
-                            <div class="small-6 columns home_btns">
-                                <p>Distance <br/><span id="distance" class="value">0.0 m</span></p>
-                            </div>
-                            <div class="small-6 columns home_btns">
-                                <p>Duration <br/><span class="value" id="duration">00:00:00</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="mapPlaceholder" style="height:100%; width: 100%;"></div>
-                    <div class="record_footer">
-                        <div class="row collapse">
-                            <div class="small-4 columns">
-                                <button class="camera_button" onClick="capturePhoto()">
-                                    <i class="fi-camera size-36"></i>
-                                </button>
-                            </div>
-                            <div class="small-4 columns">
-                                <span class="border_record_button">
-                                    <button id="watchButton" onClick="track(this)">
-                                        <i class="fi-record size-48"></i>
+                                <div id="map_marker_container" style="display:none;">
+                                    <button class="map_marker_btn" onclick="addBridgeIcon()">
+                                        <div class="row">
+                                            <img src="img/map_markers/bridge_map_marker.svg"/>
+                                        </div>
+                                        <div class="row">
+                                            Bridge
+                                        </div>
                                     </button>
-                                </span>
+                                    <button class="map_marker_btn" onclick="addWaterIcon()">
+                                        <div class="row">
+                                            <img src="img/map_markers/water_map_marker.svg"/>
+                                        </div>
+                                        <div class="row">
+                                            Water
+                                        </div>
+                                    </button>
+                                    <button class="map_marker_btn" onclick="addRocksIcon()">
+                                        <div class="row">
+                                            <img src="img/map_markers/rocks_map_marker.svg"/>
+                                        </div>
+                                        <div class="row">
+                                            Loose Rocks
+                                        </div>
+                                    </button>
+                                    <button class="map_marker_btn" onclick="addUnevenIcon()">
+                                        <div class="row">
+                                            <img src="img/map_markers/uneven_map_marker.svg"/>
+                                        </div>
+                                        <div class="row">
+                                            Uneven Surfaces
+                                        </div>
+                                    </button>
+                                    <button class="map_marker_btn" onclick="addBlockageIcon()">
+                                        <div class="row">
+                                            <img src="img/map_markers/uneven_map_marker.svg"/>
+                                        </div>
+                                        <div class="row">
+                                            Pathway blocked
+                                        </div>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="small-4 columns">
-                                <button id="map_marker">
-                                    <i class="fi-marker size-36"></i>
-                                </button>
+                    </div>
+                    <div class="row">
+                        <div class="record_footer">
+                            <div class="row collapse">
+                                <div class="small-4 columns">
+                                    <button class="camera_button" onClick="capturePhoto()">
+                                        <i class="fi-camera size-36"></i>
+                                    </button>
+                                </div>
+                                <div class="small-4 columns">
+                                    <span class="border_record_button">
+                                        <button id="watchButton" onClick="track(this)">
+                                            <i class="fi-record size-48"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="small-4 columns">
+                                    <button id="map_marker">
+                                        <i class="fi-marker size-36"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div id="map_marker_container" style="display:none;">
-                        <button class="map_marker_btn" onclick="addBridgeIcon()">
-                            <div class="row">
-                                <img src="img/map_markers/bridge_map_marker.svg"/>
-                            </div>
-                            <div class="row">
-                                Bridge
-                            </div>
-                        </button>
-                        <button class="map_marker_btn" onclick="addWaterIcon()">
-                            <div class="row">
-                                <img src="img/map_markers/water_map_marker.svg"/>
-                            </div>
-                            <div class="row">
-                                Water
-                            </div>
-                        </button>
-                        <button class="map_marker_btn" onclick="addRocksIcon()">
-                            <div class="row">
-                                <img src="img/map_markers/rocks_map_marker.svg"/>
-                            </div>
-                            <div class="row">
-                                Loose Rocks
-                            </div>
-                        </button>
-                        <button class="map_marker_btn" onclick="addUnevenIcon()">
-                            <div class="row">
-                                <img src="img/map_markers/uneven_map_marker.svg"/>
-                            </div>
-                            <div class="row">
-                                Uneven Surfaces
-                            </div>
-                        </button>
-                        <button class="map_marker_btn" onclick="addBlockageIcon()">
-                            <div class="row">
-                                <img src="img/map_markers/uneven_map_marker.svg"/>
-                            </div>
-                            <div class="row">
-                                Pathway blocked
-                            </div>
-                        </button>
+                    <div class="row">
+                        <img id="cameraImage" src=""/>
                     </div>
                 </div>
             </section>

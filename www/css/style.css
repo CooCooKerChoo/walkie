@@ -151,8 +151,8 @@ nav.tab-bar {
   .home_btns .value {
     color: #81C784; }
 
-.home_btns:hover .value {
-  color: #66BB6A; }
+.mapRow {
+  height: 100%; }
 
 .record_footer {
   position: absolute;
@@ -211,6 +211,9 @@ nav.tab-bar {
       white-space: normal;
       line-height: 20px;
       text-align: center; }
+
+#stopWalk {
+  width: 100%; }
 
 #map_marker_container::-webkit-scrollbar {
   display: none; }

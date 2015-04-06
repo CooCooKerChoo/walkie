@@ -111,7 +111,7 @@ function addBlockageIcon(position) {
         watchID,
         running = false,
         distance = [],
-        photoArray = [],
+        imageArray = [],
         speedTime = [];
 
     function track(button) {
@@ -257,10 +257,9 @@ function addBlockageIcon(position) {
     }
 
     function onCameraSuccess(imageData) {
-        var image = document.getElementById('cameraImage');
-        photoArray.push(DATA_URL);
-        localStorage.setItem('imageArray', JSON.stringifiy(photoArray));
-        alert(JSON.stringify(photoArray));
+        imageArray.push(imageURI);
+        localStorage.setItem('imageArray',JSON.stringify(imageArray));
+        alert(JSON.stringify(imageArray));
     }
 
     function onCameraFail(message) {

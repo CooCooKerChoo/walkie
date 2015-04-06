@@ -207,7 +207,10 @@ nav.tab-bar {
     #map_marker_container .map_marker_btn img {
       width: 75px;
       height: 75px;
-      margin: 0 auto; }
+      margin: 0 auto;
+      white-space: normal;
+      line-height: 20px;
+      text-align: center; }
 
 #map_marker_container::-webkit-scrollbar {
   display: none; }

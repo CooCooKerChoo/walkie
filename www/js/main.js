@@ -303,7 +303,8 @@ function addBlockageIcon(position) {
 // ====================================================== FINISH WALK ====================================================== //
 
     function finishedWalk() {
-
+        
+        storeLatLng(lat, lon);
 
             var mapOptions = {
                 zoom: 17,
@@ -316,7 +317,7 @@ function addBlockageIcon(position) {
             map = new google.maps.Map(
                 document.getElementById("mapPlaceholder"), mapOptions
                 );
-                
+
             if (googleLatLng.length > 0) {
               var path = new google.maps.Polyline({
                 path: googleLatLng,

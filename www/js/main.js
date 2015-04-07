@@ -4,6 +4,8 @@ var googleLatLng = [],
     function storeLatLng( lat, lng ) {
         googleLatLng.push(new google.maps.LatLng(lat, lng));
         latlngs.push([lat, lng]);
+
+        setcoords = localStorage["pathCoords"] = JSON.stringify(googleLatLng);
     }
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -296,6 +298,8 @@ function addBlockageIcon(position) {
 
 function finishedWalk() {
 
+        storedCoords = JSON.parse(localStorage["pathCoords"]);
+
         navigator.geolocation.getCurrentPosition(onFinishedSuccess, onFinishedError);
 }
 
@@ -319,7 +323,7 @@ function finishedWalk() {
 
             if (googleLatLng.length > 0) {
               var path = new google.maps.Polyline({
-                path: googleLatLng,
+                path: storedCoords,
                 strokeColor: "#FF0000",
                 strokeOpacity: 1.0,
                 strokeWeight: 5

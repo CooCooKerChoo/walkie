@@ -4,6 +4,12 @@ var googleLatLng = [],
     function storeLatLng( lat, lng ) {
         googleLatLng.push(new google.maps.LatLng(lat, lng));
         latlngs.push([lat, lng]);
+
+        localStorage.clear();
+
+        localStorage["userCoords"] = JSON.stringify(latlngs);
+
+        console.log(JSON.parse(localStorage["userCoords"]));
     }
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -295,3 +301,7 @@ function addBlockageIcon(position) {
     }
 
 // ====================================================== FINISH WALK ====================================================== //
+
+function stopSession() {
+
+}

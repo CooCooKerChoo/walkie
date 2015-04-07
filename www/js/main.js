@@ -306,15 +306,6 @@ function addBlockageIcon(position) {
         storedCoords = localStorage.getItem("userCoords");
 
         alert(storedCoords);
-
-      var mapOptions = {
-        zoom: 13,
-        center: new google.maps.LatLng(54.4488017, -3.0171732),
-        mapTypeId:google.maps.MapTypeId.ROADMAP,
-        zoomControl: false,
-        streetViewControl: false,
-        mapTypeControl: false,
-        draggable: false
             //create the map, and place it in the HTML map div
             map2 = new google.maps.Map(document.getElementById("mapPlaceholder2"));
 

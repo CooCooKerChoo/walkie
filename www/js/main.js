@@ -305,7 +305,7 @@ function addBlockageIcon(position) {
 
         storedCoords = localStorage.getItem("userCoords");
 
-        console.log(storedCoords);
+        alert(storedCoords);
 
             var mapOptions = {
                 zoom: 5,

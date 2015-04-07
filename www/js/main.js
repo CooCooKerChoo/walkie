@@ -307,7 +307,7 @@ function addBlockageIcon(position) {
 
         alert(storedCoords);
             //create the map, and place it in the HTML map div
-            map2 = new google.maps.Map(document.getElementById("mapPlaceholder2"));
+            map = new google.maps.Map(document.getElementById("mapPlaceholder"));
 
             if (googleLatLng.length > 0) {
                 path = new google.maps.Polyline({
@@ -316,6 +316,6 @@ function addBlockageIcon(position) {
                     strokeOpacity: 1.0,
                     strokeWeight: 5
                 });
-              path.setMap(map2);
+              path.setMap(map);
             }
     }

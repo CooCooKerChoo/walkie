@@ -301,25 +301,28 @@ function addBlockageIcon(position) {
     }
 
 // ====================================================== FINISH WALK ====================================================== //
-         var mapOptions = {
-            zoom: 20,
-            center: new google.maps.LatLng(coords),
-            mapTypeId:google.maps.MapTypeId.ROADMAP,
-            zoomControl: false,
-            streetViewControl: false,
-            mapTypeControl: false,
-            draggable: false
-           };
 
-          var mapFinished = new google.maps.Map(document.getElementById('mapPlaceholderFinished'),
-              mapOptions);
+    function finishedWalk() {
+     var mapOptions = {
+        zoom: 20,
+        center: new google.maps.LatLng(coords),
+        mapTypeId:google.maps.MapTypeId.ROADMAP,
+        zoomControl: false,
+        streetViewControl: false,
+        mapTypeControl: false,
+        draggable: false
+       };
 
-           if (googleLatLng.length > 0) {
-              var path = new google.maps.Polyline({
-                path: googleLatLng,
-                strokeColor: "#FF0000",
-                strokeOpacity: 1.0,
-                strokeWeight: 5
-              });
-               path.setMap(mapFinished);
-             }
+      var mapFinished = new google.maps.Map(document.getElementById('mapPlaceholderFinished'),
+          mapOptions);
+
+       if (googleLatLng.length > 0) {
+          var path = new google.maps.Polyline({
+            path: googleLatLng,
+            strokeColor: "#FF0000",
+            strokeOpacity: 1.0,
+            strokeWeight: 5
+          });
+           path.setMap(mapFinished);
+         }
+    }

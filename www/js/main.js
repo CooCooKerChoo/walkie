@@ -4,15 +4,16 @@ var googleLatLng = [],
     function storeLatLng( lat, lng ) {
         googleLatLng.push(new google.maps.LatLng(lat, lng));
         latlngs.push([lat, lng]);
+            setcoords = localStorage["pathCoords"] = JSON.stringify(googleLatLng);
 
-        localStorage.clear();
-
-        localStorage["userCoords"] = JSON.stringify(latlngs);
-
-        console.log(JSON.parse(localStorage["userCoords"]));
+            console.log(JSON.parse(localStorage["pathCoords"]));
     }
 
 document.addEventListener("deviceready", onDeviceReady, false);
+
+window.addEventListener("storage", function(data) {
+   console.debug(data);
+}, false);
 
     // device APIs are available
     //
@@ -150,12 +151,12 @@ function addBlockageIcon(position) {
             storeLatLng(lat, lon);
 
             if (googleLatLng.length > 0) {
-              var path = new google.maps.Polyline({
-                path: googleLatLng,
-                strokeColor: "#FF0000",
-                strokeOpacity: 1.0,
-                strokeWeight: 5
-              });
+                path = new google.maps.Polyline({
+                    path: googleLatLng,
+                    strokeColor: "#FF0000",
+                    strokeOpacity: 1.0,
+                    strokeWeight: 5
+                });
               path.setMap(map);
             }
 
@@ -302,34 +303,27 @@ function addBlockageIcon(position) {
 
 // ====================================================== FINISH WALK ====================================================== //
 
-document.addEventListener("finishedWalk", finishedWalk, false);
 
     function finishedWalk() {
 
-            lat = position.coords.latitude;
-            lon = position.coords.longitude;
-
-        storeLatLng(lat, lon);
+        storedCoords = JSON.parse(localStorage["pathCoords"]);
 
             var mapOptions = {
-                zoom: 17,
-                center: coords,
+                zoom: 5,
                 mapTypeControl: true,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
             //create the map, and place it in the HTML map div
-            map = new google.maps.Map(
-                document.getElementById("mapPlaceholder"), mapOptions
-                );
+            map = new google.maps.Map(document.getElementById("mapPlaceholder"), mapOptions);
 
             if (googleLatLng.length > 0) {
-              var path = new google.maps.Polyline({
-                path: googleLatLng,
-                strokeColor: "#FF0000",
-                strokeOpacity: 1.0,
-                strokeWeight: 5
-              });
+                path = new google.maps.Polyline({
+                    path: storedCoords,
+                    strokeColor: "#FF0000",
+                    strokeOpacity: 1.0,
+                    strokeWeight: 5
+                });
               path.setMap(map);
             }
     }

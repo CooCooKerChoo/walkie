@@ -259,9 +259,6 @@ function addBlockageIcon(position) {
     function onCameraSuccess(imageData) {
         //In our success call we want to first process the image to save in our image box on the screen.
 
-        var image = document.getElementById('image');
-        image.src = "data:image/jpeg;base64," + imageData;
-
         //Create a new canvas for our image holder
 
         var imgCanvas = document.createElement("canvas"),

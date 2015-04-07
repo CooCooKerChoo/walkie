@@ -107,6 +107,17 @@ a:hover {color: purple;}
         padding:0;
         height: 100%;
         overflow: hidden;
+        #stopWalk {
+            background-color: $link-color;
+            width: 100%;
+            padding: 5px 10px;
+            line-height: 35px;
+            margin:0;
+            color: #FFF;
+            text-shadow: none;
+            display: block;
+            text-align: center;
+        }
     }
     .ui-footer {
         position: absolute;
@@ -177,31 +188,31 @@ a:hover {color: purple;}
             box-shadow: none;
         }
     }
-#map_marker_container {
-    position: absolute;
-    bottom: 75px;
-    width: 100%;
-    background: #FFF;
-    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
-    overflow-y: hidden;
-    overflow-x: scroll;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    .map_marker_btn
-    {
-        color: $link-color;
-        display: inline;
-        width: 100px;
-        background: none;
-        position: relative;
-        img {
-        width: 75px;
-        height: 75px;
-        margin: 0 auto;
-        white-space: normal;
-        line-height: 20px;
-        text-align: center;
+    #map_marker_container {
+        position: absolute;
+        bottom: 75px;
+        width: 100%;
+        background: #FFF;
+        box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
+        overflow-y: hidden;
+        overflow-x: scroll;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        .map_marker_btn
+        {
+            color: $link-color;
+            display: inline;
+            width: 100px;
+            background: none;
+            position: relative;
+            img {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto;
+            white-space: normal;
+            line-height: 20px;
+            text-align: center;
+            }
         }
     }
-}
 }

@@ -307,14 +307,8 @@ function addBlockageIcon(position) {
 
         alert(storedCoords);
 
-            var mapOptions = {
-                zoom: 5,
-                mapTypeControl: true,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-
             //create the map, and place it in the HTML map div
-            map2 = new google.maps.Map(document.getElementById("mapPlaceholder2"), mapOptions);
+            map2 = new google.maps.Map(document.getElementById("mapPlaceholder2"));
 
             if (googleLatLng.length > 0) {
                 path = new google.maps.Polyline({

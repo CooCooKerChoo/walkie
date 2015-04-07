@@ -33,7 +33,7 @@
         <script src="http://maps.googleapis.com/maps/api/js"></script>
         <title>Walkie</title>
     </head>
-    <body id="deviceready">
+    <body id="finishedWalk">
     <div class="off-canvas-wrap" data-offcanvas>
         <div class="inner-wrap">
             <aside class="left-off-canvas-menu">
@@ -88,28 +88,6 @@
         <script type="text/javascript">
             $(document).foundation();
             app.initialize();
-        </script>
-        <script>
-          var mapOptions = {
-            zoom: 20,
-            center: new google.maps.LatLng(coords),
-            mapTypeId:google.maps.MapTypeId.ROADMAP,
-            zoomControl: false,
-            streetViewControl: false,
-            mapTypeControl: false,
-            draggable: false
-          };
-
-          var map = new google.maps.Map(document.getElementById('mapPlaceholder'),
-              mapOptions);
-
-          var path = new google.maps.Polyline({
-            path: googleLatLng,
-            strokeColor: "#FF0000",
-            strokeOpacity: 1.0,
-            strokeWeight: 5
-          });
-          path.setMap(map);
         </script>
     </body>
 </html>

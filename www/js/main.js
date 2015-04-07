@@ -5,11 +5,11 @@ var googleLatLng = [],
         googleLatLng.push(new google.maps.LatLng(lat, lng));
         latlngs.push([lat, lng]);
 
-        // localStorage.clear();
+        localStorage.clear();
 
-        // localStorage["userCoords"] = JSON.stringify(latlngs);
+        localStorage["userCoords"] = JSON.stringify(latlngs);
 
-        // console.log(JSON.parse(localStorage["userCoords"]));
+        console.log(JSON.parse(localStorage["userCoords"]));
     }
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -301,27 +301,25 @@ function addBlockageIcon(position) {
     }
 
 // ====================================================== FINISH WALK ====================================================== //
-if(window.location.pathname == '/finishedWalk') {
          var mapOptions = {
             zoom: 20,
             center: new google.maps.LatLng(coords),
             mapTypeId:google.maps.MapTypeId.ROADMAP,
             zoomControl: false,
-             streetViewControl: false,
+            streetViewControl: false,
             mapTypeControl: false,
             draggable: false
            };
 
-          var map = new google.maps.Map(document.getElementById('mapPlaceholder'),
+          var mapFinished = new google.maps.Map(document.getElementById('mapPlaceholderFinished'),
               mapOptions);
 
            if (googleLatLng.length > 0) {
               var path = new google.maps.Polyline({
-                 path: googleLatLng,
-                 strokeColor: "#FF0000",
+                path: googleLatLng,
+                strokeColor: "#FF0000",
                 strokeOpacity: 1.0,
                 strokeWeight: 5
               });
-               path.setMap(map);
+               path.setMap(mapFinished);
              }
-}

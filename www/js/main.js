@@ -4,16 +4,13 @@ var googleLatLng = [],
     function storeLatLng( lat, lng ) {
         googleLatLng.push(new google.maps.LatLng(lat, lng));
         latlngs.push([lat, lng]);
-            setcoords = localStorage["pathCoords"] = JSON.stringify(googleLatLng);
 
-            console.log(JSON.parse(localStorage["pathCoords"]));
+            setcoords = localStorage.setItem("userCoords", googleLatLng);
+
+            console.log(localStorage.getItem("userCoords"));
     }
 
 document.addEventListener("deviceready", onDeviceReady, false);
-
-window.addEventListener("storage", function(data) {
-   console.debug(data);
-}, false);
 
     // device APIs are available
     //
@@ -306,7 +303,9 @@ function addBlockageIcon(position) {
 
     function finishedWalk() {
 
-        storedCoords = JSON.parse(localStorage["pathCoords"]);
+        storedCoords = localStorage.getItem("userCoords");
+
+        console.log(storedCoords);
 
             var mapOptions = {
                 zoom: 5,

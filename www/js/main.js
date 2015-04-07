@@ -300,22 +300,3 @@ function addBlockageIcon(position) {
 
 // ====================================================== FINISH WALK ====================================================== //
 
-
-    function finishedWalk() {
-
-        storedCoords = localStorage.getItem("userCoords");
-
-        alert(storedCoords);
-            //create the map, and place it in the HTML map div
-            map = new google.maps.Map(document.getElementById("mapPlaceholder"));
-
-            if (googleLatLng.length > 0) {
-                path = new google.maps.Polyline({
-                    path: storedCoords,
-                    strokeColor: "#FF0000",
-                    strokeOpacity: 1.0,
-                    strokeWeight: 5
-                });
-              path.setMap(map);
-            }
-    }

@@ -303,26 +303,27 @@ function addBlockageIcon(position) {
 // ====================================================== FINISH WALK ====================================================== //
 
     function finishedWalk() {
-     var mapOptions = {
-        zoom: 20,
-        center: new google.maps.LatLng(coords),
-        mapTypeId:google.maps.MapTypeId.ROADMAP,
-        zoomControl: false,
-        streetViewControl: false,
-        mapTypeControl: false,
-        draggable: false
-       };
 
-      var mapFinished = new google.maps.Map(document.getElementById('mapPlaceholderFinished'),
-          mapOptions);
 
-       if (googleLatLng.length > 0) {
-          var path = new google.maps.Polyline({
-            path: googleLatLng,
-            strokeColor: "#FF0000",
-            strokeOpacity: 1.0,
-            strokeWeight: 5
-          });
-           path.setMap(mapFinished);
-         }
+            var mapOptions = {
+                zoom: 17,
+                center: coords,
+                mapTypeControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            //create the map, and place it in the HTML map div
+            map = new google.maps.Map(
+                document.getElementById("mapPlaceholder"), mapOptions
+                );
+                
+            if (googleLatLng.length > 0) {
+              var path = new google.maps.Polyline({
+                path: googleLatLng,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 5
+              });
+              path.setMap(map);
+            }
     }

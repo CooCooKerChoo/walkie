@@ -301,28 +301,3 @@ function addBlockageIcon(position) {
     }
 
 // ====================================================== FINISH WALK ====================================================== //
-
-// if(window.location.pathname == '/finishedWalk') {
-//           var mapOptions = {
-//             zoom: 20,
-//             center: new google.maps.LatLng(coords),
-//             mapTypeId:google.maps.MapTypeId.ROADMAP,
-//             zoomControl: false,
-//             streetViewControl: false,
-//             mapTypeControl: false,
-//             draggable: false
-//           };
-
-//           var map = new google.maps.Map(document.getElementById('mapPlaceholder'),
-//               mapOptions);
-
-//             if (googleLatLng.length > 0) {
-//               var path = new google.maps.Polyline({
-//                 path: googleLatLng,
-//                 strokeColor: "#FF0000",
-//                 strokeOpacity: 1.0,
-//                 strokeWeight: 5
-//               });
-//               path.setMap(map);
-//             }
-// }

@@ -5,11 +5,11 @@ var googleLatLng = [],
         googleLatLng.push(new google.maps.LatLng(lat, lng));
         latlngs.push([lat, lng]);
 
-        localStorage.clear();
+        // localStorage.clear();
 
-        localStorage["userCoords"] = JSON.stringify(latlngs);
+        // localStorage["userCoords"] = JSON.stringify(latlngs);
 
-        console.log(JSON.parse(localStorage["userCoords"]));
+        // console.log(JSON.parse(localStorage["userCoords"]));
     }
 
 document.addEventListener("deviceready", onDeviceReady, false);

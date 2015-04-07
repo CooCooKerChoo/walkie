@@ -4,10 +4,6 @@ var googleLatLng = [],
     function storeLatLng( lat, lng ) {
         googleLatLng.push(new google.maps.LatLng(lat, lng));
         latlngs.push([lat, lng]);
-
-            setcoords = localStorage.setItem("userCoords", googleLatLng);
-
-            console.log(localStorage.getItem("userCoords"));
     }
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -36,9 +32,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             };
 
             //create the map, and place it in the HTML map div
-            map = new google.maps.Map(
-                document.getElementById("mapPlaceholder"), mapOptions
-                );
+            map = new google.maps.Map(document.getElementById("mapPlaceholder"), mapOptions);
     }
 
     // onError Callback receives a PositionError object
@@ -148,12 +142,12 @@ function addBlockageIcon(position) {
             storeLatLng(lat, lon);
 
             if (googleLatLng.length > 0) {
-                path = new google.maps.Polyline({
-                    path: googleLatLng,
-                    strokeColor: "#FF0000",
-                    strokeOpacity: 1.0,
-                    strokeWeight: 5
-                });
+              var path = new google.maps.Polyline({
+                path: googleLatLng,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 5
+              });
               path.setMap(map);
             }
 
@@ -300,3 +294,43 @@ function addBlockageIcon(position) {
 
 // ====================================================== FINISH WALK ====================================================== //
 
+function finishedWalk() {
+
+        navigator.geolocation.getCurrentPosition(onFinishedSuccess, onFinishedError);
+}
+
+        function onFinishedSuccess(position) {
+
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+        storeLatLng(latitude, longitude);
+
+            var mapOptions = {
+                zoom: 17,
+                center: coords,
+                mapTypeControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            //create the map, and place it in the HTML map div
+            map = new google.maps.Map(document.getElementById("mapPlaceholder"), mapOptions);
+
+            if (googleLatLng.length > 0) {
+              var path = new google.maps.Polyline({
+                path: googleLatLng,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 5
+              });
+              path.setMap(map);
+            }
+    }
+
+    // onError Callback receives a PositionError object
+    //
+    function onFinishedError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }

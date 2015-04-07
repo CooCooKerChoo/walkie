@@ -302,8 +302,13 @@ function addBlockageIcon(position) {
 
 // ====================================================== FINISH WALK ====================================================== //
 
+document.addEventListener("finishedWalk", finishedWalk, false);
+
     function finishedWalk() {
-        
+
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+
         storeLatLng(lat, lon);
 
             var mapOptions = {

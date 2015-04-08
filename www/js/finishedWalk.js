@@ -41,4 +41,24 @@
             if(imageStorage) {
                 document.getElementById('image').innerHTML = "data:image/jpeg;base64," + imageStorage;    
             }
+
+            function getPhotos() {
+                navigator.camera.getPicture(onPhotosSuccess, onPhotosFail, {
+                    quality: 70, 
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                    mediaType: Camera.MediaType.PICTURE});
+            }
+
+            function onPhotosSuccess() {
+                var image = document.getElementById('image');
+
+                image.src = imageURI;
+
+                image.style.display = 'block';
+            }
+
+            function onPhotosFail(message) {
+                alert('Failed because: ' + message);
+            }
 });

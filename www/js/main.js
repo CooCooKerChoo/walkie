@@ -289,8 +289,6 @@ function addBlockageIcon(position) {
 
         // Save image into localStorage
         try {
-        // localStorage.setItem(“savedImage”, imgAsDataURL);
-        localStorage.setItem("savedImage", imageData);
         alert('Image Saved');
         }
         catch (e) {

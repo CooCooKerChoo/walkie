@@ -45,11 +45,14 @@
 });
 
              function getPicture() {
-                navigator.camera.getPicture(onPictureSuccess, onPictureFail, {quality: 70, destinationType: Camera.DestinationType.FILE_URI, sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM})
+                navigator.camera.getPicture(onPictureSuccess, onPictureFail, {quality: 70, destinationType: Camera.DestinationType.FILE_URI, sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM, targetWidth: 200, targetHeight: 200})
             }
 
             function onPictureSuccess(imageURI) {
-                var image = document.getElementById('image');
+
+                var counter = 0;
+                var newImage = document.createElement("image");
+                image.id = 'newImage' + +++counter;
 
                 image.src = imageURI;
             }

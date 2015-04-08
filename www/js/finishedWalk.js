@@ -50,7 +50,7 @@
 
             function onPictureSuccess(imageURI) {
 
-            $("#photos").append("<li></li>")
+            $("<li></li>").appendTo("#photos");
 
             // Create new Image element
             var img = $('<img />');

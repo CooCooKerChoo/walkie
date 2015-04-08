@@ -1,4 +1,11 @@
  $(document).on('pageinit', "#map-page", function() {
+    
+            $("#photos").mCustomScrollbar({
+                axis:"x",
+                theme:"dark-thick",
+                autoExpandScrollbar:true,
+                advanced:{autoExpandHorizontalScroll:true}
+            });
 
             var mapOptions = {
                 zoom: 15,
@@ -57,12 +64,6 @@
             // Append new img to our photos div
             img.appendTo('#photos');
 
-            $("#photos").mCustomScrollbar({
-                axis:"x",
-                theme:"dark-thick",
-                autoExpandScrollbar:true,
-                advanced:{autoExpandHorizontalScroll:true}
-            });
             }
 
             function onPictureFail(message) {

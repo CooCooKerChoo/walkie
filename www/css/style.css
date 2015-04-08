@@ -246,7 +246,8 @@ a:hover {
 
 #photos {
   overflow: auto;
-  height: 125px; }
+  height: 125px;
+  width: 2000px; }
   #photos img {
     float: left;
     margin: 0 3px;

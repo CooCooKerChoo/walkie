@@ -7,6 +7,7 @@
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script>
 	$( "#leftpanel3" ).panel( "open");
 	</script>
@@ -135,10 +136,6 @@
 		</div>
 
 		<div data-role="page" id="map-page" data-theme="a">
-		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-		<script type="text/javascript" src="js/finishedWalk.js"></script>
 			<div data-role="panel" id="leftpanel2" data-position="left" data-display="push" data-dismissible="true" data-theme="a">
 				<div class="profile_area">
 					<div class="row">
@@ -175,12 +172,14 @@
 					</ul>
 				</div>
 				<div data-role="header">
+				<script type="text/javascript" src="js/finishedWalk.js"></script>
 					<a href="#leftpanel2" data-role="button" data-inline="true" data-mini="true"><i class="fa fa-bars"></i></a>
 					<h1>Walk Summary</h1>
 				</div>
 
 			<div data-role="content">	
-				<div class="map-canvas" style="width:100%; height:100%">
+				<div class="map">
+                    <div id="finishedRoute" style="height:300px; width: 100%;"></div>
                 </div>
 			</div><!-- /content -->
 

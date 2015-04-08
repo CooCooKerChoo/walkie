@@ -1,30 +1,31 @@
-$( document ).on( "pageinit", "#map-page", function() {
-    var defaultLatLng = new google.maps.LatLng(34.0983425, -118.3267434);  // Default to Hollywood, CA when no geolocation support
-    if ( navigator.geolocation ) {
-        function success(pos) {
-            // Location found, show map with these coordinates
-            drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-        }
-        function fail(error) {
-            drawMap(defaultLatLng);  // Failed to find location, show default map
-        }
-        // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
-        navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 500000, enableHighAccuracy:true, timeout: 6000});
-    } else {
-        drawMap(defaultLatLng);  // No geolocation support, show default map
+        // storedCoords = localStorage.getItem('GoogleLatLng');
+        // if(storedCoords) storedCoords = JSON.parse(storedCoords);
+        navigator.geolocation.getCurrentPosition(onFinishedSuccess, onFinishedError);
+
+        function onFinishedSuccess(position) {
+
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+        storeLatLng(latitude, longitude);
+
+            var mapOptions = {
+                zoom: 17,
+                center: coords,
+                mapTypeControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            //create the map, and place it in the HTML map div
+            map = new google.maps.Map(document.getElementById("finishedRoute"), mapOptions);
+            
+            map.checkRezie();
     }
-    function drawMap(latlng) {
-        var myOptions = {
-            zoom: 10,
-            center: latlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
-        // Add an overlay to the map of current lat/lng
-        var marker = new google.maps.Marker({
-            position: latlng,
-            map: map,
-            title: "Greetings!"
-        });
+
+    // onError Callback receives a PositionError object
+    //
+    function onFinishedError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
     }
-});

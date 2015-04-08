@@ -55,7 +55,7 @@
             img.attr('src', imageURI);
 
             // Append new img to our photos div
-            img.appendTo('#photos');
+            img.appendTo('#photos ul');
             }
 
             function onPictureFail(message) {

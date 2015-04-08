@@ -245,8 +245,8 @@ a:hover {
   color: #CCC; }
 
 #photos {
-  height: 120px;
-  overflow: auto; }
+  overflow: auto;
+  height: 125px; }
   #photos ul {
     margin: 0;
     padding: 0;
@@ -254,10 +254,11 @@ a:hover {
     overflow: hidden; }
     #photos ul li {
       float: left;
-      margin: 0 3px; }
+      margin: 0 3px;
+      height: 100px;
+      width: 100px; }
       #photos ul li img {
-        height: 105px;
-        width: 105px;
+        width: 100%;
         box-sizing: border-box; }
 
 /*# sourceMappingURL=style.css.map */

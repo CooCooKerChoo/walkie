@@ -201,14 +201,8 @@
 					<div class="walkDescription" contenteditable="true" data-text="Add a description"></div>
 					<span class="horizontalSplitter"></span>
 					<button id="stopWalk" onClick="getPicture()">Add Photographs</button>
-						<div id="photos" class="mCustomScrollbar">
+						<div id="photos" class="horizontal-images">
 							<ul>
-								<li><img src="img/2015-04-08 16.09.11.jpg"/></li>
-								<li><img src="img/2015-04-08 16.09.11.jpg"/></li>
-								<li><img src="img/2015-04-08 16.09.11.jpg"/></li>
-								<li><img src="img/2015-04-08 16.09.11.jpg"/></li>
-								<li><img src="img/2015-04-08 16.09.11.jpg"/></li>
-								<li><img src="img/2015-04-08 16.09.11.jpg"/></li>
 							</ul>
 						</div>
 	            </div>
@@ -221,15 +215,17 @@
 				<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 				<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
 				<script>
-				    (function($){
-				        $(window).load(function(){
-				            $(".photos").mCustomScrollbar({
+					(function($){
+						$(window).load(function(){
+							$("#photos").mCustomScrollbar({
 								axis:"x",
-								theme:"dark-thin",
+								theme:"dark-thick",
 								autoExpandScrollbar:true,
-								advanced:{autoExpandHorizontalScroll:true
-				        });
-				    })(jQuery);
+								advanced:{autoExpandHorizontalScroll:true}
+							});
+							
+						});
+					})(jQuery);
 				</script>
 		</div><!-- /page two -->
 

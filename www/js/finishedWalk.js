@@ -43,14 +43,15 @@
             }
 
             function getPhotos() {
-                navigator.camera.getPicture(onPhotosSuccess, onPhotosFail, {
+                navigator.camera.getPicture(onPhotosSuccess, onPhotosFail, 
+                {
                     quality: 70, 
-                    destinationType: Camera.DestinationType.FILE_URI,
-                    sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM
+                    destinationType : Camera.DestinationType.DATA_URI, 
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY
                 });
             }
 
-            function onPhotosSuccess(imageURI) {
+            function onPhotosSuccess() {
                 var image = document.getElementById('image');
 
                 image.src = imageURI;
@@ -58,7 +59,7 @@
                 image.style.display = 'block';
             }
 
-            function onPhotosFail(message) {
+            function onPhotosFail() {
                 alert('Failed because: ' + message);
             }
 });

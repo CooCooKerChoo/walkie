@@ -49,15 +49,13 @@
             }
 
             function onPictureSuccess(imageURI) {
-
-            $("<li></li>").appendTo("#photos");
-
+                
             // Create new Image element
             var img = $('<img />');
             img.attr('src', imageURI);
 
             // Append new img to our photos div
-            img.appendTo('#photos ul li');
+            img.appendTo('#photos');
             }
 
             function onPictureFail(message) {

@@ -38,7 +38,7 @@
             }
 
             var imageStorage = localStorage.getItem("savedImage");
-            if(imageSotrage) {
+            if(imageStorage) {
                 document.getElementById('image').innerHTML = "data:image/jpeg;base64," + imageStorage;    
             }
 });

@@ -52,9 +52,9 @@
 
                 var counter = 0;
                 var newImage = document.createElement("image");
-                image.id = 'newImage' + ++counter;
+                newImage.id = 'newImage' + ++counter;
 
-                image.src = imageURI;
+                newImage.src = imageURI;
             }
 
             function onPictureFail(message) {

@@ -52,7 +52,7 @@
 
                 var counter = 0;
                 var newImage = document.createElement("image");
-                image.id = 'newImage' + +++counter;
+                image.id = 'newImage' + ++counter;
 
                 image.src = imageURI;
             }

@@ -7,7 +7,6 @@
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script>
 	$( "#leftpanel3" ).panel( "open");
 	</script>
@@ -33,7 +32,7 @@
 				</div>
 				<ul>
 					<li>
-						<a class="active" href="#one">Record</a>
+						<a class="active" href="index.html">Record</a>
 					</li>
 					<li>
 						<a href="my_routes.html">My Routes</a>
@@ -65,7 +64,7 @@
 						</div>
 					</div>
 				</div>
-				<a href="#page2" id="stopWalk" style="display: none;">Finish</a>
+				<a href="#map-page" id="stopWalk" style="display: none;">Finish</a>
 				<div id="mapPlaceholder" style="height:100%; width: 100%;"></div>
 				<div id="map_marker_container" style="display:none;">
 					<button class="map_marker_btn" onclick="addBridgeIcon()">
@@ -135,7 +134,11 @@
 		<script type="text/javascript" src="js/main.js"></script>
 		</div>
 
-		<div data-role="page" id="page2" data-theme="a">
+		<div data-role="page" id="map-page" data-theme="a">
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="js/finishedWalk.js"></script>
 			<div data-role="panel" id="leftpanel2" data-position="left" data-display="push" data-dismissible="true" data-theme="a">
 				<div class="profile_area">
 					<div class="row">
@@ -155,7 +158,7 @@
 					</div>
 					<ul>
 						<li>
-							<a class="active" href="#one">Record</a>
+							<a class="active" href="index.html">Record</a>
 						</li>
 						<li>
 							<a href="my_routes.html">My Routes</a>
@@ -177,13 +180,13 @@
 				</div>
 
 			<div data-role="content">	
-                    <div id="finishedRoute" style="height:300px; width: 100%;"></div>
+				<div class="map-canvas" style="width:100%; height:100%">
+                </div>
 			</div><!-- /content -->
 
 			<div data-role="footer">
 				<h4>Page Footer</h4>
 			</div><!-- /footer -->
-		<script type="text/javascript" src="js/finishedWalk.js"></script>
 		</div><!-- /page two -->
 
 		<script type="text/javascript" src="cordova.js"></script>

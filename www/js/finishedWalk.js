@@ -11,8 +11,6 @@
         var longitude = position.coords.longitude;
         coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-        storeLatLng(latitude, longitude);
-
             var mapOptions = {
                 zoom: 17,
                 center: coords,
@@ -22,7 +20,6 @@
 
             //create the map, and place it in the HTML map div
             map = new google.maps.Map(document.getElementById("finishedRoute"), mapOptions);
-            checkRezie();
 
             if (googleLatLng.length > 0) {
               var path = new google.maps.Polyline({

@@ -264,14 +264,18 @@ margin: 10px 0;
         color: #CCC;
     }
 
-.photos {
-    overflow: auto;
-    height: 100px;
-        img {
-            float:left;
-            margin:0 3px;
-            height: 100px;
-            width: 100px;
-            box-sizing: border-box;
-        }
+
+#photosContainer {
+    .mCSB_horizontal.mCSB_inside > .mCSB_container {margin-bottom: 15px;}
+    .photos {
+        overflow: auto;
+        height: 100px;
+            img {
+                float:left;
+                margin:0 3px;
+                height: 100px;
+                width: 100px;
+                box-sizing: border-box;
+            }
+    }
 }

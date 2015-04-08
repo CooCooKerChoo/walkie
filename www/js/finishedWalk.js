@@ -1,3 +1,6 @@
+ $(document).on('pageinit', function() {
+
+
         // storedCoords = localStorage.getItem('GoogleLatLng');
         // if(storedCoords) storedCoords = JSON.parse(storedCoords);
         navigator.geolocation.getCurrentPosition(onFinishedSuccess, onFinishedError);
@@ -38,3 +41,5 @@
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
+
+});

@@ -46,11 +46,11 @@
                 navigator.camera.getPicture(onPhotosSuccess, onPhotosFail, {
                     quality: 70, 
                     destinationType: Camera.DestinationType.FILE_URI,
-                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                    mediaType: Camera.MediaType.PICTURE});
+                    sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM
+                });
             }
 
-            function onPhotosSuccess() {
+            function onPhotosSuccess(imageURI) {
                 var image = document.getElementById('image');
 
                 image.src = imageURI;

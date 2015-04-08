@@ -244,9 +244,20 @@ a:hover {
   content: attr(data-text);
   color: #CCC; }
 
-#photos img {
-  max-height: 85px;
-  padding: 5px;
-  overflow: hidden; }
+#photos {
+  height: 120px;
+  overflow: auto; }
+  #photos ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden; }
+    #photos ul li {
+      float: left;
+      margin: 0 3px; }
+      #photos ul li img {
+        height: 105px;
+        width: 105px;
+        box-sizing: border-box; }
 
 /*# sourceMappingURL=style.css.map */

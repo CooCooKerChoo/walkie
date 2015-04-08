@@ -201,14 +201,36 @@
 					<div class="walkDescription" contenteditable="true" data-text="Add a description"></div>
 					<span class="horizontalSplitter"></span>
 					<button id="stopWalk" onClick="getPicture()">Add Photographs</button>
-					<div id="photos"></div>
-                </div>
+						<div id="photos" class="mCustomScrollbar">
+							<ul>
+								<li><img src="img/2015-04-08 16.09.11.jpg"/></li>
+								<li><img src="img/2015-04-08 16.09.11.jpg"/></li>
+								<li><img src="img/2015-04-08 16.09.11.jpg"/></li>
+								<li><img src="img/2015-04-08 16.09.11.jpg"/></li>
+								<li><img src="img/2015-04-08 16.09.11.jpg"/></li>
+								<li><img src="img/2015-04-08 16.09.11.jpg"/></li>
+							</ul>
+						</div>
+	            </div>
 			</div><!-- /content -->
 
 			<div data-role="footer">
 				<h4>Page Footer</h4>
 			</div><!-- /footer -->
 				<script type="text/javascript" src="js/finishedWalk.js"></script>
+				<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+				<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
+				<script>
+				    (function($){
+				        $(window).load(function(){
+				            $(".photos").mCustomScrollbar({
+								axis:"x",
+								theme:"dark-thin",
+								autoExpandScrollbar:true,
+								advanced:{autoExpandHorizontalScroll:true
+				        });
+				    })(jQuery);
+				</script>
 		</div><!-- /page two -->
 
 		<script type="text/javascript" src="cordova.js"></script>

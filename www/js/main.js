@@ -290,11 +290,6 @@ function addBlockageIcon(position) {
         catch (e) {
         alert("Storage failed: " + e);
         }
-
-        var imageStorage = localStorage.getItem("savedImage");
-        // myCardHolder= document.getElementById(“m1-cardStorage-image1″);
-        // Reuse existing Data URL from localStorage
-        document.getElementById('image').innerHTML = "data:image/jpeg;base64," + imageStorage;    
     }
 
     function onCameraFail(message) {

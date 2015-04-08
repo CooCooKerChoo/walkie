@@ -36,4 +36,9 @@
             if(storedDistance) {
                 document.getElementById("finalDistance").innerHTML = storedDistance;
             }
+
+            var imageStorage = localStorage.getItem("savedImage");
+            if(imageSotrage) {
+                document.getElementById('image').innerHTML = "data:image/jpeg;base64," + imageStorage;    
+            }
 });

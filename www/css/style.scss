@@ -14,6 +14,8 @@
 
 $link-color: #4CAF50;
 
+@import url(../font-awesome/css/font-awesome.css);
+
 
 @keyframes fadein {
     from {opacity: 0;}
@@ -220,7 +222,44 @@ a:hover {color: purple;}
 
 .finishedDistance {
     .fa {
-        font-size: 36px;
+        font-size: 24px;
         margin: 0 20px;
     }
 }
+
+::-webkit-input-placeholder {
+   color: #CCC;
+}
+
+.horizontalSplitter {
+display: block;
+width: 100%;
+height: 1px;
+border-bottom: 1px solid #CCC;
+margin: 10px 0;
+}
+
+.walkDescription{
+    border: none;
+    box-shadow: none;
+    resize: none;
+    position: relative;
+    padding: 0 20px;
+
+    &:after {
+        position: absolute;
+        font-family: FontAwesome;
+        top:0;
+        right: 20px;
+        content: "\f040";
+    }
+    &:focus {
+        outline: none !important;
+    }
+    &:focus &:after {color: purple;}
+}
+
+[contentEditable=true]:empty:not(:focus):before{
+        content:attr(data-text);
+        color: #CCC;
+    }

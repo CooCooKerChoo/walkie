@@ -263,16 +263,17 @@ margin: 10px 0;
         content:attr(data-text);
         color: #CCC;
     }
-
-#photos {
+#photoContainer {
     overflow: auto;
     height: 125px;
-    width: 2000px;
-        img {
-            float:left;
-            margin:0 3px;
-            height: 100px;
-            width: 100px;
-            box-sizing: border-box;
-        }
+    #photos {
+        width: 2000px;
+            img {
+                float:left;
+                margin:0 3px;
+                height: 100px;
+                width: 100px;
+                box-sizing: border-box;
+            }
+    }
 }

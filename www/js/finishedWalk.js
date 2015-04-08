@@ -1,6 +1,6 @@
  $(document).on('pageinit', "#map-page", function() {
-    
-            $("#photos").mCustomScrollbar({
+
+            $("#photoContainer").mCustomScrollbar({
                 axis:"x",
                 theme:"dark-thick",
                 autoExpandScrollbar:true,

@@ -51,7 +51,7 @@
             function onPictureSuccess(imageURI) {
 
                 var counter = 0;
-                var image = document.getElementbyID("image");
+                var image = document.getElementbyId("image");
 
                 image.src = imageURI;
             }

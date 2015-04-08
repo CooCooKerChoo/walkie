@@ -239,7 +239,9 @@ function addBlockageIcon(position) {
         for( var i = 0, c = speedTime.length; i < c; i++) {
             pastDistance += calculate_metres(speedTime[i].speed, speedTime[i].time);
         }
-        document.getElementById("distance").innerHTML = (pastDistance + current).toFixed(3) + ' ' + measurements;
+
+        overallDistance = (pastDistance + current);
+        document.getElementById("distance").innerHTML = (overallDistance).toFixed(3) + ' ' + measurements;
     }
 
 
@@ -300,3 +302,13 @@ function addBlockageIcon(position) {
     }
 
 // ====================================================== FINISH WALK ====================================================== //
+
+function stopSession() {
+    finishedDuration = document.getElementById("duration").innerText;
+    localStorage.setItem("overallTime", finishedDuration);
+
+    finishedDistance = document.getElementById("distance").innerText;
+    localStorage.setItem("overallDistance", finishedDistance)
+
+    window.location.href = "#map-page";
+}

@@ -12,7 +12,7 @@
 	$( "#leftpanel3" ).panel( "open");
 	</script>
 </head>
-<body id="deviceReady">
+<body>
 	<div data-role="page" id="page1">
 		<div data-role="panel" id="leftpanel2" data-position="left" data-display="push" data-dismissible="true" data-theme="a">
 			<div class="profile_area">
@@ -65,7 +65,7 @@
 						</div>
 					</div>
 				</div>
-				<a href="#map-page" id="stopWalk" style="display: none;">Finish</a>
+				<button id="stopWalk" onClick="stopSession()" style="display: none;">Finish</button>
 				<div id="mapPlaceholder" style="height:100%; width: 100%;"></div>
 				<div id="map_marker_container" style="display:none;">
 					<button class="map_marker_btn" onclick="addBridgeIcon()">
@@ -172,20 +172,35 @@
 					</ul>
 				</div>
 				<div data-role="header">
-				<script type="text/javascript" src="js/finishedWalk.js"></script>
 					<a href="#leftpanel2" data-role="button" data-inline="true" data-mini="true"><i class="fa fa-bars"></i></a>
 					<h1>Walk Summary</h1>
 				</div>
 
 			<div data-role="content">	
 				<div class="map">
-                    <div id="finishedRoute" style="height:300px; width: 320px;"></div>
+                    <div id="finishedRoute" style="height:150px; width: 100%;"></div>
+					<div class="content_container">
+						<div class="ui-grid-a">
+							<div class="ui-block-a home_btns">
+								<div class="ui-block-a finishedDistance">
+									<i class="fa fa-map-marker size-36"></i>
+								</div>
+								<div class="ui-block-b">
+									<p>Distance <br/><span id="finalDistance" class="value"></span></p>
+								</div>
+							</div>
+							<div class="ui-block-b home_btns">
+								<p>Duration <br/><span class="value" id="finalDuration"></span></p>
+							</div>
+						</div>
+					</div>
                 </div>
 			</div><!-- /content -->
 
 			<div data-role="footer">
 				<h4>Page Footer</h4>
 			</div><!-- /footer -->
+				<script type="text/javascript" src="js/finishedWalk.js"></script>
 		</div><!-- /page two -->
 
 		<script type="text/javascript" src="cordova.js"></script>

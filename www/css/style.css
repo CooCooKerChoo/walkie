@@ -244,4 +244,9 @@ a:hover {
   content: attr(data-text);
   color: #CCC; }
 
+#photos img {
+  max-height: 85px;
+  padding: 5px;
+  overflow: hidden; }
+
 /*# sourceMappingURL=style.css.map */

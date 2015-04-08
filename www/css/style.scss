@@ -263,3 +263,12 @@ margin: 10px 0;
         content:attr(data-text);
         color: #CCC;
     }
+
+
+#photos {
+    img {
+        max-height: 85px;
+        padding: 5px;
+        overflow: hidden;
+    }
+}

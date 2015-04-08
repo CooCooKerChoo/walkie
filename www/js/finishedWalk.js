@@ -49,17 +49,6 @@
             }
 
             function onPictureSuccess(imageURI) {
-                (function($){
-                    $(window).load(function(){
-                        $("#photos").mCustomScrollbar({
-                            axis:"x",
-                            theme:"dark-thick",
-                            autoExpandScrollbar:true,
-                            advanced:{autoExpandHorizontalScroll:true}
-                        });
-                        
-                    });
-                })(jQuery);
 
             // Create new Image element
             var img = $('<img />');
@@ -67,6 +56,13 @@
 
             // Append new img to our photos div
             img.appendTo('#photos');
+
+            $("#photos").mCustomScrollbar({
+                axis:"x",
+                theme:"dark-thick",
+                autoExpandScrollbar:true,
+                advanced:{autoExpandHorizontalScroll:true}
+            });
             }
 
             function onPictureFail(message) {

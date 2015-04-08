@@ -49,7 +49,18 @@
             }
 
             function onPictureSuccess(imageURI) {
-                
+                (function($){
+                    $(window).load(function(){
+                        $("#photos").mCustomScrollbar({
+                            axis:"x",
+                            theme:"dark-thick",
+                            autoExpandScrollbar:true,
+                            advanced:{autoExpandHorizontalScroll:true}
+                        });
+                        
+                    });
+                })(jQuery);
+
             // Create new Image element
             var img = $('<img />');
             img.attr('src', imageURI);

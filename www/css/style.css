@@ -248,7 +248,7 @@ a:hover {
   overflow: auto;
   height: 125px; }
   #photos img {
-    width: 100%;
+    width: 125px;
     box-sizing: border-box;
     margin: 5px; }
 

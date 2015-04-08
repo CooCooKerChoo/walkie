@@ -1,15 +1,4 @@
- $(document).on('pageinit', function() {
-
-
-        // storedCoords = localStorage.getItem('GoogleLatLng');
-        // if(storedCoords) storedCoords = JSON.parse(storedCoords);
-        navigator.geolocation.getCurrentPosition(onFinishedSuccess, onFinishedError);
-
-        function onFinishedSuccess(position) {
-
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+ $(document).on('pageinit', "#map-page", function() {
 
             var mapOptions = {
                 zoom: 17,
@@ -30,13 +19,5 @@
               });
               path.setMap(map);
             }
-    }
-
-    // onError Callback receives a PositionError object
-    //
-    function onFinishedError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
 
 });

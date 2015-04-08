@@ -249,6 +249,7 @@ a:hover {
   height: 125px; }
   #photos img {
     width: 125px;
+    height: 125px;
     box-sizing: border-box;
     margin: 5px; }
 

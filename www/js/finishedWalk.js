@@ -45,7 +45,7 @@
 });
 
              function getPicture() {
-                navigator.camera.getPicture(onPictureSuccess, onPictureFail, {quality: 70, destinationType: Camera.DestinationType.FILE_URI, sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM, targetWidth: 100, targetHeight: 100})
+                navigator.camera.getPicture(onPictureSuccess, onPictureFail, {quality: 70, destinationType: Camera.DestinationType.FILE_URI, sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM, targetWidth: 125, targetHeight: 125})
             }
 
             function onPictureSuccess(imageURI) {

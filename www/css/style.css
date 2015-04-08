@@ -244,16 +244,14 @@ a:hover {
   content: attr(data-text);
   color: #CCC; }
 
-#photoContainer {
+#photos {
   overflow: auto;
   height: 125px; }
-  #photoContainer #photos {
-    width: 2000px; }
-    #photoContainer #photos img {
-      float: left;
-      margin: 0 3px;
-      height: 100px;
-      width: 100px;
-      box-sizing: border-box; }
+  #photos img {
+    float: left;
+    margin: 0 3px;
+    height: 100px;
+    width: 100px;
+    box-sizing: border-box; }
 
 /*# sourceMappingURL=style.css.map */

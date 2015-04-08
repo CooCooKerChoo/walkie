@@ -247,10 +247,18 @@ a:hover {
 #photos {
   overflow: auto;
   height: 125px; }
-  #photos img {
-    width: 125px;
-    height: 125px;
-    box-sizing: border-box;
-    margin: 5px; }
+  #photos ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden; }
+    #photos ul li {
+      float: left;
+      margin: 0 3px;
+      height: 100px;
+      width: 100px; }
+      #photos ul li img {
+        width: 100%;
+        box-sizing: border-box; }
 
 /*# sourceMappingURL=style.css.map */

@@ -19,10 +19,7 @@
 
             //create the map, and place it in the HTML map div
             map = new google.maps.Map(document.getElementById("finishedRoute"), mapOptions);
-
-            $("#finishedRoute").css("height", "120px");
-            google.maps.event.trigger(map, "resize");
-            });
+            checkRezie();
 
             if (googleLatLng.length > 0) {
               var path = new google.maps.Polyline({

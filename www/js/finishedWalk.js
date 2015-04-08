@@ -53,7 +53,7 @@
                 var counter = 0;
                 var image = document.getElementbyID("image");
 
-                newImage.src = imageURI;
+                image.src = imageURI;
             }
 
             function onPictureFail(message) {

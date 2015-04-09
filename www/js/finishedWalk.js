@@ -73,15 +73,16 @@
                 document.getElementById('markersArray').value = JSON.stringify(markers);
             }
 
-            var images = window.localStorage.getItem('images_' + currentTrackID);
+            var images = JSON.parse(window.localStorage.getItem('images_' + currentTrackID));
+            if( typeof images === 'array' ) {
+                for( var i = 0, c = images.length; i < c; i++ ) {
+                    // Create new Image element
+                    var img = $('<div class="image"/>');
+                    img.html(img.html() + images[i]);
 
-            for( var i = 0, c = images.length; i < c; i++ ) {
-                // Create new Image element
-                var img = $('<div class="image"/>');
-                img.html(img.html() + images[i]);
-
-                // Append new img to our photos div
-                img.appendTo('.photos');
+                    // Append new img to our photos div
+                    img.appendTo('.photos');
+                }
             }
 
 });

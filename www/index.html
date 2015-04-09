@@ -35,7 +35,7 @@
 					<a href="view_routes.html">View Routes</a>
 				</li>
 				<li>
-					<a href="#page-login">Login</a>
+					<a href="#login-page">Login</a>
 				</li>
 				<li>
 					<a href="camera.html">Camera</a>
@@ -87,7 +87,7 @@
 	<script type="text/javascript" src="js/main.js"></script>
 	</div>
 
-	<div data-role="page" id="map-page" data-theme="a">
+	<div data-role="page" id="map-page">
 		<div data-role="panel" id="leftpanel2" data-position="left" data-display="push" data-dismissible="true" data-theme="a">
 			<div class="profile_area">
 				<div class="profile_picture">
@@ -109,20 +109,20 @@
 					<a href="view_routes.html">View Routes</a>
 				</li>
 				<li>
-					<a href="#page-login">Login</a>
+					<a href="#login-page">Login</a>
 				</li>
 				<li>
 					<a href="camera.html">Camera</a>
 				</li>
 			</ul>
 		</div>
-		
+
 		<div data-role="header">
 			<a href="#leftpanel2" data-role="button" data-inline="true" data-mini="true"><i class="fa fa-bars"></i></a>
 			<h1>Walk Summary</h1>
 		</div>
 
-		<div data-role="content">	
+		<div data-role="main" class="ui-content">
 			<div class="map">
 				<div id="finishedRoute" style="height:150px; width: 100%;"></div>
 				<div class="ui-grid-a">
@@ -148,19 +148,90 @@
 				<span class="horizontalSplitter"></span>
 				<button id="stopWalk" onClick="getPicture()">Add Photographs</button>
 				<div id="photosContainer" class="horizontal-images">
-					<div class="photos">	
-					</div>
+					<div class="photos"></div>
 				</div>
 			</div><!-- /content -->
+		</div>
 
-			<div data-role="footer">
-				<h4>Page Footer</h4>
-			</div><!-- /footer -->
-			<script type="text/javascript" src="js/finishedWalk.js"></script>
-			<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
-			<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
-		</div><!-- /page two -->	
+		<div data-role="footer"></div>
+		<script type="text/javascript" src="js/finishedWalk.js"></script>
+		<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+		<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
+	</div>
 
-				<script type="text/javascript" src="cordova.js"></script>
-			</body>
-			</html>
+	<div data-role="page" id="login-page">
+		<div data-role="panel" id="leftpanel2" data-position="left" data-display="push" data-dismissible="true" data-theme="a">
+			<div class="profile_area">
+				<div class="profile_picture">
+					<img src="img/profile_picture.png" alt="profile picture"/>
+				</div>
+				<div class="user_info">
+					<p>Joe Bloggs</p>
+					<p class="location">Stafford, England</p>
+				</div>
+			</div>
+			<ul>
+				<li>
+					<a class="active" href="index.html">Record</a>
+				</li>
+				<li>
+					<a href="my_routes.html">My Routes</a>
+				</li>
+				<li>
+					<a href="view_routes.html">View Routes</a>
+				</li>
+				<li>
+					<a href="#login-page">Login</a>
+				</li>
+				<li>
+					<a href="camera.html">Camera</a>
+				</li>
+			</ul>
+		</div>
+
+		<div data-role="header">
+			<a href="#leftpanel2" data-role="button" data-inline="true" data-mini="true"><i class="fa fa-bars"></i></a>
+			<h1>Walk Summary</h1>
+		</div>
+
+		<div data-role="main" class="ui-content">
+			<div class="map">
+				<div id="finishedRoute" style="height:150px; width: 100%;"></div>
+				<div class="ui-grid-a">
+					<div class="ui-block-a home_btns">
+						<div class="ui-block-a finishedDistance">
+							<i class="fa fa-map-marker"></i>
+						</div>
+						<div class="ui-block-b">
+							<p>Distance <br/><span id="finalDistance" class="value"></span></p>
+						</div>
+					</div>
+					<div class="ui-block-b home_btns">
+						<div class="ui-block-a finishedDistance">
+							<i class="fa fa-clock-o"></i>
+						</div>
+						<div class="ui-block-b finishedDuration">
+							<p>Duration <br/><span class="value" id="finalDuration"></span></p>
+						</div>
+					</div>
+				</div>
+				<span class="horizontalSplitter"></span>
+				<div class="walkDescription" contenteditable="true" data-text="Add a description"></div>
+				<span class="horizontalSplitter"></span>
+				<button id="stopWalk" onClick="getPicture()">Add Photographs</button>
+				<div id="photosContainer" class="horizontal-images">
+					<div class="photos"></div>
+				</div>
+			</div><!-- /content -->
+		</div>
+
+		<div data-role="footer"></div>
+		<script type="text/javascript" src="js/finishedWalk.js"></script>
+		<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+		<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
+	</div>
+
+
+<script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

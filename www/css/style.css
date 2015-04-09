@@ -73,29 +73,29 @@ a:hover {
   background-color: #66BB6A;
   color: purple; }
 
-.ui-panel-open {
+.ui-panel {
   background: #333; }
-  .ui-panel-open .ui-panel-inner {
+  .ui-panel .ui-panel-inner {
     padding: 0; }
-    .ui-panel-open .ui-panel-inner .profile_area {
+    .ui-panel .ui-panel-inner .profile_area {
       float: left;
       padding: 20px;
       clear: both;
       width: 100%; }
-      .ui-panel-open .ui-panel-inner .profile_area .profile_picture {
+      .ui-panel .ui-panel-inner .profile_area .profile_picture {
         width: 25%;
         float: left; }
-      .ui-panel-open .ui-panel-inner .profile_area .user_info {
+      .ui-panel .ui-panel-inner .profile_area .user_info {
         float: left;
         color: #FFF;
         text-shadow: none; }
-    .ui-panel-open .ui-panel-inner ul {
+    .ui-panel .ui-panel-inner ul {
       clear: both;
       padding: 0;
       margin: 0;
       width: 100%;
       text-shadow: none; }
-      .ui-panel-open .ui-panel-inner ul li a {
+      .ui-panel .ui-panel-inner ul li a {
         display: block;
         padding: 0.66667rem;
         color: rgba(255, 255, 255, 0.7);
@@ -103,9 +103,9 @@ a:hover {
         transition: background 300ms ease;
         text-decoration: none;
         font-weight: normal; }
-      .ui-panel-open .ui-panel-inner ul li .active, .ui-panel-open .ui-panel-inner ul li a:hover {
+      .ui-panel .ui-panel-inner ul li .active, .ui-panel .ui-panel-inner ul li a:hover {
         background: #242424; }
-      .ui-panel-open .ui-panel-inner ul li #fbLogin {
+      .ui-panel .ui-panel-inner ul li #fbLogin {
         border-radius: 0;
         width: 85%;
         margin: 0 auto;

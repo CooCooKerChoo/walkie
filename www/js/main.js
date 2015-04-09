@@ -171,7 +171,8 @@ function addMarkerFail(error) {
         running = false,
         distance = [],
         imageArray = [],
-        speedTime = [];
+        speedTime = [],
+        currentTrackID;
 
     function track(button) {
         // Start/Resume
@@ -185,6 +186,9 @@ function addMarkerFail(error) {
             startTime = new Date();
             timerIncrement();
             distanceCalculate();
+            if( currentTrackID === undefined ) {
+                currentTrackID = getId();
+            }
         } else { // Pause/Stop
             running = false;
             navigator.geolocation.clearWatch(watchID);
@@ -193,6 +197,18 @@ function addMarkerFail(error) {
             $("#watchButton").html("RESUME");
             $("#stopWalk").fadeIn('fast');
         }
+    }
+
+    function getId() {
+        if( window.localStorage.getItem('walks') ) {
+            var walks = JSON.parse(window.localStorage.getItem('walks'));
+            walks.push(walks.length);
+            window.localStorage.setItem('walks', walks);
+            return walks.length-1;
+        }
+
+        window.localStorage.setItem('walks', JSON.stringify([0]));
+        return 0;
     }
 
         function onSuccessTrack(position) {
@@ -343,10 +359,16 @@ function addMarkerFail(error) {
 
         // Save image into localStorage
         try {
-        alert('Image Saved');
+            var images = JSON.parse(localStorage.getItem("images_" + currentTrackID));
+            if( typeof images == 'array' ) {
+                images.push(imgAsDataURL);
+                localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+            } else {
+                images = [imgAsDataURL];
+                localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+            }
         }
         catch (e) {
-        alert("Storage failed: " + e);
         }
     }
 
@@ -358,14 +380,14 @@ function addMarkerFail(error) {
 
 function stopSession() {
     finishedDuration = document.getElementById("duration").innerText;
-    localStorage.setItem("overallTime", finishedDuration);
+    localStorage.setItem("overallTime_" + currentTrackID, finishedDuration);
 
     finishedDistance = document.getElementById("distance").innerText;
-    localStorage.setItem("overallDistance", finishedDistance)
+    localStorage.setItem("overallDistance_" + currentTrackID, finishedDistance)
 
-    localStorage.setItem("completePath", googleLatLng)
+    localStorage.setItem("completePath_" + currentTrackID, googleLatLng)
 
-    localStorage.setItem("totalMarkers", markers)
+    localStorage.setItem("markers_" + currentTrackID, JSON.stringify(markers))
 
     window.location.href = "#map-page";
 }

@@ -53,48 +53,42 @@
                 }
             }  
 
-            var storedDuration = localStorage.getItem("overallTime")
+            var storedDuration = localStorage.getItem("overallTime_" + currentTrackID)
             if(storedDuration) {
                 document.getElementById("finalDuration").innerHTML = storedDuration;
             }
 
-            var storedDistance = localStorage.getItem("overallDistance")
+            var storedDistance = localStorage.getItem("overallDistance_" +currentTrackID)
             if(storedDistance) {
                 document.getElementById("finalDistance").innerHTML = storedDistance;
             }
 
-            var storedPath = localStorage.getItem("completePath")
+            var storedPath = localStorage.getItem("completePath_" +currentTrackID)
             if(storedPath) {
                 // alert(storedPath);
             }
 
-            var storedMarkers = localStorage.getItem("totalMarkers")
+            var storedMarkers = localStorage.getItem("totalMarkers_" + currentTrackID)
             if(storedMarkers) {
                 document.getElementById('markersArray').value = JSON.stringify(markers);
-            }
-
-            var imageStorage = localStorage.getItem("savedImage");
-            if(imageStorage) {
-                document.getElementById('image').innerHTML = "data:image/jpeg;base64," + imageStorage;    
             }
 
 });
 
              function getPicture() {
-                navigator.camera.getPicture(onPictureSuccess, onPictureFail, {quality: 70, destinationType: Camera.DestinationType.FILE_URI, sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM, targetWidth: 125, targetHeight: 125})
+                var images = window.localStorage.getItem('images_' + currentTrackID);
+
+                for( var i = 0, c = images.length; i < c; i++ ) {
+                    // Create new Image element
+                    var img = $('<img class="image"/>');
+                    img.attr('src', 'data:image/jpeg;base64,' + images[i]);
+
+                    // Append new img to our photos div
+                    img.appendTo('.photos');
+                }
             }
 
-            function onPictureSuccess(imageURI) {
-
-            // Create new Image element
-            var img = $('<img />');
-            img.attr('src', imageURI);
-
-            // Append new img to our photos div
-            img.appendTo('.photos');
-
-            }
-
-            function onPictureFail(message) {
-                alert('Failed because: ' + message);
+            function saveInfo() {
+                var saveAllInfo = document.getElementById("walkDescription").innerText;
+                localStorage.setItem("walkDescription_" + currentTrackID, saveAllInfo);
             }

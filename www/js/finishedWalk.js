@@ -73,19 +73,20 @@
                 document.getElementById('markersArray').value = JSON.stringify(markers);
             }
 
+            var images = window.localStorage.getItem('images_' + currentTrackID);
+
+            for( var i = 0, c = images.length; i < c; i++ ) {
+                // Create new Image element
+                var img = $('<div class="image"/>');
+                img.html(img.html() + images[i]);
+
+                // Append new img to our photos div
+                img.appendTo('.photos');
+            }
+
 });
 
              function getPicture() {
-                var images = window.localStorage.getItem('images_' + currentTrackID);
-
-                for( var i = 0, c = images.length; i < c; i++ ) {
-                    // Create new Image element
-                    var img = $('<div class="image"/>');
-                    img.html(img.html() + images[i]);
-
-                    // Append new img to our photos div
-                    img.appendTo('.photos');
-                }
             }
 
             function saveInfo() {

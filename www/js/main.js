@@ -340,9 +340,23 @@ function addMarkerFail(error) {
     }
 
     function onCameraSuccess(imageData) {
-        var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
-        images.push("data:image/jpeg;base64," + imageData);
-        localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+        var img = new Image();
+        img.src =  URL; //js global var
+
+        img.onload = function( ) {
+
+            var canvas  =  document.getElementById( 'myCanvas' ); 
+            canvas.setAttribute( "width", img.width );
+            canvas.setAttribute( "height", img.height );
+
+            var context  =  canvas.getContext( '2d' );
+            context.drawImage( img, 0, 0 );
+            canvas.style.width = "100%"; 
+            var data = canvas.toDataURL("image/png");
+             var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
+            images.push("data:image/jpeg;base64," + data);
+            localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+        }
     }
 
     function onCameraFail(message) {

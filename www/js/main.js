@@ -331,7 +331,7 @@ function addMarkerFail(error) {
 
     function capturePhoto() {
         navigator.camera.getPicture(onCameraSuccess, onCameraFail, {
-            quality: 70, 
+            quality: 20, 
             destinationType : Camera.DestinationType.DATA_URL, 
             sourceType: Camera.PictureSourceType.CAMERA,
             encodingType: Camera.EncodingType.JPEG,
@@ -340,12 +340,8 @@ function addMarkerFail(error) {
     }
 
     function onCameraSuccess(imageData) {
-        var images = JSON.parse(localStorage.getItem("images_" + currentTrackID));
-        if( typeof images == 'array' ) {
-            images.push("data:image/jpeg;base64," + imageData);
-        } else {
-            images = ["data:image/jpeg;base64," + imageData];
-        }
+        var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
+        images.push("data:image/jpeg;base64," + imageData);
         localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
     }
 

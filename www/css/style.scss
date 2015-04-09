@@ -262,7 +262,7 @@ margin: 10px 0;
 [contentEditable=true]:empty:not(:focus):before{
         content:attr(data-text);
         color: #CCC;
-    }
+}
 
 
 #photosContainer {
@@ -277,5 +277,41 @@ margin: 10px 0;
                 width: 100px;
                 box-sizing: border-box;
             }
+    }
+}
+
+.marker-info-win {
+    max-width: 210px;
+    overflow: hidden;
+    .warning-title {
+        float:left;
+        width: 100%;
+        margin-bottom: 10px;
+        border: none;
+        border-bottom: 1px solid #CCC;
+        position: relative;
+        width: 180px;
+        margin-right: 10px;
+    }
+    .warning-additional-info {
+        float:left;
+        width: 100%;
+        margin-bottom: 10px;
+        border: none;
+        border-bottom: 1px solid #CCC;
+        position: relative;
+        width: 180px;
+        margin-right: 10px;
+    }
+    .fa {
+        float: left;
+        line-height: 20px;
+    }
+    button{
+        background: #4CAF50;
+        box-shadow: none;
+        border: none;
+        color: #FFF;
+        padding: 5px 10px;
     }
 }

@@ -256,4 +256,35 @@ a:hover {
     width: 100px;
     box-sizing: border-box; }
 
+.marker-info-win {
+  max-width: 210px;
+  overflow: hidden; }
+  .marker-info-win .warning-title {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+    width: 180px;
+    margin-right: 10px; }
+  .marker-info-win .warning-additional-info {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+    width: 180px;
+    margin-right: 10px; }
+  .marker-info-win .fa {
+    float: left;
+    line-height: 20px; }
+  .marker-info-win button {
+    background: #4CAF50;
+    box-shadow: none;
+    border: none;
+    color: #FFF;
+    padding: 5px 10px; }
+
 /*# sourceMappingURL=style.css.map */

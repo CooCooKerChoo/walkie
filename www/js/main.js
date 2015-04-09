@@ -1,5 +1,6 @@
 var googleLatLng = [],
-    latlngs = [];
+    latlngs = [],
+    markers = [];
 
     function storeLatLng( lat, lng ) {
         googleLatLng.push(new google.maps.LatLng(lat, lng));
@@ -56,35 +57,62 @@ function addMapMarker() {
     navigator.geolocation.getCurrentPosition(addMarker, addMarkerFail);
 }
 
+counter = 0;
+
 function addMarker(position) {
+counter++;
+
     var bridgeIcon = new google.maps.MarkerImage("img/map_markers/warning_map_marker.png", null, null, null);
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
         map: map,
         title: "Hello!!",
         draggable: true,
-        icon: bridgeIcon
+        animation: google.maps.Animation.DROP,
+        icon: bridgeIcon,
+        id: counter
     });
 
+    markers.push(marker);
+
         //Content structure of info Window for the Markers
-        var contentString = $('<div class="marker-info-win">'+
-        '<div class="marker-inner-win"><span class="info-content">'+
-        '<h1 class="marker-heading">New Marker</h1>'+
-        'This is a new marker infoWindow'+ 
-        '</span>'+
-        '</div></div>');
+        var contentString = '<div class="marker-info-win">' +
+            '<h3>Marker Information</h3>' +
+            '<div class="warning-title" contenteditable="true" data-text="Warning Title"/></div>'+
+            '<i class="fa fa-pencil"></i>' +
+            '<div class="warning-additional-info" contenteditable="true" data-text="Warning Additional Information"></div>'+
+            '<i class="fa fa-pencil"></i>' +
+            '<br/><button id="deleteButton" name="remove-marker" class="remove-marker" title="Remove Marker" data-id="'+ counter +'">Remove Marker</button></div>';
             
         //Create an infoWindow
-        var infowindow = new google.maps.InfoWindow();
-        
-        //set the content of infoWindow
-        infowindow.setContent(contentString[0]);
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
         
         //add click event listener to marker which will open infoWindow          
         google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map,marker); // click on marker opens info window 
         });
+
+google.maps.event.addListener(infowindow, 'domready', function () {
+        var button = document.getElementById('deleteButton');
+        var id = parseInt(button.getAttribute('data-id'));  
+        button.onclick = function() {
+            deleteMarker(id);
+        };
+    });
 }
+
+function deleteMarker(markerId) {
+   for (var i=0; i<markers.length; i++) {
+        
+        if (markers[i].id === markerId) {
+
+            markers[i].setMap(null);
+        }
+    }
+}
+
 
 function addMarkerFail(error) {
     alert("Error: " + error.code);

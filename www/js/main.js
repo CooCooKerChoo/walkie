@@ -21,6 +21,17 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
         var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
         navigator.geolocation.getCurrentPosition(onSuccess, distanceCalculate, onError, addMapMarker, posOptions);
+
+            function getInfo() {
+                openFB.api({
+                    path: '/me',
+                    success: function(data) {
+                        console.log(JSON.stringify(data));
+                        document.getElementById("userName").innerHTML = data.name;
+                        document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+                    },
+                    error: errorHandler});
+            }
     }
 
 

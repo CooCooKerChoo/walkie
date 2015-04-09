@@ -78,7 +78,8 @@ a:hover {
   .ui-panel-open .ui-panel-inner {
     padding: 0; }
     .ui-panel-open .ui-panel-inner .profile_area {
-      padding: 20px 0;
+      float: left;
+      padding: 20px;
       clear: both; }
       .ui-panel-open .ui-panel-inner .profile_area .profile_picture {
         width: 25%;

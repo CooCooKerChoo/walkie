@@ -88,6 +88,7 @@ a:hover {
         color: #FFF;
         text-shadow: none; }
     .ui-panel-open .ui-panel-inner ul {
+      clear: both;
       padding: 0;
       margin: 0;
       width: 100%;

@@ -11,7 +11,7 @@ var googleLatLng = [],
 
             // console.log(localStorage.getItem("GoogleLatLng"));
 
-            console.log(googleLatLng);
+            // console.log(googleLatLng);
     }
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -362,11 +362,10 @@ function addMarkerFail(error) {
             var images = JSON.parse(localStorage.getItem("images_" + currentTrackID));
             if( typeof images == 'array' ) {
                 images.push(imgAsDataURL);
-                localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
             } else {
                 images = [imgAsDataURL];
-                localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
             }
+            localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         }
         catch (e) {
         }

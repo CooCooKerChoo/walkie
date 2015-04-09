@@ -340,36 +340,14 @@ function addMarkerFail(error) {
     }
 
     function onCameraSuccess(imageData) {
-        //In our success call we want to first process the image to save in our image box on the screen.
-
-        //Create a new canvas for our image holder
-
-        var imgCanvas = document.createElement("canvas"),
-        imgContext = imgCanvas.getContext("2d");
-
-        // Make sure canvas is as big as the picture
-        imgCanvas.width = image.width;
-        imgCanvas.height = image.height;
-
-        // Draw image into canvas element
-        imgContext.drawImage(image, 0, 0, image.width, image.height);
-
-        // Get canvas contents as a data URL
-        var imgAsDataURL = imgCanvas.toDataURL("image/png");
-
-        // Save image into localStorage
-        try {
-            var images = JSON.parse(localStorage.getItem("images_" + currentTrackID));
-            if( typeof images == 'array' ) {
-                images.push(imgAsDataURL);
-            } else {
-                images = [imgAsDataURL];
-            }
-            alert(JSON.stringify(images));
-            localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+        var images = JSON.parse(localStorage.getItem("images_" + currentTrackID));
+        if( typeof images == 'array' ) {
+            images.push("data:image/jpeg;base64," + imageData);
+        } else {
+            images = ["data:image/jpeg;base64," + imageData];
         }
-        catch (e) {
-        }
+        alert(JSON.stringify(images));
+        localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
     }
 
     function onCameraFail(message) {

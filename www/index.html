@@ -21,8 +21,7 @@
 					<img id="userPic"/>
 				</div>
 				<div class="user_info">
-					<p id="userName">Joe Bloggs</p>
-					<p class="location">Stafford, England</p>
+					<p id="userName"></p>
 				</div>
 			</div>
 			<ul>
@@ -37,9 +36,6 @@
 				</li>
 				<li>
 					<button class="btn btn-block" onclick="login()">Login with Facebook</button>
-				</li>
-				<li>
-					<button class="btn btn-block" onclick="getInfo()">Get My Info</button>
 				</li>
 			</ul>
 		</div>
@@ -92,11 +88,10 @@
 		<div data-role="panel" id="leftpanel2" data-position="left" data-display="push" data-dismissible="true" data-theme="a">
 			<div class="profile_area">
 				<div class="profile_picture">
-					<img src="img/profile_picture.png" alt="profile picture"/>
+					<img id="userPic"/>
 				</div>
 				<div class="user_info">
-					<p>Joe Bloggs</p>
-					<p class="location">Stafford, England</p>
+					<p id="userName"></p>
 				</div>
 			</div>
 			<ul>
@@ -186,7 +181,7 @@
                     success: function(data) {
                         console.log(JSON.stringify(data));
                         document.getElementById("userName").innerHTML = data.name;
-                        document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+                        document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=medium';
                     },
                     error: errorHandler});
             }

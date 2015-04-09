@@ -365,6 +365,7 @@ function addMarkerFail(error) {
             } else {
                 images = [imgAsDataURL];
             }
+            alert(JSON.stringify(images));
             localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         }
         catch (e) {

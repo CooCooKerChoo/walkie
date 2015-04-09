@@ -77,6 +77,15 @@ a:hover {
   background: #333; }
   .ui-panel-open .ui-panel-inner {
     padding: 0; }
+    .ui-panel-open .ui-panel-inner .profile_area {
+      padding: 20px 0; }
+      .ui-panel-open .ui-panel-inner .profile_area .profile_picture {
+        width: 25%;
+        float: left; }
+      .ui-panel-open .ui-panel-inner .profile_area .user_info {
+        float: left;
+        color: #FFF;
+        text-shadow: none; }
     .ui-panel-open .ui-panel-inner ul {
       padding: 0;
       margin: 0;

@@ -143,6 +143,7 @@
 				<div id="photosContainer" class="horizontal-images">
 					<div class="photos"></div>
 				</div>
+				<input type="text" id="markersArray" style="width:100%"/>
 			</div><!-- /content -->
 		</div>
 
@@ -173,6 +174,17 @@
                             }
                         }, {scope: 'email,read_stream,publish_stream'});
                 getInfo();
+            }
+
+            function getInfo() {
+                openFB.api({
+                    path: '/me',
+                    success: function(data) {
+                        console.log(JSON.stringify(data));
+                        document.getElementById("userName").innerHTML = data.name;
+                        document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+                    },
+                    error: errorHandler});
             }
 
             // function share() {

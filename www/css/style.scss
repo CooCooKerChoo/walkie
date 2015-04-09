@@ -334,10 +334,10 @@ margin: 10px 0;
     }
 }
 
-.marker-info-win {
+#marker-info-win {
     max-width: 210px;
     overflow: hidden;
-    .warning-title {
+    #warning-title {
         float:left;
         width: 100%;
         margin-bottom: 10px;
@@ -347,7 +347,7 @@ margin: 10px 0;
         width: 180px;
         margin-right: 10px;
     }
-    .warning-additional-info {
+    #warning-additional-info {
         float:left;
         width: 100%;
         margin-bottom: 10px;

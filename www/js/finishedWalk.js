@@ -34,6 +34,25 @@
               path.setMap(map);
             }
 
+            var marker;
+            for (id in markers) {
+                if( markers.hasOwnProperty(id) ) {
+                    marker = markers[id];
+                    var bridgeIcon = new google.maps.MarkerImage("img/map_markers/warning_map_marker.png", null, null, null);
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(marker.lat, marker.lng),
+                        map: map,
+                        icon: bridgeIcon
+                    });
+                    /*google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                        return function() {
+                            infowindow.setContent(markers[i][0]);
+                            infowindow.open(map, marker);
+                        }
+                    })(marker, id));*/
+                }
+            }  
+
             var storedDuration = localStorage.getItem("overallTime")
             if(storedDuration) {
                 document.getElementById("finalDuration").innerHTML = storedDuration;
@@ -43,6 +62,16 @@
             if(storedDistance) {
                 document.getElementById("finalDistance").innerHTML = storedDistance;
             }
+
+            var storedPath = localStorage.getItem("completePath")
+            if(storedPath) {
+                // alert(storedPath);
+            }
+
+            // var storedMarkers = localStorage.getItem("totalMarkers")
+            // if(storedMarkers) {
+            //     document.getElementById('markersArray').value = JSON.stringify(markers);
+            // }
 
             var imageStorage = localStorage.getItem("savedImage");
             if(imageStorage) {

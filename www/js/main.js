@@ -1,6 +1,6 @@
 var googleLatLng = [],
     latlngs = [],
-    markers = [];
+    markers = {};
 
     function storeLatLng( lat, lng ) {
         googleLatLng.push(new google.maps.LatLng(lat, lng));
@@ -22,16 +22,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
         navigator.geolocation.getCurrentPosition(onSuccess, distanceCalculate, onError, addMapMarker, posOptions);
 
-            function getInfo() {
-                openFB.api({
-                    path: '/me',
-                    success: function(data) {
-                        console.log(JSON.stringify(data));
-                        document.getElementById("userName").innerHTML = data.name;
-                        document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-                    },
-                    error: errorHandler});
-            }
     }
 
 
@@ -70,6 +60,8 @@ function addMapMarker() {
 
 counter = 0;
 
+var currentMark;
+
 function addMarker(position) {
 counter++;
 
@@ -77,51 +69,80 @@ counter++;
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
         map: map,
-        title: "Hello!!",
         draggable: true,
         animation: google.maps.Animation.DROP,
         icon: bridgeIcon,
         id: counter
     });
 
-    markers.push(marker);
+    markers[marker.id] = {
+        id: marker.id,
+        marker: marker,
+        title: '',
+        info: '',
+        // title: (document.getElementById("warning-title").value),
+        lat: marker.getPosition().lat(),
+        lng: marker.getPosition().lng()
+    };
 
-        //Content structure of info Window for the Markers
-        var contentString = '<div class="marker-info-win">' +
-            '<h3>Marker Information</h3>' +
-            '<div class="warning-title" contenteditable="true" data-text="Warning Title"/></div>'+
-            '<i class="fa fa-pencil"></i>' +
-            '<div class="warning-additional-info" contenteditable="true" data-text="Warning Additional Information"></div>'+
-            '<i class="fa fa-pencil"></i>' +
-            '<br/><button id="deleteButton" name="remove-marker" class="remove-marker" title="Remove Marker" data-id="'+ counter +'">Remove Marker</button></div>';
-            
-        //Create an infoWindow
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
+
+    //Content structure of info Window for the Markers
+    var contentString = '<div id="marker-info-win" data-id="'+marker.id+'">' +
+        '<h3>Marker Information</h3>' +
+        '<div id="warning-title" contenteditable="true" onkeyup="markerTitle(this, '+marker.id+')" data-text="Warning Title"/></div>'+
+        '<i class="fa fa-pencil"></i>' +
+        '<div id="warning-additional-info" contenteditable="true" onkeyup="markerInfo(this, '+marker.id+')" data-text="Warning Additional Information"></div>'+
+        '<i class="fa fa-pencil"></i>' +
+        '<br/><button id="deleteButton" name="remove-marker" class="remove-marker" title="Remove Marker" data-id="'+ counter +'">Remove Marker</button></div>';
         
-        //add click event listener to marker which will open infoWindow          
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map,marker); // click on marker opens info window 
-        });
+    //Create an infoWindow
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+    
+    //add click event listener to marker which will open infoWindow          
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map,this); // click on marker opens info window 
+        currentMark = this;
+    });
 
-google.maps.event.addListener(infowindow, 'domready', function () {
+     google.maps.event.addListener(marker, "dragend", function(event) {
+        markers[marker.id].lat = event.latLng.lat();
+        markers[marker.id].lng = event.latLng.lng();
+    }); 
+
+    google.maps.event.addListener(infowindow, 'domready', function () {
         var button = document.getElementById('deleteButton');
         var id = parseInt(button.getAttribute('data-id'));  
         button.onclick = function() {
             deleteMarker(id);
         };
     });
+
+    // markers = [
+    //     [marker.id, marker.getPosition().lat(), marker.getPosition().lng()]
+    // ];
+
+    google.maps.event.addListener(infowindow,'closeclick', function(){
+        // markers.push(marker);
+        console.log(markers);
+    });
+}
+
+    // window.localStorage.setItem('markers_1', JSON.stringify(markers));
+    // JSON.parse(window.localStorage.getItem('markers_1'));
+function markerTitle(elem, markerId) {
+    markers[markerId].title = elem.innerText;
+    markers[markerId].marker.title = elem.innerText;
+}
+
+function markerInfo(elem, markerId) {
+    markers[markerId].info = elem.innerText;
 }
 
 function deleteMarker(markerId) {
-   for (var i=0; i<markers.length; i++) {
-        
-        if (markers[i].id === markerId) {
-
-            markers[i].setMap(null);
-        }
-    }
+   delete markers[markerId];
+   currentMark.setMap(null);
 }
 
 
@@ -342,6 +363,10 @@ function stopSession() {
 
     finishedDistance = document.getElementById("distance").innerText;
     localStorage.setItem("overallDistance", finishedDistance)
+
+    localStorage.setItem("completePath", googleLatLng)
+
+    localStorage.setItem("totalMarkers", markers)
 
     window.location.href = "#map-page";
 }

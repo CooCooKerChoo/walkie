@@ -297,10 +297,10 @@ a:hover {
     width: 100px;
     box-sizing: border-box; }
 
-.marker-info-win {
+#marker-info-win {
   max-width: 210px;
   overflow: hidden; }
-  .marker-info-win .warning-title {
+  #marker-info-win #warning-title {
     float: left;
     width: 100%;
     margin-bottom: 10px;
@@ -309,7 +309,7 @@ a:hover {
     position: relative;
     width: 180px;
     margin-right: 10px; }
-  .marker-info-win .warning-additional-info {
+  #marker-info-win #warning-additional-info {
     float: left;
     width: 100%;
     margin-bottom: 10px;
@@ -318,10 +318,10 @@ a:hover {
     position: relative;
     width: 180px;
     margin-right: 10px; }
-  .marker-info-win .fa {
+  #marker-info-win .fa {
     float: left;
     line-height: 20px; }
-  .marker-info-win button {
+  #marker-info-win button {
     background: #4CAF50;
     box-shadow: none;
     border: none;

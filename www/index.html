@@ -195,40 +195,28 @@
 		</div>
 
 		<div data-role="main" class="ui-content">
-			<div class="map">
-				<div id="finishedRoute" style="height:150px; width: 100%;"></div>
-				<div class="ui-grid-a">
-					<div class="ui-block-a home_btns">
-						<div class="ui-block-a finishedDistance">
-							<i class="fa fa-map-marker"></i>
-						</div>
-						<div class="ui-block-b">
-							<p>Distance <br/><span id="finalDistance" class="value"></span></p>
-						</div>
-					</div>
-					<div class="ui-block-b home_btns">
-						<div class="ui-block-a finishedDistance">
-							<i class="fa fa-clock-o"></i>
-						</div>
-						<div class="ui-block-b finishedDuration">
-							<p>Duration <br/><span class="value" id="finalDuration"></span></p>
-						</div>
-					</div>
-				</div>
-				<span class="horizontalSplitter"></span>
-				<div class="walkDescription" contenteditable="true" data-text="Add a description"></div>
-				<span class="horizontalSplitter"></span>
-				<button id="stopWalk" onClick="getPicture()">Add Photographs</button>
-				<div id="photosContainer" class="horizontal-images">
-					<div class="photos"></div>
-				</div>
-			</div><!-- /content -->
+	        <button class="btn btn-block" onclick="login()">Login with Facebook</button>
+	        <hr/>
+
+	        <button class="btn btn-block" onclick="getInfo()">Get My Info</button>
+	        <p>Name: <span id="userName"></span></p>
+	        <img id="userPic"/>
+	        <hr/>
+
+	        <textarea id="Message" placeholder="What's on your mind?" rows="5"></textarea>
+	        <button class="btn btn-block" onclick="share()">Share</button>
+	        <hr/>
+
+	        <p>Complete Facebook Logout. After logging out, you'll have to login again and provide your Facebook credentials.</p>
+	        <button class="btn btn-block" onclick="logout()">Logout</button>
+	        <hr/>
+
+	        <p>Revoke App Permissions. After revoking permissions, you'll have to grant permissions again when logging in.</p>
+	        <button class="btn btn-block" onclick="revoke()">Revoke Permissions</button>
 		</div>
 
 		<div data-role="footer"></div>
-		<script type="text/javascript" src="js/finishedWalk.js"></script>
-		<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
-		<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
+		<script type="text/javascript" src="js/openfb.js"></script>
 	</div>
 
 

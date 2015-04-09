@@ -42,7 +42,7 @@
 						<a href="view_routes.html">View Routes</a>
 					</li>
 					<li>
-						<a href="login.html">Login</a>
+						<a href="#page-login">Login</a>
 					</li>
 					<li>
 						<a href="camera.html">Camera</a>
@@ -122,7 +122,7 @@
 							<a href="view_routes.html">View Routes</a>
 						</li>
 						<li>
-							<a href="login.html">Login</a>
+							<a href="#page-login">Login</a>
 						</li>
 						<li>
 							<a href="camera.html">Camera</a>
@@ -172,6 +172,79 @@
 				<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 				<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
 		</div><!-- /page two -->
+
+	<div data-role="page" id="page-login">
+		<div data-role="panel" id="leftpanel2" data-position="left" data-display="push" data-dismissible="true" data-theme="a">
+			<div class="profile_area">
+				<div class="row">
+					<div class="small-3 columns">
+						<div class="profile_picture">
+							<img src="img/profile_picture.png" alt="profile picture"/>
+						</div>
+					</div>
+					<div class="small-9 columns">
+						<div class="user_info">
+							<p>Joe Bloggs</p>
+							<p class="location">Stafford,
+								England</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul>
+					<li>
+						<a class="active" href="index.html">Record</a>
+					</li>
+					<li>
+						<a href="my_routes.html">My Routes</a>
+					</li>
+					<li>
+						<a href="view_routes.html">View Routes</a>
+					</li>
+					<li>
+						<a href="#page-login">Login</a>
+					</li>
+					<li>
+						<a href="camera.html">Camera</a>
+					</li>
+				</ul>
+			</div>
+			<div data-role="header">
+				<a href="#leftpanel2" data-role="button" data-inline="true" data-mini="true"><i class="fa fa-bars"></i></a>
+				<h1>Record</h1>
+			</div>
+
+			<div data-role="main" class="ui-content">
+                    <div class="content_container">
+                        <div class="row">
+                            <div class="small-12 columns">
+                                <button class="btn btn-block" onclick="login()">Login with Facebook</button>
+                                <hr/>
+
+                                <button class="btn btn-block" onclick="getInfo()">Get My Info</button>
+                                <p>Name: <span id="userName"></span></p>
+                                <img id="userPic"/>
+                                <hr/>
+
+                                <textarea id="Message" placeholder="What's on your mind?" rows="5"></textarea>
+                                <button class="btn btn-block" onclick="share()">Share</button>
+                                <hr/>
+
+                                <p>Complete Facebook Logout. After logging out, you'll have to login again and provide your Facebook credentials.</p>
+                                <button class="btn btn-block" onclick="logout()">Logout</button>
+                                <hr/>
+
+                                <p>Revoke App Permissions. After revoking permissions, you'll have to grant permissions again when logging in.</p>
+                                <button class="btn btn-block" onclick="revoke()">Revoke Permissions</button>
+                            </div>
+                        </div>
+                    </div>
+			</div>
+
+			<div data-role="footer">
+			</div>
+		<script type="text/javascript" src="js/openfb.js"></script>
+		</div>		
 
 		<script type="text/javascript" src="cordova.js"></script>
 	</body>

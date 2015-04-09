@@ -125,7 +125,7 @@ a:hover {
       display: block;
       text-align: center; }
   .ui-panel-wrapper .ui-footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
     height: 50px;

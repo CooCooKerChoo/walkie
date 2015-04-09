@@ -77,7 +77,6 @@ counter++;
 
     markers[marker.id] = {
         id: marker.id,
-        marker: marker,
         title: '',
         info: '',
         // title: (document.getElementById("warning-title").value),

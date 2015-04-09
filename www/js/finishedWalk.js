@@ -68,10 +68,10 @@
                 // alert(storedPath);
             }
 
-            // var storedMarkers = localStorage.getItem("totalMarkers")
-            // if(storedMarkers) {
-            //     document.getElementById('markersArray').value = JSON.stringify(markers);
-            // }
+            var storedMarkers = localStorage.getItem("totalMarkers")
+            if(storedMarkers) {
+                document.getElementById('markersArray').value = JSON.stringify(markers);
+            }
 
             var imageStorage = localStorage.getItem("savedImage");
             if(imageStorage) {

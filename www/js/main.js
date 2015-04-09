@@ -19,14 +19,14 @@ document.addEventListener("deviceready", onDeviceReady, false);
     //
     function onDeviceReady() {
         var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
-        navigator.geolocation.getCurrentPosition(onSuccess, distanceCalculate, onError, posOptions);
+        navigator.geolocation.getCurrentPosition(onSuccess, distanceCalculate, onError, addMapMarker, posOptions);
     }
 
 
     function onSuccess(position) {
 
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
         coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
         storeLatLng(latitude, longitude);
@@ -52,57 +52,52 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 // =================================================== START OF CUSTOM MARKERS ================================================== //
 
-$(document).ready(function() {
-    $("#map_marker").click(function(){
-        $("#map_marker_container").toggle('slow');
-    });
-});
+function addMapMarker() {
+    navigator.geolocation.getCurrentPosition(addMarker, addMarkerFail);
+}
 
-
-function addBridgeIcon(position) {
-        var bridgeIcon = new google.maps.MarkerImage("img/map_markers/bridge_map_marker.svg", null, null, null, new google.maps.Size(50, 50));
-        var bridgeMarker = new google.maps.Marker({
-        position: coords,
+function addMarker(position) {
+    var bridgeIcon = new google.maps.MarkerImage("img/map_markers/warning_map_marker.png", null, null, null);
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
         map: map,
+        title: "Hello!!",
+        draggable: true,
         icon: bridgeIcon
     });
+
+        //Content structure of info Window for the Markers
+        var contentString = $('<div class="marker-info-win">'+
+        '<div class="marker-inner-win"><span class="info-content">'+
+        '<h1 class="marker-heading">New Marker</h1>'+
+        'This is a new marker infoWindow'+ 
+        '</span>'+
+        '</div></div>');
+            
+        //Create an infoWindow
+        var infowindow = new google.maps.InfoWindow();
+        
+        //set the content of infoWindow
+        infowindow.setContent(contentString[0]);
+        
+        //add click event listener to marker which will open infoWindow          
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker); // click on marker opens info window 
+        });
 }
 
-function addWaterIcon(position) {
-        var waterIcon = new google.maps.MarkerImage("img/map_markers/water_map_marker.svg", null, null, null, new google.maps.Size(50, 50));
-        var waterMarker = new google.maps.Marker({
-        position: coords,
-        map: map,
-        icon: waterIcon
-    });
+function addMarkerFail(error) {
+    alert("Error: " + error.code);
 }
 
-function addRocksIcon(position) {
-        var rocksIcon = new google.maps.MarkerImage("img/map_markers/rocks_map_marker.svg", null, null, null, new google.maps.Size(50, 50));
-        var rocksMarker = new google.maps.Marker({
-        position: coords,
-        map: map,
-        icon: rocksIcon
-    });
-}
-
-function addUnevenIcon(position) {
-        var unevenIcon = new google.maps.MarkerImage("img/map_markers/uneven_map_marker.svg", null, null, null, new google.maps.Size(50, 50));
-        var unevenMarker = new google.maps.Marker({
-        position: coords,
-        map: map,
-        icon: unevenIcon
-    });
-}
-
-function addBlockageIcon(position) {
-        var blockageIcon = new google.maps.MarkerImage("img/map_markers/path_blockage_map_marker.svg", null, null, null, new google.maps.Size(50, 50));
-        var blockageMarker = new google.maps.Marker({
-        position: coords,
-        map: map,
-        icon: blockageIcon
-    });
-}
+                // var marker = new google.maps.Marker({
+                //     positon: event.latLng,
+                //     map: map,
+                //     draggable: true,
+                //     animation: google.maps.Animation.DROP,
+                //     title: "Hello World!",
+                //     icon: "http://localhost/walkie/www/img/map_markers/pin_green.png"
+                // });
 
 // ====================================================== START OF LOCATION TRACK ====================================================== //
 

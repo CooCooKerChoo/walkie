@@ -67,48 +67,6 @@
 				</div>
 				<button id="stopWalk" onClick="stopSession()" style="display: none;">Finish</button>
 				<div id="mapPlaceholder" style="height:100%; width: 100%;"></div>
-				<div id="map_marker_container" style="display:none;">
-					<button class="map_marker_btn" onclick="addBridgeIcon()">
-						<div class="row">
-							<img src="img/map_markers/bridge_map_marker.svg"/>
-						</div>
-						<div class="row">
-							Bridge
-						</div>
-					</button>
-					<button class="map_marker_btn" onclick="addWaterIcon()">
-						<div class="row">
-							<img src="img/map_markers/water_map_marker.svg"/>
-						</div>
-						<div class="row">
-							Water
-						</div>
-					</button>
-					<button class="map_marker_btn" onclick="addRocksIcon()">
-						<div class="row">
-							<img src="img/map_markers/rocks_map_marker.svg"/>
-						</div>
-						<div class="row">
-							Loose Rocks
-						</div>
-					</button>
-					<button class="map_marker_btn" onclick="addUnevenIcon()">
-						<div class="row">
-							<img src="img/map_markers/uneven_map_marker.svg"/>
-						</div>
-						<div class="row">
-							Uneven Surfaces
-						</div>
-					</button>
-					<button class="map_marker_btn" onclick="addBlockageIcon()">
-						<div class="row">
-							<img src="img/map_markers/uneven_map_marker.svg"/>
-						</div>
-						<div class="row">
-							Pathway blocked
-						</div>
-					</button>
-				</div>
 			</div>
 
 			<div data-role="footer">
@@ -125,7 +83,7 @@
 							</button>
 						</div>
 						<div class="ui-block-c">
-							<button class="map_marker_button" id="map_marker">
+							<button class="map_marker_button" id="map_marker" onClick="addMapMarker()">
 								<i class="fa fa-map-marker size-36"></i>
 							</button>
 						</div>

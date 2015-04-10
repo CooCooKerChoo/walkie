@@ -352,7 +352,7 @@ function addMarkerFail(error) {
             var context  =  canvas.getContext( '2d' );
             context.drawImage( img, 0, 0 );
             canvas.style.width = "100%"; 
-            var data = canvas.toDataURL("image/png");
+            var data = canvas.toDataURL("image/jpeg");
             var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
             images.push(data);
             localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));

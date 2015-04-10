@@ -341,7 +341,7 @@ function addMarkerFail(error) {
 
     function onCameraSuccess(imageData) {
         var img = new Image();
-        img.src =  URL; //js global var
+        // img.src =  URL; //js global var
 
         img.onload = function( ) {
 

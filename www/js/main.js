@@ -367,7 +367,7 @@ function addMarkerFail(error) {
         c.height=this.height;
         ctx.drawImage(img, 0,0);
     };
-    img.src=imageUri;
+    img.src=imageData;
     var dataURL = c.toDataURL("image/jpeg");
 
     console.log("Encoded the data at " + imageUri + " to base64: " + dataURL);

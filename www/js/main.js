@@ -354,10 +354,9 @@ function addMarkerFail(error) {
             canvas.style.width = "100%"; 
             var data = canvas.toDataURL("image/jpeg");
             var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
-            images.push("data:image/jpeg;base64," + data);
-            localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
-
             document.getElementById("imageString").innerHTML = data;
+            images.push("data:image/jpeg;base64," + data);
+            // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         }
     }
 

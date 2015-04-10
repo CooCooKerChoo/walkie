@@ -369,6 +369,8 @@ function addMarkerFail(error) {
         var imageObJ = new Image();
         imageObj.onload = function() {
             content.drawImage(imageObj, 0, 0);
+            var body = document.getElementsByTagName("body")[0];
+            body.appendChild(canvas);
         };
     }
 

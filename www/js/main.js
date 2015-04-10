@@ -340,24 +340,38 @@ function addMarkerFail(error) {
     }
 
     function onCameraSuccess(imageData) {
-        var img = new Image();
-        img.src =  "data:image/jpeg;base64," + imageData;
+        // var img = new Image();
+        // img.src =  "data:image/jpeg;base64," + imageData;
 
-        img.onload = function( ) {
+        // img.onload = function( ) {
 
-            var canvas  =  document.getElementById( 'myCanvas' ); 
-            canvas.setAttribute( "width", img.width );
-            canvas.setAttribute( "height", img.height );
+        //     var canvas  =  document.getElementById( 'myCanvas' ); 
+        //     canvas.setAttribute( "width", img.width );
+        //     canvas.setAttribute( "height", img.height );
 
-            var context  =  canvas.getContext( '2d' );
-            context.drawImage( img, 0, 0 );
-            canvas.style.width = "100%"; 
-            var imgSrc  =  document.getElementById('myCanvas').src; 
-            var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
-            console.log(imgSrc);
-            images.push("data:image/jpeg;base64," + data);
-            // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
-        }
+        //     var context  =  canvas.getContext( '2d' );
+        //     context.drawImage( img, 0, 0 );
+        //     canvas.style.width = "100%"; 
+        //     var imgSrc  =  document.getElementById('myCanvas').src; 
+        //     var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
+        //     console.log(imgSrc);
+        //     images.push("data:image/jpeg;base64," + data);
+        //     // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+        // }
+
+    var c=document.createElement('canvas');
+    var ctx=c.getContext("2d");
+    var img=new Image();
+    img.onload = function(){
+        c.width=this.width;
+        c.height=this.height;
+        ctx.drawImage(img, 0,0);
+    };
+    img.src=imageUri;
+    var dataURL = c.toDataURL("image/jpeg");
+
+    console.log("Encoded the data at " + imageUri + " to base64: " + dataURL);
+    return dataURL;
     }
 
     function onCameraFail(message) {

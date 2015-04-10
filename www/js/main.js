@@ -385,6 +385,8 @@ function addMarkerFail(error) {
             localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         }
         img.src =  "data:image/jpg; base64," + imageData; //js global var
+
+        console.log(img.src.length);
     }
 
     function onCameraFail(message) {

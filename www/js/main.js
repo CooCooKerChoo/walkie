@@ -339,7 +339,7 @@ function addMarkerFail(error) {
             saveToPhotoAlbum: true});
     }
 
-    function onCameraSuccess(DATA_URL) {
+    function onCameraSuccess(imageData) {
         // var img = new Image();
         // img.src =  "data:image/jpeg;base64," + imageData;
 
@@ -358,20 +358,9 @@ function addMarkerFail(error) {
         //     images.push("data:image/jpeg;base64," + data);
         //     // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         // }
+        var image = document.getElementById("cameraImage");
 
-    var c=document.createElement('canvas');
-    var ctx=c.getContext("2d");
-    var img=new Image();
-    img.onload = function(){
-        c.width=this.width;
-        c.height=this.height;
-        ctx.drawImage(img, 0,0);
-    };
-    img.src=DATA_URL;
-    var dataURL = c.toDataURL("image/jpeg");
-
-    console.log(dataURL);
-    return dataURL;
+        image.src = "data:image/jpg; base64," + imageData;
     }
 
     function onCameraFail(message) {

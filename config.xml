@@ -42,7 +42,6 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
-    <gap:plugin name="com.sharinglabs.cordova.plugin.cache" version="1.0.0" />
     <icon src="icon.png" />
     <access origin="*" />
 </widget>

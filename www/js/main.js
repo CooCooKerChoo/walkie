@@ -340,53 +340,30 @@ function addMarkerFail(error) {
     }
 
     function onCameraSuccess(imageData) {
-        // var img = new Image();
-        // img.src =  "data:image/jpeg;base64," + imageData;
+        //In our success call we want to first process the image to save in our image box on the screen.
 
-        // img.onload = function( ) {
+        //Create a new canvas for our image holder
 
-        //     var canvas  =  document.getElementById( 'myCanvas' ); 
-        //     canvas.setAttribute( "width", img.width );
-        //     canvas.setAttribute( "height", img.height );
+        var imgCanvas = document.createElement("canvas"),
+        imgContext = imgCanvas.getContext("2d");
 
-        //     var context  =  canvas.getContext( '2d' );
-        //     context.drawImage( img, 0, 0 );
-        //     canvas.style.width = "100%"; 
-        //     var imgSrc  =  document.getElementById('myCanvas').src; 
-        //     console.log(imgSrc);
-        //     images.push("data:image/jpeg;base64," + data);
-        //     // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
-        // }
+        // Make sure canvas is as big as the picture
+        imgCanvas.width = image.width;
+        imgCanvas.height = image.height;
 
-        // var image = document.getElementById("cameraImage");
+        // Draw image into canvas element
+        imgContext.drawImage(image, 0, 0, image.width, image.height);
 
-        // image.src = "data:image/jpg; base64," + imageData;
+        // Get canvas contents as a data URL
+        var imgAsDataURL = imgCanvas.toDataURL("image/png");
 
-        // var photoSrc = document.getElementById("cameraImage").src;
-
-        // var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
-        // images.push(photoSrc);
-        // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
-
-        var img = new Image();
-
-        img.onload = function( ) {
-
-            var canvas  =  document.getElementById( 'myCanvas' ); 
-            canvas.setAttribute( "width", img.width );
-            canvas.setAttribute( "height", img.height );
-
-            var context  =  canvas.getContext( '2d' );
-            context.drawImage( img, 0, 0 );
-            canvas.style.width = "100%"; 
-            var data = canvas.toDataURL("image/jpg");
-            var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
-            images.push(data);
-            localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+        // Save image into localStorage
+        try {
+        alert('Image Saved');
         }
-        img.src =  "data:image/jpg; base64," + imageData; //js global var
-
-        console.log(img.src.length);
+        catch (e) {
+        alert("Storage failed: " + e);
+        }
     }
 
     function onCameraFail(message) {

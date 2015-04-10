@@ -22,6 +22,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
         navigator.geolocation.getCurrentPosition(onSuccess, distanceCalculate, onError, addMapMarker, posOptions);
 
+        window.cache.clear( success, error );
     }
 
 

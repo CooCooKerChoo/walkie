@@ -341,7 +341,7 @@ function addMarkerFail(error) {
 
     function onCameraSuccess(imageData) {
         var img = new Image();
-        // img.src =  URL; //js global var
+        img.src =  "data:image/jpeg;base64," + imageData;
 
         img.onload = function( ) {
 
@@ -352,9 +352,9 @@ function addMarkerFail(error) {
             var context  =  canvas.getContext( '2d' );
             context.drawImage( img, 0, 0 );
             canvas.style.width = "100%"; 
-            var data = canvas.toDataURL("image/jpeg");
+            var imgSrc  =  document.getElementById('myCanvas').src; 
             var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
-            console.log(data);
+            console.log(imgSrc);
             images.push("data:image/jpeg;base64," + data);
             // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         }

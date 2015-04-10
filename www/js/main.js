@@ -353,15 +353,20 @@ function addMarkerFail(error) {
         //     context.drawImage( img, 0, 0 );
         //     canvas.style.width = "100%"; 
         //     var imgSrc  =  document.getElementById('myCanvas').src; 
-        //     var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
         //     console.log(imgSrc);
         //     images.push("data:image/jpeg;base64," + data);
         //     // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         // }
-        
+
         var image = document.getElementById("cameraImage");
 
         image.src = "data:image/jpg; base64," + imageData;
+
+        var photoSrc = document.getElementById("cameraImage").src;
+
+        var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
+        images.push(photoSrc);
+        localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
     }
 
     function onCameraFail(message) {

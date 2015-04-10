@@ -331,7 +331,7 @@ function addMarkerFail(error) {
 
     function capturePhoto() {
         navigator.camera.getPicture(onCameraSuccess, onCameraFail, {
-            quality: 5, 
+            quality: 70, 
             destinationType : Camera.DestinationType.DATA_URL, 
             sourceType: Camera.PictureSourceType.CAMERA,
             encodingType: Camera.EncodingType.JPEG,

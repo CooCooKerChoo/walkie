@@ -358,9 +358,15 @@ function addMarkerFail(error) {
         //     images.push("data:image/jpeg;base64," + data);
         //     // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         // }
-        var image = document.getElementById("cameraImage");
 
-        image.src = "data:image/jpg; base64," + imageData;
+        var canvas = document.createElement('canvas');
+        var content = canvas.getContent('2d');
+        var imageObJ = new Image();
+        imageObj.onload = function() {
+            content.drawImage(imageObj, 0, 0);
+        };
+
+        imageObj.src = "data:image/jpg; base64," + imageData;
     }
 
     function onCameraFail(message) {

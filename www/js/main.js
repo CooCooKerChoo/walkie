@@ -356,6 +356,8 @@ function addMarkerFail(error) {
             var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
             images.push("data:image/jpeg;base64," + data);
             localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+
+            document.getElementById("imageString").innerHTML = data;
         }
     }
 

@@ -370,7 +370,7 @@ function addMarkerFail(error) {
     img.src=imageData;
     var dataURL = c.toDataURL("image/jpeg");
 
-    console.log("Encoded the data at " + imageUri + " to base64: " + dataURL);
+    console.log(dataURL);
     return dataURL;
     }
 

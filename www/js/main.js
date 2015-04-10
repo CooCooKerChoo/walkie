@@ -381,9 +381,9 @@ function addMarkerFail(error) {
             context.drawImage( img, 0, 0 );
             canvas.style.width = "100%"; 
             var data = canvas.toDataURL("image/png");
-            var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
+            var images = JSON.parse(sessionStorage.getItem("images_" + currentTrackID)) || [];
             images.push(data);
-            localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+            sessionStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         }
     }
 

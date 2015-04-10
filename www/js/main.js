@@ -358,20 +358,10 @@ function addMarkerFail(error) {
         //     images.push("data:image/jpeg;base64," + data);
         //     // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         // }
+        
+        var image = document.getElementById("cameraImage");
 
-        imageObj.src = "data:image/jpg; base64," + imageData;
-
-        var canvas = document.createElement('canvas');
-        canvas.setAttribute("id", "myCanvas");
-        canvas.setAttribute("width", imageObj.width);
-        canvas.setAttribute("height", imageObj.height);
-        var content = canvas.getContent('2d');
-        var imageObJ = new Image();
-        imageObj.onload = function() {
-            content.drawImage(imageObj, 0, 0);
-            var body = document.getElementsByTagName("body")[0];
-            body.appendChild(canvas);
-        };
+        image.src = "data:image/jpg; base64," + imageData;
     }
 
     function onCameraFail(message) {

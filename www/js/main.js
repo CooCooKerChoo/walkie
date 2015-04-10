@@ -172,13 +172,30 @@ function addMarkerFail(error) {
         distance = [],
         imageArray = [],
         speedTime = [],
-        currentTrackID;
+        currentTrackID, 
+        db;
 
     function track(button) {
         // Start/Resume
         if( !running ) {
             var watchOptions = { enableHighAccuracy: true, timeout : 5000, maximumAge: 10000};
             watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
+
+            var db = window.openDatabase("Database", "1.0", "Test DB", 2*1024*1024);
+            db.transaction(createDB, errorCB, successCB);
+
+            function createDB(tx) {
+                tx.executeSql('DROP TABLE IF EXISTS WALKS');
+                tx.executesql('CREATE TABLE IF NOT EXISTS WALKS (walk_id unique, title, image, description)');
+            }
+
+            function errorCB(err) {
+                alert("Error processing database:" + err.code);
+            }
+
+            function successCB() {
+                alert("Database Create");
+            }
             
             $("#watchButton").html("PAUSE")
             $("#stopWalk").fadeOut('fast');

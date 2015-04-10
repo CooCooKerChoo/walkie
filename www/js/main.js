@@ -332,7 +332,7 @@ function addMarkerFail(error) {
     function capturePhoto() {
         navigator.camera.getPicture(onCameraSuccess, onCameraFail, {
             quality: 70, 
-            destinationType : Camera.DestinationType.DATA_URI, 
+            destinationType : Camera.DestinationType.DATA_URL, 
             sourceType: Camera.PictureSourceType.CAMERA,
             encodingType: Camera.EncodingType.JPEG,
             popoverOptions: CameraPopoverOptions,
@@ -340,29 +340,22 @@ function addMarkerFail(error) {
     }
 
     function onCameraSuccess(imageData) {
-        //In our success call we want to first process the image to save in our image box on the screen.
+        var img = new Image();
+        img.src =  "data:image/jpeg; base64," + imageData; //js global var
 
-        //Create a new canvas for our image holder
+        img.onload = function( ) {
 
-        var imgCanvas = document.createElement("canvas"),
-        imgContext = imgCanvas.getContext("2d");
+            var canvas  =  document.getElementById( 'myCanvas' ); 
+            canvas.setAttribute( "width", img.naturalWidth );
+            canvas.setAttribute( "height", img.naturalHeight );
 
-        // Make sure canvas is as big as the picture
-        imgCanvas.width = image.width;
-        imgCanvas.height = image.height;
-
-        // Draw image into canvas element
-        imgContext.drawImage(image, 0, 0, image.width, image.height);
-
-        // Get canvas contents as a data URL
-        var imgAsDataURL = imgCanvas.toDataURL("image/png");
-
-        // Save image into localStorage
-        try {
-        alert('Image Saved');
-        }
-        catch (e) {
-        alert("Storage failed: " + e);
+            var context  =  canvas.getContext( '2d' );
+            context.drawImage( img, 0, 0 );
+            canvas.style.width = "100%"; 
+            var data = canvas.toDataURL("image/png");
+            var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
+            images.push(data);
+            localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         }
     }
 

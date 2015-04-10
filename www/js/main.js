@@ -369,7 +369,6 @@ function addMarkerFail(error) {
         // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
 
         var img = new Image();
-        img.src =  "data:image/jpg; base64," + imageData; //js global var
 
         img.onload = function( ) {
 
@@ -380,11 +379,12 @@ function addMarkerFail(error) {
             var context  =  canvas.getContext( '2d' );
             context.drawImage( img, 0, 0 );
             canvas.style.width = "100%"; 
-            var data = canvas.toDataURL("image/png");
+            var data = canvas.toDataURL("image/jpg");
             var images = JSON.parse(sessionStorage.getItem("images_" + currentTrackID)) || [];
             images.push(data);
             sessionStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         }
+        img.src =  "data:image/jpg; base64," + imageData; //js global var
     }
 
     function onCameraFail(message) {

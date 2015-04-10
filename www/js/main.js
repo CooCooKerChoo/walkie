@@ -359,14 +359,17 @@ function addMarkerFail(error) {
         //     // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         // }
 
+        imageObj.src = "data:image/jpg; base64," + imageData;
+
         var canvas = document.createElement('canvas');
+        canvas.setAttribute("id", "myCanvas");
+        canvas.setAttribute("width", imageObj.width);
+        canvas.setAttribute("height", imageObj.height);
         var content = canvas.getContent('2d');
         var imageObJ = new Image();
         imageObj.onload = function() {
             content.drawImage(imageObj, 0, 0);
         };
-
-        imageObj.src = "data:image/jpg; base64," + imageData;
     }
 
     function onCameraFail(message) {

@@ -339,7 +339,7 @@ function addMarkerFail(error) {
             saveToPhotoAlbum: true});
     }
 
-    function onCameraSuccess(imageData) {
+    function onCameraSuccess(DATA_URL) {
         // var img = new Image();
         // img.src =  "data:image/jpeg;base64," + imageData;
 
@@ -367,7 +367,7 @@ function addMarkerFail(error) {
         c.height=this.height;
         ctx.drawImage(img, 0,0);
     };
-    img.src=imageData;
+    img.src=DATA_URL;
     var dataURL = c.toDataURL("image/jpeg");
 
     console.log(dataURL);

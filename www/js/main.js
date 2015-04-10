@@ -358,15 +358,33 @@ function addMarkerFail(error) {
         //     // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
         // }
 
-        var image = document.getElementById("cameraImage");
+        // var image = document.getElementById("cameraImage");
 
-        image.src = "data:image/jpg; base64," + imageData;
+        // image.src = "data:image/jpg; base64," + imageData;
 
-        var photoSrc = document.getElementById("cameraImage").src;
+        // var photoSrc = document.getElementById("cameraImage").src;
 
-        var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
-        images.push(photoSrc);
-        localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+        // var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
+        // images.push(photoSrc);
+        // localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+
+        var img = new Image();
+        img.src =  "data:image/jpg; base64," + imageData; //js global var
+
+        img.onload = function( ) {
+
+            var canvas  =  document.getElementById( 'myCanvas' ); 
+            canvas.setAttribute( "width", img.width );
+            canvas.setAttribute( "height", img.height );
+
+            var context  =  canvas.getContext( '2d' );
+            context.drawImage( img, 0, 0 );
+            canvas.style.width = "100%"; 
+            var data = canvas.toDataURL("image/png");
+            var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
+            images.push(data);
+            localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+        }
     }
 
     function onCameraFail(message) {

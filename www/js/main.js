@@ -1,6 +1,7 @@
 var googleLatLng = [],
     latlngs = [],
-    markers = {};
+    markers = {},
+    db = null;
 
     function storeLatLng( lat, lng ) {
         googleLatLng.push(new google.maps.LatLng(lat, lng));
@@ -22,8 +23,22 @@ document.addEventListener("deviceready", onDeviceReady, false);
         var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
         navigator.geolocation.getCurrentPosition(onSuccess, distanceCalculate, onError, addMapMarker, posOptions);
 
+            db = openDatabase("Database", "1.0", "Test DB", 1000000);
+            db.transaction(createDB, DBerror, DBsuccess);
     }
 
+    function createDB(t) {
+        // t.executeSql('DROP TABLE WALKS');
+        t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (walkid integer primary key autoincrement, PathCoordinates TEXT, Distance TEXT, Duration TEXT, markers TEXT)');
+    }
+
+    function DBerror(error) {
+        console.log("Error: " + error.message);
+    }
+
+    function DBsuccess(){
+        console.log("Success!");
+    }
 
     function onSuccess(position) {
 
@@ -172,30 +187,13 @@ function addMarkerFail(error) {
         distance = [],
         imageArray = [],
         speedTime = [],
-        currentTrackID, 
-        db;
+        currentTrackID;
 
     function track(button) {
         // Start/Resume
         if( !running ) {
             var watchOptions = { enableHighAccuracy: true, timeout : 5000, maximumAge: 10000};
             watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
-
-            var db = window.openDatabase("Database", "1.0", "Test DB", 2*1024*1024);
-            db.transaction(createDB, errorCB, successCB);
-
-            function createDB(tx) {
-                tx.executeSql('DROP TABLE IF EXISTS WALKS');
-                tx.executesql('CREATE TABLE IF NOT EXISTS WALKS (walk_id unique, title, image, description)');
-            }
-
-            function errorCB(err) {
-                alert("Error processing database:" + err.code);
-            }
-
-            function successCB() {
-                alert("Database Create");
-            }
             
             $("#watchButton").html("PAUSE")
             $("#stopWalk").fadeOut('fast');
@@ -203,9 +201,9 @@ function addMarkerFail(error) {
             startTime = new Date();
             timerIncrement();
             distanceCalculate();
-            if( currentTrackID === undefined ) {
-                currentTrackID = getId();
-            }
+            // if( currentTrackID === undefined ) {
+            //     currentTrackID = getId();
+            // }
         } else { // Pause/Stop
             running = false;
             navigator.geolocation.clearWatch(watchID);
@@ -216,17 +214,17 @@ function addMarkerFail(error) {
         }
     }
 
-    function getId() {
-        if( window.localStorage.getItem('walks') ) {
-            var walks = JSON.parse(window.localStorage.getItem('walks'));
-            walks.push(walks.length);
-            window.localStorage.setItem('walks', walks);
-            return walks.length-1;
-        }
+    // function getId() {
+    //     if( window.localStorage.getItem('walks') ) {
+    //         var walks = JSON.parse(window.localStorage.getItem('walks'));
+    //         walks.push(walks.length);
+    //         window.localStorage.setItem('walks', walks);
+    //         return walks.length-1;
+    //     }
 
-        window.localStorage.setItem('walks', JSON.stringify([0]));
-        return 0;
-    }
+    //     window.localStorage.setItem('walks', JSON.stringify([0]));
+    //     return 0;
+    // }
 
         function onSuccessTrack(position) {
 
@@ -384,15 +382,14 @@ function addMarkerFail(error) {
 // ====================================================== FINISH WALK ====================================================== //
 
 function stopSession() {
-    finishedDuration = document.getElementById("duration").innerText;
-    localStorage.setItem("overallTime_" + currentTrackID, finishedDuration);
+    var finishedDuration = document.getElementById("duration").innerText;
+    var finishedDistance = document.getElementById("distance").innerText;
+    var markersArray = JSON.stringify(markers);
 
-    finishedDistance = document.getElementById("distance").innerText;
-    localStorage.setItem("overallDistance_" + currentTrackID, finishedDistance)
+    db.transaction(function(t) {
+        t.executeSql('INSERT INTO WALKS (duration, distance, pathcoordinates, markers) values (?,?,?,?)', [finishedDuration, finishedDistance, googleLatLng, markersArray]);  
+    });
 
-    localStorage.setItem("completePath_" + currentTrackID, googleLatLng)
-
-    localStorage.setItem("markers_" + currentTrackID, JSON.stringify(markers))
-
-    window.location.href = "#map-page";
+    // localStorage.setItem("markers_" + currentTrackID, JSON.stringify(markers))
+    // window.location.href = "#map-page";
 }

@@ -30,6 +30,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function createDB(t) {
         // t.executeSql('DROP TABLE WALKS');
         t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (walkid integer primary key autoincrement, PathCoordinates TEXT, Distance TEXT, Duration TEXT, markers TEXT)');
+        t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (walkid integer primary key autoincrement, PathCoordinates TEXT, Distance TEXT, Duration TEXT, markers TEXT)');
     }
 
     function DBerror(error) {

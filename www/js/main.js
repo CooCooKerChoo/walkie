@@ -391,6 +391,6 @@ function stopSession() {
         t.executeSql('INSERT INTO WALKS (duration, distance, pathcoordinates, markers) values (?,?,?,?)', [finishedDuration, finishedDistance, googleLatLng, markersArray]);  
     });
 
-    // localStorage.setItem("markers_" + currentTrackID, JSON.stringify(markers))
+    localStorage.setItem("markers_" + currentTrackID, JSON.stringify(markers))
     // window.location.href = "#map-page";
 }

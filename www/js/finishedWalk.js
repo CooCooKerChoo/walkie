@@ -73,16 +73,14 @@
                 document.getElementById('markersArray').value = JSON.stringify(markers);
             }
 
-            if( typeof images === 'array' ) {
-                for( var i = 0, c = images.length; i < c; i++ ) {
+                for( var i = 0, c = imageArray.length; i < c; i++ ) {
                     // Create new Image element
                     var img = $('<img class="image"/>');
-                    img.src = images[i];
+                    img.src = imagesArray[i];
 
                     // Append new img to our photos div
                     img.appendTo('.photos');
                 }
-            }
 
             });
 

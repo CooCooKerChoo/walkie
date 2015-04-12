@@ -142,12 +142,12 @@
 				<button id="stopWalk" onClick="getPicture()">Add Photographs</button>
 				<div id="photosContainer" class="horizontal-images">
 					<div class="photos">
+					</div>
+				</div>
 					<a href="#transitionExample" data-transition="none" data-role="button" data-inline="true" data-rel="dialog">No transition</a>
 						<div id="transitionExample" data-role="popup" data-transition="flip">
 						  <p>This is some text for the transition example</p>
 						</div>
-					</div>
-				</div>
 				<button id="buttonDone" onClick="saveInfo()">Save Information</button>
 			</div><!-- /content -->
 		</div>
@@ -157,7 +157,7 @@
 		<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 		<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
 		<script>
-			$( "#transitionExample" ).popup();
+			$( "#transitionExample" ).popup('open');
 		</script>
 	</div>
 

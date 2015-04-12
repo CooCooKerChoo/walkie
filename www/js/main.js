@@ -30,7 +30,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function createDB(t) {
         // t.executeSql('DROP TABLE WALKS');
         t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (walkid integer primary key autoincrement, PathCoordinates TEXT, Distance TEXT, Duration TEXT, markers TEXT)');
-        t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (walkid integer primary key autoincrement, PathCoordinates TEXT, Distance TEXT, Duration TEXT, markers TEXT)');
+        t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (markerid integer primary key, title TEXT, info TEXT, MarkerCoordinates TEXT, walk_id integer, FOREIGN KEY(walk_id) REFERENCES WALKS(walkid))');
     }
 
     function DBerror(error) {
@@ -100,6 +100,8 @@ counter++;
         lng: marker.getPosition().lng()
     };
 
+    markerCoords = marker.getPosition().lat() + marker.getPosition().lng();
+
 
     //Content structure of info Window for the Markers
     var contentString = '<div id="marker-info-win" data-id="'+marker.id+'">' +
@@ -134,9 +136,7 @@ counter++;
         };
     });
 
-    // markers = [
-    //     [marker.id, marker.getPosition().lat(), marker.getPosition().lng()]
-    // ];
+    markers = [marker.id, marker.getPosition().lat(), marker.getPosition().lng()];
 
     google.maps.event.addListener(infowindow,'closeclick', function(){
         // markers.push(marker);
@@ -148,11 +148,12 @@ counter++;
     // JSON.parse(window.localStorage.getItem('markers_1'));
 function markerTitle(elem, markerId) {
     markers[markerId].title = elem.innerText;
-    markers[markerId].marker.title = elem.innerText;
+    markerTitle = markers[markerId].marker.title = elem.innerText;
 }
 
 function markerInfo(elem, markerId) {
     markers[markerId].info = elem.innerText;
+    markerId
 }
 
 function deleteMarker(markerId) {
@@ -388,8 +389,12 @@ function stopSession() {
     var markersArray = JSON.stringify(markers);
 
     db.transaction(function(t) {
-        t.executeSql('INSERT INTO WALKS (duration, distance, pathcoordinates, markers) values (?,?,?,?)', [finishedDuration, finishedDistance, googleLatLng, markersArray]);  
+        t.executeSql('INSERT INTO WALKS (duration, distance, pathcoordinates, markers) values (?,?,?,?)', [finishedDuration, finishedDistance, googleLatLng, markersArray]);
+        // t.executeSql('INSERT INTO MARKERS (markerid) values (?)', [markers[0]]);
     });
+    function errorHandler(transaction, error) {
+    alert("Error : " + error.message);
+    }
 
     localStorage.setItem("markers_" + currentTrackID, JSON.stringify(markers))
     // window.location.href = "#map-page";

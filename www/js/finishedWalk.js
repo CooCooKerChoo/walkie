@@ -81,6 +81,7 @@
                     // Append new img to our photos div
                     img.appendTo('.photos');
                     var popout = $('<div data-role="popup"></div>').attr("id", "image"+counter);
+                    popout.appendTo('.photos');
                 }
 
             });

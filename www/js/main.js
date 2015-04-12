@@ -30,8 +30,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function createDB(t) {
         // t.executeSql('DROP TABLE WALKS');
         // t.executeSql('DROP TABLE MARKERS');
-        t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (walkid integer primary key autoincrement, PathCoordinates TEXT, Distance TEXT, Duration TEXT, markers TEXT)');
-        t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (markerid integer primary key, title TEXT, info TEXT, MarkerCoordinates TEXT, walk_id integer, FOREIGN KEY(walk_id) REFERENCES WALKS(walkid))');
+        t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (id integer primary key autoincrement, walkid integer, PathCoordinates TEXT, Distance TEXT, Duration TEXT, markers TEXT)');
+        t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (id integer primary key autoincrement, markerid integer, title TEXT, info TEXT, markerLat TEXT, markerLng TEXT, walk_id integer, FOREIGN KEY(walk_id) REFERENCES WALKS(walkid))');
     }
 
     function DBerror(error) {
@@ -105,9 +105,9 @@ counter++;
     //Content structure of info Window for the Markers
     var contentString = '<div id="marker-info-win" data-id="'+marker.id+'">' +
         '<h3>Marker Information</h3>' +
-        '<div id="warning-title" contenteditable="true" onkeyup="markerTitle(this, '+marker.id+')" data-text="Warning Title"/></div>'+
+        '<input id="warning-title" contenteditable="true" onkeyup="markerTitle(this, '+marker.id+')" data-text="Warning Title"/></input>'+
         '<i class="fa fa-pencil"></i>' +
-        '<div id="warning-additional-info" contenteditable="true" onkeyup="markerInfo(this, '+marker.id+')" data-text="Warning Additional Information"></div>'+
+        '<input id="warning-additional-info" contenteditable="true" onkeyup="markerInfo(this, '+marker.id+')" data-text="Warning Additional Information"></input>'+
         '<i class="fa fa-pencil"></i>' +
         '<br/><button id="deleteButton" name="remove-marker" class="remove-marker" title="Remove Marker" data-id="'+ counter +'">Remove Marker</button></div>';
         
@@ -148,12 +148,12 @@ counter++;
     // window.localStorage.setItem('markers_1', JSON.stringify(markers));
     // JSON.parse(window.localStorage.getItem('markers_1'));
 function markerTitle(elem, markerId) {
-    titleMarker = markers[markerId].title = elem.innerText;
+    markers[markerId].title = elem.value;
     // markers[markerId].marker.title = elem.innerText;
 }
 
 function markerInfo(elem, markerId) {
-    infoMarker = markers[markerId].info = elem.innerText;
+    markers[markerId].info = elem.value;
 }
 
 function deleteMarker(markerId) {
@@ -384,23 +384,35 @@ function addMarkerFail(error) {
 
 // ====================================================== FINISH WALK ====================================================== //
 
-function stopSession() {
+function stopSession(marker) {
     var finishedDuration = document.getElementById("duration").innerText;
     var finishedDistance = document.getElementById("distance").innerText;
     var markersArray = JSON.stringify(markers);
 
+    var walkID; 
+
+    console.log(markers);
+
     db.transaction(function(t) {
-        t.executeSql('INSERT INTO WALKS (duration, distance, pathcoordinates, markers) values (?,?,?,?)', [finishedDuration, finishedDistance, googleLatLng, markersArray]);
-        t.executeSql('INSERT INTO MARKERS (markerid, title) values (?,?)', [markers.id, markers.title]), errorHandler;
+        t.executeSql('INSERT INTO WALKS (duration, distance, pathcoordinates, markers) values (?,?,?,?)', [finishedDuration, finishedDistance, googleLatLng, markersArray], function(t, results){
+            walkID = results.insertId;
+            for(var id in markers) {
+                if( markers.hasOwnProperty(id) ) {
+                    (function(id) {
+                        db.transaction(function(t) {
+                            var marker = markers[id];
+                            t.executeSql('INSERT INTO MARKERS (markerid, title, info, markerLat, markerLng, walk_id) values (?,?,?,?,?,?)', [markers[id].id, markers[id].title, markers[id].info, markers[id].lat, markers[id].lng, walkID]);
+                        });
+                        })(id);
+                    console.log(marker);
+                }
+            }
+        });
     });
 
-    function errorHandler(transaction, error) {
-        console.log("Error : " + error.message + " in " + query);
-    }
 
     function killTransaction(transaction, error) {
     }
-
-    localStorage.setItem("markers_" + currentTrackID, JSON.stringify(markers))
+    // localStorage.setItem("markers_" + currentTrackID, JSON.stringify(markers))
     // window.location.href = "#map-page";
 }

@@ -360,6 +360,7 @@ function addMarkerFail(error) {
     }
 
     function onCameraSuccess(imageURI) {
+        imageArray.push(imageURI);
             db.transaction(function(t) {
                 t.executeSql('INSERT INTO WALKS(Images) values (?)' , [imageURI]);
             });

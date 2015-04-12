@@ -73,12 +73,11 @@
                 document.getElementById('markersArray').value = JSON.stringify(markers);
             }
 
-            var images = JSON.parse(window.localStorage.getItem('images_' + currentTrackID));
             if( typeof images === 'array' ) {
                 for( var i = 0, c = images.length; i < c; i++ ) {
                     // Create new Image element
-                    var img = $('<div class="image"/>');
-                    img.html(img.html() + images[i]);
+                    var img = $('<img class="image"/>');
+                    img.src = images[i];
 
                     // Append new img to our photos div
                     img.appendTo('.photos');

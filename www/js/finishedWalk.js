@@ -85,7 +85,7 @@
                     var popout = $('<div data-role="popup"></div>').attr("id", popoutID);
                     popout.appendTo('.photos');
                     var popoutImg = $('<img />').attr("src", imageArray[i]);
-                    popoutImg.appendTo(popoutID);
+                    popoutImg.appendTo($popout);
                 }
 
             });

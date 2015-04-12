@@ -359,7 +359,7 @@ function addMarkerFail(error) {
             saveToPhotoAlbum: true});
     }
 
-    function onCameraSuccess(imageData) {
+    function onCameraSuccess(imageURI) {
         var img = new Image();
         // img.src =  "data:image/jpeg; base64," + imageData; //js global var
         img.src = imageURI;

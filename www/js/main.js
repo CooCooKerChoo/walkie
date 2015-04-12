@@ -28,8 +28,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
     }
 
     function createDB(t) {
-        // t.executeSql('DROP TABLE WALKS');
-        // t.executeSql('DROP TABLE MARKERS');
+        t.executeSql('DROP TABLE WALKS');
+        t.executeSql('DROP TABLE MARKERS');
         t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (id integer primary key autoincrement, walkid integer, PathCoordinates TEXT, Distance TEXT, Duration TEXT, markers TEXT)');
         t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (id integer primary key autoincrement, markerid integer, title TEXT, info TEXT, markerLat TEXT, markerLng TEXT, walk_id integer, FOREIGN KEY(walk_id) REFERENCES WALKS(walkid))');
     }
@@ -411,8 +411,6 @@ function stopSession(marker) {
     });
 
 
-    function killTransaction(transaction, error) {
-    }
     // localStorage.setItem("markers_" + currentTrackID, JSON.stringify(markers))
-    // window.location.href = "#map-page";
+    window.location.href = "#map-page";
 }

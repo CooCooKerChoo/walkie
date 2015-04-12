@@ -89,6 +89,8 @@
 
                     var popoutImg = $('<img />').attr("src", imageArray[i]);
                     popoutImg.appendTo($popout);
+
+                    $($popout).popup('open');
                 }
 
             });

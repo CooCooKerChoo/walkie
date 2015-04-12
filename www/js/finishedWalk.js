@@ -74,23 +74,20 @@
             }
 
                 for( var i = 0, c = imageArray.length; i < c; i++ ) {
-                    counter ++;
 
-                    var popoutID = "image"+counter;
                     // Create new Image element
-                    var $imgLink = $('<a data-rel="popup" data-position-to="window"></a>').attr({href: "#"+popoutID, id: "#_"+popoutID});
+                    var $imgLink = $('<a data-rel="popup" data-position-to="window"></a>').attr({href: "#"+ i, id: "#_" + i});
                     $imgLink.appendTo('.photos');
 
                     var $img = $('<img class="image"/>').attr("src", imageArray[i]);
                     $img.appendTo($imgLink);
 
-                    var $popout = $('<div data-role="popup" data-overlay-theme="b" data-theme="b"></div>').attr("id", popoutID);
-                    $popout.appendTo('.map');
+                    var $popout = $('<div data-role="popup" data-overlay-theme="b" data-theme="b"></div>').attr("id", + i);
+                    $popout.appendTo('#map-page').trigger('create');
 
                     var popoutImg = $('<img />').attr("src", imageArray[i]);
                     popoutImg.appendTo($popout);
 
-                    $($popout).popup('open');
                 }
 
             });

@@ -1,11 +1,11 @@
  $(document).on('pageinit', "#map-page", function() {
 
-            // $("#photosContainer").mCustomScrollbar({
-            //     axis:"x",
-            //     theme:"dark-thick",
-            //     autoExpandScrollbar:true,
-            //     advanced:{autoExpandHorizontalScroll:true}
-            // });
+            $("#photosContainer").mCustomScrollbar({
+                axis:"x",
+                theme:"dark-thick",
+                autoExpandScrollbar:true,
+                advanced:{autoExpandHorizontalScroll:true}
+            });
 
             var mapOptions = {
                 zoom: 15,
@@ -82,9 +82,6 @@
                 }
 
             });
-
-             function getPicture() {
-            }
 
             function saveInfo() {
                 var saveAllInfo = document.getElementById("walkDescription").innerText;

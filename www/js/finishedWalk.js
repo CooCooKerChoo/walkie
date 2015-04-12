@@ -82,7 +82,7 @@
                     $imgLink.appendTo('.photos');
 
                     var $img = $('<img data-rel="popup" class="image"/>').attr("src", imageArray[i]);
-                    img.appendTo($imgLink);
+                    $img.appendTo($imgLink);
 
                     var $popout = $('<div data-role="popup" data-overlay-theme="b" data-theme="b"></div>').attr("id", popoutID);
                     $popout.appendTo('.photos');

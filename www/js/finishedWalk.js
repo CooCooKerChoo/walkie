@@ -74,8 +74,9 @@
             }
 
                 for( var i = 0, c = imageArray.length; i < c; i++ ) {
+                    counter ++;
                     // Create new Image element
-                    var img = $('<img class="image"/>').attr('src', imageArray[i]);
+                    var img = $('<img class="image"/>').attr({src: imageArray[i], href: #+image+ "_" +counter});
 
                     // Append new img to our photos div
                     img.appendTo('.photos');

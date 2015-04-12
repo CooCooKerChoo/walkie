@@ -373,11 +373,10 @@ function addMarkerFail(error) {
             context.drawImage( img, 0, 0 );
             canvas.style.width = "100%"; 
             var data = canvas.toDataURL("image/jpeg");
-
+        }
             db.transaction(function(t) {
                 t.executeSql('INSERT INTO WALKS(Images) values (?)' , [data]);
             });
-        }
     }
 
     function onCameraFail(message) {

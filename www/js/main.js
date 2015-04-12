@@ -1,7 +1,7 @@
 var googleLatLng = [],
     latlngs = [],
-    markers = {},
-    db = null;
+    db = null,
+    markers = {};
 
     function storeLatLng( lat, lng ) {
         googleLatLng.push(new google.maps.LatLng(lat, lng));
@@ -29,6 +29,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     function createDB(t) {
         // t.executeSql('DROP TABLE WALKS');
+        // t.executeSql('DROP TABLE MARKERS');
         t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (walkid integer primary key autoincrement, PathCoordinates TEXT, Distance TEXT, Duration TEXT, markers TEXT)');
         t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (markerid integer primary key, title TEXT, info TEXT, MarkerCoordinates TEXT, walk_id integer, FOREIGN KEY(walk_id) REFERENCES WALKS(walkid))');
     }
@@ -100,8 +101,6 @@ counter++;
         lng: marker.getPosition().lng()
     };
 
-    markerCoords = marker.getPosition().lat() + marker.getPosition().lng();
-
 
     //Content structure of info Window for the Markers
     var contentString = '<div id="marker-info-win" data-id="'+marker.id+'">' +
@@ -136,7 +135,9 @@ counter++;
         };
     });
 
-    markers = [marker.id, marker.getPosition().lat(), marker.getPosition().lng()];
+    // markers = [
+    //     [marker.id, marker.getPosition().lat(), marker.getPosition().lng()]
+    // ];
 
     google.maps.event.addListener(infowindow,'closeclick', function(){
         // markers.push(marker);
@@ -147,13 +148,12 @@ counter++;
     // window.localStorage.setItem('markers_1', JSON.stringify(markers));
     // JSON.parse(window.localStorage.getItem('markers_1'));
 function markerTitle(elem, markerId) {
-    markers[markerId].title = elem.innerText;
-    markerTitle = markers[markerId].marker.title = elem.innerText;
+    titleMarker = markers[markerId].title = elem.innerText;
+    // markers[markerId].marker.title = elem.innerText;
 }
 
 function markerInfo(elem, markerId) {
-    markers[markerId].info = elem.innerText;
-    markerId
+    infoMarker = markers[markerId].info = elem.innerText;
 }
 
 function deleteMarker(markerId) {
@@ -174,6 +174,7 @@ function addMarkerFail(error) {
                 //     title: "Hello World!",
                 //     icon: "http://localhost/walkie/www/img/map_markers/pin_green.png"
                 // });
+
 
 // ====================================================== START OF LOCATION TRACK ====================================================== //
 
@@ -390,10 +391,14 @@ function stopSession() {
 
     db.transaction(function(t) {
         t.executeSql('INSERT INTO WALKS (duration, distance, pathcoordinates, markers) values (?,?,?,?)', [finishedDuration, finishedDistance, googleLatLng, markersArray]);
-        // t.executeSql('INSERT INTO MARKERS (markerid) values (?)', [markers[0]]);
+        t.executeSql('INSERT INTO MARKERS (markerid, title) values (?,?)', [markers.id, markers.title]), errorHandler;
     });
+
     function errorHandler(transaction, error) {
-    alert("Error : " + error.message);
+        console.log("Error : " + error.message + " in " + query);
+    }
+
+    function killTransaction(transaction, error) {
     }
 
     localStorage.setItem("markers_" + currentTrackID, JSON.stringify(markers))

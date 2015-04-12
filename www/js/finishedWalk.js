@@ -75,12 +75,13 @@
 
                 for( var i = 0, c = imageArray.length; i < c; i++ ) {
                     counter ++;
+
+                    var popoutID = "image"+counter;
                     // Create new Image element
-                    var img = $('<img data-rel="popup" class="image"/>').attr({src: imageArray[i], href: "#"+"image"+counter});
+                    var img = $('<img data-rel="popup" class="image"/>').attr({src: imageArray[i], href: "#"+popoutID});
                     // Append new img to our photos div
                     img.appendTo('.photos');
 
-                    var popoutID = "image"+counter;
                     var popout = $('<div data-role="popup"></div>').attr("id", popoutID);
                     popout.appendTo('.photos');
                     var popoutImg = $('<img />').attr("src", imageArray[i]);

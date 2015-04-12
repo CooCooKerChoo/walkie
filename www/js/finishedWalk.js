@@ -76,10 +76,11 @@
                 for( var i = 0, c = imageArray.length; i < c; i++ ) {
                     counter ++;
                     // Create new Image element
-                    var img = $('<img class="image"/>').attr({src: imageArray[i], href: "#"+"image"+counter});
+                    var img = $('<img data-rel="popup" class="image"/>').attr({src: imageArray[i], href: "#"+"image"+counter});
 
                     // Append new img to our photos div
                     img.appendTo('.photos');
+                    var popout = $('<div data-role="popup"></div>').attr("id", "image"+counter);
                 }
 
             });

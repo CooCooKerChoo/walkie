@@ -364,6 +364,7 @@ function addMarkerFail(error) {
             db.transaction(function(t) {
                 t.executeSql('INSERT INTO WALKS(Images) values (?)' , [imageURI]);
             });
+            console.log(imageArray);
     }
 
     function onCameraFail(message) {

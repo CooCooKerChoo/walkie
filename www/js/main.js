@@ -354,6 +354,8 @@ function addMarkerFail(error) {
             sourceType: Camera.PictureSourceType.CAMERA,
             encodingType: Camera.EncodingType.JPEG,
             popoverOptions: CameraPopoverOptions,
+            targetWidth: 640,
+            targetHeight: 640,
             saveToPhotoAlbum: true});
     }
 

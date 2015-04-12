@@ -360,24 +360,9 @@ function addMarkerFail(error) {
     }
 
     function onCameraSuccess(imageURI) {
-        var img = new Image();
-        // img.src =  "data:image/jpeg; base64," + imageData; //js global var
-        img.src = imageURI;
-
-        img.onload = function( ) {
-
-            var canvas  =  document.getElementById( 'myCanvas' ); 
-            canvas.setAttribute( "width", img.naturalWidth );
-            canvas.setAttribute( "height", img.naturalHeight );
-
-            var context  =  canvas.getContext( '2d' );
-            context.drawImage( img, 0, 0 );
-            canvas.style.width = "100%"; 
-
             db.transaction(function(t) {
                 t.executeSql('INSERT INTO WALKS(Images) values (?)' , [imageURI]);
             });
-        }
     }
 
     function onCameraFail(message) {

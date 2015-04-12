@@ -82,7 +82,7 @@
                     // Append new img to our photos div
                     img.appendTo('.photos');
 
-                    var $popout = $('<div data-role="popup"></div>').attr("id", popoutID);
+                    var $popout = $('<div data-role="popup" data-overlay-theme="b" data-theme="b"></div>').attr("id", popoutID);
                     $popout.appendTo('.photos');
                     var popoutImg = $('<img />').attr("src", imageArray[i]);
                     popoutImg.appendTo($popout);

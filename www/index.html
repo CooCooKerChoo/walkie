@@ -143,9 +143,9 @@
 				<div id="photosContainer" class="horizontal-images">
 					<div class="photos">
 					<a href="#transitionExample" data-transition="none" data-role="button" data-inline="true" data-rel="dialog">No transition</a>
-					<div id="transitionExample" data-role="popup" data-transition="flip">
-					  <p>This is some text for the transition example</p>
-					</div>
+						<div id="transitionExample" data-role="popup" data-transition="flip">
+						  <p>This is some text for the transition example</p>
+						</div>
 					</div>
 				</div>
 				<button id="buttonDone" onClick="saveInfo()">Save Information</button>
@@ -156,6 +156,9 @@
 		<script type="text/javascript" src="js/finishedWalk.js"></script>
 		<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 		<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
+		<script>
+			$( "transitionExample" ).popup();
+		</script>
 	</div>
 
 

@@ -30,7 +30,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function createDB(t) {
         t.executeSql('DROP TABLE WALKS');
         t.executeSql('DROP TABLE MARKERS');
-        t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (id integer primary key autoincrement, walkid integer autoincrement, PathCoordinates TEXT, Distance TEXT, Duration TEXT)');
+        t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (id integer primary key autoincrement, walkid integer autoincrement, PathCoordinates TEXT, Distance TEXT, Duration TEXT, Images TEXT)');
         t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (id integer primary key autoincrement, markerid integer, title TEXT, info TEXT, markerLat TEXT, markerLng TEXT, walk_id integer, FOREIGN KEY(walk_id) REFERENCES WALKS(walkid))');
     }
 
@@ -372,9 +372,10 @@ function addMarkerFail(error) {
             canvas.style.width = "100%"; 
             var data = canvas.toDataURL("image/jpeg");
             document.getElementById("imageString").value = data;
-            var images = JSON.parse(localStorage.getItem("images_" + currentTrackID)) || [];
-            images.push(data);
-            localStorage.setItem("images_" + currentTrackID, JSON.stringify(images));
+
+            db.transaction(function(t) {
+                t.executeSql('INSERT INTO WALKS(Images) values (?)' , [data]);
+            });
         }
     }
 

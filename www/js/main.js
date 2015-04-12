@@ -350,7 +350,7 @@ function addMarkerFail(error) {
     function capturePhoto() {
         navigator.camera.getPicture(onCameraSuccess, onCameraFail, {
             quality: 70, 
-            destinationType : Camera.DestinationType.DATA_URL, 
+            destinationType : Camera.DestinationType.DATA_URI, 
             sourceType: Camera.PictureSourceType.CAMERA,
             encodingType: Camera.EncodingType.JPEG,
             popoverOptions: CameraPopoverOptions,
@@ -361,7 +361,8 @@ function addMarkerFail(error) {
 
     function onCameraSuccess(imageData) {
         var img = new Image();
-        img.src =  "data:image/jpeg; base64," + imageData; //js global var
+        // img.src =  "data:image/jpeg; base64," + imageData; //js global var
+        img.src = imageURI;
 
         img.onload = function( ) {
 

@@ -77,13 +77,14 @@
                     counter ++;
                     // Create new Image element
                     var img = $('<img data-rel="popup" class="image"/>').attr({src: imageArray[i], href: "#"+"image"+counter});
-
                     // Append new img to our photos div
                     img.appendTo('.photos');
-                    var popout = $('<div data-role="popup"></div>').attr("id", "image"+counter);
+
+                    var popoutID = "image"+counter;
+                    var popout = $('<div data-role="popup"></div>').attr("id", popoutID);
                     popout.appendTo('.photos');
                     var popoutImg = $('<img />').attr("src", imageArray[i]);
-                    popoutImg.appendTo("image"+counter);
+                    popoutImg.appendTo(popoutID);
                 }
 
             });

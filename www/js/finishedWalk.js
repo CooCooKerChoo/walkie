@@ -78,10 +78,10 @@
 
                     var popoutID = "image"+counter;
                     // Create new Image element
-                    var $imgLink = $('<a></a>').attr({href: "#"+popoutID, id: "#"+popoutID});
+                    var $imgLink = $('<a data-rel="popup"></a>').attr({href: "#"+popoutID, id: "#"+popoutID});
                     $imgLink.appendTo('.photos');
 
-                    var $img = $('<img data-rel="popup" class="image"/>').attr("src", imageArray[i]);
+                    var $img = $('<img class="image"/>').attr("src", imageArray[i]);
                     $img.appendTo($imgLink);
 
                     var $popout = $('<div data-role="popup" data-overlay-theme="b" data-theme="b"></div>').attr("id", popoutID);

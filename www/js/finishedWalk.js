@@ -74,9 +74,6 @@
 });
 
 
-            function alertDismissed() {
-                $.mobile.loadPage( "#page1", reloadPage:true);
-            }
 
             function saveInfo() {
                 // var walkTitle = document.getElementById("walkTitle").value;
@@ -107,4 +104,8 @@
                     'Saving',            // title
                     'Done'                  // buttonName
                 );
+            }
+
+            function alertDismissed() {
+                $.mobile.loadPage( "#page1", reloadPage:true);
             }

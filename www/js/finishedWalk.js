@@ -1,5 +1,8 @@
  $(document).on('pageinit', "#map-page", function() {
 
+    dbstoreDistance = document.getElementById("finalDistance").innerText = finishedDistance;
+    dbstoreDuration = document.getElementById("finalDuration").innerText = finishedDuration;
+
             // $("#photosContainer").mCustomScrollbar({
             //     axis:"x",
             //     theme:"dark-thick",
@@ -79,7 +82,7 @@
                 var walkID; 
 
                 db.transaction(function(t) {
-                    t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?)', [finishedDuration, finishedDistance, googleLatLng, imageArray, walkTitle, walkDescription], function(t, results){
+                    t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?)', [dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], function(t, results){
                         walkID = results.insertId;
                         for(var id in markers) {
                             if( markers.hasOwnProperty(id) ) {

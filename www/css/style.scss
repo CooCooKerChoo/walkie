@@ -341,6 +341,7 @@ a:hover {color: purple;}
 
 
 #photosContainer {
+    float: left;
     .mCSB_horizontal.mCSB_inside > .mCSB_container {margin-bottom: 15px;}
     .photos {
         overflow: auto;

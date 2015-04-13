@@ -302,17 +302,19 @@ a:hover {
   right: 5px;
   bottom: 5px; }
 
-#photosContainer .mCSB_horizontal.mCSB_inside > .mCSB_container {
-  margin-bottom: 15px; }
-#photosContainer .photos {
-  overflow: auto;
-  height: 100px; }
-  #photosContainer .photos img {
-    float: left;
-    margin: 0 3px;
-    height: 100px;
-    width: 100px;
-    box-sizing: border-box; }
+#photosContainer {
+  float: left; }
+  #photosContainer .mCSB_horizontal.mCSB_inside > .mCSB_container {
+    margin-bottom: 15px; }
+  #photosContainer .photos {
+    overflow: auto;
+    height: 100px; }
+    #photosContainer .photos img {
+      float: left;
+      margin: 0 3px;
+      height: 100px;
+      width: 100px;
+      box-sizing: border-box; }
 
 .ui-popup > .ui-btn-right {
   position: absolute;

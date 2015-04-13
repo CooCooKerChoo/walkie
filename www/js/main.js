@@ -30,7 +30,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     function createDB(t) {
         // t.executeSql('DROP TABLE WALKS');
         // t.executeSql('DROP TABLE MARKERS');
-        t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (id integer primary key autoincrement, walkid integer, PathCoordinates TEXT, Distance TEXT, Duration TEXT, Images TEXT)');
+        t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (id integer primary key autoincrement, walkid integer, Distance TEXT, Duration TEXT, PathCoordinates TEXT, Images TEXT)');
         t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (id integer primary key autoincrement, markerid integer, title TEXT, info TEXT, markerLat TEXT, markerLng TEXT, walk_id integer, FOREIGN KEY(walk_id) REFERENCES WALKS(walkid))');
     }
 
@@ -383,7 +383,7 @@ function stopSession(marker) {
     console.log(markers);
 
     db.transaction(function(t) {
-        t.executeSql('INSERT INTO WALKS (duration, distance, pathcoordinates, markers) values (?,?,?,?)', [finishedDuration, finishedDistance, googleLatLng], function(t, results){
+        t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates) values (?,?,?)', [finishedDuration, finishedDistance, googleLatLng], function(t, results){
             walkID = results.insertId;
             for(var id in markers) {
                 if( markers.hasOwnProperty(id) ) {

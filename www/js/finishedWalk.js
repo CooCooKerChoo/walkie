@@ -75,7 +75,7 @@
 
 
             function alertDismissed() {
-                $.mobile.loadPage( #page1 [, reloadPage:true ] )
+                $.mobile.loadPage( #page1 [, reloadPage:true ] );
             }
 
             function saveInfo() {

@@ -73,8 +73,9 @@
 
 });
 
-            function onConfirm(buttonIndex) {
-                alert('You selected button ' + buttonIndex);
+
+            function alertDismissed() {
+                window.location.href = "#page1";
             }
 
             function saveInfo() {
@@ -99,12 +100,11 @@
                 //         }
                 //     });
                 // });
-                // window.location.href = "#page1";
 
-            navigator.notification.confirm(
-                    'You are the winner!', // message
-                     onConfirm,            // callback to invoke with index of button pressed
-                    'Game Over',           // title
-                    ['Restart','Exit']         // buttonLabels
+                navigator.notification.alert(
+                    'All information has been saved',  // message
+                    alertDismissed,         // callback
+                    'Saving',            // title
+                    'Done'                  // buttonName
                 );
             }

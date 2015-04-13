@@ -3,12 +3,12 @@
     dbstoreDistance = document.getElementById("finalDistance").innerText = finishedDistance;
     dbstoreDuration = document.getElementById("finalDuration").innerText = finishedDuration;
 
-            // $("#photosContainer").mCustomScrollbar({
-            //     axis:"x",
-            //     theme:"dark-thick",
-            //     autoExpandScrollbar:true,
-            //     advanced:{autoExpandHorizontalScroll:true}
-            // });
+            $("#photosContainer").mCustomScrollbar({
+                axis:"x",
+                theme:"dark-thick",
+                autoExpandScrollbar:true,
+                advanced:{autoExpandHorizontalScroll:true}
+            });
 
             var mapOptions = {
                 zoom: 15,

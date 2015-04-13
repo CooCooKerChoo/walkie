@@ -79,7 +79,7 @@
 
                     $(".photos").append('<a href="#dialog' + i + '"data-rel="popup"><img class="image" src="' + imageArray[i] + '"></a>');
 
-                    $("#map-page").append('<div data-role="popup" class="imagePopups" id="#popup' + i + '><a hef="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img class="popupphoto" src="' + imageArray[i] + '" width="300"></div>').trigger('create');
+                    $("#map-page").append('<div data-role="popup" class="imagePopups" id="#popup' + i + '><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img class="popupphoto" src="' + imageArray[i] + '" width="300"></div>').trigger('create');
 
                     $(".imagePopups").popup();
                 }

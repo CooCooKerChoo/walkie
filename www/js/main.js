@@ -27,9 +27,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
             db.transaction(createDB, DBerror, DBsuccess);
     }
 
-    $(document).on('pageinit', "#page1", function() {
-        window.location.reload(true);
-    });
+    // $(document).on('pageinit', "#page1", function() {
+    //     window.location.reload(true);
+    // });
 
     function createDB(t) {
         // t.executeSql('DROP TABLE WALKS');
@@ -377,5 +377,5 @@ function stopSession(marker) {
     finishedDuration = document.getElementById("duration").innerText;
     finishedDistance = document.getElementById("distance").innerText;
 
-    window.location.href = "#map-page";
+                $.mobile.changePage( "#map-page");
 }

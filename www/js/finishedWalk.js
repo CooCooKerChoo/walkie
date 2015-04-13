@@ -75,7 +75,7 @@
 
 
             function alertDismissed() {
-                window.location.href = "#page1";
+                $.mobile.loadPage( #page1 [, reloadPage:true ] )
             }
 
             function saveInfo() {

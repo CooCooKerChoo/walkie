@@ -361,10 +361,6 @@ function addMarkerFail(error) {
 
     function onCameraSuccess(imageURI) {
         imageArray.push(imageURI);
-            db.transaction(function(t) {
-                t.executeSql('INSERT INTO WALKS(Images) values (?)' , [imageArray]);
-            });
-            console.log(imageArray);
     }
 
     function onCameraFail(message) {
@@ -380,10 +376,8 @@ function stopSession(marker) {
 
     var walkID; 
 
-    console.log(markers);
-
     db.transaction(function(t) {
-        t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates) values (?,?,?)', [finishedDuration, finishedDistance, googleLatLng], function(t, results){
+        t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images) values (?,?,?,?)', [finishedDuration, finishedDistance, googleLatLng, imageArray], function(t, results){
             walkID = results.insertId;
             for(var id in markers) {
                 if( markers.hasOwnProperty(id) ) {

@@ -298,8 +298,8 @@ a:hover {
     box-sizing: border-box; }
 
 .ui-popup>img {
-  width: 300px;
-  height: 300px;
+  max-height: auto;
+  max-width: auto;
   float: left;
   box-sizing: border-box; }
 

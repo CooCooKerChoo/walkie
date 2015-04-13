@@ -81,8 +81,9 @@
 
                     $("#map-page").append('<div data-role="popup" class="imagePopups" id="#popup' + i + '><a hef="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img class="popupphoto" src="' + imageArray[i] + '"></div>').trigger('create');
                     
+                    var screenImage = $(".popupphoto");
 `                   var theImage = new Image();
-                    theImage.src = popupphoto.attr("src");
+                    theImage.src = screenImage.attr("src");
 
                     var imageWidth = theImage.width;
                     var imageHeight = theImage.height;

@@ -75,12 +75,12 @@
 
                 for( var i = 0, c = imageArray.length; i < c; i++ ) {
 
-                    $(".photos").append('<a href="#popup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + imageArray[i] + '"></a>');
+                    $(".photos").append('<a href="#popup' + i + '"data-rel="popup"><img class="image" src="' + imageArray[i] + '"></a>');
 
-                    $("#map-page").append('<div data-role="popup" class="imagePopups" id="#popup' + i + '"data-overlay-theme"a" data-theme="d" data-corner="false"><a hef="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img class="popupphoto" src="' + imageArray[i] + '" style="max-height: 512px;"></div>').trigger('create');
+                    $("#map-page").append('<div data-role="popup" class="imagePopups" id="#popup' + i + '><a hef="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img class="popupphoto" src="' + imageArray[i] + '"></div>').trigger('create');
                     
                 }
-                    $(".imagePopups").popup();
+
             });
 
 

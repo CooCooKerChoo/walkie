@@ -75,19 +75,22 @@
 
                 for( var i = 0, c = imageArray.length; i < c; i++ ) {
 
-                    // Create new Image element
-                    var $imgLink = $('<a data-rel="popup" data-position-to="window"></a>').attr({href: "#"+ i, id: "#_" + i});
-                    $imgLink.appendTo('.photos');
+                    // // Create new Image element
+                    // var $imgLink = $('<a data-rel="popup" data-position-to="window"></a>').attr({href: "#"+ i, id: "#_" + i});
+                    // $imgLink.appendTo('.photos');
 
-                    var $img = $('<img class="image"/>').attr("src", imageArray[i]);
-                    $img.appendTo($imgLink);
+                    // var $img = $('<img class="image"/>').attr("src", imageArray[i]);
+                    // $img.appendTo($imgLink);
 
-                    var $popout = $('<div data-role="popup" data-overlay-theme="b" data-theme="b"></div>').attr("id", + i);
-                    $popout.appendTo('#map-page').trigger('create');
+                    // var $popout = $('<div data-role="popup" data-overlay-theme="b" data-theme="b"></div>').attr("id", + i);
+                    // $popout.appendTo('#map-page').trigger('create');
 
-                    var popoutImg = $('<img />').attr("src", imageArray[i]);
-                    popoutImg.appendTo($popout);
+                    // var popoutImg = $('<img />').attr("src", imageArray[i]);
+                    // popoutImg.appendTo($popout);
 
+                    $(".photos").append('<a href="#popup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + imageArray[i] + '"></a>');
+
+                    $("#map-page").append('<div data-role="popup" id="#popup' + i + '"data-overlay-theme"a" data-theme="d" data-corner="false"><a hef="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>img class="popupphoto" src="' + imageArray[i] + '"></div>').trigger('create');
                 }
 
             });

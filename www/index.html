@@ -116,7 +116,7 @@
 		</div>
 
 		<div data-role="main" class="ui-content">
-			<div class="map">
+			<div class="finishedRouteInfo">
 				<div id="finishedRoute" style="height:150px; width: 100%;"></div>
 				<div class="ui-grid-a">
 					<div class="ui-block-a home_btns">
@@ -137,9 +137,9 @@
 					</div>
 				</div>
 				<span class="horizontalSplitter"></span>
-				<div id="walkDescription" contenteditable="true" data-text="Add a description"></div>
+				<span class="walk_title"><input type="text" placeholder="Walk Title" id="walkTitle"></input><span class="editIcon"><i class="fa fa-pencil"></i></span></span>
+				<span class="walk_description_container"><textarea placeholder="Walk Description" id="walkDescription"></textarea><span class="editIcon"><i class="fa fa-pencil"></i></span></span>
 				<span class="horizontalSplitter"></span>
-				<button id="stopWalk" onClick="getPicture()">Add Photographs</button>
 				<div id="photosContainer" class="horizontal-images">
 					<div class="photos">
 					</div>
@@ -182,7 +182,7 @@
                     path: '/me',
                     success: function(data) {
                         console.log(JSON.stringify(data));
-                        document.getElementById("userName").innerHTML = data.name;
+                        document.getElementById("userName").innerHTML = data.email;
                         document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
                     },
                     error: errorHandler});

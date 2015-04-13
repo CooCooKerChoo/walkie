@@ -53,48 +53,30 @@
                 }
             }
 
+            for( var i = 0, c = imageArray.length; i < c; i++ ) {
 
+                $(".photos").append('<a href="#popup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + imageArray[i] + '"></a>');
 
-            var storedDuration = localStorage.getItem("overallTime_" + currentTrackID)
-            if(storedDuration) {
-                document.getElementById("finalDuration").innerHTML = storedDuration;
+                // $("#map-page").append('<div data-role="popup" class="imagePopups" id="#popup' + i + '><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img class="popupphoto" src="' + imageArray[i] + '" width="300"></div>').trigger('create');
+                $('#map-page').append('<div data-role="popup" id="popup' + i + '" class="imagePopups" data-overlay-theme="a" data-theme="d" data-corners="false"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <img class="popphoto" src="' + imageArray[i] + '" style="max-height:512px;" alt="photo, test"></div>').trigger('create');
             }
 
-            var storedDistance = localStorage.getItem("overallDistance_" +currentTrackID)
-            if(storedDistance) {
-                document.getElementById("finalDistance").innerHTML = storedDistance;
-            }
-
-            var storedPath = localStorage.getItem("completePath_" +currentTrackID)
-            if(storedPath) {
-                // alert(storedPath);
-            }
-
-            var storedMarkers = localStorage.getItem("totalMarkers_" + currentTrackID)
-            if(storedMarkers) {
-                document.getElementById('markersArray').value = JSON.stringify(markers);
-            }
-
-                for( var i = 0, c = imageArray.length; i < c; i++ ) {
-
-                    $(".photos").append('<a href="#popup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + imageArray[i] + '"></a>');
-
-                    // $("#map-page").append('<div data-role="popup" class="imagePopups" id="#popup' + i + '><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img class="popupphoto" src="' + imageArray[i] + '" width="300"></div>').trigger('create');
-                    $('#map-page').append('<div data-role="popup" id="popup' + i + '" class="imagePopups" data-overlay-theme="a" data-theme="d" data-corners="false"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <img class="popphoto" src="' + imageArray[i] + '" style="max-height:512px;" alt="photo, test"></div>').trigger('create');
+            $( ".imagePopups" ).on({
+                popupbeforeposition: function() {
+                    var maxHeight = $( window ).height() - 60 + "px";
+                    $( ".imagePopups img" ).css( "max-height", maxHeight );
                 }
-
-                $( ".imagePopups" ).on({
-                    popupbeforeposition: function() {
-                        var maxHeight = $( window ).height() - 60 + "px";
-                        $( ".imagePopups img" ).css( "max-height", maxHeight );
-                    }
-                });
-
             });
+
+});
 
 
 
             function saveInfo() {
-                var saveAllInfo = document.getElementById("walkDescription").innerText;
-                localStorage.setItem("walkDescription_" + currentTrackID, saveAllInfo);
+                var walkTitle = document.getElementById("walkTitle").value;
+
+                db.transaction(function(t) {
+                    t.executeSql('UPDATE WALKS SET (WalkTitle) values (?)', [walkTitle]);
+                });
+
             }

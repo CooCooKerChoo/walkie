@@ -284,36 +284,59 @@ a:hover {color: purple;}
 }
 
 .horizontalSplitter {
-display: block;
-width: 100%;
-height: 1px;
-border-bottom: 1px solid #CCC;
-margin: 10px 0;
+    float: left;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #CCC;
+    margin: 10px 0;
 }
 
-.walkDescription{
-    border: none;
-    box-shadow: none;
-    resize: none;
-    position: relative;
-    padding: 0 20px;
-
-    &:after {
-        position: absolute;
-        font-family: FontAwesome;
-        top:0;
-        right: 20px;
-        content: "\f040";
+.finishedRouteInfo {
+    .walk_title {
+        border: none;
+        box-shadow: none;
+        resize: none;
+        position: relative;
+        float:left;
+        width: 100%;
+        .ui-input-text {
+            box-shadow: none;
+            width:90%;
+            border: none;
+            input {
+                float: left;
+                border-bottom: 1px solid #CCC;
+                background: none;
+                &:focus {
+                    border-bottom: 1px solid $link-color;
+                }
+            }
+        }
     }
-    &:focus {
-        outline: none !important;
+    .walk_description_container {
+        float:left;
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        position: relative;
+        textarea {
+            float: left;
+            border: none;
+            border-bottom: 1px solid #CCC;
+            background: none;
+            resize: none;
+            box-shadow: none;
+            width:90%;
+            &:focus {
+                border-bottom: 1px solid $link-color;
+            }
+        }
     }
-    &:focus &:after {color: purple;}
-}
-
-[contentEditable=true]:empty:not(:focus):before{
-        content:attr(data-text);
-        color: #CCC;
+        .editIcon {
+            position: absolute;
+            right:5px;
+            bottom:5px;
+        }
 }
 
 

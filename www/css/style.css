@@ -297,12 +297,6 @@ a:hover {
     width: 100px;
     box-sizing: border-box; }
 
-.ui-popup>img {
-  max-height: auto;
-  max-width: auto;
-  float: left;
-  box-sizing: border-box; }
-
 #marker-info-win {
   max-width: 210px;
   overflow: hidden; }

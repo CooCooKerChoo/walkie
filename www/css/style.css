@@ -297,7 +297,7 @@ a:hover {
     width: 100px;
     box-sizing: border-box; }
 
-.popupphoto {
+.ui-popup>img {
   width: 300px;
   height: 300px;
   float: left;

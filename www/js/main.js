@@ -28,9 +28,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
     }
 
     function createDB(t) {
-        t.executeSql('DROP TABLE WALKS');
-        t.executeSql('DROP TABLE MARKERS');
-        t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (id integer primary key autoincrement, Distance TEXT, Duration TEXT, PathCoordinates TEXT, Images TEXT, WalkTitle Text, Description Text)');
+        // t.executeSql('DROP TABLE WALKS');
+        // t.executeSql('DROP TABLE MARKERS');
+        t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (id integer primary key autoincrement, Distance TEXT, Duration TEXT, PathCoordinates TEXT, Images TEXT, WalkTitle Text, WalkDescription Text)');
         t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (id integer primary key autoincrement, markerid integer, title TEXT, info TEXT, markerLat TEXT, markerLng TEXT, walk_id integer, FOREIGN KEY(walk_id) REFERENCES WALKS(id))');
     }
 
@@ -370,27 +370,8 @@ function addMarkerFail(error) {
 // ====================================================== FINISH WALK ====================================================== //
 
 function stopSession(marker) {
-    var finishedDuration = document.getElementById("duration").innerText;
-    var finishedDistance = document.getElementById("distance").innerText;
-    var markersArray = JSON.stringify(markers);
+    finishedDuration = document.getElementById("duration").innerText;
+    finishedDistance = document.getElementById("distance").innerText;
 
-    var walkID; 
-
-    db.transaction(function(t) {
-        t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images) values (?,?,?,?)', [finishedDuration, finishedDistance, googleLatLng, imageArray], function(t, results){
-            walkID = results.insertId;
-            for(var id in markers) {
-                if( markers.hasOwnProperty(id) ) {
-                    (function(id) {
-                        db.transaction(function(t) {
-                            var marker = markers[id];
-                            t.executeSql('INSERT INTO MARKERS (markerid, title, info, markerLat, markerLng, walk_id) values (?,?,?,?,?,?)', [markers[id].id, markers[id].title, markers[id].info, markers[id].lat, markers[id].lng, walkID]);
-                        });
-                        })(id);
-                    console.log(marker);
-                }
-            }
-        });
-    });
     window.location.href = "#map-page";
 }

@@ -28,14 +28,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     }
 
     $(document).on('pageinit', "#page1", function() {
-        function refreshPage()
-        {
-            jQuery.mobile.changePage(window.location.href, {
-                allowSamePageTransition: true,
-                transition: 'none',
-                reloadPage: true
-            });
-        }
+        window.location.reload(true);
     });
 
     function createDB(t) {

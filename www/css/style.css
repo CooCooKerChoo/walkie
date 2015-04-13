@@ -297,6 +297,12 @@ a:hover {
     width: 100px;
     box-sizing: border-box; }
 
+.popupphoto {
+  width: 300px;
+  height: 300px;
+  float: left;
+  box-sizing: border-box; }
+
 #marker-info-win {
   max-width: 210px;
   overflow: hidden; }

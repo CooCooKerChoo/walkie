@@ -1,11 +1,11 @@
  $(document).on('pageinit', "#map-page", function() {
 
-            $("#photosContainer").mCustomScrollbar({
-                axis:"x",
-                theme:"dark-thick",
-                autoExpandScrollbar:true,
-                advanced:{autoExpandHorizontalScroll:true}
-            });
+            // $("#photosContainer").mCustomScrollbar({
+            //     axis:"x",
+            //     theme:"dark-thick",
+            //     autoExpandScrollbar:true,
+            //     advanced:{autoExpandHorizontalScroll:true}
+            // });
 
             var mapOptions = {
                 zoom: 15,
@@ -51,7 +51,9 @@
                         }
                     })(marker, id));*/
                 }
-            }  
+            }
+
+              
 
             var storedDuration = localStorage.getItem("overallTime_" + currentTrackID)
             if(storedDuration) {

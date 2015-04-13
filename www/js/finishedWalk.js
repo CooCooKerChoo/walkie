@@ -97,7 +97,7 @@
                 //         }
                 //     });
                 // });
-                window.location.href = "#page1";
+                // window.location.href = "#page1";
 
             navigator.notification.confirm(
                     'You are the winner!', // message

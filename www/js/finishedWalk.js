@@ -73,7 +73,9 @@
 
 });
 
-
+            function onConfirm(buttonIndex) {
+                alert('You selected button ' + buttonIndex);
+            }
 
             function saveInfo() {
                 // var walkTitle = document.getElementById("walkTitle").value;

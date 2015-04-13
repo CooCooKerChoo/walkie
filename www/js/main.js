@@ -27,6 +27,17 @@ document.addEventListener("deviceready", onDeviceReady, false);
             db.transaction(createDB, DBerror, DBsuccess);
     }
 
+    $(document).on('pageinit', "#page1", function() {
+        function refreshPage()
+        {
+            jQuery.mobile.changePage(window.location.href, {
+                allowSamePageTransition: true,
+                transition: 'none',
+                reloadPage: true
+            });
+        }
+    });
+
     function createDB(t) {
         // t.executeSql('DROP TABLE WALKS');
         // t.executeSql('DROP TABLE MARKERS');

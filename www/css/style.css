@@ -297,6 +297,14 @@ a:hover {
     width: 100px;
     box-sizing: border-box; }
 
+.ui-popup > .ui-btn-right {
+  position: absolute;
+  top: -9px;
+  margin: 0;
+  z-index: 1101;
+  padding: 0;
+  background-color: none; }
+
 #marker-info-win {
   max-width: 210px;
   overflow: hidden; }

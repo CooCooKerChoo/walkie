@@ -107,5 +107,7 @@
             }
 
             function alertDismissed() {
-                $.mobile.loadPage( "#page1", reloadPage:true);
+                $.mobile.changePage( "#page1", {
+                    reloadPage:true
+                });
             }

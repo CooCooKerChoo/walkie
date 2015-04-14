@@ -20,7 +20,7 @@
                     db = openDatabase("Database", "1.0", "Test DB", 1000000);
                     db.transaction(createDB, DBerror, DBsuccess);
 
-                    document.addEventListener("exitButton",function(){ 
+                    document.addEventListener("backbutton", backKeyDown function(){ 
 
                     navigator.notification.confirm(
                            'Do you want to quit', 

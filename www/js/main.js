@@ -246,6 +246,7 @@
                         handleSpeedChange( speed );
                         speed = currentSpeed;
                     }
+                    console.log(currentSpeed);
                 }
 
                 function onErrorTrack(error) {

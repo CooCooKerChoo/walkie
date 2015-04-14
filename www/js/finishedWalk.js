@@ -64,39 +64,32 @@
                 $('#map-page').append('<div data-role="popup" id="popup' + i + '" class="imagePopups" data-overlay-theme="a" data-theme="d" data-corners="false"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <img class="popphoto" src="' + imageArray[i] + '" style="max-height:512px;" alt="photo, test"></div>').trigger('create');
             }
 
-            $( ".imagePopups" ).on({
-                popupbeforeposition: function() {
-                    var maxHeight = $( window ).height() - 60 + "px";
-                    $( ".imagePopups img" ).css( "max-height", maxHeight );
-                }
-            });
-
 });
 
 
 
             function saveInfo() {
-                // var walkTitle = document.getElementById("walkTitle").value;
-                // var walkDescription = document.getElementById("walkDescription").value;
-                // var markersArray = JSON.stringify(markers);
-                // var walkID; 
+                var walkTitle = document.getElementById("walkTitle").value;
+                var walkDescription = document.getElementById("walkDescription").value;
+                var markersArray = JSON.stringify(markers);
+                var walkID; 
 
-                // db.transaction(function(t) {
-                //     t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?)', [dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], function(t, results){
-                //         walkID = results.insertId;
-                //         for(var id in markers) {
-                //             if( markers.hasOwnProperty(id) ) {
-                //                 (function(id) {
-                //                     db.transaction(function(t) {
-                //                         var marker = markers[id];
-                //                         t.executeSql('INSERT INTO MARKERS (markerid, title, info, markerLat, markerLng, walk_id) values (?,?,?,?,?,?)', [markers[id].id, markers[id].title, markers[id].info, markers[id].lat, markers[id].lng, walkID]);
-                //                     });
-                //                     })(id);
-                //                 console.log(marker);
-                //             }
-                //         }
-                //     });
-                // });
+                db.transaction(function(t) {
+                    t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?)', [dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], function(t, results){
+                        walkID = results.insertId;
+                        for(var id in markers) {
+                            if( markers.hasOwnProperty(id) ) {
+                                (function(id) {
+                                    db.transaction(function(t) {
+                                        var marker = markers[id];
+                                        t.executeSql('INSERT INTO MARKERS (markerid, title, info, markerLat, markerLng, walk_id) values (?,?,?,?,?,?)', [markers[id].id, markers[id].title, markers[id].info, markers[id].lat, markers[id].lng, walkID]);
+                                    });
+                                    })(id);
+                                console.log(marker);
+                            }
+                        }
+                    });
+                });
 
                 navigator.notification.alert(
                     'All information has been saved',  // message
@@ -104,10 +97,10 @@
                     'Saving',            // title
                     'Done'                  // buttonName
                 );
+
+                location.href="index.html";
             }
 
             function alertDismissed() {
-                $.mobile.changePage( "#page1", {
-                    reloadPage:true
-                });
+                location.href="index.html";
             }

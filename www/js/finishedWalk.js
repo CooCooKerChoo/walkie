@@ -95,18 +95,15 @@
                         });
                 });
 
-                // navigator.notification.alert(
-                //     'All information has been saved',  // message
-                //     alertDismissed,         // callback
-                //     'Saving',            // title
-                //     'Done'                  // buttonName
-                // );
+                navigator.notification.alert(
+                    'All information has been saved',  // message
+                    alertDismissed,         // callback
+                    'Saving',            // title
+                    'Done'                  // buttonName
+                );
             }
 
-            function returnHome() {
+
+            function alertDismissed() {
                 location.href="index.html";
             }
-
-            // function alertDismissed() {
-            //     location.href="index.html";
-            // }

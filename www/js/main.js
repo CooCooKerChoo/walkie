@@ -19,24 +19,7 @@
 
                     db = openDatabase("Database", "1.0", "Test DB", 1000000);
                     db.transaction(createDB, DBerror, DBsuccess);
-
-                    document.addEventListener("backbutton", backKeyDown function(){ 
-
-                    navigator.notification.confirm(
-                           'Do you want to quit', 
-                           onConfirmQuit, 
-                           'QUIT TITLE', 
-                           'OK,Cancel'  
-                    );
-
-                }, true);
             }
-
-                function onConfirmQuit(button){
-                   if(button == "1"){
-                     navigator.app.exitApp(); 
-                   }
-                }
 
             document.addEventListener("deviceready", onDeviceReady, false);
 

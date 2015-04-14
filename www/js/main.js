@@ -331,6 +331,7 @@
 
             function handleSpeedChange( oldSpeed ) {
                 speedTime.push({ speed: oldSpeed, time: time });
+                console.log(speedTime);
             }
 
             function calculate_metres( speed, time ) {

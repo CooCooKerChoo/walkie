@@ -87,7 +87,6 @@
                                             t.executeSql('INSERT INTO MARKERS (markerid, title, info, markerLat, markerLng, walk_id) values (?,?,?,?,?,?)', [markers[id].id, markers[id].title, markers[id].info, markers[id].lat, markers[id].lng, walkID]);
                                         });
                                         })(id);
-                                    console.log(marker);
                                 }
                             }
                         },
@@ -102,7 +101,9 @@
                 //     'Saving',            // title
                 //     'Done'                  // buttonName
                 // );
+            }
 
+            function returnHome() {
                 location.href="index.html";
             }
 

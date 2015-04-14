@@ -103,7 +103,7 @@
                 //     'Done'                  // buttonName
                 // );
 
-                // location.href="index.html";
+                location.href="index.html";
             }
 
             // function alertDismissed() {

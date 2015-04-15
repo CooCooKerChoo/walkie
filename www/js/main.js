@@ -246,6 +246,8 @@
                         handleSpeedChange( speed );
                         speed = currentSpeed;
                     }
+
+                    console.log(googleLatLng);
                 }
 
                 function onErrorTrack(error) {

@@ -24,7 +24,6 @@
 
         setTimeout(function() {
             google.maps.event.trigger(map, "resize");
-            map.setCenter(coords);
         }, 1000);
 
             if (googleLatLng.length > 0) {

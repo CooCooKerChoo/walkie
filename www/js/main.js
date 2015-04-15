@@ -46,7 +46,6 @@
 
                 storeLatLng(latitude, longitude);
 
-                console.log(latlngs);
 
                     var mapOptions = {
                         zoom: 17,
@@ -231,6 +230,7 @@
                     lon = position.coords.longitude;
             
                     storeLatLng(lat, lon);
+                    console.log(latlngs);
 
                     if (googleLatLng.length > 0) {
                       var path = new google.maps.Polyline({

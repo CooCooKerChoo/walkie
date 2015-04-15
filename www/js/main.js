@@ -230,7 +230,8 @@
                     lon = position.coords.longitude;
             
                     storeLatLng(lat, lon);
-                    console.log(latlngs);
+                    console.log(latlngs[0]);
+                    console.log(latlngs[1]);
 
                     if (googleLatLng.length > 0) {
                       var path = new google.maps.Polyline({

@@ -1,4 +1,4 @@
- $(document).on('pageinit', "#my-routes", function() {
+ $(document).on('pageshow', "#my-routes", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS', [], querySuccess, errorCB);
@@ -20,6 +20,7 @@
 			var sumLat=0, sumLng=0, maxLat, minLat, maxLng, minLng; 
 			polyline=polyline.map(function(p){ 
 				var point=p.split(','); 
+				// var lat=parseFloat(point[0]) ,lng=parseFloat(point[1]); 
 				var lat=parseFloat(point[0]) ,lng=parseFloat(point[1]); 
 				if(maxLat===undefined || maxLat<lat) maxLat=lat;
 				if(maxLng===undefined || maxLng<lng) maxLng=lng;
@@ -31,9 +32,13 @@
 			coords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
 			polys.push(polyline);
 
+			console.log(coords);
+			console.log(polys);
+
             $("#my_walks").append('<div id="map" class="walk_container"><div class="map" id="walkMap' + walkId + '" style="width: 100%; height: 300px;"></div>');
 	    }
 		$('.map').each(function (index, Element) {
+
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
 		        zoom: 16,

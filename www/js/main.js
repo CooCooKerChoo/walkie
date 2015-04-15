@@ -24,8 +24,8 @@
             document.addEventListener("deviceready", onDeviceReady, false);
 
             function createDB(t) {
-                t.executeSql('DROP TABLE WALKS');
-                t.executeSql('DROP TABLE MARKERS');
+                // t.executeSql('DROP TABLE WALKS');
+                // t.executeSql('DROP TABLE MARKERS');
                 t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (id integer primary key autoincrement, Distance TEXT, Duration TEXT, PathCoordinates TEXT, Images TEXT, WalkTitle Text, WalkDescription Text)');
                 t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (id integer primary key autoincrement, markerid integer, title TEXT, info TEXT, markerLat TEXT, markerLng TEXT, walk_id integer, FOREIGN KEY(walk_id) REFERENCES WALKS(id))');
             }

@@ -72,12 +72,10 @@
                 var walkTitle = document.getElementById("walkTitle").value;
                 var walkDescription = document.getElementById("walkDescription").value;
                 var markersArray = JSON.stringify(markers);
-                var Lat = latlngs[0];
-                var Lng = latlngs[1];
                 var walkID; 
 
                 db.transaction(function(t) {
-                    t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?,?)', [dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], 
+                    t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?)', [dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], 
                         function(t, results){
                             console.log('ok');
                             walkID = results.insertId;

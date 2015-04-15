@@ -77,7 +77,7 @@
                 var walkID; 
 
                 db.transaction(function(t) {
-                    t.executeSql('INSERT INTO WALKS (Duration, Distance, Lat, Lng, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?,?)', [dbstoreDuration, dbstoreDistance, Lat, Lng, imageArray, walkTitle, walkDescription], 
+                    t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?,?)', [dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], 
                         function(t, results){
                             console.log('ok');
                             walkID = results.insertId;

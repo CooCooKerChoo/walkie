@@ -227,12 +227,7 @@
             // }
 
             function geolocationWatch() {
-                    var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 3000000};
-                    watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
-            }
-
-            function stopGeolocationWatch() {
-                    navigator.geolocation.clearWatch(watchID);
+                navigator.geolocation.getCurrentPosition(onSuccessTrack, onErrorTrack);
             }
 
                 function onSuccessTrack(position) {
@@ -258,7 +253,9 @@
                         speed = currentSpeed;
                     }
 
-                    console.log("Position found");
+                    console.log(latlngs);
+
+                    setInterval(geolocationWatch, 30000);    
                 }
 
                 function onErrorTrack(error) {

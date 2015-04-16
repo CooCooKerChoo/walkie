@@ -35,16 +35,16 @@
 			console.log(coords);
 			console.log(polys);
 
-            $("#my_walks").append('<div id="map" class="walk_container"><div class="map" id="walkMap' + walkId + '" style="width: 100%; height: 200px;"></div>');
+            $("#my_walks").append('<div class="walk_container"><div id="map" class="walk_container"><div class="map" id="walkMap' + walkId + '" style="width: 100%; height: 200px;"></div></div>');
 	    }
 		$('.map').each(function (index, Element) {
 
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
-		        zoom: 10,
+		        zoom: 14,
 		        center: new google.maps.LatLng(coords[index][0],coords[index][1]),
 		        // center: new google.maps.LatLng(52.9544124,-2.0046446),
-		        mapTypeId: google.maps.MapTypeId.ROADMAP,
+		        mapTypeId: google.maps.MapTypeId.TERRAIN,
 		        disableDefaultUI: false,
 		        mapTypeControl: true,
             	mapTypeControl: false,

@@ -16,7 +16,7 @@
                 mapTypeControl: false,
                 streetViewControl:false,
                 zoomControl: false,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                mapTypeId: google.maps.MapTypeId.TERRAIN
             };
 
             //create the map, and place it in the HTML map div
@@ -73,26 +73,26 @@
                 var markersArray = JSON.stringify(markers);
                 var walkID; 
 
-                // db.transaction(function(t) {
-                //     t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?)', [dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], 
-                //         function(t, results){
-                //             console.log('ok');
-                //             walkID = results.insertId;
-                //             for(var id in markers) {
-                //                 if( markers.hasOwnProperty(id) ) {
-                //                     (function(id) {
-                //                         db.transaction(function(t) {
-                //                             var marker = markers[id];
-                //                             t.executeSql('INSERT INTO MARKERS (markerid, title, info, markerLat, markerLng, walk_id) values (?,?,?,?,?,?)', [markers[id].id, markers[id].title, markers[id].info, markers[id].lat, markers[id].lng, walkID]);
-                //                         });
-                //                         })(id);
-                //                 }
-                //             }
-                //         },
-                //         function(t, error){
-                //             console.log('error: ' + error.meesage);
-                //         });
-                // });
+                db.transaction(function(t) {
+                    t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?)', [dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], 
+                        function(t, results){
+                            console.log('ok');
+                            walkID = results.insertId;
+                            for(var id in markers) {
+                                if( markers.hasOwnProperty(id) ) {
+                                    (function(id) {
+                                        db.transaction(function(t) {
+                                            var marker = markers[id];
+                                            t.executeSql('INSERT INTO MARKERS (markerid, title, info, markerLat, markerLng, walk_id) values (?,?,?,?,?,?)', [markers[id].id, markers[id].title, markers[id].info, markers[id].lat, markers[id].lng, walkID]);
+                                        });
+                                        })(id);
+                                }
+                            }
+                        },
+                        function(t, error){
+                            console.log('error: ' + error.meesage);
+                        });
+                });
 
                 navigator.notification.alert(
                     'All information has been saved',  // message

@@ -25,8 +25,8 @@ var googleLatLng = [],
 
 
     function createDB(t) {
-        t.executeSql('DROP TABLE WALKS');
-        t.executeSql('DROP TABLE MARKERS');
+        // t.executeSql('DROP TABLE WALKS');
+        // t.executeSql('DROP TABLE MARKERS');
         t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (id integer primary key autoincrement, Distance TEXT, Duration TEXT, PathCoordinates TEXT, Images TEXT, WalkTitle Text, WalkDescription Text)');
         t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (id integer primary key autoincrement, markerid integer, title TEXT, info TEXT, markerLat TEXT, markerLng TEXT, walk_id integer, FOREIGN KEY(walk_id) REFERENCES WALKS(id))');
     }
@@ -52,7 +52,7 @@ var googleLatLng = [],
                 zoom: 17,
                 center: coords,
                 mapTypeControl: true,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                mapTypeId: google.maps.MapTypeId.TERRAIN
             };
 
             //create the map, and place it in the HTML map div
@@ -191,7 +191,7 @@ var startTime, currentTime,
 function track(button) {
     // Start/Resume
     if( !running ) {
-        setInterval(geolocationWatch, 30000);   
+        setInterval(geolocationWatch, 20000);   
         $("#watchButton").html("PAUSE")
         $("#stopWalk").fadeOut('fast');
         running = true;

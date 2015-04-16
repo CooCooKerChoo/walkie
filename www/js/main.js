@@ -230,6 +230,8 @@ function geolocationWatch() {
     navigator.geolocation.getCurrentPosition(onSuccessTrack, onErrorTrack);
 }
 
+var totalDistance = 0;
+
 function onSuccessTrack(position) {
 
     lat = position.coords.latitude;
@@ -269,7 +271,6 @@ function onSuccessTrack(position) {
         return this * Math.PI / 180;
     }
 
-    var totalDistance;
 
     totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
     document.getElementById("distance").innerHTML = totalDistance.toFixed(12);

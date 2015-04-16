@@ -231,9 +231,9 @@
                     watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
             }
 
-            setInterval(function(){
+            window.setInterval(function(){
                 geolocationWatch();
-            }, 1000*60);
+            }, 5000);
 
             function stopGeolocationWatch() {
                     navigator.geolocation.clearWatch(watchID);

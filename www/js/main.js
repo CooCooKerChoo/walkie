@@ -252,6 +252,7 @@ function onSuccessTrack(position) {
     var Prevlng = lastofArray[1];
     console.log("Previous Lat: " + Prevlat, "Previous Lng: " + Prevlng);
     console.log("Current Lat:" + lat, "Current Lng: " + lon);
+    console.log(latlngs);
 
     function calculateDistance(lat, lon, Prevlat, Prevlng){
         var R = 6371; // km

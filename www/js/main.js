@@ -247,7 +247,7 @@ function onSuccessTrack(position) {
       path.setMap(map);
     }
 
-    var lastofArray = latlngs[latlngs.length - 1];
+    var lastofArray = latlngs[latlngs.length - 2];
     var Prevlat = lastofArray[0];
     var Prevlng = lastofArray[1];
     console.log("Previous Lat: " + Prevlat, "Previous Lng: " + Prevlng);

@@ -254,7 +254,7 @@
                     console.log("Position found");
                 }
 
-                setTimeout(onSuccess, 10000);
+                setTimeout(onSuccessTrack, 10000);
 
                 function onErrorTrack(error) {
                   alert('code: '    + error.code    + '\n' +

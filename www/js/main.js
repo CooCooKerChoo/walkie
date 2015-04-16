@@ -194,7 +194,7 @@ var startTime, currentTime,
 function track(button) {
     // Start/Resume
     if( !running ) {
-        setInterval(geolocationWatch, 5000);   
+        setInterval(geolocationWatch, 30000);   
         $("#watchButton").html("PAUSE")
         $("#stopWalk").fadeOut('fast');
         running = true;

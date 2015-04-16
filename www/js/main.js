@@ -251,6 +251,23 @@ function onSuccessTrack(position) {
     var Prevlat = lastofArray[0];
     var Prevlng = lastofArray[1];
     console.log("Lat: " + Prevlat, "Lng: " + Prevlng);
+
+    function calculateDistance(lat, lon, Prevlat, Prevlng){
+        var R = 6371; // km
+        var dLat = (Prevlat - lat).toRad();
+        var dLon = (Prevlng - lon).toRad(); 
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(lat.toRad()) * Math.cos(Prevlat.toRad()) * 
+              Math.sin(dLon / 2) * Math.sin(dLon / 2); 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+        var d = R * c;
+        return d;
+        }
+        Number.prototype.toRad = function() {
+        return this * Math.PI / 180;
+    }
+
+    document.getElementById("distance").innerHTML = calculateDistance(lat, lon, Prevlat, Prevlng).toFixed(12);
 } 
 
 function onErrorTrack(error) {

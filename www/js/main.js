@@ -194,7 +194,7 @@
             function track(button) {
                 // Start/Resume
                 if( !running ) {
-                    var watchOptions = { enableHighAccuracy: false, timeout : 10000, maximumAge: 10000};
+                    var watchOptions = { enableHighAccuracy: false, timeout : 10000, maximumAge: 30000};
                     watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
                     
                     $("#watchButton").html("PAUSE")
@@ -253,6 +253,8 @@
 
                     console.log("Position found");
                 }
+
+                setTimeout(onSuccess, 10000);
 
                 function onErrorTrack(error) {
                   alert('code: '    + error.code    + '\n' +

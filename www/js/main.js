@@ -194,7 +194,7 @@ var startTime, currentTime,
 function track(button) {
     // Start/Resume
     if( !running ) {
-        setInterval(geolocationWatch, 30000);   
+        setInterval(geolocationWatch, 5000);   
         $("#watchButton").html("PAUSE")
         $("#stopWalk").fadeOut('fast');
         running = true;
@@ -269,7 +269,9 @@ function onSuccessTrack(position) {
         return this * Math.PI / 180;
     }
 
-    var totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
+    var totalDistance = 0;
+
+    totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
     document.getElementById("distance").innerHTML = totalDistance.toFixed(12);
 } 
 

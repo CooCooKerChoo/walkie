@@ -19,14 +19,10 @@ var googleLatLng = [],
     // device APIs are available
     //
     function onDeviceReady() {
-        var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
-        navigator.geolocation.getCurrentPosition(onSuccess, onError, addMapMarker, posOptions);
-
             db = openDatabase("Database", "1.0", "Test DB", 1000000);
             db.transaction(createDB, DBerror, DBsuccess);
     }
 
-    document.addEventListener("deviceready", onDeviceReady, false);
 
     function createDB(t) {
         // t.executeSql('DROP TABLE WALKS');

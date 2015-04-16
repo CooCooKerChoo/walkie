@@ -273,7 +273,7 @@ function onSuccessTrack(position) {
 
 
     totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
-    document.getElementById("distance").innerHTML = totalDistance.toFixed(12);
+    document.getElementById("distance").innerHTML = totalDistance.toFixed(3) + " KM";
 } 
 
 function onErrorTrack(error) {

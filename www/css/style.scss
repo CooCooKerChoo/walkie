@@ -35,15 +35,14 @@ h1, h2, h3, h4, h5, h6, p, a, ul, li {
         font-family: 'Droid Sans', sans-serif;
 }
 
+#page1 {height: 100%;}
+
 .center {text-align: center;}
 
 a {color: $link-color;}
 
 a:hover {color: purple;}
 
-.ui-mobile .ui-page {
-    height: 100%;
-}
 
 .ui-page-theme-a .ui-btn {
     background-color: $link-color;

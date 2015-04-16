@@ -1,3 +1,7 @@
+ $(document).on('pageshow', "#map-page", function() {
+
+ });
+
 
         var googleLatLng = [],
             latlngs = [],
@@ -190,7 +194,7 @@
             function track(button) {
                 // Start/Resume
                 if( !running ) {
-                    var watchOptions = { enableHighAccuracy: true, timeout : 5000, maximumAge: 10000};
+                    var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 10000};
                     watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
                     
                     $("#watchButton").html("PAUSE")
@@ -247,7 +251,7 @@
                         speed = currentSpeed;
                     }
 
-                    console.log(googleLatLng);
+                    console.log("Position found");
                 }
 
                 function onErrorTrack(error) {

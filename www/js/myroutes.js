@@ -20,7 +20,7 @@
 			var sumLat=0, sumLng=0, maxLat, minLat, maxLng, minLng; 
 			polyline=polyline.map(function(p){ 
 				var point=p.split(','); 
-				// var lat=parseFloat(point[0]) ,lng=parseFloat(point[1]); 
+				// var lat=(Math.random()/100) ,lng=(Math.random()/100); 
 				var lat=parseFloat(point[0]) ,lng=parseFloat(point[1]); 
 				if(maxLat===undefined || maxLat<lat) maxLat=lat;
 				if(maxLng===undefined || maxLng<lng) maxLng=lng;
@@ -35,25 +35,32 @@
 			console.log(coords);
 			console.log(polys);
 
-            $("#my_walks").append('<div id="map" class="walk_container"><div class="map" id="walkMap' + walkId + '" style="width: 100%; height: 300px;"></div>');
+            $("#my_walks").append('<div id="map" class="walk_container"><div class="map" id="walkMap' + walkId + '" style="width: 100%; height: 200px;"></div>');
 	    }
 		$('.map').each(function (index, Element) {
 
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
-		        zoom: 16,
+		        zoom: 10,
 		        center: new google.maps.LatLng(coords[index][0],coords[index][1]),
 		        // center: new google.maps.LatLng(52.9544124,-2.0046446),
 		        mapTypeId: google.maps.MapTypeId.ROADMAP,
 		        disableDefaultUI: false,
 		        mapTypeControl: true,
-		        zoomControl: true,
+            	mapTypeControl: false,
+                streetViewControl:false,
+                zoomControl: false,
 		        zoomControlOptions: {
 		            style: google.maps.ZoomControlStyle.SMALL
 		        }
 		    };
 
 		    var map = new google.maps.Map(Element, myOptions);
+
+
+		    var sw = new google.maps.LatLng(coords[index][3],coords[index][5]);
+		    var ne = new google.maps.LatLng(coords[index][2],coords[index][4]);
+			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
 
 	        setTimeout(function() {
 	            google.maps.event.trigger(map, "resize");

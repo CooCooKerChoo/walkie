@@ -207,7 +207,7 @@
                 } else { // Pause/Stop
                     running = false;
                     clearInterval(theTimer);
-                    stopGeolocationWatch(watchID);
+                    clearInterval(geolocationWatch);
                     past = time;
                     $("#watchButton").html("RESUME");
                     $("#stopWalk").fadeIn('fast');
@@ -247,16 +247,10 @@
                       path.setMap(map);
                     }
 
-                    currentSpeed = position.coords.speed;
-                    if ( currentSpeed != speed ) {
-                        handleSpeedChange( speed );
-                        speed = currentSpeed;
-                    }
-
                     console.log(latlngs);
+                }
 
                     setInterval(geolocationWatch, 30000);    
-                }
 
                 function onErrorTrack(error) {
                   alert('code: '    + error.code    + '\n' +

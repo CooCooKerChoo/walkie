@@ -269,7 +269,8 @@ function onSuccessTrack(position) {
         return this * Math.PI / 180;
     }
 
-    document.getElementById("distance").innerHTML = calculateDistance(lat, lon, Prevlat, Prevlng).toFixed(12);
+    var totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
+    document.getElementById("distance").innerHTML = totalDistance.toFixed(12);
 } 
 
 function onErrorTrack(error) {

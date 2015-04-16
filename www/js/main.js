@@ -194,7 +194,7 @@ var startTime, currentTime,
 function track(button) {
     // Start/Resume
     if( !running ) {
-        setInterval(geolocationWatch, 10000);   
+        setInterval(geolocationWatch, 5000);   
         $("#watchButton").html("PAUSE")
         $("#stopWalk").fadeOut('fast');
         running = true;
@@ -247,7 +247,10 @@ function onSuccessTrack(position) {
       path.setMap(map);
     }
 
-    console.log(latlngs[latlngs.length - 1]);
+    var lastofArray = latlngs[latlngs.length - 1];
+    var Prevlat = lastofArray[0];
+    var Prevlng = lastofArray[1];
+    console.log("Lat: " + Prevlat, "Lng: " + Prevlng);
 } 
 
 function onErrorTrack(error) {

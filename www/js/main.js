@@ -269,8 +269,6 @@ function onSuccessTrack(position) {
         return this * Math.PI / 180;
     }
 
-    var totalDistance = 0;
-
     totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
     document.getElementById("distance").innerHTML = totalDistance.toFixed(12);
 } 

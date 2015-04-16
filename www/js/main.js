@@ -194,9 +194,7 @@
             function track(button) {
                 // Start/Resume
                 if( !running ) {
-                    var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 3000000};
-                    watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
-                    
+                    geolocationWatch();
                     $("#watchButton").html("PAUSE")
                     $("#stopWalk").fadeOut('fast');
                     running = true;
@@ -208,8 +206,8 @@
                     // }
                 } else { // Pause/Stop
                     running = false;
-                    navigator.geolocation.clearWatch(watchID);
                     clearInterval(theTimer);
+                    stopGeolocationWatch(watchID);
                     past = time;
                     $("#watchButton").html("RESUME");
                     $("#stopWalk").fadeIn('fast');
@@ -227,6 +225,19 @@
             //     window.localStorage.setItem('walks', JSON.stringify([0]));
             //     return 0;
             // }
+
+            function geolocationWatch() {
+                    var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 3000000};
+                    watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
+            }
+
+            setInterval(function(){
+                geolocationWatch();
+            }, 1000*60);
+
+            function stopGeolocationWatch() {
+                    navigator.geolocation.clearWatch(watchID);
+            }
 
                 function onSuccessTrack(position) {
 

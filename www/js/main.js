@@ -229,16 +229,7 @@
             function geolocationWatch() {
                     var watchOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 3000000};
                     watchID = navigator.geolocation.watchPosition(onSuccessTrack, onErrorTrack, watchOptions);
-
-                    window.setTimeout(function(){
-                        navigator.geolocation.clearWatch(watchID);
-                    }, 5000
-                    );
             }
-
-            window.setInterval(function(){
-                geolocationWatch();
-            }, 5000);
 
             function stopGeolocationWatch() {
                     navigator.geolocation.clearWatch(watchID);

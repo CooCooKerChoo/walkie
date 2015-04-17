@@ -95,16 +95,15 @@
                         });
                 });
 
-                // navigator.notification.alert(
-                //     'All information has been saved',  // message
-                //      location.href="index.html",         // callback
-                //     'Saving',            // title
-                //     'Done'                  // buttonName
-                // );
-                navigator.notification.alert('PhoneGap Alert', null, 'Title', 'Button')
+                navigator.notification.alert(
+                    'All information has been saved',  // message
+                     location.href="index.html",         // callback
+                    'Saving',            // title
+                    'Done'                  // buttonName
+                );
             }
 
 
-            // function alertDismissed() {
-            //     location.href="index.html";
-            // }
+            function alertDismissed() {
+                location.href="index.html";
+            }

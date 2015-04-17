@@ -62,7 +62,7 @@
 		        zoom: 14,
 		        center: new google.maps.LatLng(coords[index][0],coords[index][1]),
 		        // center: new google.maps.LatLng(52.9544124,-2.0046446),
-		        mapTypeId: google.maps.MapTypeId.ROADMAP,
+		        mapTypeId: google.maps.MapTypeId.TERRAIN,
 		        disableDefaultUI: false,
 		        mapTypeControl: true,
             	mapTypeControl: false,

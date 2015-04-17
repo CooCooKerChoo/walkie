@@ -16,7 +16,7 @@
                 mapTypeControl: false,
                 streetViewControl:false,
                 zoomControl: false,
-                mapTypeId: google.maps.MapTypeId.TERRAIN
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
             //create the map, and place it in the HTML map div

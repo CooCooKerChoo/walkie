@@ -52,7 +52,7 @@ var googleLatLng = [],
                 zoom: 17,
                 center: coords,
                 disableDefaultUI: true,
-                mapTypeId: google.maps.MapTypeId.TERRAIN
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
             //create the map, and place it in the HTML map div

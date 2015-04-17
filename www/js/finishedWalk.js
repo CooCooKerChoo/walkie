@@ -101,7 +101,6 @@
                 //     'Done'                  // buttonName
                 // );
                 navigator.notification.alert('PhoneGap Alert', null, 'Title', 'Button')
-                }, false);
             }
 
 

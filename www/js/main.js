@@ -186,12 +186,13 @@ var startTime, currentTime,
     distance = [],
     imageArray = [],
     speedTime = [],
-    currentTrackID;
+    currentTrackID,
+    intervalHandle = null;
 
 function track(button) {
     // Start/Resume
     if( !running ) {
-        setTimeout(geolocationWatch, 20000);   
+        geolocationWatch();
         $("#watchButton").html("PAUSE")
         $("#stopWalk").fadeOut('fast');
         running = true;
@@ -204,7 +205,7 @@ function track(button) {
     } else { // Pause/Stop
         running = false;
         clearInterval(theTimer);
-        clearInterval(geolocationWatch);
+        clearInterval(intervalHandle);
         past = time;
         $("#watchButton").html("RESUME");
         $("#stopWalk").fadeIn('fast');
@@ -224,53 +225,57 @@ function track(button) {
     // }
 
 function geolocationWatch() {
-    navigator.geolocation.getCurrentPosition(onSuccessTrack, onErrorTrack);
+    navigator.geolocation.getCurrentPosition(function(position){
+        intervalHandle = setInterval(function(){
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+
+            storeLatLng(lat, lon);
+
+            if (googleLatLng.length > 0) {
+              var path = new google.maps.Polyline({
+                path: googleLatLng,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 5
+              });
+              path.setMap(map);
+            }
+
+            var lastofArray = latlngs[latlngs.length - 2];
+            var Prevlat = lastofArray[0];
+            var Prevlng = lastofArray[1];
+            console.log("Previous Lat: " + Prevlat, "Previous Lng: " + Prevlng);
+            console.log("Current Lat:" + lat, "Current Lng: " + lon);
+            console.log(latlngs);
+
+            function calculateDistance(lat, lon, Prevlat, Prevlng){
+                var R = 6371; // km
+                var dLat = (Prevlat - lat).toRad();
+                var dLon = (Prevlng - lon).toRad(); 
+                var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat.toRad()) * Math.cos(Prevlat.toRad()) * 
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2); 
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+                var d = R * c;
+                return d;
+                }
+                Number.prototype.toRad = function() {
+                return this * Math.PI / 180;
+            }
+
+
+            totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
+            document.getElementById("distance").innerHTML = totalDistance.toFixed(12) + " KM";
+        },5000)
+    }, onErrorTrack);
+
 }
 
 var totalDistance = 0;
 
 function onSuccessTrack(position) {
 
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
-
-    storeLatLng(lat, lon);
-
-    if (googleLatLng.length > 0) {
-      var path = new google.maps.Polyline({
-        path: googleLatLng,
-        strokeColor: "#FF0000",
-        strokeOpacity: 1.0,
-        strokeWeight: 5
-      });
-      path.setMap(map);
-    }
-
-    var lastofArray = latlngs[latlngs.length - 2];
-    var Prevlat = lastofArray[0];
-    var Prevlng = lastofArray[1];
-    console.log("Previous Lat: " + Prevlat, "Previous Lng: " + Prevlng);
-    console.log("Current Lat:" + lat, "Current Lng: " + lon);
-    console.log(latlngs);
-
-    function calculateDistance(lat, lon, Prevlat, Prevlng){
-        var R = 6371; // km
-        var dLat = (Prevlat - lat).toRad();
-        var dLon = (Prevlng - lon).toRad(); 
-        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-              Math.cos(lat.toRad()) * Math.cos(Prevlat.toRad()) * 
-              Math.sin(dLon / 2) * Math.sin(dLon / 2); 
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
-        var d = R * c;
-        return d;
-        }
-        Number.prototype.toRad = function() {
-        return this * Math.PI / 180;
-    }
-
-
-    totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
-    document.getElementById("distance").innerHTML = totalDistance.toFixed(3) + " KM";
 } 
 
 function onErrorTrack(error) {

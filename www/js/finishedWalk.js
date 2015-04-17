@@ -94,6 +94,8 @@
                         });
                 });
 
+                navigator.notification.vibrate(2500);
+
                 navigator.notification.alert(
                     'All information has been saved',  // message
                      alertDismissed(),         // callback
@@ -101,7 +103,6 @@
                     'Done'                  // buttonName
                 );
 
-                navigator.notification.beep(3);
             }
 
 

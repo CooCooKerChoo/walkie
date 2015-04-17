@@ -1,6 +1,15 @@
  $(document).on('pageshow', "#map-page", function() {
 
-    getInfo();
+    function getInfo() {
+        openFB.api({
+            path: '/me',
+            success: function(data) {
+                console.log(JSON.stringify(data));
+                document.getElementById("userName").innerHTML = data.name;
+                document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+            },
+            error: errorHandler});
+    }
 
     dbstoreDistance = document.getElementById("finalDistance").innerText = finishedDistance;
     dbstoreDuration = document.getElementById("finalDuration").innerText = finishedDuration;

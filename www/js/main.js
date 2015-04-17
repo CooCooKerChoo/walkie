@@ -22,7 +22,16 @@ var googleLatLng = [],
             db = openDatabase("Database", "1.0", "Test DB", 1000000);
             db.transaction(createDB, DBerror, DBsuccess);
 
-            getInfo();
+            function getInfo() {
+                openFB.api({
+                    path: '/me',
+                    success: function(data) {
+                        console.log(JSON.stringify(data));
+                        document.getElementById("userName").innerHTML = data.name;
+                        document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+                    },
+                    error: errorHandler});
+            }
     }
 
 

@@ -41,16 +41,18 @@
 
             $("#my_walks").append('<a class="walkPage" id="walk_'+walkId+'" href="#Walk_'+walkId+'"><span class="walk_container"><span class="map" id="walkMap' + walkId + '" style="width: 100%; height: 150px;"></span><span class="walk_basic_info"><span class="walk_title">'+ walkTitle + '</span><span class="walk_distance">' + walkDistance + '</span><span class="walk_duration">'+ "|" + walkDuration + '</span></span></a>');
  	        
- 	  //       var makePage = $('<div data-role="page" id="Walk_'+walkId+'">' +
- 	  //       	'<div data-role="header"><a data-rel="back"><i class="fa fa-arrow-left"></i></a>'+
- 	  //       	'<h1>'+walkTitle+'</h1></div><div data-role="main" class="ui-content"><div class="finishedRouteInfo"><div class="mapDetails" style="width: 100%; height: 150px;"></div>'+
- 	  //       	'<div class="ui-grid-a"><div class="ui-block-a home_btns no_border"><div class="ui-block-a finishedDistance"><i class="fa fa-map-marker"></i></div>'+
-				// '<div class="ui-block-b"><p>Distance <br/><span id="finalDistance" class="value">'+walkDistance+'</span></p></div></div>'+
-				// '<div class="ui-block-b home_btns"><div class="ui-block-a finishedDistance"><i class="fa fa-clock-o"></i></div>'+
-				// '<div class="ui-block-b finishedDuration"><p>Duration <br/><span class="value" id="finalDuration">'+walkDuration+'</span></p></div></div><span class="horizontalSplitter"></span><div class="walkDescription">'+walkDescription+
-				// '</div></div></div><script>$.getScript("js/myRoutesDetail.js");</script></div>');
+ 	        var makePage = $('<div data-role="page" id="Walk_'+walkId+'">' +
+ 	        	'<div data-role="header"><a data-rel="back"><i class="fa fa-arrow-left"></i></a>'+
+ 	        	'<h1>'+walkTitle+'</h1></div><div data-role="main" class="ui-content"><div class="finishedRouteInfo"><div class="mapDetails" style="width: 100%; height: 150px;"></div>'+
+ 	        	'<div class="ui-grid-a"><div class="ui-block-a home_btns no_border"><div class="ui-block-a finishedDistance"><i class="fa fa-map-marker"></i></div>'+
+				'<div class="ui-block-b"><p>Distance <br/><span id="finalDistance" class="value">'+walkDistance+'</span></p></div></div>'+
+				'<div class="ui-block-b home_btns"><div class="ui-block-a finishedDistance"><i class="fa fa-clock-o"></i></div>'+
+				'<div class="ui-block-b finishedDuration"><p>Duration <br/><span class="value" id="finalDuration">'+walkDuration+'</span></p></div></div><span class="horizontalSplitter"></span><div class="walkDescription">'+walkDescription+
+				'</div></div></div><script>$.getScript("js/myRoutesDetail.js");</script></div>');
 
-    //         makePage.appendTo($.mobile.pageContainer);
+            makePage.appendTo($.mobile.pageContainer);
+
+    		$()
 	    }
 		$('.map').each(function (index, Element) {
 

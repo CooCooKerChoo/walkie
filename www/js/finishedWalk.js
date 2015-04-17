@@ -1,6 +1,5 @@
  $(document).on('pageshow', "#map-page", function() {
 
-
     dbstoreDistance = document.getElementById("finalDistance").innerText = finishedDistance;
     dbstoreDuration = document.getElementById("finalDuration").innerText = finishedDuration;
 

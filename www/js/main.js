@@ -22,6 +22,8 @@ var googleLatLng = [],
             db = openDatabase("Database", "1.0", "Test DB", 1000000);
             db.transaction(createDB, DBerror, DBsuccess);
 
+            openFB.init({appId: '292811390842470', tokenStore: window.localStorage});
+
             function login() {
                 openFB.login(
                         function(response) {

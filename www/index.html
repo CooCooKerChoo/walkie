@@ -5,15 +5,16 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/Walkie_custom_theme.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />	
 	<script src="http://192.168.0.9:8080/target/target-script-min.js#anonymous"></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 	<script>
 	$( "#leftpanel2" ).panel( "open");
 	</script>
 </head>
-<body>
+<body id="body">
 	<div data-role="page" id="page1">
 		<div data-role="panel" id="leftpanel1" data-position="left" data-display="push" data-dismissible="true" data-theme="a">
 			<div class="profile_area">
@@ -48,7 +49,7 @@
 		<div data-role="main" class="ui-content">
 			<div class="content_container">
 				<div class="ui-grid-a">
-					<div class="ui-block-a home_btns">
+					<div class="ui-block-a home_btns no_border">
 						<p>Distance <br/><span id="distance" class="value">0.000 km</span></p>
 					</div>
 					<div class="ui-block-b home_btns">
@@ -57,7 +58,7 @@
 				</div>
 			</div>
 			<button id="stopWalk" onClick="stopSession()" style="display: none;">Finish</button>
-			<div id="mapPlaceholder" style="height:100%; width: 100%;"></div>
+			<div id="mapPlaceholder" style="height:90%; width: 100%;"></div>
 		</div>
 
 		<div data-role="footer">
@@ -86,33 +87,9 @@
 	</div>
 
 	<div data-role="page" id="map-page">
-		<div data-role="panel" id="leftpanel2" data-position="left" data-display="push" data-dismissible="true" data-theme="a">
-			<div class="profile_area">
-				<div class="profile_picture">
-					<img id="userPic"/>
-				</div>
-				<div class="user_info">
-					<p id="userName"></p>
-				</div>
-			</div>
-			<ul>
-				<li>
-					<a class="active" href="#page1">Record</a>
-				</li>
-				<li>
-					<a href="#my-routes">My Routes</a>
-				</li>
-				<li>
-					<a href="view_routes.html">View Routes</a>
-				</li>
-				<li>
-					<button id="fbLogin" class="btn btn-block" onclick="login()">Login with Facebook</button>
-				</li>
-			</ul>
-		</div>
 
 		<div data-role="header">
-			<a href="#leftpanel2" data-role="button" data-inline="true" data-mini="true"><i class="fa fa-bars"></i></a>
+			<a data-rel="back"><i class="fa fa-arrow-left"></i></a>
 			<h1>Walk Summary</h1>
 		</div>
 
@@ -120,7 +97,7 @@
 			<div class="finishedRouteInfo">
 				<div id="finishedRoute" style="height:150px; width: 100%;"></div>
 				<div class="ui-grid-a">
-					<div class="ui-block-a home_btns">
+					<div class="ui-block-a home_btns no_border">
 						<div class="ui-block-a finishedDistance">
 							<i class="fa fa-map-marker"></i>
 						</div>
@@ -138,8 +115,10 @@
 					</div>
 				</div>
 				<span class="horizontalSplitter"></span>
-				<span class="walk_title"><input type="text" placeholder="Walk Title" id="walkTitle"></input><span class="editIcon"><i class="fa fa-pencil"></i></span></span>
-				<span class="walk_description_container"><textarea placeholder="Walk Description" id="walkDescription"></textarea><span class="editIcon"><i class="fa fa-pencil"></i></span></span>
+				<div class="user_entered_info">
+					<span class="walk_title"><input type="text" placeholder="Walk Title" id="walkTitle"></input><span class="editIcon"><i class="fa fa-pencil"></i></span></span>
+					<span class="walk_description_container"><textarea placeholder="Walk Description" id="walkDescription"></textarea><span class="editIcon"><i class="fa fa-pencil"></i></span></span>
+				</div>
 				<span class="horizontalSplitter"></span>
 				<div id="photosContainer" class="horizontal-images">
 					<div class="photos">

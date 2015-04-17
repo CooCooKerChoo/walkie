@@ -51,7 +51,7 @@ var googleLatLng = [],
             var mapOptions = {
                 zoom: 17,
                 center: coords,
-                mapTypeControl: true,
+                disableDefaultUI: true,
                 mapTypeId: google.maps.MapTypeId.TERRAIN
             };
 

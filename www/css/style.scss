@@ -13,6 +13,7 @@
 .size-72 { font-size: 72px; }
 
 $link-color: #4CAF50;
+$link-hover: purple;
 
 @import url(../font-awesome/css/font-awesome.css);
 
@@ -31,35 +32,18 @@ body, .off-canvas-wrap, .inner-wrap, #main-content {
     height: 100%;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, ul, li {
+h1, h2, h3, h4, h5, h6, p, a, ul, li, span {
         font-family: 'Droid Sans', sans-serif;
 }
 
+.ui-header, .ui-footer, .ui-btn {text-shadow: none !important;}
+.ui-btn {border: none;}
+
 #page1 {height: 100%;}
-
-.center {text-align: center;}
-
-a {color: $link-color;}
-
-a:hover {color: purple;}
-
-
-.ui-page-theme-a .ui-btn {
-    background-color: $link-color;
-    width: 100%;
-    padding: 5px 10px;
-    line-height: 35px;
-    margin:0;
-    color: #FFF;
-}
-
-.ui-page-theme-a .ui-btn:hover {
-    background-color: #66BB6A;
-    color: purple;
-}
 
 .ui-panel {
     background:#333;
+    .ui-panel-wrapper{background: #eaeaea;}
     .ui-panel-inner{
         padding:0;
         .profile_area {
@@ -110,29 +94,28 @@ a:hover {color: purple;}
     }
 }
 
+#page1 {
+    .home_btns {
+        font-size: 1.2em;
+    }
+}
+
+    .home_btns {
+        border-left: 1px solid #d0d0d0;
+        text-align: center;
+        padding: 5px 0;
+            p {
+                margin:0;
+            }
+    }
+    .home_btns.no_border {
+        border:none;
+    }
+
+
 .ui-panel-wrapper {
     height: 100%;
     overflow: hidden;
-    .ui-header {
-        background-color: #4CAF50;
-        .ui-btn  {
-            color: #FFF;
-            background: none;
-            border: none;
-            box-shadow: none;
-            font-size: 24px;
-            padding: 0;
-            text-shadow: none;
-            width: auto;
-        }
-        .ui-btn :hover {
-            color: purple;
-        }
-        .ui-title {
-            color: #FFF;
-            text-shadow: none;
-        }
-    }
     .content_container {
         background: #FFF;
         box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
@@ -142,26 +125,11 @@ a:hover {color: purple;}
         position: relative;
         z-index: 5;
     }
-
-    .home_btns {
-        border-right: 2px solid #d0d0d0;
-        border-left: 2px solid #FFF;
-        text-align: center;
-        padding: 5px 0;
-        text-transform: uppercase;
-            p {
-                margin:0;
-            }
-            .value {
-                color: #81C784;
-            }
-    }
     .ui-content {
         padding:0;
-        height: 100%;
+        height: 85%;
         overflow: hidden;
         #stopWalk {
-            background-color: $link-color;
             width: 100%;
             padding: 5px 10px;
             line-height: 35px;
@@ -184,6 +152,9 @@ a:hover {color: purple;}
             color: #FFF;
             margin: 0 !important;
             padding: 0;
+        }
+        button:hover, button:active {
+            color: #800080;
         }
         .camera_button {
             width: 100%;
@@ -241,40 +212,13 @@ a:hover {color: purple;}
             box-shadow: none;
         }
     }
-    #map_marker_container {
-        position: absolute;
-        bottom: 75px;
-        width: 100%;
-        background: #FFF;
-        box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
-        overflow-y: hidden;
-        overflow-x: scroll;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-        .map_marker_btn
-        {
-            color: $link-color;
-            display: inline;
-            width: 100px;
-            background: none;
-            position: relative;
-            img {
-            width: 75px;
-            height: 75px;
-            margin: 0 auto;
-            white-space: normal;
-            line-height: 20px;
-            text-align: center;
-            }
-        }
-    }
 }
 
 
 .finishedDistance {
     .fa {
         font-size: 24px;
-        margin: 0 20px;
+        margin: 5px 20px;
     }
 }
 
@@ -291,51 +235,55 @@ a:hover {color: purple;}
 }
 
 .finishedRouteInfo {
-    .walk_title {
-        border: none;
-        box-shadow: none;
-        resize: none;
-        position: relative;
-        float:left;
-        width: 100%;
-        .ui-input-text {
-            box-shadow: none;
-            width:90%;
+    background:#FFF;
+    .user_entered_info {
+        padding: 0 10px;
+        .walk_title {
             border: none;
-            input {
+            box-shadow: none;
+            resize: none;
+            position: relative;
+            float:left;
+            width: 100%;
+            .ui-input-text {
+                box-shadow: none;
+                width:90%;
+                border: none;
+                input {
+                    float: left;
+                    border-bottom: 1px solid #CCC;
+                    background: none;
+                    &:focus {
+                        border-bottom: 1px solid $link-color;
+                    }
+                }
+            }
+        }
+        .walk_description_container {
+            float:left;
+            box-shadow: none;
+            border: none;
+            width: 100%;
+            position: relative;
+            textarea {
                 float: left;
+                border: none;
                 border-bottom: 1px solid #CCC;
                 background: none;
+                resize: none;
+                box-shadow: none;
+                width:90%;
                 &:focus {
                     border-bottom: 1px solid $link-color;
                 }
             }
         }
-    }
-    .walk_description_container {
-        float:left;
-        box-shadow: none;
-        border: none;
-        width: 100%;
-        position: relative;
-        textarea {
-            float: left;
-            border: none;
-            border-bottom: 1px solid #CCC;
-            background: none;
-            resize: none;
-            box-shadow: none;
-            width:90%;
-            &:focus {
-                border-bottom: 1px solid $link-color;
+            .editIcon {
+                position: absolute;
+                right:5px;
+                bottom:5px;
             }
-        }
     }
-        .editIcon {
-            position: absolute;
-            right:5px;
-            bottom:5px;
-        }
 }
 
 
@@ -402,7 +350,31 @@ a:hover {color: purple;}
 
 #my_walks {
     padding:0.9375rem;
+    a {
+        text-decoration: none;
+        text-shadow: none !important;
+        font-weight: normal;
+        color: $link-color;
+    }
+    a:hover {color: $link-hover;}
     .walk_container {
-
+        display: block;
+        width: 100%;
+        span {display:block;}
+        .walk_basic_info {
+            background: #FFF;
+            float: left;
+            padding: 10px;
+            width: 100%;
+            .walk_title {
+                width: 100%;
+            }
+            .walk_distance {
+                display: inline-block;
+            }
+            .walk_duration {
+                display: inline-block;
+            }
+        }
     }
 }

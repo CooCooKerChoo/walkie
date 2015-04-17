@@ -103,6 +103,6 @@
             }
 
 
-            // function alertDismissed() {
-            //     location.href="index.html";
-            // }
+            function alertDismissed() {
+                location.href="index.html";
+            }

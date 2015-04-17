@@ -96,7 +96,7 @@
 
                 navigator.notification.alert(
                     'All information has been saved',  // message
-                     location.href="index.html",         // callback
+                     alertDismissed(),         // callback
                     'Saving',            // title
                     'Done'                  // buttonName
                 );

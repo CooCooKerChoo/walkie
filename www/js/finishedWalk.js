@@ -100,6 +100,8 @@
                     'Saving',            // title
                     'Done'                  // buttonName
                 );
+
+                navigator.notification.beep(3);
             }
 
 

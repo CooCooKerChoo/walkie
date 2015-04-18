@@ -108,9 +108,6 @@ $("#route_details").on("pageshow", function()
  	});
 
  	function querySuccessDetails(t, results) {
- 		walkTitle = results.rows.item(clicked_route).WalkTitle;
-		console.log(clicked_route);
-		console.log(walkTitle);
 	    $("#walkTitle").innerHTML = results.rows.item(clicked_route).WalkTitle;
 	    $(".walkDescription").html(results.rows.item(clicked_route).WalkDescription);
 	}

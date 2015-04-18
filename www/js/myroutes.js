@@ -90,9 +90,7 @@
 		clicked_route = parseInt($(this).attr("data-route"));
 	});
 
- $(document).on('pageinit', "#route_details", function() {
-{
-
+$(document).on('pageinit', "#route_details", function() {
 	console.log(data);
 	console.log(clicked_route);
 

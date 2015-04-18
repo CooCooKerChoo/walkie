@@ -91,8 +91,6 @@
 	});
 
 $(document).on('pageinit', "#route_details", function() {
-	console.log(data);
-	console.log(clicked_route);
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
@@ -105,6 +103,9 @@ $(document).on('pageinit', "#route_details", function() {
 		$("#finalDistance").html(data.Distance);
 		$("#finalDuration").html(data.Duration);
 	}
+
+	console.log(data);
+	console.log(clicked_route);
 
 	function errorCBDetails(error) {
 		console.log("Error processing SQL: " + error.message);

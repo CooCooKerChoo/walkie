@@ -65,11 +65,6 @@
 
 });
 
- function playVibrate() {
-    navigator.notification.vibrate(3000);
- }
-
-
             function saveInfo() {
                 var walkTitle = document.getElementById("walkTitle").value;
                 var walkDescription = document.getElementById("walkDescription").value;

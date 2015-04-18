@@ -9,7 +9,8 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" />	
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
-	<script src="http://192.168.0.9:8080/target/target-script-min.js#anonymous"></script>
+    <script type="text/javascript" src="js/SQLitePlugin.js"></script>
+	<!-- <script src="http://192.168.0.9:8080/target/target-script-min.js#anonymous"></script> -->
 	<script>
 		$( "#leftpanel2" ).panel( "open");
 	</script>
@@ -171,16 +172,47 @@
 		</div>
 		<script type="text/javascript" src="js/myroutes.js"></script>
 	</div>
-	<div data-role="page" id="page_details">
-	    <div data-role="content">
-			<div data-role="header">
-				<a data-rel="back"><i class="fa fa-arrow-left"></i></a>
-				<h1>'+walkTitle+'</h1>
-			</div>
-			
 
-	    </div>
-	    <script type="text/javascript" src="js/walkDetails.js"></script>
+	<div data-role="page" id="page_details">
+		<div data-role="header">
+			<a data-rel="back"><i class="fa fa-arrow-left"></i></a>
+			<h1></h1>
+		</div>
+		<div data-role="main" class="ui-content">
+			<div class="finishedRouteInfo">
+				<div id="finishedRoute" style="height:150px; width: 100%;"></div>
+				<div class="ui-grid-a">
+					<div class="ui-block-a home_btns no_border">
+						<div class="ui-block-a finishedDistance">
+							<i class="fa fa-map-marker"></i>
+						</div>
+						<div class="ui-block-b">
+							<p>Distance <br/><span id="finalDistance" class="value"></span></p>
+						</div>
+					</div>
+					<div class="ui-block-b home_btns">
+						<div class="ui-block-a finishedDistance">
+							<i class="fa fa-clock-o"></i>
+						</div>
+						<div class="ui-block-b finishedDuration">
+							<p>Duration <br/><span class="value" id="finalDuration"></span></p>
+						</div>
+					</div>
+				</div>
+				<span class="horizontalSplitter"></span>
+				<div class="user_entered_info">
+					<span class="walk_title"><input type="text" placeholder="Walk Title" id="walkTitle" required></input><span class="editIcon"><i class="fa fa-pencil"></i></span></span>
+					<span class="walk_description_container"><textarea placeholder="Walk Description" id="walkDescription" required></textarea><span class="editIcon"><i class="fa fa-pencil"></i></span></span>
+				</div>
+				<span class="horizontalSplitter"></span>
+				<div id="photosContainer" class="horizontal-images">
+					<div class="photos">
+					</div>
+				</div>
+				<button id="buttonDone" onClick="uploadWalk();">Upload Walk</button>
+			</div><!-- /content -->
+		</div>
+	    <script type="text/javascript" src="js/myRoutes.js"></script>
 	</div>
 
 

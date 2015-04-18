@@ -1,4 +1,4 @@
-$(document).on('pageshow', "#page1", function() {
+$(document).on('pageinit', "#page1", function() {
         var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
         navigator.geolocation.getCurrentPosition(onSuccess, onError, addMapMarker, posOptions);
 });

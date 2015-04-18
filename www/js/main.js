@@ -19,8 +19,10 @@ var googleLatLng = [],
     // device APIs are available
     //
     function onDeviceReady() {
-            db = openDatabase("Database", "1.0", "Test DB", 1000000);
-            db.transaction(createDB, DBerror, DBsuccess);
+        StatusBar.overlaysWebView(false);
+
+        db = openDatabase("Database", "1.0", "Test DB", 1000000);
+        db.transaction(createDB, DBerror, DBsuccess);
     }
 
 

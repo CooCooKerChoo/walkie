@@ -26,12 +26,21 @@ var googleLatLng = [],
         document.addEventListener("backbutton", function(e){
         if($.mobile.activePage.is('#page1')){
             e.preventDefault();
-            navigator.app.exitApp();
+            navigator.notification.confirm(
+                'Exit Application?', // message
+                 onApp,            // callback to invoke with index of button pressed
+                '',           // title
+                ['Yes','No']         // buttonLabels
+            );
         }
         else {
             navigator.app.backHistory()
         }
         }, false);
+    }
+
+    function exitApp() {
+        navigator.app.exitApp();
     }
 
 

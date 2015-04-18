@@ -90,7 +90,9 @@ $(document).on("click", ".walkPage", function(){
 	clicked_route = parseInt($(this).attr("data-route"));
 });
 
+
 $(document).on('pageinit', "#route_details", function() {
+var last_results = [];
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
@@ -98,7 +100,8 @@ $(document).on('pageinit', "#route_details", function() {
 
 
  	function querySuccessDetails(t, results) {
-		data = results.rows.item(clicked_route);
+ 		last_results = results;
+		var data = last_results.rows.item(clicked_route);
 	    $("#walkTitle").html(data.WalkTitle);
 		$("#finalDistance").html(data.Distance);
 		$("#finalDuration").html(data.Duration);

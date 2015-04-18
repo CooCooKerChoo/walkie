@@ -111,7 +111,8 @@ $("#route_details").on("pageshow", function()
 
  	function querySuccessDetails(t, results) {
 	    $("#walkTitle").innerHTML = results.rows.item(clicked_route).WalkTitle;
-	    $(".walkDescription").html(results.rows.item(clicked_route).WalkDescription);
+	    $("#finalDistance").innerHTML = results.rows.item(clicked_route).Distance;
+	    $("#finalDuration").innerHTML = results.rows.item(clicked_route).Duration;
 	}
 
 	function errorCBDetails(error) {

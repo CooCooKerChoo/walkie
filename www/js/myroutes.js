@@ -100,7 +100,7 @@
 //     // ...create the map and fill the rest...
 // });
 
-$("#route_details").on("pageshow", function(clicked_route)
+$("#route_details").on("pageshow", function()
 {
 
 	console.log(clicked_route);
@@ -109,11 +109,12 @@ $("#route_details").on("pageshow", function(clicked_route)
 		t.executeSql("SELECT * FROM WALKS WHERE id = '"+clicked_route+"'", [], querySuccessDetails, errorCBDetails);
  	});
 
+
  	function querySuccessDetails(t, results) {
- 		console.log(results.rows.item(clicked_route).WalkTitle);
-	    document.getElementById("walkTitle").innerHTML = results.rows.item(clicked_route).WalkTitle;
-	    document.getElementById("finalDistance").innerHTML = results.rows.item(clicked_route).Distance;
-	    document.getElementById("finalDuration").innerHTML = results.rows.item(clicked_route).Duration;
+		var data = last_results.rows.item(clicked_route);
+	    $("#walkTitle").html(data.WalkTitle)
+		$("#finalDistance").html(data.Distance);
+		$("#finalDuration").html(data.Duration)
 	}
 
 	function errorCBDetails(error) {

@@ -43,7 +43,7 @@ var googleLatLng = [],
         if(button=="1" || button==1)
         {
 
-            device.exitApp();
+        navigator.app.exitApp();
         }
     }
 

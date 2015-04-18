@@ -90,17 +90,7 @@
 		clicked_route = parseInt($(this).attr("data-route"));
 	});
 
-// $("#route_details").on("pagecontainerbeforeshow", function()
-// {
-//     // use your DB data
-//     data = last_results.rows.item(clicked_route);
-//     alert(data);
-//     $("#walkTitle").html(data.WalkTitle);
-//     $(".walkDescription").html(data.WalkDescription);
-//     // ...create the map and fill the rest...
-// });
-
-$("#route_details").on("pageshow", function()
+$("#route_details").on("pagecontainerbeforeshow", function()
 {
 
 	console.log(clicked_route);

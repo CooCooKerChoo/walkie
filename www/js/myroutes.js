@@ -92,7 +92,6 @@ $(document).on("click", ".walkPage", function(){
 
 
 $(document).on('pageinit', "#route_details", function() {
-var last_results = [];
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
@@ -103,12 +102,15 @@ var last_results = [];
 		var len = results.rows.length;
 		console.log("Walks table: " + len + " rows found");
 	    for (var i=0; i<len; i++){
+	    	walkTitle = results.rows.item(i).WalkTitle;
 		    walkDistance = results.rows.item(i).Distance;
 		    walkDuration = results.rows.item(i).Duration;
-			$("#finalDistance").html(walkDistance);
-			$("#finalDuration").html(walkDuration);
+			$("#finalDistance").innerHTML = walkDistance;
+			// $("#finalDuration").innerHTML = walkDuration;
 		}
 	}
+	
+	document.getElementById("walkTitle").html = walkTitle;
 
 	function errorCBDetails(error) {
 		console.log("Error processing SQL: " + error.message);

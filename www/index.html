@@ -12,10 +12,12 @@
 	<script src="http://192.168.0.9:8080/target/target-script-min.js#anonymous"></script>
 	<script>
 		$( "#leftpanel2" ).panel( "open");
-    	document.addEventListener("deviceready", onDeviceReady, false);
-	    function onDeviceReady() {
-			StatusBar.overlaysWebView(false);
-	    }
+		function onDeviceReady() {
+		    if (parseFloat(window.device.version) === 7.0) {
+		          document.body.style.marginTop = "20px";
+		    }
+		}
+		document.addEventListener('deviceready', onDeviceReady, false);
 	</script>
 </head>
 <body id="body">

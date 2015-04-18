@@ -58,9 +58,6 @@ h1, h2, h3, h4, h5, h6, p, a, ul, li, span {
 #page1 {
   height: 100%; }
 
-.ui-page {
-  margin-top: 20px; }
-
 .ui-panel {
   background: #333; }
   .ui-panel .ui-panel-wrapper {

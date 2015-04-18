@@ -1,4 +1,4 @@
- $(document).on('pageinit', "#my-routes", function() {
+ $(document).on('pageshow', "#my-routes", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS', [], querySuccess, errorCB);

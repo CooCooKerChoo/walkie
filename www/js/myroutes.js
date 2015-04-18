@@ -100,8 +100,8 @@ var last_results = [];
 
 
  	function querySuccessDetails(t, results) {
-	    walkDistance = results.rows.item(i).Distance;
-	    walkDuration = results.rows.item(i).Duration;
+	    walkDistance = results.rows.item(clicked_route).Distance;
+	    walkDuration = results.rows.item(clicked_route).Duration;
 		$("#finalDistance").html(walkDistance);
 		$("#finalDuration").html(walkDuration);
 	}

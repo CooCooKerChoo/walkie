@@ -111,3 +111,8 @@ $("#route_details").on("pagecontainerbeforeshow", function()
 		console.log("Error processing SQL: " + error.message);
 	}
 });
+
+$("#route_details").on("pageshow", function()
+{
+	console.log(clicked_route);
+});

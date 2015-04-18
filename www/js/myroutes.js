@@ -90,14 +90,14 @@
 		clicked_route = parseInt($(this).attr("data-route"));
 	});
 
-$("#route_details").on("pageinit", function()
+ $(document).on('pageinit', "#route_details", function() {
 {
 
 	console.log(data);
 	console.log(clicked_route);
 
  	db.transaction(function(t){
-		t.executeSql('SELECT * FROM WALKS', [], querySuccessDetails, errorCBDetails);
+		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
  	});
 
 

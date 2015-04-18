@@ -65,6 +65,9 @@
 
 });
 
+ function playVibrate() {
+    navigator.notification.vibrate(3000);
+ }
 
 
             function saveInfo() {

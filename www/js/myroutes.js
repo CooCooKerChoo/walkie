@@ -101,13 +101,12 @@ $(document).on('pageinit', "#route_details", function() {
 
  	function querySuccessDetails(t, results) {
 		data = results.rows.item(clicked_route);
+	    $("#walkTitle").html(data.WalkTitle);
+		$("#finalDistance").html(data.Distance);
+		$("#finalDuration").html(data.Duration);
 	}
 
 	function errorCBDetails(error) {
 		console.log("Error processing SQL: " + error.message);
 	}
-
-	    $("#walkTitle").html(data.WalkTitle);
-		$("#finalDistance").html(data.Distance);
-		$("#finalDuration").html(data.Duration);
 });

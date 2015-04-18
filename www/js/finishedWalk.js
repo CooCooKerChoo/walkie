@@ -63,7 +63,6 @@
                 $('#map-page').append('<div data-role="popup" id="popup' + i + '" class="imagePopups" data-overlay-theme="a" data-theme="d" data-corners="false"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <img class="popphoto" src="' + imageArray[i] + '" style="max-height:512px;" alt="photo, test"></div>').trigger('create');
             }
 
-});
 
             function saveInfo() {
                 var walkTitle = document.getElementById("walkTitle").value;
@@ -106,3 +105,4 @@
             function alertDismissed() {
                 location.href="index.html";
             }
+});

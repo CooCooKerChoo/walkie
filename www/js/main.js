@@ -28,7 +28,7 @@ var googleLatLng = [],
             e.preventDefault();
             navigator.notification.confirm(
                 'Exit Application?', // message
-                 onApp,            // callback to invoke with index of button pressed
+                 exitApp,            // callback to invoke with index of button pressed
                 '',           // title
                 ['Yes','No']         // buttonLabels
             );

@@ -100,10 +100,14 @@ var last_results = [];
 
 
  	function querySuccessDetails(t, results) {
-	    walkDistance = results.rows.item(clicked_route).Distance;
-	    walkDuration = results.rows.item(clicked_route).Duration;
-		$("#finalDistance").html(walkDistance);
-		$("#finalDuration").html(walkDuration);
+		var len = results.rows.length;
+		console.log("Walks table: " + len + " rows found");
+	    for (var i=0; i<len; i++){
+		    walkDistance = results.rows.item(clicked_route).Distance;
+		    walkDuration = results.rows.item(clicked_route).Duration;
+			$("#finalDistance").html(walkDistance);
+			$("#finalDuration").html(walkDuration);
+		}
 	}
 
 	function errorCBDetails(error) {

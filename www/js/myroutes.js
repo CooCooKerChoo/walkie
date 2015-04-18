@@ -1,4 +1,4 @@
- $(document).on('pageinit', "#my-routes", function() {
+ $(document).on('pageshow', "#my-routes", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS', [], querySuccess, errorCB);
@@ -39,7 +39,7 @@
 			console.log(coords);
 			console.log(polys);
 
-            $("#my_walks").append('<a class="walkPage" id="walk_'+walkId+'" href="#Walk_'+walkId+'"><span class="walk_container"><span class="map" id="walkMap' + walkId + '" style="width: 100%; height: 150px;"></span><span class="walk_basic_info"><span class="walk_title">'+ walkTitle + '</span><span class="walk_distance">' + walkDistance + '</span><span class="walk_duration">'+ "|" + walkDuration + '</span></span></a>');
+            $("#my_walks").append('<a class="walkPage" id="'+walkId+'" href="#page_details"><span class="walk_container"><span class="map" id="walkMap' + walkId + '" style="width: 100%; height: 150px;"></span><span class="walk_basic_info"><span class="walk_title">'+ walkTitle + '</span><span class="walk_distance">' + walkDistance + '</span><span class="walk_duration">'+ "|" + walkDuration + '</span></span></a>');
  	        
  	        var makePage = $('<div data-role="page" id="Walk_'+walkId+'">' +
  	        	'<div data-role="header"><a data-rel="back"><i class="fa fa-arrow-left"></i></a>'+
@@ -131,4 +131,17 @@
  		function errorCB(error) {
  			console.log("Error processing SQL: " + error.message);
  		}
+
+	// $(".walkPage").click(function(){
+	// 	var clickedID = $(this).attr('id');
+	// 	console.log(clickedID);
+	// });
+
+	$(function(){
+		$(".walkPage").on('click', function() {
+			var clickedID = $(this).attr('id');
+			console.log(clickedID);
+		});
+	});
+
 });

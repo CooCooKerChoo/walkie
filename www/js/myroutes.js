@@ -93,20 +93,22 @@
 $("#route_details").on("pagecontainerbeforeshow", function()
 {
 
+	console.log(data);
+	console.log(clicked_route);
+
  	db.transaction(function(t){
 		t.executeSql("SELECT * FROM WALKS WHERE id = '"+clicked_route+"'", [], querySuccessDetails, errorCBDetails);
  	});
 
 
  	function querySuccessDetails(t, results) {
- 		last_results = results;
-		data = last_results.rows.item(clicked_route);
+		data = results.rows.item(clicked_route);
 	}
 
 	function errorCBDetails(error) {
 		console.log("Error processing SQL: " + error.message);
 	}
-		console.log(data);
+
 	    $("#walkTitle").html(data.WalkTitle);
 		$("#finalDistance").html(data.Distance);
 		$("#finalDuration").html(data.Duration);

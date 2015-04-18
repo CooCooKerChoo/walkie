@@ -51,7 +51,6 @@
 				'</div></div></div><script>$.getScript("js/myRoutesDetail.js");</script></div>');
 
             makePage.appendTo($.mobile.pageContainer);
-
 	    }
 		$('.map').each(function (index, Element) {
 
@@ -60,7 +59,7 @@
 		        zoom: 14,
 		        center: new google.maps.LatLng(coords[index][0],coords[index][1]),
 		        // center: new google.maps.LatLng(52.9544124,-2.0046446),
-		        mapTypeId: google.maps.MapTypeId.ROADMAP,
+		        mapTypeId: google.maps.MapTypeId.TERRAIN,
 		        disableDefaultUI: false,
 		        mapTypeControl: true,
             	mapTypeControl: false,
@@ -91,6 +90,42 @@
               });
               path.setMap(map);
 		});
+
+ 		$('.mapDetails').each(function (index, Element) {
+
+		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
+		    var myOptions = {
+		        zoom: 14,
+		        center: new google.maps.LatLng(coords[index][0],coords[index][1]),
+		        // center: new google.maps.LatLng(52.9544124,-2.0046446),
+		        mapTypeId: google.maps.MapTypeId.TERRAIN,
+		        disableDefaultUI: false,
+		        mapTypeControl: true,
+            	mapTypeControl: false,
+                streetViewControl:false,
+                zoomControl: false,
+                draggable: true,
+		        zoomControlOptions: {
+		            style: google.maps.ZoomControlStyle.SMALL
+		        }
+		    };
+
+		    var map = new google.maps.Map(Element, myOptions);
+
+
+		    var sw = new google.maps.LatLng(coords[index][3],coords[index][5]);
+		    var ne = new google.maps.LatLng(coords[index][2],coords[index][4]);
+			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
+
+              var path = new google.maps.Polyline({
+                path: polys[index],
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 5
+              });
+              path.setMap(map);
+		});
+
  	}
 
  		function errorCB(error) {

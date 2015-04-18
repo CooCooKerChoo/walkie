@@ -97,7 +97,7 @@ $("#route_details").on("pageinit", function()
 	console.log(clicked_route);
 
  	db.transaction(function(t){
-		t.executeSql("SELECT * FROM WALKS WHERE id = '"+clicked_route+"'", [], querySuccessDetails, errorCBDetails);
+		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
  	});
 
 

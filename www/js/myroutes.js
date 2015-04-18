@@ -100,7 +100,7 @@
 //     // ...create the map and fill the rest...
 // });
 
-$("#route_details").on("pageinit", function(clicked_route)
+$("#route_details").on("pageshow", function(clicked_route)
 {
 
 	console.log(clicked_route);

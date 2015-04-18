@@ -22,6 +22,16 @@ var googleLatLng = [],
 
         db = openDatabase("Database", "1.0", "Test DB", 1000000);
         db.transaction(createDB, DBerror, DBsuccess);
+
+        document.addEventListener("backbutton", function(e){
+        if($.mobile.activePage.is('#page1')){
+            e.preventDefault();
+            navigator.app.exitApp();
+        }
+        else {
+            navigator.app.backHistory()
+        }
+        }, false);
     }
 
 

@@ -108,9 +108,9 @@ $(document).on('pageinit', "#route_details", function() {
 			$("#finalDistance").innerHTML = walkDistance;
 			// $("#finalDuration").innerHTML = walkDuration;
 		}
+		document.getElementById("walkTitle").html = walkTitle;
 	}
 	
-	document.getElementById("walkTitle").html = walkTitle;
 
 	function errorCBDetails(error) {
 		console.log("Error processing SQL: " + error.message);

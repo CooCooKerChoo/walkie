@@ -110,9 +110,9 @@ $("#route_details").on("pageshow", function()
  	});
 
  	function querySuccessDetails(t, results) {
-	    $("#walkTitle").innerHTML = results.rows.item(clicked_route).WalkTitle;
-	    $("#finalDistance").innerHTML = results.rows.item(clicked_route).Distance;
-	    $("#finalDuration").innerHTML = results.rows.item(clicked_route).Duration;
+	    document.getElementById("walkTitle").innerHTML = results.rows.item(clicked_route).WalkTitle;
+	    document.getElementById("finalDistance").innerHTML = results.rows.item(clicked_route).Distance;
+	    document.getElementById("finalDuration").innerHTML = results.rows.item(clicked_route).Duration;
 	}
 
 	function errorCBDetails(error) {

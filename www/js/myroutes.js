@@ -86,9 +86,9 @@
  		}
 });
 
-	$(document).on("click", ".walkPage", function(){
-		clicked_route = parseInt($(this).attr("data-route"));
-	});
+$(document).on("click", ".walkPage", function(){
+	clicked_route = parseInt($(this).attr("data-route"));
+});
 
 $(document).on('pageinit', "#route_details", function() {
 
@@ -103,9 +103,6 @@ $(document).on('pageinit', "#route_details", function() {
 		$("#finalDistance").html(data.Distance);
 		$("#finalDuration").html(data.Duration);
 	}
-
-	console.log(data);
-	console.log(clicked_route);
 
 	function errorCBDetails(error) {
 		console.log("Error processing SQL: " + error.message);

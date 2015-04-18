@@ -110,6 +110,7 @@ $("#route_details").on("pageshow", function()
  	});
 
  	function querySuccessDetails(t, results) {
+ 		console.log(results.rows.item(clicked_route).WalkTitle);
 	    document.getElementById("walkTitle").innerHTML = results.rows.item(clicked_route).WalkTitle;
 	    document.getElementById("finalDistance").innerHTML = results.rows.item(clicked_route).Distance;
 	    document.getElementById("finalDuration").innerHTML = results.rows.item(clicked_route).Duration;

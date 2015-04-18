@@ -103,8 +103,8 @@ var last_results = [];
 		var len = results.rows.length;
 		console.log("Walks table: " + len + " rows found");
 	    for (var i=0; i<len; i++){
-		    walkDistance = results.rows.item(clicked_route).Distance;
-		    walkDuration = results.rows.item(clicked_route).Duration;
+		    walkDistance = results.rows.item(i).Distance;
+		    walkDuration = results.rows.item(i).Duration;
 			$("#finalDistance").html(walkDistance);
 			$("#finalDuration").html(walkDuration);
 		}

@@ -101,18 +101,20 @@ $("#route_details").on("pagecontainerbeforeshow", function()
 
 
  	function querySuccessDetails(t, results) {
-		var data = last_results.rows.item(clicked_route);
-	    $("#walkTitle").html(data.WalkTitle)
-		$("#finalDistance").html(data.Distance);
-		$("#finalDuration").html(data.Duration)
+ 		last_results = results;
+		data = last_results.rows.item(clicked_route);
 	}
 
 	function errorCBDetails(error) {
 		console.log("Error processing SQL: " + error.message);
 	}
+
+	    $("#walkTitle").html(data.WalkTitle);
+		$("#finalDistance").html(data.Distance);
+		$("#finalDuration").html(data.Duration);
 });
 
-$("#route_details").on("pageshow", function()
+$("#route_details").on("pageinit", function()
 {
 	console.log(clicked_route);
 });

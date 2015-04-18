@@ -100,11 +100,10 @@ var last_results = [];
 
 
  	function querySuccessDetails(t, results) {
- 		last_results = results;
-		var data = last_results.rows.item(clicked_route);
-	    $("#walkTitle").html(data.WalkTitle);
-		$("#finalDistance").html(data.Distance);
-		$("#finalDuration").html(data.Duration);
+	    walkDistance = results.rows.item(i).Distance;
+	    walkDuration = results.rows.item(i).Duration;
+		$("#finalDistance").html(walkDistance);
+		$("#finalDuration").html(walkDuration);
 	}
 
 	function errorCBDetails(error) {

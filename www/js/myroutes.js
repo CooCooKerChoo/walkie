@@ -176,7 +176,8 @@ $(document).on('pageshow', "#route_details", function() {
                 strokeOpacity: 1.0,
                 strokeWeight: 5
               });
-              path.setMap(map, mapPopup);
+              path.setMap(map);
+			  path.setMap(mapPopup);
 
 	}
 

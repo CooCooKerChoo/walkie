@@ -158,7 +158,7 @@ $(document).on('pageshow', "#route_details", function() {
 		        }
 		    };
 
-		    var map = new google.maps.Map(#routemap, myOptions);
+		    var map = new google.maps.Map(Element, myOptions);
 
 
 		    var sw = new google.maps.LatLng(coords[index][3],coords[index][5]);
@@ -177,6 +177,7 @@ $(document).on('pageshow', "#route_details", function() {
               });
               path.setMap(map);
 		});
+
  		$('#popupMap').each(function (index, Element) {
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
@@ -195,7 +196,7 @@ $(document).on('pageshow', "#route_details", function() {
 		        }
 		    };
 
-		    var map = new google.maps.Map(#popupMap, myOptions);
+		    var map = new google.maps.Map(Element, myOptions);
 
 
 		    var sw = new google.maps.LatLng(coords[index][3],coords[index][5]);

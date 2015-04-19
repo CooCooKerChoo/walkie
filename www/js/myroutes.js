@@ -106,8 +106,10 @@ $(document).on('pageshow', "#route_details", function() {
 	    var walkDistance = results.rows.item(0).Distance;
 	    var walkDuration = results.rows.item(0).Duration;
 	    var photos = results.rows.item(0).Images;
+	    console.log(photos);
 	    var routePhotos = photos.split("),(");
-            for( var i = 0, c = imageArray.length; i < c; i++ ) {
+	    console.log(routePhotos);
+            for( var i = 0, c = routePhotos.length; i < c; i++ ) {
 
                 $(".photos").append('<a href="#popup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + imageArray[i] + '"></a>');
 			}

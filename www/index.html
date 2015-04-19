@@ -179,9 +179,8 @@
 		</div>
 		<div data-role="main" class="ui-content">
 			<div class="finishedRouteInfo">
-				<a href="#popupMap" data-rel="popup" data-position-to="window" data-transition="fade">
-					<div id="routemap" style="height:150px; width: 100%;"></div>
-				</a>
+				<button id="buttonDone" onClick="uploadWalk();">Upload Walk</button>
+				<div id="routemap" style="height:250px; width: 100%;"></div>
 				<div class="ui-grid-a">
 					<div class="ui-block-a home_btns no_border">
 						<div class="ui-block-a finishedDistance">
@@ -212,9 +211,7 @@
 					<div class="photos">
 					</div>
 				</div>
-				<button id="buttonDone" onClick="uploadWalk();">Upload Walk</button>
 			</div><!-- /content -->
-			<div data-role="popup" id="popupMap" data-overlaytheme="a" data-theme="a" data-corners><div id="routePopupMap"></div></div>
 		</div>
 	    <script type="text/javascript" src="js/myRoutes.js"></script>
 	</div>

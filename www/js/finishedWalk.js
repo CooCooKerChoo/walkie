@@ -55,6 +55,8 @@
                 }
             }
 
+            console.log(markers);
+
             for( var i = 0, c = imageArray.length; i < c; i++ ) {
 
                 $(".photos").append('<a href="#popup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + imageArray[i] + '"></a>');

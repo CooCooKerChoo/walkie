@@ -139,7 +139,9 @@ $(document).on('pageshow', "#route_details", function() {
 		$('#walkDescriptionDetails').val(walkDescription);
 		$('#finalDistanceDetails').html(walkDistance);
 		$('#finalDurationDetails').html(walkDuration);
+	}
 
+function initialize(){
 // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
 		        zoom: 14,
@@ -178,8 +180,8 @@ $(document).on('pageshow', "#route_details", function() {
               });
               path.setMap(map);
 			  path.setMap(mapPopup);
-
-	}
+}
+google.maps.event.addDomListener(window, "load", initialize);
 
 	function errorCBDetails(error) {
 		console.log("Error processing SQL: " + error.message);

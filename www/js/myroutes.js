@@ -125,8 +125,8 @@ $(document).on('pageshow', "#route_details", function() {
 		polys.push(polyline);
 			
 		$('#headerWalkTitle').html(walkTitle);
-		$('#walkTitleDetails').value = walkTitle;
-		$('#walkDescriptionDetails').value = walkDescription;
+		$('#walkTitleDetails').val = walkTitle;
+		$('#walkDescriptionDetails').val = walkDescription;
 		$('#finalDistanceDetails').html(walkDistance);
 		$('#finalDurationDetails').html(walkDuration);
 

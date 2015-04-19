@@ -98,6 +98,7 @@ $(document).on('pageshow', "#route_details", function() {
  	function querySuccessDetails(t, results) {
 		var coords = [];
 		var polys = [];
+		var Images = [];
 
 		var len = results.rows.length;
 		console.log("Walks table: " + len + " rows found");
@@ -108,8 +109,9 @@ $(document).on('pageshow', "#route_details", function() {
 	    var photos = results.rows.item(0).Images;
 	    console.log(photos);
 	    var routePhotos = photos.split("),(");
-	    console.log(routePhotos);
-            for( var i = 0, c = routePhotos.length; i < c; i++ ) {
+	    Images.push(routePhotos);
+	    console.log(Images);
+            for( var i = 0, c = Images.length; i < c; i++ ) {
 
                 $(".photos").append('<a href="#popup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + imageArray[i] + '"></a>');
 			}
@@ -136,7 +138,6 @@ $(document).on('pageshow', "#route_details", function() {
 		$('#walkDescriptionDetails').val(walkDescription);
 		$('#finalDistanceDetails').html(walkDistance);
 		$('#finalDurationDetails').html(walkDuration);
-		console.log($('#walkTitleDetails'));
 
 		$('#routemap').each(function (index, Element) {
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));

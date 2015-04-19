@@ -157,8 +157,8 @@ $(document).on('pageshow', "#route_details", function() {
 		        }
 		    };
 
-		    var map = new google.maps.Map("#routemap", myOptions);
-		    var mapPopup = new google.maps.Map("#routePopupMap", myOptions);
+		    var map = new google.maps.Map(document.getElementById("#routemap"), myOptions);
+		    var mapPopup = new google.maps.Map(document.getElementById("#routePopupMap"), myOptions);
 
 
 		    var sw = new google.maps.LatLng(coords[3],coords[5]);

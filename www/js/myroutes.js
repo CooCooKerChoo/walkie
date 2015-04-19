@@ -33,8 +33,8 @@
 				sumLat+=lat; sumLng+=lng; 
 				return new google.maps.LatLng(lat,lng); 
 			});
-			var coords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
-			var polys.push(polyline);
+			coords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
+			polys.push(polyline);
 
             $("#my_walks").append('<a data-route="'+walkId+'" class="walkPage" href="#route_details"><span class="walk_container"><span class="map" id="walkMap' + walkId + '" style="width: 100%; height: 150px;"></span><span class="walk_basic_info"><span class="walk_title">'+ walkTitle + '</span><span class="walk_distance">' + walkDistance + '</span><span class="walk_duration">'+ "|" + walkDuration + '</span></span></a>');
 	    }
@@ -121,8 +121,8 @@ $(document).on('pageshow', "#route_details", function() {
 				sumLat+=lat; sumLng+=lng; 
 				return new google.maps.LatLng(lat,lng); 
 			});
-			var coords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
-			var polys.push(polyline);
+			coords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
+			polys.push(polyline);
 	    }
 
 		$('#routemap').each(function (index, Element) {

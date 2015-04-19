@@ -105,7 +105,7 @@ $(document).on('pageshow', "#route_details", function() {
 		    walkDistance = results.rows.item(i).Distance;
 		    walkDuration = results.rows.item(i).Duration;
 			$('#walkTitle').html(walkTitle);
-			console.log(walkTitle);
+			console.log(walkTitle, $('#walkTitle'));
 		}
 	}
 

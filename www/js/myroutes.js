@@ -101,9 +101,14 @@ $(document).on('pageshow', "#route_details", function() {
 		var len = results.rows.length;
 		console.log("Walks table: " + len + " rows found");
     	walkTitle = results.rows.item(0).WalkTitle;
+    	walkDescription = results.rows.item(0).WalkDescription;
 	    walkDistance = results.rows.item(0).Distance;
 	    walkDuration = results.rows.item(0).Duration;
 		$('#headerWalkTitle').html(walkTitle);
+		$('#walkTitle').value(walkTitle);
+		$('#walkDescription').value(walkDescription);
+		$('#finalDistance').html(walkDistance);
+		$('#finalDuration').html(walkDuration);
 	}
 
 	function errorCBDetails(error) {

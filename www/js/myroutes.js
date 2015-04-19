@@ -105,8 +105,8 @@ $(document).on('pageshow', "#route_details", function() {
 	    walkDistance = results.rows.item(0).Distance;
 	    walkDuration = results.rows.item(0).Duration;
 		$('#headerWalkTitle').html(walkTitle);
-		$('#walkTitle').value(walkTitle);
-		$('#walkDescription').value(walkDescription);
+		// $('#walkTitle').value(walkTitle);
+		// $('#walkDescription').value(walkDescription);
 		$('#finalDistance').html(walkDistance);
 		$('#finalDuration').html(walkDuration);
 	}

@@ -41,7 +41,6 @@
             $("#my_walks").append('<a data-route="'+walkId+'" class="walkPage" href="#route_details"><span class="walk_container"><span class="map" id="walkMap' + walkId + '" style="width: 100%; height: 150px;"></span><span class="walk_basic_info"><span class="walk_title">'+ walkTitle + '</span><span class="walk_distance">' + walkDistance + '</span><span class="walk_duration">'+ "|" + walkDuration + '</span></span></a>');
 	    }
 		$('.map').each(function (index, Element) {
-
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
 		        zoom: 14,
@@ -105,12 +104,13 @@ $(document).on('pageshow', "#route_details", function() {
 	    	walkTitle = results.rows.item(i).WalkTitle;
 		    walkDistance = results.rows.item(i).Distance;
 		    walkDuration = results.rows.item(i).Duration;
-			document.getElementById('walkTitle').innerHTML = walkTitle;
+			$('#walkTitle').html(walkTitle);
+			console.log(walkTitle);
 		}
 	}
-	
 
 	function errorCBDetails(error) {
 		console.log("Error processing SQL: " + error.message);
 	}
+
 });

@@ -91,7 +91,7 @@ $(document).on("click", ".walkPage", function(){
 });
 
 
-$(document).on('pageinit', "#route_details", function() {
+$(document).on('pageshow', "#route_details", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
@@ -105,10 +105,8 @@ $(document).on('pageinit', "#route_details", function() {
 	    	walkTitle = results.rows.item(i).WalkTitle;
 		    walkDistance = results.rows.item(i).Distance;
 		    walkDuration = results.rows.item(i).Duration;
-			$("#finalDistance").innerHTML = walkDistance;
-			// $("#finalDuration").innerHTML = walkDuration;
+			document.getElementById('walkTitle').innerHTML = walkTitle;
 		}
-		document.getElementById("walkTitle").html = walkTitle;
 	}
 	
 

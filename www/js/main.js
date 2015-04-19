@@ -47,7 +47,6 @@ var googleLatLng = [],
         }
     }
 
-
     function createDB(t) {
         // t.executeSql('DROP TABLE WALKS');
         // t.executeSql('DROP TABLE MARKERS');

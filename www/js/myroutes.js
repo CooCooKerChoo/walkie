@@ -1,4 +1,4 @@
- $(document).on('pageinit', "#my-routes", function() {
+ $(document).on('pageshow', "#my-routes", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS', [], querySuccess, errorCB);
@@ -99,31 +99,35 @@ $(document).on('pageshow', "#route_details", function() {
 		var coords = [];
 		var polys = [];
 
-
-	    for (var i=0; i<len; i++){
-	    	var polylinePath = [];
-	    	var walkId = results.rows.item(i).id;
-	    	var walkTitle = results.rows.item(i).WalkTitle;
-	    	var walkDistance = results.rows.item(i).Distance;
-	    	var walkDuration = results.rows.item(i).Duration;
-		    var path = results.rows.item(i).PathCoordinates;
-			var path=path.substr(1,path.length-1);	path=path.substr(0,path.length-1); 
-			var polyline = path.split("),("); 
-			var sumLat=0, sumLng=0, maxLat, minLat, maxLng, minLng; 
-			var polyline=polyline.map(function(p){ 
-				var point=p.split(','); 
-				// var lat=(Math.random()/100) ,lng=(Math.random()/100); 
-				var lat=parseFloat(point[0]) ,lng=parseFloat(point[1]); 
-				if(maxLat===undefined || maxLat<lat) maxLat=lat;
-				if(maxLng===undefined || maxLng<lng) maxLng=lng;
-				if(minLat===undefined || minLat>lat) minLat=lat;
-				if(minLng===undefined || minLng>lng) minLng=lng;
-				sumLat+=lat; sumLng+=lng; 
-				return new google.maps.LatLng(lat,lng); 
-			});
-			coords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
-			polys.push(polyline);
-	    }
+		var len = results.rows.length;
+		console.log("Walks table: " + len + " rows found");
+    	walkTitle = results.rows.item(0).WalkTitle;
+    	walkDescription = results.rows.item(0).WalkDescription;
+	    walkDistance = results.rows.item(0).Distance;
+	    walkDuration = results.rows.item(0).Duration;
+		var path = results.rows.item(0).PathCoordinates;
+		var path=path.substr(1,path.length-1);	path=path.substr(0,path.length-1); 
+		var polyline = path.split("),("); 
+		var sumLat=0, sumLng=0, maxLat, minLat, maxLng, minLng; 
+		var polyline=polyline.map(function(p){ 
+			var point=p.split(','); 
+			// var lat=(Math.random()/100) ,lng=(Math.random()/100); 
+			var lat=parseFloat(point[0]) ,lng=parseFloat(point[1]); 
+			if(maxLat===undefined || maxLat<lat) maxLat=lat;
+			if(maxLng===undefined || maxLng<lng) maxLng=lng;
+			if(minLat===undefined || minLat>lat) minLat=lat;
+			if(minLng===undefined || minLng>lng) minLng=lng;
+			sumLat+=lat; sumLng+=lng; 
+			return new google.maps.LatLng(lat,lng); 
+		});
+		coords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
+		polys.push(polyline);
+			
+		$('#headerWalkTitle').html(walkTitle);
+		$('#walkTitleDetails').value = walkTitle;
+		$('#walkDescriptionDetails').value = walkDescription;
+		$('#finalDistanceDetails').html(walkDistance);
+		$('#finalDurationDetails').html(walkDuration);
 
 		$('#routemap').each(function (index, Element) {
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
@@ -162,18 +166,6 @@ $(document).on('pageshow', "#route_details", function() {
               });
               path.setMap(map);
 		});
-
-		var len = results.rows.length;
-		console.log("Walks table: " + len + " rows found");
-    	walkTitle = results.rows.item(0).WalkTitle;
-    	walkDescription = results.rows.item(0).WalkDescription;
-	    walkDistance = results.rows.item(0).Distance;
-	    walkDuration = results.rows.item(0).Duration;
-		$('#headerWalkTitle').html(walkTitle);
-		$('#walkTitleDetails').value = walkTitle;
-		$('#walkDescriptionDetails').value = walkDescription;
-		$('#finalDistanceDetails').html(walkDistance);
-		$('#finalDurationDetails').html(walkDuration);
 	}
 
 	function errorCBDetails(error) {

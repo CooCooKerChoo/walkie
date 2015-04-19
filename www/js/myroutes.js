@@ -140,7 +140,7 @@ $(document).on('pageshow', "#route_details", function() {
 		$('#finalDistanceDetails').html(walkDistance);
 		$('#finalDurationDetails').html(walkDuration);
 
-		$('#routemap').each(function (index, Element) {
+		$('#routemap','#routePopupMap') {
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
 		        zoom: 14,

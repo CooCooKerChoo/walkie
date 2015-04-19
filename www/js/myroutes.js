@@ -101,11 +101,16 @@ $(document).on('pageshow', "#route_details", function() {
 
 		var len = results.rows.length;
 		console.log("Walks table: " + len + " rows found");
-    	walkTitle = results.rows.item(0).WalkTitle;
-    	walkDescription = results.rows.item(0).WalkDescription;
-	    walkDistance = results.rows.item(0).Distance;
-	    walkDuration = results.rows.item(0).Duration;
-	    photos = results.rows.item(0).Images;
+    	var walkTitle = results.rows.item(0).WalkTitle;
+    	var walkDescription = results.rows.item(0).WalkDescription;
+	    var walkDistance = results.rows.item(0).Distance;
+	    var walkDuration = results.rows.item(0).Duration;
+	    var photos = results.rows.item(0).Images;
+	    var routePhotos = photos.split("),(");
+            for( var i = 0, c = imageArray.length; i < c; i++ ) {
+
+                $(".photos").append('<a href="#popup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + imageArray[i] + '"></a>');
+			}
 		var path = results.rows.item(0).PathCoordinates;
 		var path=path.substr(1,path.length-1);	path=path.substr(0,path.length-1); 
 		var polyline = path.split("),("); 

@@ -107,8 +107,8 @@ $(document).on('pageshow', "#route_details", function() {
 		$('#headerWalkTitle').html(walkTitle);
 		// $('#walkTitle').value(walkTitle);
 		// $('#walkDescription').value(walkDescription);
-		$('#finalDistance').html(walkDistance);
-		$('#finalDuration').html(walkDuration);
+		$('#finalDistanceDetails').html(walkDistance);
+		$('#finalDurationDetails').html(walkDuration);
 	}
 
 	function errorCBDetails(error) {

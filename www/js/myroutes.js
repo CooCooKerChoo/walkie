@@ -109,7 +109,7 @@ $(document).on('pageshow', "#route_details", function() {
 	    var photos = results.rows.item(0).Images;
 	    console.log(photos);
 	    var routePhotos = photos.split(",");
-	    Images.push(routePhotos);
+	    routePhotos.push(Images);
 	    console.log(Images);
             for( var i = 0, c = Images.length; i < c; i++ ) {
 

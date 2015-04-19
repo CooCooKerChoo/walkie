@@ -112,8 +112,8 @@ $(document).on('pageshow', "#route_details", function() {
 	    console.log(routePhotos);
             for( var i = 0, c = routePhotos.length; i < c; i++ ) {
 
-                $(".photos").append('<a href="#popup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + routePhotos[i] + '"></a>');
-                $('#route_details').append('<div data-role="popup" id="popup' + i + '" class="imagePopups" data-overlay-theme="a" data-theme="d" data-corners="false"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <img class="popphoto" src="' + routePhotos[i] + '" style="max-height:512px;" alt="photo, test"></div>').trigger('create');
+                $(".photos").append('<a href="#Imagepopup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + routePhotos[i] + '"></a>');
+                $('#route_details').append('<div data-role="popup" id="Imagepopup' + i + '" class="imagePopups" data-overlay-theme="a" data-theme="d" data-corners="false"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <img class="popphoto" src="' + routePhotos[i] + '" style="max-height:512px;" alt="photo, test"></div>').trigger('create');
 
 			}
 		var path = results.rows.item(0).PathCoordinates;

@@ -105,6 +105,7 @@ $(document).on('pageshow', "#route_details", function() {
     	walkDescription = results.rows.item(0).WalkDescription;
 	    walkDistance = results.rows.item(0).Distance;
 	    walkDuration = results.rows.item(0).Duration;
+	    photos = results.rows.item(0).Images;
 		var path = results.rows.item(0).PathCoordinates;
 		var path=path.substr(1,path.length-1);	path=path.substr(0,path.length-1); 
 		var polyline = path.split("),("); 

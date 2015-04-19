@@ -125,10 +125,11 @@ $(document).on('pageshow', "#route_details", function() {
 		polys.push(polyline);
 			
 		$('#headerWalkTitle').html(walkTitle);
-		$('#walkTitleDetails').val = walkTitle;
-		$('#walkDescriptionDetails').val = walkDescription;
+		$('#walkTitleDetails').val(walkTitle);
+		$('#walkDescriptionDetails').val(walkDescription);
 		$('#finalDistanceDetails').html(walkDistance);
 		$('#finalDurationDetails').html(walkDuration);
+		console.log($('#walkTitleDetails'));
 
 		$('#routemap').each(function (index, Element) {
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));

@@ -113,7 +113,9 @@ $(document).on('pageshow', "#route_details", function() {
 	    console.log(Images);
             for( var i = 0, c = Images.length; i < c; i++ ) {
 
-                $(".photos").append('<a href="#popup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + imageArray[i] + '"></a>');
+                $(".photos").append('<a href="#popup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + Images[i] + '"></a>');
+                $('#route_details').append('<div data-role="popup" id="popup' + i + '" class="imagePopups" data-overlay-theme="a" data-theme="d" data-corners="false"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <img class="popphoto" src="' + Images[i] + '" style="max-height:512px;" alt="photo, test"></div>').trigger('create');
+
 			}
 		var path = results.rows.item(0).PathCoordinates;
 		var path=path.substr(1,path.length-1);	path=path.substr(0,path.length-1); 

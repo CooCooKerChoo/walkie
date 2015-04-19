@@ -108,7 +108,7 @@ $(document).on('pageshow', "#route_details", function() {
 	    var walkDuration = results.rows.item(0).Duration;
 	    var photos = results.rows.item(0).Images;
 	    console.log(photos);
-	    var routePhotos = photos.split("),(");
+	    var routePhotos = photos.split(",");
 	    Images.push(routePhotos);
 	    console.log(Images);
             for( var i = 0, c = Images.length; i < c; i++ ) {

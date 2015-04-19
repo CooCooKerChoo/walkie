@@ -164,19 +164,19 @@ $(document).on('pageshow', "#route_details", function() {
 		    var sw = new google.maps.LatLng(coords[3],coords[5]);
 		    var ne = new google.maps.LatLng(coords[2],coords[4]);
 			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
-			map2.fitBounds(new google.maps.LatLngBounds(sw,ne));
+			mapPopup.fitBounds(new google.maps.LatLngBounds(sw,ne));
 
 	        setTimeout(function() {
 	            google.maps.event.trigger(map, "resize");
 	        }, 1000);
 
               var path = new google.maps.Polyline({
-                path: polys[index],
+                path: polys,
                 strokeColor: "#FF0000",
                 strokeOpacity: 1.0,
                 strokeWeight: 5
               });
-              path.setMap(map, map2);
+              path.setMap(map, mapPopup);
 
 	}
 

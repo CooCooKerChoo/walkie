@@ -125,7 +125,7 @@ $(document).on('pageshow', "#route_details", function() {
 			var polys.push(polyline);
 	    }
 
-		$('.map').each(function (index, Element) {
+		$('#routemap').each(function (index, Element) {
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
 		        zoom: 14,

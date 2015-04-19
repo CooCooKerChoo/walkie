@@ -100,13 +100,10 @@ $(document).on('pageshow', "#route_details", function() {
  	function querySuccessDetails(t, results) {
 		var len = results.rows.length;
 		console.log("Walks table: " + len + " rows found");
-	    for (var i=0; i<len; i++){
-	    	walkTitle = results.rows.item(i).WalkTitle;
-		    walkDistance = results.rows.item(i).Distance;
-		    walkDuration = results.rows.item(i).Duration;
-			$('#walkTitle').html(walkTitle);
-			console.log(walkTitle, $('#walkTitle'));
-		}
+    	walkTitle = results.rows.item(0).WalkTitle;
+	    walkDistance = results.rows.item(0).Distance;
+	    walkDuration = results.rows.item(0).Duration;
+		$('#headerWalkTitle').html(walkTitle);
 	}
 
 	function errorCBDetails(error) {

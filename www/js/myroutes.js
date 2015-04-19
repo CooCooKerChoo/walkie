@@ -140,7 +140,6 @@ $(document).on('pageshow', "#route_details", function() {
 		$('#finalDistanceDetails').html(walkDistance);
 		$('#finalDurationDetails').html(walkDuration);
 
-		$('#routemap','#routePopupMap') {
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
 		        zoom: 14,
@@ -158,12 +157,14 @@ $(document).on('pageshow', "#route_details", function() {
 		        }
 		    };
 
-		    var map = new google.maps.Map(Element, myOptions);
+		    var map = new google.maps.Map("#routemap", myOptions);
+		    var mapPopup = new google.maps.Map("#routePopupMap", myOptions);
 
 
 		    var sw = new google.maps.LatLng(coords[index][3],coords[index][5]);
 		    var ne = new google.maps.LatLng(coords[index][2],coords[index][4]);
 			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
+			map2.fitBounds(new google.maps.LatLngBounds(sw,ne));
 
 	        setTimeout(function() {
 	            google.maps.event.trigger(map, "resize");
@@ -175,8 +176,8 @@ $(document).on('pageshow', "#route_details", function() {
                 strokeOpacity: 1.0,
                 strokeWeight: 5
               });
-              path.setMap(map);
-		});
+              path.setMap(map, map2);
+
 	}
 
 	function errorCBDetails(error) {

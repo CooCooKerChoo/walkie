@@ -195,7 +195,7 @@ $(document).on('pageshow', "#route_details", function() {
 		        }
 		    };
 
-		    var map = new google.maps.Map(#routemap, myOptions);
+		    var map = new google.maps.Map(#popupMap, myOptions);
 
 
 		    var sw = new google.maps.LatLng(coords[index][3],coords[index][5]);

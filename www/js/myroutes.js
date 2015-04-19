@@ -140,10 +140,10 @@ $(document).on('pageshow', "#route_details", function() {
 		$('#finalDistanceDetails').html(walkDistance);
 		$('#finalDurationDetails').html(walkDuration);
 
-		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
+// var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
 		        zoom: 14,
-		        center: new google.maps.LatLng(coords[index][0],coords[index][1]),
+		        center: new google.maps.LatLng(coords[0],coords[1]),
 		        // center: new google.maps.LatLng(52.9544124,-2.0046446),
 		        mapTypeId: google.maps.MapTypeId.TERRAIN,
 		        disableDefaultUI: false,
@@ -161,8 +161,8 @@ $(document).on('pageshow', "#route_details", function() {
 		    var mapPopup = new google.maps.Map("#routePopupMap", myOptions);
 
 
-		    var sw = new google.maps.LatLng(coords[index][3],coords[index][5]);
-		    var ne = new google.maps.LatLng(coords[index][2],coords[index][4]);
+		    var sw = new google.maps.LatLng(coords[3],coords[5]);
+		    var ne = new google.maps.LatLng(coords[2],coords[4]);
 			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
 			map2.fitBounds(new google.maps.LatLngBounds(sw,ne));
 

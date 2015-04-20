@@ -177,7 +177,7 @@ $(document).on('pageshow', "#route_details", function() {
 
 	}
 
-	function querySuccessMarkers() {
+	function querySuccessMarkers(t, results) {
 		var markersArray = [];
 		var len = results.rows.length;
 		console.log("Markers table: " + len + " rows found");

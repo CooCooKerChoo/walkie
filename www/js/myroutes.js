@@ -155,7 +155,7 @@ $(document).on('pageshow', "#route_details", function() {
 		        }
 		    };
 
-		    var map = new google.maps.Map(Element, myOptions);
+		    map = new google.maps.Map(Element, myOptions);
 
 
 		    var sw = new google.maps.LatLng(coords[index][3],coords[index][5]);
@@ -178,20 +178,34 @@ $(document).on('pageshow', "#route_details", function() {
 	}
 
 	function querySuccessMarkers(t, results) {
-		var markersArray = [];
+		var markersArray = {};
 		var len = results.rows.length;
 		console.log("Markers table: " + len + " rows found");
 
-		// for( var i = 0, c = result.rows.length; i < c; i++ ) {
-		// 	var markerid = results.rows.item(i).markerid;
-		// 	var markerTitle = results.rows.item(i).title;
-		// 	var markerInfo = results.rows.item(i).info;
-		// 	var markerLat = results.rows.item(i).markerLat;
-		// 	var markerLng = results.rows.item(i).markerLng;
+		for( var i = 0, c = results.rows.length; i < c; i++ ) {
+		    markersArray[results.rows.item(i).markerid] = {
+		        id: results.rows.item(i).markerid,
+		        title: results.rows.item(i).title,
+		        info: results.rows.item(i).info,
+		        lat: results.rows.item(i).markerLat,
+		        lng: results.rows.item(i).markerLng
+		    };
+	    }
+		console.log(markersArray);
 
-		// 	markersArray.push(markerid, markerTitle, markerInfo, markerLat, markerLng);
-	 //    	}
-		// console.log(markersArray);
+		var markerDetails;
+		for (id in markersArray) {
+		    if( markersArray.hasOwnProperty(id) ) {
+		        markerDetails = markersArray[id];
+		        var bridgeIcon = new google.maps.MarkerImage("img/map_markers/warning_map_marker.png", null, null, null);
+		        var marker = new google.maps.Marker({
+		            position: new google.maps.LatLng(markerDetails.lat, markerDetails.lng),
+		            map: map,
+		            icon: bridgeIcon
+		        });
+		        console.log(markerDetails);
+		    }
+		}
 	}
 
 

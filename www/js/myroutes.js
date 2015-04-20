@@ -1,4 +1,4 @@
- $(document).on('pageinit', "#my-routes", function() {
+ $(document).on('pageshow', "#my-routes", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS', [], querySuccess, errorCB);
@@ -46,14 +46,12 @@
 		        // center: new google.maps.LatLng(52.9544124,-2.0046446),
 		        mapTypeId: google.maps.MapTypeId.TERRAIN,
 		        disableDefaultUI: false,
-		        mapTypeControl: true,
+		        mapTypeControl: false,
             	mapTypeControl: false,
                 streetViewControl:false,
                 zoomControl: false,
                 draggable: false,
-		        zoomControlOptions: {
-		            style: google.maps.ZoomControlStyle.SMALL
-		        }
+                scrollWheel: false
 		    };
 
 		    var map = new google.maps.Map(Element, myOptions);
@@ -92,6 +90,7 @@ $(document).on('pageshow', "#route_details", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
+		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[]. querySuccessMarkers, errorCBDetails);
  	});
 
 
@@ -107,9 +106,7 @@ $(document).on('pageshow', "#route_details", function() {
 	    var walkDistance = results.rows.item(0).Distance;
 	    var walkDuration = results.rows.item(0).Duration;
 	    var photos = results.rows.item(0).Images;
-	    console.log(photos);
 	    var routePhotos = photos.split(",");
-	    console.log(routePhotos);
             for( var i = 0, c = routePhotos.length; i < c; i++ ) {
 
                 $(".photos").append('<a href="#Imagepopup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + routePhotos[i] + '"></a>');
@@ -180,8 +177,20 @@ $(document).on('pageshow', "#route_details", function() {
 
 	}
 
-	function errorCBDetails(error) {
-		console.log("Error processing SQL: " + error.message);
-	}
+	function querySuccessMarkers() {
+		var markersArray = [];
+		var len = results.rows.length;
+		console.log("Markers table: " + len + " rows found");
 
+		for( var i = 0, c = result.rows.length; i < c; i++ ) {
+			var markerid = results.rows.item(i).markerid;
+			var markerTitle = results.rows.item(i).title;
+			var markerInfo = results.rows.item(i).info;
+			var markerLat = results.rows.item(i).markerLat;
+			var markerLng = results.rows.item(i).markerLng;
+
+			markersArray.push(markerid, markerTitle, markerInfo, markerLat, markerLng);
+	    	}
+		console.log(markersArray);
+	}
 });

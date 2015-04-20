@@ -193,4 +193,10 @@ $(document).on('pageshow', "#route_details", function() {
 	    	}
 		console.log(markersArray);
 	}
+
+
+	function errorCBDetails(error) {
+		console.log("Error processing SQL: " + error.message);
+	}
+
 });

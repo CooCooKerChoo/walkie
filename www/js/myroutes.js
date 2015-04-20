@@ -90,7 +90,7 @@ $(document).on('pageshow', "#route_details", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
-		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[]. querySuccessMarkers, errorCBDetails);
+		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);
  	});
 
 
@@ -182,16 +182,16 @@ $(document).on('pageshow', "#route_details", function() {
 		var len = results.rows.length;
 		console.log("Markers table: " + len + " rows found");
 
-		for( var i = 0, c = result.rows.length; i < c; i++ ) {
-			var markerid = results.rows.item(i).markerid;
-			var markerTitle = results.rows.item(i).title;
-			var markerInfo = results.rows.item(i).info;
-			var markerLat = results.rows.item(i).markerLat;
-			var markerLng = results.rows.item(i).markerLng;
+		// for( var i = 0, c = result.rows.length; i < c; i++ ) {
+		// 	var markerid = results.rows.item(i).markerid;
+		// 	var markerTitle = results.rows.item(i).title;
+		// 	var markerInfo = results.rows.item(i).info;
+		// 	var markerLat = results.rows.item(i).markerLat;
+		// 	var markerLng = results.rows.item(i).markerLng;
 
-			markersArray.push(markerid, markerTitle, markerInfo, markerLat, markerLng);
-	    	}
-		console.log(markersArray);
+		// 	markersArray.push(markerid, markerTitle, markerInfo, markerLat, markerLng);
+	 //    	}
+		// console.log(markersArray);
 	}
 
 

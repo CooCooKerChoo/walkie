@@ -178,35 +178,42 @@ $(document).on('pageshow', "#route_details", function() {
 	}
 
 	function querySuccessMarkers(t, results) {
-		var markersArray = {};
-		var len = results.rows.length;
-		console.log("Markers table: " + len + " rows found");
+	    var markersArray = [];
+	    var len = results.rows.length;
+	    console.log("Markers table: " + len + " rows found");
 
-		for( var i = 0, c = results.rows.length; i < c; i++ ) {
-		    markersArray[results.rows.item(i).markerid] = {
-		        id: results.rows.item(i).markerid,
-		        title: results.rows.item(i).title,
-		        info: results.rows.item(i).info,
-		        lat: results.rows.item(i).markerLat,
-		        lng: results.rows.item(i).markerLng
-		    };
+	    for( var i = 0, c = results.rows.length; i < c; i++) {
+	    	markersArray.push(results.rows.item(i));
 	    }
-		console.log(markersArray);
+	    console.log(markersArray);
 
-		var markerDetails;
-		for (id in markersArray) {
-		    if( markersArray.hasOwnProperty(id) ) {
-		        markerDetails = markersArray[id];
-		        var bridgeIcon = new google.maps.MarkerImage("img/map_markers/warning_map_marker.png", null, null, null);
-		        var marker = new google.maps.Marker({
-		            position: new google.maps.LatLng(markerDetails.lat, markerDetails.lng),
-		            map: map,
-		            icon: bridgeIcon
-		        });
-		        console.log(markerDetails);
-		    }
-		}
-	}
+
+	    var info_window = new google.maps.InfoWindow();
+
+	    for (i = 0; i < markersArray.length; i++) {
+	            var bridgeIcon = new google.maps.MarkerImage("img/map_markers/warning_map_marker.png", null, null, null);
+	            marker = new google.maps.Marker({
+	                position: new google.maps.LatLng(markersArray[i].markerLat, markersArray[i].markerLng),
+	                map: map,
+	                icon: bridgeIcon
+	            });
+
+	            console.log(marker);
+
+
+		    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+		    	return function() {
+			    	info_window.setContent('<div id="marker-info-win" data-id="'+markersArray[i].markerid+'">' +
+	            '<h3>Marker Information</h3>' +
+	            '<input id="warning-title" data-text="Warning Title" value="'+markersArray[i].title+'"/>'+
+	            '<i class="fa fa-pencil"></i>' +
+	            '<input id="warning-additional-info" data-text="Warning Additional Information" value="'+markersArray[i].info+'"/>'+
+	            '<i class="fa fa-pencil"></i>');
+			        info_window.open(map, marker);
+		    	}
+		    })(marker, i));
+	    }
+	} 
 
 
 	function errorCBDetails(error) {

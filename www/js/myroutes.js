@@ -1,18 +1,16 @@
- $(document).on('pageinit', "#my-routes", function() {
+ $(document).on('pagebeforeshow', "#my-routes", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS', [], querySuccess, errorCB);
  	});
 
  	function querySuccess(t, results) {
-		var len = results.rows.length;
-		console.log("Walks table: " + len + " rows found");
 
 		var coords = [];
 		var polys = [];
 
 
-	    for (var i=0; i<len; i++){
+	    for (var i=0; i < results.rows.length; i++){
 	    	var polylinePath = [];
 	    	var walkId = results.rows.item(i).id;
 	    	var walkTitle = results.rows.item(i).WalkTitle;
@@ -86,7 +84,7 @@ $(document).on("click", ".walkPage", function(){
 });
 
 
-$(document).on('pageshow', "#route_details", function() {
+$(document).on('pageinit', "#route_details", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
@@ -162,10 +160,6 @@ $(document).on('pageshow', "#route_details", function() {
 		    var ne = new google.maps.LatLng(coords[index][2],coords[index][4]);
 			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
 
-	        setTimeout(function() {
-	            google.maps.event.trigger(map, "resize");
-	        }, 1000);
-
               var path = new google.maps.Polyline({
                 path: polys[index],
                 strokeColor: "#FF0000",
@@ -220,4 +214,10 @@ $(document).on('pageshow', "#route_details", function() {
 		console.log("Error processing SQL: " + error.message);
 	}
 
+});
+
+$(document).on('pageshow', "#route_details", function() {
+	    setTimeout(function() {
+	    google.maps.event.trigger(map, "resize");
+	}, 1000);
 });

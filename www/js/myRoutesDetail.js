@@ -53,14 +53,15 @@ $(document).on('pageshow', "#route_details", function() {
  	function querySuccessImages(t, results) {
 	    Routephotos = results.rows.item(0).Images;
 	    routePhotosArray = Routephotos.split(",");
+	    
+		console.log(routePhotosArray);
+
+	    for( var i = 0, c = routePhotosArray.length; i < c; i++ ) {
+	        $(".photos").append('<a href="#Imagepopup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + routePhotosArray[i] + '"></a>');
+	        $('#route_details').append('<div data-role="popup" id="Imagepopup' + i + '" class="imagePopups" data-overlay-theme="a" data-theme="d" data-corners="false"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <img class="popphoto" src="' + routePhotosArray[i] + '" style="max-height:512px;" alt="photo, test"></div>').trigger('create');
+		}
 	}
 
-	console.log(routePhotosArray);
-
-    for( var i = 0, c = routePhotosArray.length; i < c; i++ ) {
-        $(".photos").append('<a href="#Imagepopup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + routePhotosArray[i] + '"></a>');
-        $('#route_details').append('<div data-role="popup" id="Imagepopup' + i + '" class="imagePopups" data-overlay-theme="a" data-theme="d" data-corners="false"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <img class="popphoto" src="' + routePhotosArray[i] + '" style="max-height:512px;" alt="photo, test"></div>').trigger('create');
-	}
 
 	$('#headerWalkTitle').html(walkTitle);
 	$('#walkTitleDetails').val(walkTitle);

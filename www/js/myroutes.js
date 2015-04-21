@@ -37,7 +37,6 @@
             $("#my_walks").append('<a data-route="'+walkId+'" class="walkPage" href="#route_details"><span class="walk_container"><span class="map" id="walkMap' + walkId + '" style="width: 100%; height: 150px;"></span><span class="walk_basic_info"><span class="walk_title">'+ walkTitle + '</span><span class="walk_distance">' + walkDistance + '</span><span class="walk_duration">'+ "|" + walkDuration + '</span></span></a>');
 	    }
 		$('.map').each(function (index, Element) {
-		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
 		        zoom: 14,
 		        center: new google.maps.LatLng(coords[index][0],coords[index][1]),
@@ -53,7 +52,6 @@
 		    };
 
 		    var map = new google.maps.Map(Element, myOptions);
-
 
 		    var sw = new google.maps.LatLng(coords[index][3],coords[index][5]);
 		    var ne = new google.maps.LatLng(coords[index][2],coords[index][4]);
@@ -82,12 +80,3 @@
 $(document).on("click", ".walkPage", function(){
 	clicked_route = parseInt($(this).attr("data-route"));
 });
-
- $(document).on('pageshow', "#my-routes", function() {
-
-		$('.map').each(function (index, Element) {
-	        setTimeout(function() {
-	            google.maps.event.trigger(map, "resize");
-	        }, 1000);
-		});
- });

@@ -1,6 +1,6 @@
 $(document).on('pagebeforeshow', "#route_details", function() {
 
-	RoutecoordsDetails = [], RoutepolysDetails = [];
+	RoutecoordsDetails = [], RoutepolysDetails = [],  	Routephotos = [], routePhotosArray = [];;
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
@@ -55,8 +55,6 @@ $(document).on('pagebeforeshow', "#route_details", function() {
 });
 
 $(document).on('pageshow', "#route_details", function() {
-
- 	Routephotos = [], routePhotosArray = [];
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);

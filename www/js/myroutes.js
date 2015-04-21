@@ -34,9 +34,10 @@ $(document).on('pageinit', "#my-routes", function() {
 
             $("#my_walks").append('<a data-route="'+walkId+'" class="walkPage" href="#route_details"><span class="walk_container"><span class="map" id="walkMap' + walkId + '" style="width: 100%; height: 150px;"></span><span class="walk_basic_info"><span class="walk_title">'+ walkTitle + '</span><span class="walk_distance">' + walkDistance + '</span><span class="walk_duration">'+ "|" + walkDuration + '</span></span></a>');
 	    }
+
 		$('.map').each(function (index, Element) {
-		    var myOptions = {
-		        zoom: 14,
+		    myOptions = {
+		        zoom: 20,
 		        center: new google.maps.LatLng(Routecoords[index][0],Routecoords[index][1]),
 		        // center: new google.maps.LatLng(52.9544124,-2.0046446),
 		        mapTypeId: google.maps.MapTypeId.TERRAIN,
@@ -49,15 +50,10 @@ $(document).on('pageinit', "#my-routes", function() {
                 scrollWheel: false
 		    };
 
-		    var map = new google.maps.Map(Element, myOptions);
+		    sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
+		    ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
 
-		    var sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
-		    var ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
 			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
-
-	        setTimeout(function() {
-	            google.maps.event.trigger(map, "resize");
-	        }, 1000);
 
               var path = new google.maps.Polyline({
                 path: Routepolys[index],
@@ -80,4 +76,12 @@ $(document).on("click", ".walkPage", function(){
 });
 
  $(document).on('pageshow', "#my-routes", function() {
+		$('.map').each(function (index, Element) {
+
+		    var map = new google.maps.Map(Element, myOptions);
+
+	        setTimeout(function() {
+	            google.maps.event.trigger(map, "resize");
+	        }, 1000);
+		});
 });

@@ -93,7 +93,7 @@ $(document).on('pageshow', "#route_details", function() {
 	}); 
 
 	function querySuccessImages(t, results) {
-	    Routephotos = results.rows.item(0).Images;
+	    Routephotos = results.rows.item(0);
 	    routePhotosArray = Routephotos.split(",");
 
 	    for( var i = 0, c = routePhotosArray.length; i < c; i++ ) {

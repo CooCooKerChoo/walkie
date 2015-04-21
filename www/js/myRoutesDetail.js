@@ -1,15 +1,13 @@
-$(document).on('pageshow', "#route_details", function() {
+$(document).on('pageinit', "#route_details", function() {
+
+		Routecoords = [], Routepolys = [], RouteImages = [];
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
-		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);
  	});
 
 
  	function querySuccessDetails(t, results) {
-		var coords = [];
-		var polys = [];
-		var Images = [];
 
 		var len = results.rows.length;
 		console.log("Walks table: " + len + " rows found");
@@ -40,8 +38,8 @@ $(document).on('pageshow', "#route_details", function() {
 			sumLat+=lat; sumLng+=lng; 
 			return new google.maps.LatLng(lat,lng); 
 		});
-		coords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
-		polys.push(polyline);
+		Routecoords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
+		Routepolys.push(polyline);
 			
 		$('#headerWalkTitle').html(walkTitle);
 		$('#walkTitleDetails').val(walkTitle);
@@ -49,11 +47,23 @@ $(document).on('pageshow', "#route_details", function() {
 		$('#finalDistanceDetails').html(walkDistance);
 		$('#finalDurationDetails').html(walkDuration);
 
-		$('#routemap').each(function (index, Element) {
+	}
+	function errorCBDetails(error) {
+		console.log("Error processing SQL: " + error.message);
+	}
+
+});
+
+$(document).on('pageshow', "#route_details", function() {
+ 	db.transaction(function(t){
+		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);
+ 	});
+
+	$('#routemap').each(function (index, Element) {
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
 		        zoom: 14,
-		        center: new google.maps.LatLng(coords[index][0],coords[index][1]),
+		        center: new google.maps.LatLng(Routecoords[index][0],Routecoords[index][1]),
 		        // center: new google.maps.LatLng(52.9544124,-2.0046446),
 		        mapTypeId: google.maps.MapTypeId.TERRAIN,
 		        disableDefaultUI: false,
@@ -69,21 +79,22 @@ $(document).on('pageshow', "#route_details", function() {
 
 		    map = new google.maps.Map(Element, myOptions);
 
+	    setTimeout(function() {
+	    google.maps.event.trigger(map, "resize");
+		}, 1000);
 
-		    var sw = new google.maps.LatLng(coords[index][3],coords[index][5]);
-		    var ne = new google.maps.LatLng(coords[index][2],coords[index][4]);
+		    var sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
+		    var ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
 			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
 
               var path = new google.maps.Polyline({
-                path: polys[index],
+                path: Routepolys[index],
                 strokeColor: "#FF0000",
                 strokeOpacity: 1.0,
                 strokeWeight: 5
               });
               path.setMap(map);
-		});
-
-	}
+	}); 
 
 	function querySuccessMarkers(t, results) {
 	    var markersArray = [];
@@ -121,17 +132,8 @@ $(document).on('pageshow', "#route_details", function() {
 		    	}
 		    })(marker, i));
 	    }
-	} 
-
-
+	}
 	function errorCBDetails(error) {
 		console.log("Error processing SQL: " + error.message);
 	}
-
-});
-
-$(document).on('pageshow', "#route_details", function() {
-	    setTimeout(function() {
-	    google.maps.event.trigger(map, "resize");
-	}, 1000);
 });

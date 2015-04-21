@@ -33,8 +33,6 @@ $(document).on('pagebeforeshow', "#route_details", function() {
 		Routecoords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
 		Routepolys.push(polyline);
 
-		console.log(Routecoords);
-
 		$('#headerWalkTitle').html(walkTitle);
 		$('#walkTitleDetails').val(walkTitle);
 		$('#walkDescriptionDetails').val(walkDescription);
@@ -54,7 +52,16 @@ $(document).on('pageshow', "#route_details", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);
+		t.executeSql('SELECT Images FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessImages, errorCBDetails);
  	});
+
+
+ 	function querySuccessImages(t, results) {
+	    Routephotos = results.rows.item(0).Images;
+	    routePhotosArray = Routephotos.split(",");
+
+	    console.log(routePhotosArray);
+	}
 
 	$('#routemap').each(function (index, Element) {
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));

@@ -1,6 +1,6 @@
 $(document).on('pageinit', "#my-routes", function() {
 
-	coords = [], polys = [];
+	Routecoords = [], Routepolys = [];
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS', [], querySuccess, errorCB);
@@ -29,8 +29,8 @@ $(document).on('pageinit', "#my-routes", function() {
 				sumLat+=lat; sumLng+=lng; 
 				return new google.maps.LatLng(lat,lng); 
 			});
-			coords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
-			polys.push(polyline);
+			Routecoords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
+			Routepolys.push(polyline);
 
             $("#my_walks").append('<a data-route="'+walkId+'" class="walkPage" href="#route_details"><span class="walk_container"><span class="map" id="walkMap' + walkId + '" style="width: 100%; height: 150px;"></span><span class="walk_basic_info"><span class="walk_title">'+ walkTitle + '</span><span class="walk_distance">' + walkDistance + '</span><span class="walk_duration">'+ "|" + walkDuration + '</span></span></a>');
 	    }
@@ -50,7 +50,7 @@ $(document).on("click", ".walkPage", function(){
 		$('.map').each(function (index, Element) {
 		    var myOptions = {
 		        zoom: 14,
-		        center: new google.maps.LatLng(coords[index][0],coords[index][1]),
+		        center: new google.maps.LatLng(Routecoords[index][0],Routecoords[index][1]),
 		        // center: new google.maps.LatLng(52.9544124,-2.0046446),
 		        mapTypeId: google.maps.MapTypeId.TERRAIN,
 		        disableDefaultUI: false,
@@ -64,8 +64,8 @@ $(document).on("click", ".walkPage", function(){
 
 		    var map = new google.maps.Map(Element, myOptions);
 
-		    var sw = new google.maps.LatLng(coords[index][3],coords[index][5]);
-		    var ne = new google.maps.LatLng(coords[index][2],coords[index][4]);
+		    var sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
+		    var ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
 			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
 
 	        setTimeout(function() {
@@ -73,7 +73,7 @@ $(document).on("click", ".walkPage", function(){
 	        }, 1000);
 
               var path = new google.maps.Polyline({
-                path: polys[index],
+                path: Routepolys[index],
                 strokeColor: "#FF0000",
                 strokeOpacity: 1.0,
                 strokeWeight: 5

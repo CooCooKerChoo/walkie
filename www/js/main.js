@@ -79,13 +79,11 @@ var googleLatLng = [],
 
             //create the map, and place it in the HTML map div
             map = new google.maps.Map(document.getElementById("mapPlaceholder"), mapOptions);
-    }
 
- $(document).on('pageshow', "#page1", function() {
-    setTimeout(function() {
-        google.maps.event.trigger(map, "resize");
-    }, 1000);
- });
+        setTimeout(function() {
+            google.maps.event.trigger(map, "resize");
+        }, 1000);
+    }
 
     // onError Callback receives a PositionError object
     //

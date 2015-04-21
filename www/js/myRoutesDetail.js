@@ -33,6 +33,8 @@ $(document).on('pagebeforeshow', "#route_details", function() {
 		Routecoords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
 		Routepolys.push(polyline);
 
+		console.log(Routecoords);
+
 		$('#headerWalkTitle').html(walkTitle);
 		$('#walkTitleDetails').val(walkTitle);
 		$('#walkDescriptionDetails').val(walkDescription);

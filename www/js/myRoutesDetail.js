@@ -46,11 +46,11 @@ $(document).on('pageshow', "#route_details", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);
-		t.executeSql('SELECT Images FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
+		t.executeSql('SELECT Images FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessImages, errorCBDetails);
  	});
 
 
- 	function querySuccessDetails(t, results) {
+ 	function querySuccessImages(t, results) {
 	    Routephotos = results.rows.item(0).Images;
 	    routePhotosArray = Routephotos.split(",");
 	}

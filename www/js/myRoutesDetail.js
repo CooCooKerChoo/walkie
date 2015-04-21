@@ -1,4 +1,4 @@
-$(document).on('pagebeforeshow', "#route_details", function() {
+$(document).on('pagechange', "#route_details", function() {
 
 	Routecoords = [], Routepolys = [];
 

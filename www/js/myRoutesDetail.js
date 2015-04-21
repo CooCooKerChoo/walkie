@@ -1,6 +1,6 @@
 $(document).on('pagebeforeshow', "#route_details", function() {
 
-	Routecoords = [], Routepolys = [];
+	RoutecoordsDetails = [], RoutepolysDetails = [];
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
@@ -30,8 +30,8 @@ $(document).on('pagebeforeshow', "#route_details", function() {
 			sumLat+=lat; sumLng+=lng; 
 			return new google.maps.LatLng(lat,lng); 
 		});
-		Routecoords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
-		Routepolys.push(polyline);
+		RoutecoordsDetails.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
+		RoutepolysDetails.push(polyline);
 
 	    Routephotos = results.rows.item(0);
 	    routePhotosArray = Routephotos.split(",");
@@ -66,7 +66,7 @@ $(document).on('pageshow', "#route_details", function() {
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
 		    var myOptions = {
 		        zoom: 14,
-		        center: new google.maps.LatLng(Routecoords[index][0],Routecoords[index][1]),
+		        center: new google.maps.LatLng(RoutecoordsDetails[index][0],RoutecoordsDetails[index][1]),
 		        // center: new google.maps.LatLng(52.9544124,-2.0046446),
 		        mapTypeId: google.maps.MapTypeId.TERRAIN,
 		        disableDefaultUI: false,
@@ -86,12 +86,12 @@ $(document).on('pageshow', "#route_details", function() {
 	    google.maps.event.trigger(map, "resize");
 		}, 1000);
 
-		    var sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
-		    var ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
+		    var sw = new google.maps.LatLng(RoutecoordsDetails[index][3],RoutecoordsDetails[index][5]);
+		    var ne = new google.maps.LatLng(RoutecoordsDetails[index][2],RoutecoordsDetails[index][4]);
 			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
 
               var path = new google.maps.Polyline({
-                path: Routepolys[index],
+                path: RoutepolysDetails[index],
                 strokeColor: "#FF0000",
                 strokeOpacity: 1.0,
                 strokeWeight: 5

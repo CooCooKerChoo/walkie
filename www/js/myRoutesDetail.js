@@ -1,6 +1,6 @@
 $(document).on('pagebeforeshow', "#route_details", function() {
 
-	Routecoords = [], Routepolys = [], Routephotos = [], RoutePhotosArray = [];
+	Routecoords = [], Routepolys = [], Routephotos = [], routePhotosArray = [];
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);

@@ -34,19 +34,6 @@ $(document).on('pageinit', "#my-routes", function() {
 
             $("#my_walks").append('<a data-route="'+walkId+'" class="walkPage" href="#route_details"><span class="walk_container"><span class="map" id="walkMap' + walkId + '" style="width: 100%; height: 150px;"></span><span class="walk_basic_info"><span class="walk_title">'+ walkTitle + '</span><span class="walk_distance">' + walkDistance + '</span><span class="walk_duration">'+ "|" + walkDuration + '</span></span></a>');
 	    }
-
- 	}
-
- 		function errorCB(error) {
- 			console.log("Error processing SQL: " + error.message);
- 		}
-});
-
-$(document).on("click", ".walkPage", function(){
-	clicked_route = parseInt($(this).attr("data-route"));
-});
-
- $(document).on('pageshow', "#my-routes", function() {
 		$('.map').each(function (index, Element) {
 		    var myOptions = {
 		        zoom: 14,
@@ -80,4 +67,17 @@ $(document).on("click", ".walkPage", function(){
               });
               path.setMap(map);
 		});
+
+ 	}
+
+ 		function errorCB(error) {
+ 			console.log("Error processing SQL: " + error.message);
+ 		}
+});
+
+$(document).on("click", ".walkPage", function(){
+	clicked_route = parseInt($(this).attr("data-route"));
+});
+
+ $(document).on('pageshow', "#my-routes", function() {
 });

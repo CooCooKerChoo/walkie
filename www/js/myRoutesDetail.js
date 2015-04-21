@@ -1,4 +1,4 @@
-$(document).on('pageinit', "#route_details", function() {
+$(document).on('pagebeforeshow', "#route_details", function() {
 
 		Routecoords = [], Routepolys = [], RouteImages = [];
 
@@ -11,12 +11,12 @@ $(document).on('pageinit', "#route_details", function() {
 
 		var len = results.rows.length;
 		console.log("Walks table: " + len + " rows found");
-    	var walkTitle = results.rows.item(0).WalkTitle;
-    	var walkDescription = results.rows.item(0).WalkDescription;
-	    var walkDistance = results.rows.item(0).Distance;
-	    var walkDuration = results.rows.item(0).Duration;
-	    var photos = results.rows.item(0).Images;
-	    var routePhotos = photos.split(",");
+    	walkTitle = results.rows.item(0).WalkTitle;
+    	walkDescription = results.rows.item(0).WalkDescription;
+	    walkDistance = results.rows.item(0).Distance;
+	    walkDuration = results.rows.item(0).Duration;
+	    photos = results.rows.item(0).Images;
+	    routePhotos = photos.split(",");
             for( var i = 0, c = routePhotos.length; i < c; i++ ) {
 
                 $(".photos").append('<a href="#Imagepopup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + routePhotos[i] + '"></a>');
@@ -40,12 +40,6 @@ $(document).on('pageinit', "#route_details", function() {
 		});
 		Routecoords.push([sumLat/polyline.length, sumLng/polyline.length, maxLat, minLat, maxLng, minLng]);
 		Routepolys.push(polyline);
-			
-		$('#headerWalkTitle').html(walkTitle);
-		$('#walkTitleDetails').val(walkTitle);
-		$('#walkDescriptionDetails').val(walkDescription);
-		$('#finalDistanceDetails').html(walkDistance);
-		$('#finalDurationDetails').html(walkDuration);
 
 	}
 	function errorCBDetails(error) {
@@ -55,9 +49,17 @@ $(document).on('pageinit', "#route_details", function() {
 });
 
 $(document).on('pageshow', "#route_details", function() {
+
+
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);
  	});
+
+	$('#headerWalkTitle').html(walkTitle);
+	$('#walkTitleDetails').val(walkTitle);
+	$('#walkDescriptionDetails').val(walkDescription);
+	$('#finalDistanceDetails').html(walkDistance);
+	$('#finalDurationDetails').html(walkDuration);
 
 	$('#routemap').each(function (index, Element) {
 		    // var latlng = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));

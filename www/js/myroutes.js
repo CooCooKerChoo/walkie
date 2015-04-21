@@ -86,7 +86,7 @@ $(document).on("click", ".walkPage", function(){
 });
 
 
-$(document).on('pageinit', "#route_details", function() {
+$(document).on('pageshow', "#route_details", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);

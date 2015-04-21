@@ -42,7 +42,7 @@ $(document).on('pagebeforeshow', "#route_details", function() {
 
 $(document).on('pageshow', "#route_details", function() {
 
-	Routephotos = [], routePhotosArray = []
+	Routephotos = [], routePhotosArray = [];
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);

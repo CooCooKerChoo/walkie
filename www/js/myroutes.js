@@ -1,4 +1,4 @@
-$(document).on('pageshow', "#my-routes", function() {
+$(document).on('pageinit', "#my-routes", function() {
 
 	Routecoords = [], Routepolys = [];
 

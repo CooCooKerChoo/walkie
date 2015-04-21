@@ -52,7 +52,7 @@ $(document).on('pageshow', "#route_details", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);
-		t.executeSql('SELECT Images FROM WALKS WHERE walk_id = "'+clicked_route+'"',[], querySuccessImages, errorCBDetailsImages);
+		t.executeSql('SELECT * FROM WALKS WHERE walk_id = "'+clicked_route+'"',[], querySuccessImages, errorCBDetailsImages);
  	});
 
 	$('#routemap').each(function (index, Element) {
@@ -93,7 +93,7 @@ $(document).on('pageshow', "#route_details", function() {
 	}); 
 
 	function querySuccessImages(t, results) {
-	    Routephotos = results.rows.item(0);
+	    Routephotos = results.rows.item(0).Images;
 	    routePhotosArray = Routephotos.split(",");
 
 	    for( var i = 0, c = routePhotosArray.length; i < c; i++ ) {

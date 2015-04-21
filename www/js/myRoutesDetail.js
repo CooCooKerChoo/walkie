@@ -52,7 +52,7 @@ $(document).on('pageshow', "#route_details", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);
-		t.executeSql('SELECT Images FROM WALKS WHERE walk_id = "'+clicked_route+'"',[], querySuccessImages, errorCBDetails);
+		t.executeSql('SELECT Images FROM WALKS WHERE walk_id = "'+clicked_route+'"',[], querySuccessImages, errorCBDetailsImages);
  	});
 
 	$('#routemap').each(function (index, Element) {
@@ -100,6 +100,10 @@ $(document).on('pageshow', "#route_details", function() {
 	        $(".photos").append('<a href="#Imagepopup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + routePhotosArray[i] + '"></a>');
 	        $('#route_details').append('<div data-role="popup" id="Imagepopup' + i + '" class="imagePopups" data-overlay-theme="a" data-theme="d" data-corners="false"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <img class="popphoto" src="' + routePhotosArray[i] + '" style="max-height:512px;" alt="photo, test"></div>').trigger('create');
 		}
+	}
+
+	function errorCBDetailsImages(error) {
+		console.log("Error processing SQL: " + error.message);
 	}
 
 	function querySuccessMarkers(t, results) {

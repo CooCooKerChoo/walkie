@@ -86,7 +86,7 @@ $(document).on("click", ".walkPage", function(){
 });
 
 
-$(document).on('pageshow', "#route_details", function() {
+$(document).on('pageinit', "#route_details", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
@@ -209,7 +209,7 @@ $(document).on('pageshow', "#route_details", function() {
 	            '<i class="fa fa-pencil"></i>' +
 	            '<input id="warning-additional-info" data-text="Warning Additional Information" value="'+markersArray[i].info+'"/>'+
 	            '<i class="fa fa-pencil"></i>');
-			        info_window.open(map, marker);
+			        info_window.open(map, this);
 		    	}
 		    })(marker, i));
 	    }

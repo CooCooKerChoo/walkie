@@ -17,12 +17,6 @@ $(document).on('pagebeforeshow', "#route_details", function() {
 	    walkDuration = results.rows.item(0).Duration;
 	    photos = results.rows.item(0).Images;
 	    routePhotos = photos.split(",");
-            for( var i = 0, c = routePhotos.length; i < c; i++ ) {
-
-                $(".photos").append('<a href="#Imagepopup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + routePhotos[i] + '"></a>');
-                $('#route_details').append('<div data-role="popup" id="Imagepopup' + i + '" class="imagePopups" data-overlay-theme="a" data-theme="d" data-corners="false"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <img class="popphoto" src="' + routePhotos[i] + '" style="max-height:512px;" alt="photo, test"></div>').trigger('create');
-
-			}
 		var path = results.rows.item(0).PathCoordinates;
 		var path=path.substr(1,path.length-1);	path=path.substr(0,path.length-1); 
 		var polyline = path.split("),("); 
@@ -97,6 +91,13 @@ $(document).on('pageshow', "#route_details", function() {
               });
               path.setMap(map);
 	}); 
+
+    for( var i = 0, c = routePhotos.length; i < c; i++ ) {
+
+        $(".photos").append('<a href="#Imagepopup' + i + '"data-rel="popup" data-position-to="window" data-transition="fade"><img class="image" src="' + routePhotos[i] + '"></a>');
+        $('#route_details').append('<div data-role="popup" id="Imagepopup' + i + '" class="imagePopups" data-overlay-theme="a" data-theme="d" data-corners="false"><a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a> <img class="popphoto" src="' + routePhotos[i] + '" style="max-height:512px;" alt="photo, test"></div>').trigger('create');
+
+	}
 
 	function querySuccessMarkers(t, results) {
 	    var markersArray = [];

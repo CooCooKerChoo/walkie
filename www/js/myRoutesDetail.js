@@ -148,4 +148,66 @@ $(document).on('pageshow', "#route_details", function() {
 	function errorCBDetails(error) {
 		console.log("Error processing SQL: " + error.message);
 	}
+
+
+	$("button#buttonDone").click(function() {
+	 	db.transaction(function(t){
+			t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessUploadRoute, errorCBDetails);
+	 	});
+	});
+
+
+	function querySuccessUploadRoute(t, results) {
+		var walkID = results.rows.item(0).id;
+    	var walkTitle = results.rows.item(0).WalkTitle;
+    	var walkDescription = results.rows.item(0).WalkDescription;
+	    var walkDistance = results.rows.item(0).Distance;
+	    var walkDuration = results.rows.item(0).Duration;
+	    var walkCoords = results.rows.item(0).PathCoordinates;
+
+	    walkID = encodeURIComponent(walkID);
+	    walkTitle = encodeURIComponent(walkTitle);
+	    walkDescription = encodeURIComponent(walkDescription);
+	    walkDistance = encodeURIComponent(walkDistance);
+	    walkDuration = encodeURIComponent(walkDuration);
+	    walkCoords = encodeURIComponent(walkCoords);
+
+	    var dataString = 'walkID='+ walkID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration;
+
+	    console.log(dataString);
+
+	    console.log(walkID);
+	    console.log(walkTitle);
+	    console.log(walkCoords);
+
+
+		$.ajax({
+			type: "POST",
+	        data: 
+	        // {
+	        // 	'walkID' : walkID,
+	        // 	'walkTitle' : walkTitle,
+	        // 	'walkDescription' : walkDescription,
+	        // 	'walkDistance' : walkDistance,
+	        // 	'walkDuration' : walkDuration,
+	        // 	'walkCoords' : walkCoords
+	        // },
+	        dataString,
+	        url: 'http://matt-meadows.co.uk/walkie/ajax.php',
+	        success: function(response){
+	            alert(response);
+	        }
+	    });
+	}
+
+});
+
+$(document).ready(function() {
+	$("#buttonDone").click(function() {
+	 	// db.transaction(function(t){
+			// t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessUploadRoute, errorCBDetails);
+	 	// });
+
+	 	console.log("Hello!");
+	});
 });

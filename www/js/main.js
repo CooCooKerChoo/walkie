@@ -101,7 +101,7 @@ var googleLatLng = [],
 // =================================================== START OF CUSTOM MARKERS ================================================== //
 
 function addMapMarker() {
-    navigator.geolocation.getCurrentPosition(addMarker, addMarkerFail);
+    navigator.geolocation.getCurrentPosition(addMarker, addMarkerFail, {enableHighAccuracy: true});
 }
 
 counter = 0;

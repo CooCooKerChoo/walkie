@@ -43,6 +43,7 @@ $(document).on('pagebeforeshow', "#route_details", function() {
 $(document).on('pageshow', "#route_details", function() {
 
 	Routephotos = [], routePhotosArray = [];
+	routePhotosArray.length = 0;
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);
@@ -53,7 +54,7 @@ $(document).on('pageshow', "#route_details", function() {
  	function querySuccessImages(t, results) {
 	    Routephotos = results.rows.item(0).Images;
 	    routePhotosArray = Routephotos.split(",");
-	    
+
 		console.log(routePhotosArray);
 
 	    for( var i = 0, c = routePhotosArray.length; i < c; i++ ) {

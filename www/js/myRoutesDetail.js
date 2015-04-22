@@ -1,5 +1,7 @@
 $(document).on('pagebeforeshow', "#route_details", function() {
 
+	$(".photos").empty();
+
 	Routecoords = [], Routepolys = [];
 
  	db.transaction(function(t){
@@ -43,7 +45,6 @@ $(document).on('pagebeforeshow', "#route_details", function() {
 $(document).on('pageshow', "#route_details", function() {
 
 	Routephotos = [], routePhotosArray = [];
-	$(".photos").empty();
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);

@@ -300,23 +300,17 @@ function geolocationWatch() {
 
             totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
             document.getElementById("distance").innerHTML = totalDistance.toFixed(4) + " KM";
-        }, 60000)
-    }, onErrorTrack, {
-        enableHighAccuracy: true
-    });
-
+        }, 5000)
+    },
+    function() {
+        alert('code: '    + error.code    + '\n' +
+        'message: ' + error.message + '\n');
+    },
+    {enableHighAccuracy: true}
+    );
 }
 
 var totalDistance = 0;
-
-function onSuccessTrack(position) {
-
-} 
-
-function onErrorTrack(error) {
-  alert('code: '    + error.code    + '\n' +
-        'message: ' + error.message + '\n');
-}
 
 
 

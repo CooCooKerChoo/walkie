@@ -101,7 +101,7 @@ var googleLatLng = [],
 // =================================================== START OF CUSTOM MARKERS ================================================== //
 
 function addMapMarker() {
-    navigator.geolocation.getCurrentPosition(addMarker, addMarkerFail, {enableHighAccuracy: true});
+    navigator.geolocation.getCurrentPosition(addMarker, addMarkerFail);
 }
 
 counter = 0;
@@ -301,16 +301,20 @@ function geolocationWatch() {
             totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
             document.getElementById("distance").innerHTML = totalDistance.toFixed(4) + " KM";
         }, 60000)
-    },
-    function() {
-        alert('code: '    + error.code    + '\n' +
-        'message: ' + error.message + '\n');
-    },
-    {enableHighAccuracy: true}
-    );
+    }, onErrorTrack);
+
 }
 
 var totalDistance = 0;
+
+function onSuccessTrack(position) {
+
+} 
+
+function onErrorTrack(error) {
+  alert('code: '    + error.code    + '\n' +
+        'message: ' + error.message + '\n');
+}
 
 
 

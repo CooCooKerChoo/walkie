@@ -20,7 +20,7 @@
             };
 
             //create the map, and place it in the HTML map div
-            map = new google.maps.Map(document.getElementById("finishedRoute"), mapOptions);
+            mapDetails = new google.maps.Map(document.getElementById("finishedRoute"), mapOptions);
 
         setTimeout(function() {
             google.maps.event.trigger(map, "resize");
@@ -33,7 +33,7 @@
                 strokeOpacity: 1.0,
                 strokeWeight: 5
               });
-              path.setMap(map);
+              path.setMap(mapDetails);
             }
 
             var marker;

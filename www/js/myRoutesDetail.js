@@ -89,10 +89,10 @@ $(document).on('pageshow', "#route_details", function() {
 		        }
 		    };
 
-		    map = new google.maps.Map(Element, myOptions);
+		    mapMyRoutes = new google.maps.Map(Element, myOptions);
 
 	    setTimeout(function() {
-	    google.maps.event.trigger(map, "resize");
+	    google.maps.event.trigger(mapMyRoutes, "resize");
 		}, 1000);
 
 		    var sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
@@ -105,7 +105,7 @@ $(document).on('pageshow', "#route_details", function() {
                 strokeOpacity: 1.0,
                 strokeWeight: 5
               });
-              path.setMap(map);
+              path.setMap(mapMyRoutes);
 	}); 
 
 	function querySuccessMarkers(t, results) {

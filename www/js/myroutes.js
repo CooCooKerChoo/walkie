@@ -54,7 +54,6 @@ $(document).on('pageinit', "#my-routes", function() {
 		    var sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
 		    var ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
 
-			allMyRoutesMap.fitBounds(new google.maps.LatLngBounds(sw,ne));
 
               var path = new google.maps.Polyline({
                 path: Routepolys[index],
@@ -80,6 +79,8 @@ $(document).on("click", ".walkPage", function(){
 		$('.map').each(function (index, Element) {
 
 		    allMyRoutesMap = new google.maps.Map(Element, myOptions);
+
+			allMyRoutesMap.fitBounds(new google.maps.LatLngBounds(sw,ne));
 
 	        setTimeout(function() {
 	            google.maps.event.trigger(allMyRoutesMap, "resize");

@@ -220,6 +220,7 @@ function track(button) {
         $("#stopWalk").fadeIn('fast');
     }
 }
+
 function geolocationWatch() {
    geoWatch = navigator.geolocation.watchPosition(
         function(position) {
@@ -265,9 +266,10 @@ function geolocationWatch() {
             document.getElementById("distance").innerHTML = totalDistance.toFixed(4) + " KM";
 
         }, function() {
-            // ERROR // 
+            alert('code: '    + error.code    + '\n' +
+            'message: ' + error.message + '\n')
         }, {
-            maximumAge: 10000,
+            maximumAge: 30000,
             enableHighAccuracy: true
         }
     ); 

@@ -1,6 +1,7 @@
 $(document).on('pageinit', "#page1", function() {
         var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
         navigator.geolocation.getCurrentPosition(onSuccess, onError, addMapMarker, posOptions);
+});
 
 var initialScreenSize = window.innerHeight;
 window.addEventListener("resize", function() {

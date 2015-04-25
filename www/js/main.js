@@ -214,14 +214,14 @@ function track(button) {
     } else { // Pause/Stop
         running = false;
         clearInterval(theTimer);
-        navigator.geolocation.clearWatch(watch);
+        navigator.geolocation.clearWatch(geoWatch);
         past = time;
         $("#watchButton").html("RESUME");
         $("#stopWalk").fadeIn('fast');
     }
 }
 function geolocationWatch() {
-   var watch = navigator.geolocation.watchPosition(
+   geoWatch = navigator.geolocation.watchPosition(
         function(position) {
             lat = position.coords.latitude;
             lng = position.coords.longitude;

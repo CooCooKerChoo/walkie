@@ -46,7 +46,6 @@ $(document).on('pageinit', "#my-routes", function() {
             	mapTypeControl: false,
                 streetViewControl:false,
                 zoomControl: false,
-                draggable: false,
                 scrollWheel: false
 		    };
 

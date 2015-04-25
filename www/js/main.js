@@ -1,7 +1,5 @@
 $(document).on('pageinit', '#page1', function()
 {
-        function onDeviceReady() {
-
             db = openDatabase("Database", "1.0", "Test DB", 1000000);
             db.transaction(createDB, DBerror, DBsuccess);
 
@@ -19,7 +17,6 @@ $(document).on('pageinit', '#page1', function()
                 navigator.app.backHistory()
             }
             }, false);
-        }
 
 
         function createDB(t) {

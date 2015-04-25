@@ -74,11 +74,12 @@ $(document).on('pagebeforeshow', "#page1", function() {
 
         function onSuccess(position) {
 
-            coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
+            coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
             storeLatLng(latitude, longitude);
+
 
                 var mapOptions = {
                     zoom: 17,
@@ -227,12 +228,10 @@ $(document).on('pageshow','#page1', function(){
     function geolocationWatch() {
         navigator.geolocation.getCurrentPosition(function(position){
             intervalHandle = setInterval(function(){
-                // lat = position.coords.latitude;
-                // lng = position.coords.longitude;
-                lat = chance.latitude;
-                lng = chance.longitude;
+                lat = position.coords.latitude;
+                lon = position.coords.longitude;
 
-                storeLatLng(lat, lng);
+                storeLatLng(lat, lon);
 
                 if (googleLatLng.length > 0) {
                   var path = new google.maps.Polyline({
@@ -248,13 +247,13 @@ $(document).on('pageshow','#page1', function(){
                 var Prevlat = lastofArray[0];
                 var Prevlng = lastofArray[1];
                 console.log("Previous Lat: " + Prevlat, "Previous Lng: " + Prevlng);
-                console.log("Current Lat:" + lat, "Current Lng: " + lng);
+                console.log("Current Lat:" + lat, "Current Lng: " + lon);
                 console.log(latlngs);
 
-                function calculateDistance(lat, lng, Prevlat, Prevlng){
+                function calculateDistance(lat, lon, Prevlat, Prevlng){
                     var R = 6371; // km
                     var dLat = (Prevlat - lat).toRad();
-                    var dLon = (Prevlng - lng).toRad(); 
+                    var dLon = (Prevlng - lon).toRad(); 
                     var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
                           Math.cos(lat.toRad()) * Math.cos(Prevlat.toRad()) * 
                           Math.sin(dLon / 2) * Math.sin(dLon / 2); 
@@ -267,7 +266,7 @@ $(document).on('pageshow','#page1', function(){
                 }
 
 
-                totalDistance += calculateDistance(lat, lng, Prevlat, Prevlng);
+                totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
                 document.getElementById("distance").innerHTML = totalDistance.toFixed(4) + " KM";
             }, 60000)
         },

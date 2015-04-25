@@ -125,7 +125,7 @@ $(document).on('pageshow', "#route_details", function() {
 	            var bridgeIcon = new google.maps.MarkerImage("img/map_markers/warning_map_marker.png", null, null, null);
 	            marker = new google.maps.Marker({
 	                position: new google.maps.LatLng(markersArray[i].markerLat, markersArray[i].markerLng),
-	                map: map,
+	                map: mapMyRoutes,
 	                icon: bridgeIcon
 	            });
 

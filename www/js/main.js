@@ -42,7 +42,7 @@ $(document).on('pageinit', '#page1', function()
             }
         }
 
-var googleLatLng = [],
+    var googleLatLng = [],
         latlngs = [],
         db = null,
         markers = {};
@@ -79,6 +79,23 @@ var googleLatLng = [],
             alert('code: '    + error.code    + '\n' +
                   'message: ' + error.message + '\n');
         }
+});
+
+
+$(document).on('pagebeforeshow', "#page1", function() {
+    var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, addMapMarker, posOptions);
+
+    var initialScreenSize = window.innerHeight;
+    window.addEventListener("resize", function() {
+        if(window.innerHeight < initialScreenSize){
+            $("[data-role=footer]").hide();
+        }
+        else{
+            $("[data-role=footer]").show();
+        }
+    });
+
     // =================================================== START OF CUSTOM MARKERS ================================================== //
 
     function addMapMarker() {
@@ -322,21 +339,4 @@ var googleLatLng = [],
 
         $.mobile.changePage( "#map-page");
     }
-
-});
-
-
-$(document).on('pagebeforeshow', "#page1", function() {
-    var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
-    navigator.geolocation.getCurrentPosition(onSuccess, onError, addMapMarker, posOptions);
-
-    var initialScreenSize = window.innerHeight;
-    window.addEventListener("resize", function() {
-        if(window.innerHeight < initialScreenSize){
-            $("[data-role=footer]").hide();
-        }
-        else{
-            $("[data-role=footer]").show();
-        }
-    });
 });

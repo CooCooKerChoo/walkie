@@ -3,11 +3,6 @@ $(document).on('pageinit', "#page1", function() {
         navigator.geolocation.getCurrentPosition(onSuccess, onError, addMapMarker, posOptions);
 });
 
-$(document).on('pageshow', "#page1", function() {
-            setTimeout(function() {
-            google.maps.event.trigger(map, "resize");
-            }, 1000);
-});
 
 var initialScreenSize = window.innerHeight;
 window.addEventListener("resize", function() {
@@ -105,6 +100,12 @@ var googleLatLng = [],
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
+
+$(document).on('pageshow', "#page1", function() {
+            setTimeout(function() {
+            google.maps.event.trigger(map, "resize");
+            }, 1000);
+});
 // =================================================== START OF CUSTOM MARKERS ================================================== //
 
 function addMapMarker() {

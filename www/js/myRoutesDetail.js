@@ -83,7 +83,7 @@ $(document).on('pageshow', "#route_details", function() {
             	mapTypeControl: false,
                 streetViewControl:false,
                 zoomControl: false,
-                draggable: false,
+                draggable: false
 		        zoomControlOptions: {
 		            style: google.maps.ZoomControlStyle.SMALL
 		        }

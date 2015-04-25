@@ -214,7 +214,7 @@ function track(button) {
     } else { // Pause/Stop
         running = false;
         clearInterval(theTimer);
-        clearInterval(intervalHandle);
+        clearTimeout(intervalHandle);
         past = time;
         $("#watchButton").html("RESUME");
         $("#stopWalk").fadeIn('fast');

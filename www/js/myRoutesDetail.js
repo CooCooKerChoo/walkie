@@ -97,7 +97,7 @@ $(document).on('pageshow', "#route_details", function() {
 
 		    var sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
 		    var ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
-			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
+			mapMyRoutes.fitBounds(new google.maps.LatLngBounds(sw,ne));
 
               var path = new google.maps.Polyline({
                 path: Routepolys[index],

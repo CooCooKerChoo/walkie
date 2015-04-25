@@ -261,9 +261,11 @@ function geolocationWatch() {
     navigator.geolocation.getCurrentPosition(function(position){
         intervalHandle = setInterval(function(){
             lat = position.coords.latitude;
-            lon = position.coords.longitude;
+            lng = position.coords.longitude;
+            // lat = chance.latitude();
+            // lng = chance.longitude();
 
-            storeLatLng(lat, lon);
+            storeLatLng(lat, lng);
 
             if (googleLatLng.length > 0) {
               var path = new google.maps.Polyline({
@@ -279,13 +281,13 @@ function geolocationWatch() {
             var Prevlat = lastofArray[0];
             var Prevlng = lastofArray[1];
             console.log("Previous Lat: " + Prevlat, "Previous Lng: " + Prevlng);
-            console.log("Current Lat:" + lat, "Current Lng: " + lon);
-            console.log(latlngs);
+            console.log("Current Lat:" + lat, "Current Lng: " + lng);
+            console.log(googleLatLng);
 
             function calculateDistance(lat, lon, Prevlat, Prevlng){
                 var R = 6371; // km
                 var dLat = (Prevlat - lat).toRad();
-                var dLon = (Prevlng - lon).toRad(); 
+                var dLon = (Prevlng - lng).toRad(); 
                 var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
                       Math.cos(lat.toRad()) * Math.cos(Prevlat.toRad()) * 
                       Math.sin(dLon / 2) * Math.sin(dLon / 2); 
@@ -298,9 +300,9 @@ function geolocationWatch() {
             }
 
 
-            totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
+            totalDistance += calculateDistance(lat, lng, Prevlat, Prevlng);
             document.getElementById("distance").innerHTML = totalDistance.toFixed(4) + " KM";
-        }, 10000)
+        }, 5000)
     }, onErrorTrack);
 
 }

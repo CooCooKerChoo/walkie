@@ -100,7 +100,10 @@ $(document).on('pagebeforeshow', "#page1", function() {
         }
     // =================================================== START OF CUSTOM MARKERS ================================================== //
 
-    function addMapMarker() {
+});
+
+$(document).on('pageshow','#page1', function(){
+function addMapMarker() {
         navigator.geolocation.getCurrentPosition(addMarker, addMarkerFail, {enableHighAccuracy: true});
     }
 

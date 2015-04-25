@@ -98,6 +98,12 @@ var googleLatLng = [],
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
+
+$(document).on('pageshow', "#page1", function() {
+    setTimeout(function() {
+        google.maps.event.trigger(map, "resize");
+    }, 1000);
+});
 // =================================================== START OF CUSTOM MARKERS ================================================== //
 
 function addMapMarker() {
@@ -225,10 +231,10 @@ function track(button) {
 function geolocationWatch() {
     navigator.geolocation.getCurrentPosition(function(position){
         intervalHandle = setInterval(function(){
-            lat = position.coords.latitude;
-            lng = position.coords.longitude;
-            // lat = chance.latitude();
-            // lng = chance.longitude();
+            // lat = position.coords.latitude;
+            // lng = position.coords.longitude;
+            lat = chance.latitude();
+            lng = chance.longitude();
 
             storeLatLng(lat, lng);
 

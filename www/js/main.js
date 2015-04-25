@@ -265,7 +265,7 @@ function geolocationWatch() {
 
             totalDistance += calculateDistance(lat, lng, Prevlat, Prevlng);
             document.getElementById("distance").innerHTML = totalDistance.toFixed(4) + " KM";
-        }, 5000)
+        }, 10000)
     },
     function() {
         alert('code: '    + error.code    + '\n' +

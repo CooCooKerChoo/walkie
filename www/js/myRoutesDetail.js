@@ -140,7 +140,7 @@ $(document).on('pageshow', "#route_details", function() {
 	            '<i class="fa fa-pencil"></i>' +
 	            '<input id="warning-additional-info" data-text="Warning Additional Information" value="'+markersArray[i].info+'"/>'+
 	            '<i class="fa fa-pencil"></i>');
-			        info_window.open(map, this);
+			        info_window.open(mapMyRoutes, this);
 		    	}
 		    })(marker, i));
 	    }

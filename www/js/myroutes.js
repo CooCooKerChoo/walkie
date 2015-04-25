@@ -53,7 +53,7 @@ $(document).on('pageinit', "#my-routes", function() {
 		    sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
 		    ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
 
-			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
+			mapRoute.fitBounds(new google.maps.LatLngBounds(sw,ne));
 
               var path = new google.maps.Polyline({
                 path: Routepolys[index],
@@ -61,7 +61,7 @@ $(document).on('pageinit', "#my-routes", function() {
                 strokeOpacity: 1.0,
                 strokeWeight: 5
               });
-              path.setMap(map);
+              path.setMap(mapRoute);
 		});
 
  	}
@@ -78,7 +78,7 @@ $(document).on("click", ".walkPage", function(){
  $(document).on('pageshow', "#my-routes", function() {
 		$('.map').each(function (index, Element) {
 
-		    var map = new google.maps.Map(Element, myOptions);
+		    var mapRoute = new google.maps.Map(Element, myOptions);
 
 	        setTimeout(function() {
 	            google.maps.event.trigger(map, "resize");

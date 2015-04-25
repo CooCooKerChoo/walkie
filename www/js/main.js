@@ -3,7 +3,6 @@ $(document).on('pageinit', "#page1", function() {
         navigator.geolocation.getCurrentPosition(onSuccess, onError, addMapMarker, posOptions);
 });
 
-
 var initialScreenSize = window.innerHeight;
 window.addEventListener("resize", function() {
     if(window.innerHeight < initialScreenSize){
@@ -91,7 +90,6 @@ var googleLatLng = [],
 
             //create the map, and place it in the HTML map div
             map = new google.maps.Map(document.getElementById("mapPlaceholder"), mapOptions);
-
     }
 
     // onError Callback receives a PositionError object
@@ -100,16 +98,10 @@ var googleLatLng = [],
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
-
-$(document).on('pageshow', "#page1", function() {
-            setTimeout(function() {
-            google.maps.event.trigger(map, "resize");
-            }, 1000);
-});
 // =================================================== START OF CUSTOM MARKERS ================================================== //
 
 function addMapMarker() {
-    navigator.geolocation.getCurrentPosition(addMarker, addMarkerFail);
+    navigator.geolocation.getCurrentPosition(addMarker, addMarkerFail, {enableHighAccuracy: true});
 }
 
 counter = 0;
@@ -269,11 +261,9 @@ function geolocationWatch() {
     navigator.geolocation.getCurrentPosition(function(position){
         intervalHandle = setInterval(function(){
             lat = position.coords.latitude;
-            lng = position.coords.longitude;
-            // lat = chance.latitude();
-            // lng = chance.longitude();
+            lon = position.coords.longitude;
 
-            storeLatLng(lat, lng);
+            storeLatLng(lat, lon);
 
             if (googleLatLng.length > 0) {
               var path = new google.maps.Polyline({
@@ -289,13 +279,13 @@ function geolocationWatch() {
             var Prevlat = lastofArray[0];
             var Prevlng = lastofArray[1];
             console.log("Previous Lat: " + Prevlat, "Previous Lng: " + Prevlng);
-            console.log("Current Lat:" + lat, "Current Lng: " + lng);
-            console.log(googleLatLng);
+            console.log("Current Lat:" + lat, "Current Lng: " + lon);
+            console.log(latlngs);
 
             function calculateDistance(lat, lon, Prevlat, Prevlng){
                 var R = 6371; // km
                 var dLat = (Prevlat - lat).toRad();
-                var dLon = (Prevlng - lng).toRad(); 
+                var dLon = (Prevlng - lon).toRad(); 
                 var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
                       Math.cos(lat.toRad()) * Math.cos(Prevlat.toRad()) * 
                       Math.sin(dLon / 2) * Math.sin(dLon / 2); 
@@ -308,23 +298,19 @@ function geolocationWatch() {
             }
 
 
-            totalDistance += calculateDistance(lat, lng, Prevlat, Prevlng);
+            totalDistance += calculateDistance(lat, lon, Prevlat, Prevlng);
             document.getElementById("distance").innerHTML = totalDistance.toFixed(4) + " KM";
-        }, 5000)
-    }, onErrorTrack);
-
+        }, 60000)
+    },
+    function() {
+        alert('code: '    + error.code    + '\n' +
+        'message: ' + error.message + '\n');
+    },
+    {enableHighAccuracy: true}
+    );
 }
 
 var totalDistance = 0;
-
-function onSuccessTrack(position) {
-
-} 
-
-function onErrorTrack(error) {
-  alert('code: '    + error.code    + '\n' +
-        'message: ' + error.message + '\n');
-}
 
 
 

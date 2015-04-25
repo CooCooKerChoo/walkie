@@ -49,12 +49,12 @@ $(document).on('pageinit', "#my-routes", function() {
                 scrollWheel: false
 		    };
 
-		    map = new google.maps.Map(Element, myOptions);
+		    allMyRoutesMap = new google.maps.Map(Element, myOptions);
 
-		    sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
-		    ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
+		    var sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
+		    var ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
 
-			map.fitBounds(new google.maps.LatLngBounds(sw,ne));
+			allMyRoutesMap.fitBounds(new google.maps.LatLngBounds(sw,ne));
 
               var path = new google.maps.Polyline({
                 path: Routepolys[index],
@@ -62,7 +62,7 @@ $(document).on('pageinit', "#my-routes", function() {
                 strokeOpacity: 1.0,
                 strokeWeight: 5
               });
-              path.setMap(map);
+              path.setMap(allMyRoutesMap);
 		});
 
  	}

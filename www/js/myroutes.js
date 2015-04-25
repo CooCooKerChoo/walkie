@@ -51,8 +51,8 @@ $(document).on('pageinit', "#my-routes", function() {
 		    };
 
 
-		    sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
-		    ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
+		    var sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
+		    var ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
 
 		    allMyRoutesMap = new google.maps.Map(Element, myOptions);
 
@@ -77,7 +77,7 @@ $(document).on("click", ".walkPage", function(){
 });
 
  $(document).on('pageshow', "#my-routes", function() {
-		$('.map').each(function (index, Element) {
+		$('.map').each(function (index, Element, sw, ne) {
 
 			allMyRoutesMap.fitBounds(new google.maps.LatLngBounds(sw,ne));
 

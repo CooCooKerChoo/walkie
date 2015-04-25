@@ -1,7 +1,6 @@
-$(document).on('pageinit', "#page1", function() {
-        var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
-        navigator.geolocation.getCurrentPosition(onSuccess, onError, addMapMarker, posOptions);
-});
+
+var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
+navigator.geolocation.getCurrentPosition(onSuccess, onError, addMapMarker, posOptions);
 
 var initialScreenSize = window.innerHeight;
 window.addEventListener("resize", function() {
@@ -79,7 +78,6 @@ var googleLatLng = [],
         coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
         storeLatLng(latitude, longitude);
-
 
             var mapOptions = {
                 zoom: 17,
@@ -223,8 +221,8 @@ function track(button) {
     }
 }
 function geolocationWatch() {
-    navigator.geolocation.getCurrentPosition(function(position){
-        intervalHandle = setInterval(function(){
+    navigator.geolocation.watchPosition( function ( position ) {
+        intervalHandle = setTimeout(function(){
             lat = position.coords.latitude;
             lng = position.coords.longitude;
             // lat = chance.latitude();

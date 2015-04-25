@@ -76,7 +76,7 @@ $(document).on("click", ".walkPage", function(){
 	clicked_route = parseInt($(this).attr("data-route"));
 });
 
- $(document).on('pageshow', "#my-routes", function() {
+ $(document).on('pagebeforeshow', "#my-routes", function() {
 		$('.map').each(function (index, Element) {
 
 			allMyRoutesMap.fitBounds(new google.maps.LatLngBounds(sw,ne));

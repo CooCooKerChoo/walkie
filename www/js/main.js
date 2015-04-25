@@ -271,20 +271,7 @@ function geolocationWatch() {
             enableHighAccuracy: true
         }
     ); 
-    window.setTimeout(function() {
-        window.navigator.geolocation.clearWatch(watch)
-        },
-        5000 // stop checking after 5 seconds
-    ); 
 };
-
-geolocationWatch();
-
-window.setTimeout(function(){
-    geolocationWatch();
-    }, 
-    20000 // check every 20 seconds
-);
 
 var totalDistance = 0;
 

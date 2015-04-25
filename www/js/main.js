@@ -87,7 +87,7 @@ var googleLatLng = [],
             };
 
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
                 title: "You are here!",
                 map: map
             });

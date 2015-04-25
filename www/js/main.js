@@ -1,32 +1,5 @@
-$(document).on('pageshow', "#page1", function() {
-    var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
-    navigator.geolocation.getCurrentPosition(onSuccess, onError, addMapMarker, posOptions);
-
-    var initialScreenSize = window.innerHeight;
-    window.addEventListener("resize", function() {
-        if(window.innerHeight < initialScreenSize){
-            $("[data-role=footer]").hide();
-        }
-        else{
-            $("[data-role=footer]").show();
-        }
-    });
-
-
-    var googleLatLng = [],
-        latlngs = [],
-        db = null,
-        markers = {};
-
-        function storeLatLng( lat, lng ) {
-            googleLatLng.push(new google.maps.LatLng(lat, lng));
-            latlngs.push([lat, lng]);
-        }
-
-        document.addEventListener("deviceready", onDeviceReady, false);
-
-        // device APIs are available
-        //
+$(document).on('pageinit', '#page1', function()
+{
         function onDeviceReady() {
 
             db = openDatabase("Database", "1.0", "Test DB", 1000000);
@@ -55,6 +28,34 @@ $(document).on('pageshow', "#page1", function() {
             navigator.app.exitApp();
             }
         }
+});
+
+
+$(document).on('pageshow', "#page1", function() {
+    var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, addMapMarker, posOptions);
+
+    var initialScreenSize = window.innerHeight;
+    window.addEventListener("resize", function() {
+        if(window.innerHeight < initialScreenSize){
+            $("[data-role=footer]").hide();
+        }
+        else{
+            $("[data-role=footer]").show();
+        }
+    });
+
+
+    var googleLatLng = [],
+        latlngs = [],
+        db = null,
+        markers = {};
+
+        function storeLatLng( lat, lng ) {
+            googleLatLng.push(new google.maps.LatLng(lat, lng));
+            latlngs.push([lat, lng]);
+        }
+        
 
         function createDB(t) {
             // t.executeSql('DROP TABLE WALKS');

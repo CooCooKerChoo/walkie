@@ -50,7 +50,6 @@ $(document).on('pageinit', "#my-routes", function() {
                 scrollWheel: false
 		    };
 
-		    allMyRoutesMap = new google.maps.Map(Element, myOptions);
 
 		    var sw = new google.maps.LatLng(Routecoords[index][3],Routecoords[index][5]);
 		    var ne = new google.maps.LatLng(Routecoords[index][2],Routecoords[index][4]);
@@ -79,6 +78,8 @@ $(document).on("click", ".walkPage", function(){
 
  $(document).on('pageshow', "#my-routes", function() {
 		$('.map').each(function (index, Element) {
+
+		    allMyRoutesMap = new google.maps.Map(Element, myOptions);
 
 	        setTimeout(function() {
 	            google.maps.event.trigger(allMyRoutesMap, "resize");

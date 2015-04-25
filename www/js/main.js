@@ -21,6 +21,22 @@ $(document).on('pageinit', '#page1', function()
             }, false);
         }
 
+
+        function createDB(t) {
+            // t.executeSql('DROP TABLE WALKS');
+            // t.executeSql('DROP TABLE MARKERS');
+            t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (id integer primary key autoincrement, Distance TEXT, Duration TEXT, PathCoordinates TEXT, Images TEXT, WalkTitle Text, WalkDescription Text)');
+            t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (id integer primary key autoincrement, markerid integer, title TEXT, info TEXT, markerLat TEXT, markerLng TEXT, walk_id integer, FOREIGN KEY(walk_id) REFERENCES WALKS(id))');
+        }
+
+        function DBerror(error) {
+            console.log("Error: " + error.message);
+        }
+
+        function DBsuccess(){
+            console.log("Success!");
+        }
+
         function exitApplication(button) {
             if(button=="1" || button==1)
             {
@@ -28,6 +44,8 @@ $(document).on('pageinit', '#page1', function()
             navigator.app.exitApp();
             }
         }
+
+
 });
 
 
@@ -56,21 +74,6 @@ $(document).on('pageshow', "#page1", function() {
             latlngs.push([lat, lng]);
         }
         
-
-        function createDB(t) {
-            // t.executeSql('DROP TABLE WALKS');
-            // t.executeSql('DROP TABLE MARKERS');
-            t.executeSql('CREATE TABLE IF NOT EXISTS WALKS (id integer primary key autoincrement, Distance TEXT, Duration TEXT, PathCoordinates TEXT, Images TEXT, WalkTitle Text, WalkDescription Text)');
-            t.executeSql('CREATE TABLE IF NOT EXISTS MARKERS (id integer primary key autoincrement, markerid integer, title TEXT, info TEXT, markerLat TEXT, markerLng TEXT, walk_id integer, FOREIGN KEY(walk_id) REFERENCES WALKS(id))');
-        }
-
-        function DBerror(error) {
-            console.log("Error: " + error.message);
-        }
-
-        function DBsuccess(){
-            console.log("Success!");
-        }
 
         function onSuccess(position) {
 

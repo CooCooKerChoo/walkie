@@ -137,9 +137,9 @@ counter++;
     //Content structure of info Window for the Markers
     var contentString = '<div id="marker-info-win" data-id="'+marker.id+'">' +
         '<h3>Marker Information</h3>' +
-        '<input id="warning-title" contenteditable="true" onkeyup="markerTitle(this, '+marker.id+')" data-text="Warning Title"/></input>'+
+        '<input id="warning-title" contenteditable="true" placeholder="Marker Title" onkeyup="markerTitle(this, '+marker.id+')" data-text="Warning Title"/></input>'+
         '<i class="fa fa-pencil"></i>' +
-        '<input id="warning-additional-info" contenteditable="true" onkeyup="markerInfo(this, '+marker.id+')" data-text="Warning Additional Information"></input>'+
+        '<input id="warning-additional-info" contenteditable="true" placeholder="Marker information" onkeyup="markerInfo(this, '+marker.id+')" data-text="Warning Additional Information"></input>'+
         '<i class="fa fa-pencil"></i>' +
         '<br/><button id="deleteButton" name="remove-marker" class="remove-marker" title="Remove Marker" data-id="'+ counter +'">Remove Marker</button></div>';
         

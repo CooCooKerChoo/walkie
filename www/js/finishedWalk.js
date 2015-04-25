@@ -23,7 +23,7 @@
             mapDetails = new google.maps.Map(document.getElementById("finishedRoute"), mapOptions);
 
         setTimeout(function() {
-            google.maps.event.trigger(map, "resize");
+            google.maps.event.trigger(mapDetails, "resize");
         }, 1000);
 
             if (googleLatLng.length > 0) {

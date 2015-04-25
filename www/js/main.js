@@ -90,6 +90,10 @@ var googleLatLng = [],
 
             //create the map, and place it in the HTML map div
             map = new google.maps.Map(document.getElementById("mapPlaceholder"), mapOptions);
+
+            setTimeout(function() {
+            google.maps.event.trigger(map, "resize");
+            }, 1000);
     }
 
     // onError Callback receives a PositionError object

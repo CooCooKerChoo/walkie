@@ -43,7 +43,7 @@
                     var bridgeIcon = new google.maps.MarkerImage("img/map_markers/warning_map_marker.png", null, null, null);
                     marker = new google.maps.Marker({
                         position: new google.maps.LatLng(marker.lat, marker.lng),
-                        map: map,
+                        map: mapDetails,
                         icon: bridgeIcon
                     });
                     /*google.maps.event.addListener(marker, 'click', (function(marker, i) {

@@ -214,15 +214,15 @@ function track(button) {
     } else { // Pause/Stop
         running = false;
         clearInterval(theTimer);
-        clearTimeout(intervalHandle);
+        navigator.geolocation.clearWatch(watch);
         past = time;
         $("#watchButton").html("RESUME");
         $("#stopWalk").fadeIn('fast');
     }
 }
 function geolocationWatch() {
-    navigator.geolocation.watchPosition( function ( position ) {
-        intervalHandle = setTimeout(function(){
+   var watch = navigator.geolocation.watchPosition(
+        function(position) {
             lat = position.coords.latitude;
             lng = position.coords.longitude;
             // lat = chance.latitude();
@@ -261,19 +261,30 @@ function geolocationWatch() {
                 Number.prototype.toRad = function() {
                 return this * Math.PI / 180;
             }
-
-
             totalDistance += calculateDistance(lat, lng, Prevlat, Prevlng);
             document.getElementById("distance").innerHTML = totalDistance.toFixed(4) + " KM";
-        }, 10000)
-    },
-    function() {
-        alert('code: '    + error.code    + '\n' +
-        'message: ' + error.message + '\n');
-    },
-    {enableHighAccuracy: true}
-    );
-}
+
+        }, function() {
+            // ERROR // 
+        }, {
+            maximumAge: 10000,
+            enableHighAccuracy: true
+        }
+    ); 
+    window.setTimeout(function() {
+        window.navigator.geolocation.clearWatch(watch)
+        },
+        5000 // stop checking after 5 seconds
+    ); 
+};
+
+geolocationWatch();
+
+window.setTimeout(function(){
+    geolocationWatch();
+    }, 
+    20000 // check every 20 seconds
+);
 
 var totalDistance = 0;
 

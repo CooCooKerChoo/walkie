@@ -60,7 +60,7 @@ $(document).on('pageinit', "#my-routes", function() {
                 path: Routepolys[index],
                 strokeColor: "#FF0000",
                 strokeOpacity: 1.0,
-                strokeWeight: 5
+                strokeWeight: 2
               });
               path.setMap(allMyRoutesMap);
 		});

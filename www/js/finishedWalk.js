@@ -70,7 +70,7 @@
 
 
             function saveInfo() {
-                var inputTitle = document.forms["routeText"]["walkTitle"].value, inputDescription document.forms["routeText"]["walkDescription"].value;
+                var inputTitle = document.forms["routeText"]["walkTitle"].value, inputDescription = document.forms["routeText"]["walkDescription"].value;
                 if( inputTitle == null || inputDescription == null)
                 {
                     navigator.notification.alert(

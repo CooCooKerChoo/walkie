@@ -70,7 +70,8 @@
 
 
             function saveInfo() {
-                if(document.forms["routeText"]["walkTitle"].value == null || document.forms["routeText"]["walkDescription"].value == null)
+                var inputTitle = document.forms["routeText"]["walkTitle"].value, inputDescription document.forms["routeText"]["walkDescription"].value;
+                if( inputTitle == null || inputDescription == null)
                 {
                     navigator.notification.alert(
                         'One or more of the form elements requires an entry',  // message

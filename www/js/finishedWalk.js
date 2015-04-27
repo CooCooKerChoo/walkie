@@ -77,7 +77,6 @@
                 alert("Walk description cannot be left blank");
                }
                else {
-                return true;
                     var walkTitle = document.getElementById("walkTitle").value;
                     var walkDescription = document.getElementById("walkDescription").value;
                     var markersArray = JSON.stringify(markers);

@@ -185,14 +185,12 @@ $(document).on('pageshow', "#route_details", function() {
 	        data: dataString,
 	        url: 'http://matt-meadows.co.uk/walkie/ajax.php',
 	        success: function(response){
+	        },
+	        error: function(error){
+	        	alert(error);
 	        }
 	    });
 
-	uploadImages(walkTitle);
-
-	}
-
-	function uploadImages(){
 		for(i=0; i < routePhotosArray.length; i++) {
 			var options = new FileUploadOptions();
 			var imageURI = routePhotosArray[i];
@@ -206,17 +204,19 @@ $(document).on('pageshow', "#route_details", function() {
 			options.params = params;
 
 			params.value1 = walkTitle;
+			params.value2 = walkID;
 
 			var ft = new FileTransfer();
-			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imagesUpload.php", onUploadSuccess, onUploadError, options);
+			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imagesUpload.php", onUploadPhotoSuccess, onUploadPhotoError, options);
 		}
+
 	}
 
-	function onUploadSuccess(r){
+	function onUploadPhotoSuccess(r){
 		alert("Photo uploaded successfully" + r.response);
 	}
 
-	function onUploadError(error){
+	function onUploadPhotoError(error){
 		alert("Error Uploading: " + error.code);
 	}
 

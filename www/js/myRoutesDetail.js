@@ -209,8 +209,8 @@ $(document).on('pageshow', "#route_details", function() {
 		}
 	}
 
-	function onUploadSuccess(response){
-		alert("Photo uploaded successfully" + response);
+	function onUploadSuccess(r){
+		alert("Photo uploaded successfully" + r.response);
 	}
 
 	function onUploadError(error){

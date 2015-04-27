@@ -68,23 +68,7 @@
 });
 
 
-
             function saveInfo() {
-
-               if($('#walkTitle').val() == '' || $('#walkDescription').val() == ''){
-                  alert('Input can not be left blank');
-               }
-               else {
-                saveInfoPassed();
-               }
-            }
-
-
-            function onConfirm(buttonIndex) {
-                alert('You selected button ' + buttonIndex);
-            }
-
-            function saveInfoPassed() {
                 var walkTitle = document.getElementById("walkTitle").value;
                 var walkDescription = document.getElementById("walkDescription").value;
                 var markersArray = JSON.stringify(markers);

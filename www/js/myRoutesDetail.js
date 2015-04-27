@@ -203,7 +203,7 @@ $(document).on('pageshow', "#route_details", function() {
 			var ft = new FileTransfer();
 			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imageUpload.php", onUploadSuccess, onUploadError, options);
 
-			console.log(filename);
+			console.log(imageURI);
 		}
 	}
 

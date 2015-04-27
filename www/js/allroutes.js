@@ -1,4 +1,6 @@
 $(document).on('pageshow', "#view-routes", function() {
+alert("Linked!");
+
 	$.ajax({    //create an ajax request to load_page.php
         type: "GET",
         url: "http://matt-meadows.co.uk/walkie/ajaxGET.php",             

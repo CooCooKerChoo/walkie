@@ -78,7 +78,7 @@
                         alertDismissed,         // callback
                         'Information has not been saved',            // title
                         'OK'                  // buttonName
-                    )
+                    );
                 } else {
                     saveInfoPassed();
                 }

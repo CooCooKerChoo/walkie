@@ -15,7 +15,6 @@ $(document).on('pageshow', "#view_routes", function() {
     $.ajax({                                      
       url: 'http://matt-meadows.co.uk/walkie/ajaxGET.php',                  //the script to call to get data          
       data: "",                        //you can insert url argumnets here to pass to api.php
-                                       //for example "id=5&parent=6"
       dataType: 'json',                //data format      
       success: function(data, response)          //on recieve of reply
       {
@@ -27,9 +26,10 @@ $(document).on('pageshow', "#view_routes", function() {
         $('#all_walks').html("<b>id: </b>"+id+"<b> name: </b>"+vname); //Set output element html
         //recommend reading up on jquery selectors they are awesome 
         // http://api.jquery.com/category/selectors/
+        console.log(data);
       }, 
-      error: function(error){
-      	alert(error);
-      } 
+        error: function(jqXHR, textStatus, errorThrown){
+            alert(textStatus, errorThrown);
+        }
     });
 });

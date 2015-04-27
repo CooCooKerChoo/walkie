@@ -70,17 +70,18 @@
 
 
             function saveInfo() {
-                var inputTitle = document.forms["routeText"]["walkTitle"].value, inputDescription = document.forms["routeText"]["walkDescription"].value;
-                if( inputTitle == null || inputTitel == "" || inputDescription == null inputDescription == "")
+                var inputTitle = document.getElementById("walkTitle");
+                var inputDescription = document.getElementById("walkDescription");
+
+                if (inputTitle == "" || inputTitle == null || inputDescription == "" || inputTitle == null)
                 {
                     navigator.notification.alert(
-                        'One or more of the form elements requires an entry',  // message
-                        alertDismissed,         // callback
-                        'Information has not been saved',            // title
-                        'OK'                  // buttonName
+                        'All required fields must contain a value',  // message
+                        'Validation Error',            // title
+                        'Done'                  // buttonName
                     );
-                    return false;
-                } else {
+                }
+                else {
                     saveInfoPassed();
                 }
             }

@@ -70,7 +70,7 @@
 
 
             function saveInfo() {
-               if($('#walkTitle').val() == '' || $('#walkDescription').val() == ''){
+               if($('#walkTitle').val() == "" || $('#walkDescription').val() == ""){
                     return false;
                     navigator.notification.alert(
                         'Required input fields cannot be left blank',  // message

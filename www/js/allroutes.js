@@ -1,5 +1,5 @@
-$(document).on('pageshow', "#view-routes", function() {
-alert("Linked!");
+$(document).on('pageshow', "#view_routes", function() {
+    alert("Linked!");
 
 	$.ajax({    //create an ajax request to load_page.php
         type: "GET",

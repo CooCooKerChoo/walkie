@@ -222,13 +222,3 @@ $(document).on('pageshow', "#route_details", function() {
 
 
 });
-
-$(document).ready(function() {
-	$("#buttonDone").click(function() {
-	 	// db.transaction(function(t){
-			// t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessUploadRoute, errorCBDetails);
-	 	// });
-
-	 	console.log("Hello!");
-	});
-});

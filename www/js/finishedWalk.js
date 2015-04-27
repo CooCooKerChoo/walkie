@@ -71,7 +71,6 @@
 
             function saveInfo(form) {
                if(document.getElementById("walkTitle").value == ""){
-                alert("Walk Title cannot be left blank");
                 navigator.notification.alert(
                     'Walk Title cannot be left blank',  // message
                     validationRequired,         // callback

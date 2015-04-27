@@ -210,8 +210,8 @@ $(document).on('pageshow', "#route_details", function() {
 		alert("Photo uploaded successfully");
 	}
 
-	function onUploadError(message){
-		alert("Error Uploading: " + message);
+	function onUploadError(error){
+		alert("Error Uploading: " + error.code);
 	}
 
 

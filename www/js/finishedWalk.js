@@ -72,9 +72,20 @@
             function saveInfo(form) {
                if(document.getElementById("walkTitle").value == ""){
                 alert("Walk Title cannot be left blank");
+                navigator.notification.alert(
+                    'Walk Title cannot be left blank',  // message
+                    validationRequired,         // callback
+                    'Error submitting route',            // title
+                    'OK'                  // buttonName
+                );
                } 
                else if (document.getElementById("walkDescription").value == "") {
-                alert("Walk description cannot be left blank");
+                navigator.notification.alert(
+                    'Walk Description cannot be left blank',  // message
+                    validationRequired,         // callback
+                    'Error submitting route',            // title
+                    'OK'                  // buttonName
+                );
                }
                else {
                     var walkTitle = document.getElementById("walkTitle").value;

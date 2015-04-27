@@ -183,7 +183,7 @@ $(document).on('pageshow', "#route_details", function() {
 		$.ajax({
 			type: "POST",
 	        data: dataString,
-	        url: 'http://matt-meadows.co.uk/walkie/ajax.php',
+	        url: 'http://matt-meadows.co.uk/walkie/ajaxPOST.php',
 	        success: function(response){
 	        },
 	        error: function(error){

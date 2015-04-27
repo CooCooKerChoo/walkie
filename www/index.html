@@ -36,7 +36,7 @@
 					<a href="#my-routes">My Routes</a>
 				</li>
 				<li>
-					<a href="view_routes.html">View Routes</a>
+					<a href="#view-routes">View Routes</a>
 				</li>
 				<li>
 					<button id="fbLogin" class="btn btn-block" onclick="login();">Login with Facebook</button>
@@ -154,7 +154,7 @@
 					<a class="active" href="#my-routes">My Routes</a>
 				</li>
 				<li>
-					<a href="view_routes.html">View Routes</a>
+					<a href="#view-routes">View Routes</a>
 				</li>
 				<li>
 					<button id="fbLogin" class="btn btn-block" onclick="login()">Login with Facebook</button>
@@ -216,6 +216,18 @@
 			</div><!-- /content -->
 		</div>
 	    <script type="text/javascript" src="js/myRoutesDetail.js"></script>
+	</div>
+
+	<div data-role="page" id="view-routes">
+		<div data-role="header">
+			<a data-rel="back"><i class="fa fa-arrow-left"></i></a>
+			<h1 id="headerWalkTitle"></h1>
+		</div>
+		<div data-role="main" class="ui-content">
+			<div id="my_walks">
+			</div><!-- /content -->
+		</div>
+	    <script type="text/javascript" src="js/allRoutes.js"></script>
 	</div>
 
 

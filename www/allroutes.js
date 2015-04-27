@@ -16,7 +16,7 @@ $(document).on('pageinit', "#view-routes", function() {
       data: "",                        //you can insert url argumnets here to pass to api.php
                                        //for example "id=5&parent=6"
       dataType: 'json',                //data format      
-      success: function(data)          //on recieve of reply
+      success: function(data, response)          //on recieve of reply
       {
         var id = data[0];              //get id
         var vname = data[1];           //get name
@@ -26,6 +26,7 @@ $(document).on('pageinit', "#view-routes", function() {
         $('#all_walks').html("<b>id: </b>"+id+"<b> name: </b>"+vname); //Set output element html
         //recommend reading up on jquery selectors they are awesome 
         // http://api.jquery.com/category/selectors/
+        alert(response);
       }, 
       error: function(error){
       	alert(error);

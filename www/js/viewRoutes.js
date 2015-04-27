@@ -20,7 +20,7 @@ $(document).on('pageshow', "#view_routes", function() {
       {
         console.log(data);
             for(var i = 0; i < data.length; i++) {
-                comment = data[i];
+                walks = data[i];
                 html += '<div id="' + walks.walkid + '"><span>' + walks.walktitle + '</span><span>' + walks.walkdescription + '</span></div>'
             }
       }, 

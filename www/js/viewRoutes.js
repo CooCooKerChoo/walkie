@@ -1,5 +1,4 @@
 $(document).on('pageshow', "#view_routes", function() {
-    alert("Linked!");
 
 	$.ajax({    //create an ajax request to load_page.php
         type: "GET",
@@ -8,8 +7,8 @@ $(document).on('pageshow', "#view_routes", function() {
         success: function(data){                    
             console.log(data);
         },
-        error: function(error){
-        	alert(error);
+        error: function(jqXHR, textStatus, errorThrown){
+            alert(textStatus, errorThrown);
         }
     });
 

@@ -29,18 +29,18 @@ $(document).on('pagebeforeshow', "#route_details", function() {
                     error: errorHandler});
             }
 
-            // function share() {
-            //     openFB.api({
-            //         method: 'POST',
-            //         path: '/me/feed',
-            //         params: {
-            //             message: document.getElementById('Message').value || 'Testing Facebook APIs'
-            //         },
-            //         success: function() {
-            //             alert('the item was posted on Facebook');
-            //         },
-            //         error: errorHandler});
-            // }
+            function share() {
+                openFB.api({
+                    method: 'POST',
+                    path: '/me/feed',
+                    params: {
+                        message: "http://matt-meadows.co.uk/walkie/route/"+clicked_route
+                    },
+                    success: function() {
+                        alert('the item was posted on Facebook');
+                    },
+                    error: errorHandler});
+            }
 
             function errorHandler(error) {
                 alert(error.message);

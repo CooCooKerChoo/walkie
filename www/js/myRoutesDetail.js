@@ -207,7 +207,7 @@ $(document).on('pageshow', "#route_details", function() {
 			params.value2 = walkID;
 
 			var ft = new FileTransfer();
-			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imagesUpload.php", onUploadPhotoSuccess, onUploadPhotoError, options);
+			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/ajax.php", onUploadPhotoSuccess, onUploadPhotoError, options);
 		}
 
 	}

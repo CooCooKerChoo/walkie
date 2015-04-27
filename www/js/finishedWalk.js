@@ -70,6 +70,20 @@
 
 
             function saveInfo() {
+                if(document.routeText.WalkTitle.value == "" || document.routeText.walkDescription.value == "")
+                {
+                    navigator.notification.alert(
+                        'One or more of the form elements requires an entry',  // message
+                        alertDismissed,         // callback
+                        'Information has not been saved',            // title
+                        'OK'                  // buttonName
+                    );
+                } else {
+                    saveInfoPassed();
+                }
+            }
+
+            function saveInfoPassed() {
                 var walkTitle = document.getElementById("walkTitle").value;
                 var walkDescription = document.getElementById("walkDescription").value;
                 var markersArray = JSON.stringify(markers);

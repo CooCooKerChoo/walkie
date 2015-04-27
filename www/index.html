@@ -178,6 +178,7 @@
 		<div data-role="header">
 			<a data-rel="back"><i class="fa fa-arrow-left"></i></a>
 			<h1 id="headerWalkTitle"></h1>
+			<a onclick="share()"><i class="fa fa-share-alt"></i></a>
 		</div>
 		<div data-role="main" class="ui-content">
 			<div class="finishedRouteInfo">
@@ -218,82 +219,6 @@
 	    <script type="text/javascript" src="js/myRoutesDetail.js"></script>
 	</div>
 
-	<div data-role="page" id="view_routes">
-		<div data-role="header">
-			<a data-rel="back"><i class="fa fa-arrow-left"></i></a>
-			<h1 id="headerWalkTitle">View Routes</h1>
-		</div>
-		<div data-role="main" class="ui-content">
-			<div id="all_walks">
-			</div><!-- /content -->
-		</div>
-	    <script type="text/javascript" src="js/viewRoutes.js"></script>
-	</div>
-
-
 <script type="text/javascript" src="cordova.js"></script>
-        <script>
-
-             // Defaults to sessionStorage for storing the Facebook token
-             // openFB.init({appId: '292811390842470'});
-
-            //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
-             openFB.init({appId: '292811390842470', tokenStore: window.localStorage});
-
-            function login() {
-                openFB.login(
-                        function(response) {
-                            if(response.status === 'connected') {
-                                alert('Facebook login succeeded, got access token: ' + response.authResponse.token);
-                            } else {
-                                alert('Facebook login failed: ' + response.error);
-                            }
-                        }, {scope: 'email,read_stream,publish_stream'});
-            }
-
-            function getInfo() {
-                openFB.api({
-                    path: '/me',
-                    success: function(data) {
-                        console.log(JSON.stringify(data));
-                        document.getElementById("userName").innerHTML = data.name;
-                        document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-                    },
-                    error: errorHandler});
-            }
-
-            // function share() {
-            //     openFB.api({
-            //         method: 'POST',
-            //         path: '/me/feed',
-            //         params: {
-            //             message: document.getElementById('Message').value || 'Testing Facebook APIs'
-            //         },
-            //         success: function() {
-            //             alert('the item was posted on Facebook');
-            //         },
-            //         error: errorHandler});
-            // }
-
-            // function revoke() {
-            //     openFB.revokePermissions(
-            //             function() {
-            //                 alert('Permissions revoked');
-            //             },
-            //             errorHandler);
-            // }
-
-            function logout() {
-                openFB.logout(
-                        function() {
-                            alert('Logout successful');
-                        },
-                        errorHandler);
-            }
-
-            function errorHandler(error) {
-                alert(error.message);
-            }
-        </script>
 </body>
 </html>

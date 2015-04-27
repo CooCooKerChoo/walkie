@@ -185,7 +185,6 @@ $(document).on('pageshow', "#route_details", function() {
 	        data: dataString,
 	        url: 'http://matt-meadows.co.uk/walkie/ajax.php',
 	        success: function(response){
-	            alert(response);
 	        }
 	    });
 

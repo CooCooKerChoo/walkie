@@ -119,23 +119,21 @@
 				</div>
 				<span class="horizontalSplitter"></span>
 				<div class="user_entered_info">
-					<form id="routeText" method="post" onsubmit="return saveInfo(this)">
-						<span class="walk_title">
-							<input type="text" name="walkTitle" placeholder="Walk Title" id="walkTitle" required></input>
-							<span class="editIcon"><i class="fa fa-pencil"></i></span>
-						</span>
-						<span class="walk_description_container">
-							<textarea name="walkDescription" placeholder="Walk Description" id="walkDescription" required></textarea>
-							<span class="editIcon"><i class="fa fa-pencil"></i></span>
-						</span>
-					</form>
+					<span class="walk_title">
+						<input type="text" name="walkTitle" placeholder="Walk Title" id="walkTitle"></input>
+						<span class="editIcon"><i class="fa fa-pencil"></i></span>
+					</span>
+					<span class="walk_description_container">
+						<textarea name="walkDescription" placeholder="Walk Description" id="walkDescription"></textarea>
+						<span class="editIcon"><i class="fa fa-pencil"></i></span>
+					</span>
 				</div>
 				<span class="horizontalSplitter"></span>
 				<div id="photosContainer" class="horizontal-images">
 					<div class="photos">
 					</div>
 				</div>
-				<button form="routeText" id="buttonDone" type="submit">Save Information</button>
+				<button form="routeText" id="buttonDone" type="submit" onclick="saveInfo()">Save Information</button>
 			</div><!-- /content -->            
 		</div>
 

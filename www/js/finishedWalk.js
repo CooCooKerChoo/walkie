@@ -70,13 +70,11 @@
 
 
             function saveInfo(form) {
-               if(form.walkTitle.value == ""){
+               if(document.getElementById("walkTitle").value == ""){
                 alert("Walk Title cannot be left blank");
-                return false;
                } 
-               else if (form.walkDescription.value == "") {
+               else if (document.getElementById("walkDescription").value == "") {
                 alert("Walk description cannot be left blank");
-                return false;
                }
                else {
                 return true;

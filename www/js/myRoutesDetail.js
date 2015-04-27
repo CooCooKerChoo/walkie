@@ -253,7 +253,7 @@ $(document).on('pageshow', "#route_details", function() {
                     method: 'POST',
                     path: '/me/feed',
                     params: {
-                        message: "http://matt-meadows.co.uk/walkie/route/"+clicked_route
+                        message: 'http://matt-meadows.co.uk/walkie/route/'+clicked_route
                     },
                     success: function() {
                         alert('the item was posted on Facebook');

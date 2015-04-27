@@ -204,7 +204,7 @@ $(document).on('pageshow', "#route_details", function() {
 			options.chunkedMode = false;
 
 			var ft = new FileTransfer();
-			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imageUpload.php", onUploadSuccess, onUploadError, options);
+			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imagesUpload.php", onUploadSuccess, onUploadError, options);
 
 		}
 	}

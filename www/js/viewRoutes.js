@@ -19,6 +19,10 @@ $(document).on('pageshow', "#view_routes", function() {
       success: function(data)          //on recieve of reply
       {
         console.log(data);
+            for(var i = 0; i < data.length; i++) {
+                comment = data[i];
+                html += '<div id="' + walks.walkid + '"><span>' + walks.walktitle + '</span><span>' + walks.walkdescription + '</span></div>'
+            }
       }, 
         error: function(jqXHR, textStatus, errorThrown){
             alert(textStatus, errorThrown);

@@ -81,7 +81,6 @@
                     );
                     return false;
                 } else {
-                    return true;
                     saveInfoPassed();
                 }
             }

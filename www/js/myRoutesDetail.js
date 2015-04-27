@@ -195,16 +195,17 @@ $(document).on('pageshow', "#route_details", function() {
 	function uploadImages(){
 		for(i=0; i < routePhotosArray.length; i++) {
 			var options = new FileUploadOptions();
-			var imageURI = $(".image").src;
+			var imageURI = $(".image").attr('src');
+
+			console.log(imageURI);
 			options.fileKey = 'file';
 			options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
 			options.mimeType = "image/jpeg";
 			options.chunkedMode = false;
-			
+
 			var ft = new FileTransfer();
 			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imageUpload.php", onUploadSuccess, onUploadError, options);
 
-			console.log(imageURI);
 		}
 	}
 

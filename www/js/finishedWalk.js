@@ -80,6 +80,9 @@
                         'OK'                  // buttonName
                     );
                     return false;
+                } else {
+                    return true;
+                    saveInfoPassed();
                 }
             }
 

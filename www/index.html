@@ -119,7 +119,7 @@
 				</div>
 				<span class="horizontalSplitter"></span>
 				<div class="user_entered_info">
-					<form id="routeText">
+					<form id="routeText method="post">
 						<span class="walk_title">
 							<input type="text" name="walkTitle" placeholder="Walk Title" id="walkTitle" required></input>
 							<span class="editIcon"><i class="fa fa-pencil"></i></span>
@@ -135,7 +135,7 @@
 					<div class="photos">
 					</div>
 				</div>
-				<button form="routeText" id="buttonDone" type="submit" onsubmit="saveInfo()">Save Information</button>
+				<button form="routeText" id="buttonDone" type="submit" onsubmit="return saveInfo(this)">Save Information</button>
 			</div><!-- /content -->            
 		</div>
 

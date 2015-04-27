@@ -69,13 +69,17 @@
 
 
 
-            function saveInfo() {
-               if($('#walkTitle').val() == ""){
-                alert("Required fields cannot be left blank");
-               } else if ($('#walkDescription').val() == "") {
-                alert("Required fields cannot be left blank");
+            function saveInfo(form) {
+               if(form.walkTitle.value == ""){
+                alert("Walk Title cannot be left blank");
+                return false;
+               } 
+               else if (form.walkDescription.value == "") {
+                alert("Walk description cannot be left blank");
+                return false;
                }
                else {
+                return true;
                     var walkTitle = document.getElementById("walkTitle").value;
                     var walkDescription = document.getElementById("walkDescription").value;
                     var markersArray = JSON.stringify(markers);

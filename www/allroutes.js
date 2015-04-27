@@ -9,5 +9,5 @@ $(document).on('pageinit', "#view-routes", function() {
         error: function(error){
         	alert(error);
         }
-    }
+    });
 }

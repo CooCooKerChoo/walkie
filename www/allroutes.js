@@ -5,7 +5,7 @@ $.ajax({    //create an ajax request to load_page.php
         dataType: "html",   //expect html to be returned                
         success: function(response){                    
             $("#all_walks").html(response); 
-            //alert(response);
+            alert(response);
         },
         error: function(error){
         	alert(error);

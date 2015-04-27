@@ -202,7 +202,10 @@ $(document).on('pageshow', "#route_details", function() {
 			options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
 			options.mimeType = "image/jpeg";
 			options.chunkedMode = false;
-			options.params = walkTitle;
+			var params =  new Object();
+			options.params = params;
+
+			params.value1 = walkTitle;
 
 			var ft = new FileTransfer();
 			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imagesUpload.php", onUploadSuccess, onUploadError, options);

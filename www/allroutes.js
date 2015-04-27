@@ -26,6 +26,9 @@ $(document).on('pageinit', "#view-routes", function() {
         $('#all_walks').html("<b>id: </b>"+id+"<b> name: </b>"+vname); //Set output element html
         //recommend reading up on jquery selectors they are awesome 
         // http://api.jquery.com/category/selectors/
+      }, 
+      error: function(error){
+      	alert(error);
       } 
     });
 }

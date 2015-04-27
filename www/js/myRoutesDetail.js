@@ -192,7 +192,7 @@ $(document).on('pageshow', "#route_details", function() {
 
 	}
 
-	function uploadImages(){
+	function uploadImages(walkTitle){
 		for(i=0; i < routePhotosArray.length; i++) {
 			var options = new FileUploadOptions();
 			var imageURI = routePhotosArray[i];
@@ -202,10 +202,10 @@ $(document).on('pageshow', "#route_details", function() {
 			options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
 			options.mimeType = "image/jpeg";
 			options.chunkedMode = false;
+			options.params = walkTitle;
 
 			var ft = new FileTransfer();
 			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imagesUpload.php", onUploadSuccess, onUploadError, options);
-
 		}
 	}
 

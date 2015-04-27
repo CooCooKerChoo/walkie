@@ -70,21 +70,13 @@
 
 
             function saveInfo() {
-                var inputTitle = document.getElementById("walkTitle");
-                var inputDescription = document.getElementById("walkDescription");
 
-                if (inputTitle == "" || inputTitle == null || inputDescription == "" || inputTitle == null)
-                {
-                    navigator.notification.confirm(
-                        'You are the winner!', // message
-                         onConfirm,            // callback to invoke with index of button pressed
-                        'Game Over',           // title
-                        ['Restart','Exit']         // buttonLabels
-                    );
-                }
-                else {
-                    saveInfoPassed();
-                }
+               if($('#walkTitle').val() == '' || $('#walkDescription').val() == ''){
+                  alert('Input can not be left blank');
+               }
+               else {
+                saveInfoPassed();
+               }
             }
 
 

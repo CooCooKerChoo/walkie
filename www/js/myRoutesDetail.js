@@ -195,7 +195,7 @@ $(document).on('pageshow', "#route_details", function() {
 	function uploadImages(){
 		for(i=0; i < routePhotosArray.length; i++) {
 			var options = new FileUploadOptions();
-			var imageURI = $(".image").attr('src');
+			var imageURI = routePhotosArray[i];
 
 			console.log(imageURI);
 			options.fileKey = 'file';

@@ -196,12 +196,15 @@ $(document).on('pageshow', "#route_details", function() {
 		var serverURL = "http://matt-meadows.co.uk/walkie/imageUpload.php";
 		var options = new FileUploadOptions();
 		for(i=0; i < routePhotosArray.length; i++) {
+			var filename = substr(routePhotosArray[i].lastIndexOf('/')+1);
 			options.fileKey = 'file';
-			options.fileName = routePhotosArray[i].substr(routePhotosArray[i].lastIndexOf('/')+1);
+			options.fileName = filename;
 			options.mimeType = "image/jpeg";
 
 			var ft = new FileTransfer();
-			ft.upload(routePhotosArray[i], serverURL, onUploadSuccess, onUploadError, options);
+			ft.upload(filename, serverURL, onUploadSuccess, onUploadError, options);
+
+			console.log(filename);
 		}
 	}
 

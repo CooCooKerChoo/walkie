@@ -198,7 +198,7 @@ $(document).on('pageshow', "#route_details", function() {
 		var options = new FileUploadOptions();
 		for(i=0; i < routePhotosArray.length; i++) {
 			options.fileKey = 'file';
-			option.fileName = routePhotosArray[i].substr(routePhotosArray[i].lastIndexOf('/')+1);
+			options.fileName = routePhotosArray[i].substr(routePhotosArray[i].lastIndexOf('/')+1);
 			options.mimeType = "image/jpeg";
 
 			var ft = new FileTransfer();

@@ -102,7 +102,7 @@ $(document).on('pageshow', "#route_details", function() {
                 path: Routepolys[index],
                 strokeColor: "#FF0000",
                 strokeOpacity: 1.0,
-                strokeWeight: 5
+                strokeWeight: 2
               });
               path.setMap(mapMyRoutes);
 	}); 
@@ -182,22 +182,38 @@ $(document).on('pageshow', "#route_details", function() {
 
 		$.ajax({
 			type: "POST",
-	        data: 
-	        // {
-	        // 	'walkID' : walkID,
-	        // 	'walkTitle' : walkTitle,
-	        // 	'walkDescription' : walkDescription,
-	        // 	'walkDistance' : walkDistance,
-	        // 	'walkDuration' : walkDuration,
-	        // 	'walkCoords' : walkCoords
-	        // },
-	        dataString,
+	        data: dataString,
 	        url: 'http://matt-meadows.co.uk/walkie/ajax.php',
 	        success: function(response){
 	            alert(response);
 	        }
 	    });
+
+	uploadImages();
+
 	}
+
+	function uploadImages(){
+		var serverURL = "http://matt-meadows.co.uk/walkie/imageUpload.php";
+		var options = new FileUploadOptions();
+		for(i=0; i < routePhotosArray.length; i++) {
+			options.fileKey = 'file';
+			option.fileName = routePhotosArray[i].substr(routePhotosArray[i].lastIndexOf('/')+1);
+			options.mimeType = "image/jpeg";
+
+			var ft = new FileTransfer();
+			ft.upload(routePhotosArray[i], serverURL, onUploadSuccess, onUploadError, options);
+		}
+	}
+
+	function onUploadSuccess(){
+		alert("Photo uploaded successfully");
+	}
+
+	function onUploadError(message){
+		alert("Error Uploading: " + message);
+	}
+
 
 });
 

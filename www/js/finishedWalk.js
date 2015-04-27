@@ -68,41 +68,55 @@
 });
 
 
+
             function saveInfo() {
-                var walkTitle = document.getElementById("walkTitle").value;
-                var walkDescription = document.getElementById("walkDescription").value;
-                var markersArray = JSON.stringify(markers);
-                var walkID; 
 
-                db.transaction(function(t) {
-                    t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?)', [dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], 
-                        function(t, results){
-                            console.log('ok');
-                            walkID = results.insertId;
-                            for(var id in markers) {
-                                if( markers.hasOwnProperty(id) ) {
-                                    (function(id) {
-                                        db.transaction(function(t) {
-                                            var marker = markers[id];
-                                            t.executeSql('INSERT INTO MARKERS (markerid, title, info, markerLat, markerLng, walk_id) values (?,?,?,?,?,?)', [markers[id].id, markers[id].title, markers[id].info, markers[id].lat, markers[id].lng, walkID]);
-                                        });
-                                        })(id);
+               if($('#walkTitle').val() == '' || $('#walkDescription').val() == ''){
+                    navigator.notification.alert(
+                        'Required input fields cannot be left blank',  // message
+                        validationRequired,         // callback
+                        'Error Saving',            // title
+                        'OK'                  // buttonName
+                    );
+               }
+               else {
+                    var walkTitle = document.getElementById("walkTitle").value;
+                    var walkDescription = document.getElementById("walkDescription").value;
+                    var markersArray = JSON.stringify(markers);
+                    var walkID; 
+
+                    db.transaction(function(t) {
+                        t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?)', [dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], 
+                            function(t, results){
+                                console.log('ok');
+                                walkID = results.insertId;
+                                for(var id in markers) {
+                                    if( markers.hasOwnProperty(id) ) {
+                                        (function(id) {
+                                            db.transaction(function(t) {
+                                                var marker = markers[id];
+                                                t.executeSql('INSERT INTO MARKERS (markerid, title, info, markerLat, markerLng, walk_id) values (?,?,?,?,?,?)', [markers[id].id, markers[id].title, markers[id].info, markers[id].lat, markers[id].lng, walkID]);
+                                            });
+                                            })(id);
+                                    }
                                 }
-                            }
-                        },
-                        function(t, error){
-                            console.log('error: ' + error.meesage);
-                        });
-                });
+                            },
+                            function(t, error){
+                                console.log('error: ' + error.meesage);
+                            });
+                    });
 
-                navigator.notification.alert(
-                    'All information has been saved',  // message
-                    alertDismissed,         // callback
-                    'Saving',            // title
-                    'Done'                  // buttonName
-                );
+                    navigator.notification.alert(
+                        'All information has been saved',  // message
+                        alertDismissed,         // callback
+                        'Saving',            // title
+                        'Done'                  // buttonName
+                    );
+               }
             }
 
+            function validationRequired() {
+            }
 
             function alertDismissed() {
                 location.href="index.html";

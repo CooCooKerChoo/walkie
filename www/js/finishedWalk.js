@@ -75,15 +75,21 @@
 
                 if (inputTitle == "" || inputTitle == null || inputDescription == "" || inputTitle == null)
                 {
-                    navigator.notification.alert(
-                        'All required fields must contain a value',  // message
-                        'Validation Error',            // title
-                        'Done'                  // buttonName
+                    navigator.notification.confirm(
+                        'You are the winner!', // message
+                         onConfirm,            // callback to invoke with index of button pressed
+                        'Game Over',           // title
+                        ['Restart','Exit']         // buttonLabels
                     );
                 }
                 else {
                     saveInfoPassed();
                 }
+            }
+
+
+            function onConfirm(buttonIndex) {
+                alert('You selected button ' + buttonIndex);
             }
 
             function saveInfoPassed() {

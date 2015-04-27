@@ -173,11 +173,11 @@ $(document).on('pageshow', "#route_details", function() {
 
 	    var dataString = 'walkID='+ walkID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration;
 
-	    console.log(dataString);
+	    // console.log(dataString);
 
-	    console.log(walkID);
-	    console.log(walkTitle);
-	    console.log(walkCoords);
+	    // console.log(walkID);
+	    // console.log(walkTitle);
+	    // console.log(walkCoords);
 
 
 		$.ajax({

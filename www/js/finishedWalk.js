@@ -70,14 +70,14 @@
 
 
             function saveInfo() {
-                if(document.routeText.WalkTitle.value == "" || document.routeText.walkDescription.value == "")
+                if(document.forms["routeText"]["walkTitle"].value == null || document.forms["routeText"]["walkDescription"].value == null)
                 {
                     navigator.notification.alert(
                         'One or more of the form elements requires an entry',  // message
                         alertDismissed,         // callback
                         'Information has not been saved',            // title
                         'OK'                  // buttonName
-                    );
+                    )
                 } else {
                     saveInfoPassed();
                 }

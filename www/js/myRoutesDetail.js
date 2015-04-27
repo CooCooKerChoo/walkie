@@ -188,11 +188,11 @@ $(document).on('pageshow', "#route_details", function() {
 	        }
 	    });
 
-	uploadImages();
+	uploadImages(walkTitle);
 
 	}
 
-	function uploadImages(walkTitle){
+	function uploadImages(){
 		for(i=0; i < routePhotosArray.length; i++) {
 			var options = new FileUploadOptions();
 			var imageURI = routePhotosArray[i];

@@ -70,17 +70,12 @@
 
 
             function saveInfo() {
-               if($('#walkTitle').val() == "" || $('#walkDescription').val() == ""){
-                    return false;
-                    navigator.notification.alert(
-                        'Required input fields cannot be left blank',  // message
-                        validationRequired,         // callback
-                        'Error Saving',            // title
-                        'OK'                  // buttonName
-                    );
+               if($('#walkTitle').val() == ""){
+                alert("Required fields cannot be left blank");
+               } else if ($('#walkDescription').val() == "") {
+                alert("Required fields cannot be left blank");
                }
                else {
-                    return true;
                     var walkTitle = document.getElementById("walkTitle").value;
                     var walkDescription = document.getElementById("walkDescription").value;
                     var markersArray = JSON.stringify(markers);

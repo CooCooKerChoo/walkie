@@ -12,6 +12,17 @@
 	    getInfo();
 	}
 
+    function getInfo() {
+        openFB.api({
+            path: '/me',
+            success: function(data) {
+                console.log(JSON.stringify(data));
+                document.getElementById("userName").innerHTML = data.name;
+                document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+            },
+            error: errorHandler});
+    }
+
     function errorHandler(error) {
         alert(error.message);
     }

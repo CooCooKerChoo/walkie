@@ -77,12 +77,14 @@ $(document).on("click", ".walkPage", function(){
 });
 
  $(document).on('pageshow', "#my-routes", function() {
-	openFB.login(
-		function(response) {
-	        if(response.status === 'connected') {
-	        	showFBInfo();
-	        }
-	);
+ 	function checkFBLogin(){
+		openFB.login(
+			function(response) {
+		        if(response.status === 'connected') {
+		        	showFBInfo();
+		        }
+		);
+ 	}
 
 	function showFBInfo(){
 		openFB.api({

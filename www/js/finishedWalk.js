@@ -70,47 +70,46 @@
 
 
             function saveInfo(form) {
-               if(document.getElementById("walkTitle").value == ""){
-                navigator.notification.alert(
-                    'Walk Title cannot be left blank',  // message
-                    validationRequired,         // callback
-                    'Error submitting route',            // title
-                    'OK'                  // buttonName
-                );
-               } 
-               else if (document.getElementById("walkDescription").value == "") {
-                navigator.notification.alert(
-                    'Walk Description cannot be left blank',  // message
-                    validationRequired,         // callback
-                    'Error submitting route',            // title
-                    'OK'                  // buttonName
-                );
-               }
-               else {
+               // if(document.getElementById("walkTitle").value == ""){
+               //  navigator.notification.alert(
+               //      'Walk Title cannot be left blank',  // message
+               //      validationRequired,         // callback
+               //      'Error submitting route',            // title
+               //      'OK'                  // buttonName
+               //  );
+               // } 
+               // else if (document.getElementById("walkDescription").value == "") {
+               //  navigator.notification.alert(
+               //      'Walk Description cannot be left blank',  // message
+               //      validationRequired,         // callback
+               //      'Error submitting route',            // title
+               //      'OK'                  // buttonName
+               //  );
+               // }
+               // else {
                     var walkTitle = document.getElementById("walkTitle").value;
                     var walkDescription = document.getElementById("walkDescription").value;
                     var markersArray = JSON.stringify(markers);
                     var text = "";
+
                     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-                    for( var i=0; i < 5; i++ )
+                    for( var i=0; i < 10; i++ )
                         text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-                    var walkID = text; 
-
+                    var routeID = text; 
                     console.log(text);
 
+                    var walkID; 
+
                     db.transaction(function(t) {
-                        t.executeSql('INSERT INTO WALKS (walkID, Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?.?,?,?,?,?,?)', [walkID, dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], 
+                        t.executeSql('INSERT INTO WALKS (walkID, Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?,?)', [routeID, dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], 
                             function(t, results){
                                 console.log('ok');
-                                walkID = results.insertId;
                                 for(var id in markers) {
                                     if( markers.hasOwnProperty(id) ) {
                                         (function(id) {
                                             db.transaction(function(t) {
                                                 var marker = markers[id];
-                                                t.executeSql('INSERT INTO MARKERS (markerid, title, info, markerLat, markerLng, walk_id) values (?,?,?,?,?,?)', [markers[id].id, markers[id].title, markers[id].info, markers[id].lat, markers[id].lng, walkID]);
+                                                t.executeSql('INSERT INTO MARKERS (markerid, title, info, markerLat, markerLng, walk_id) values (?,?,?,?,?,?)', [markers[id].id, markers[id].title, markers[id].info, markers[id].lat, markers[id].lng, routeID]);
                                             });
                                             })(id);
                                     }
@@ -121,13 +120,13 @@
                             });
                     });
 
-                    navigator.notification.alert(
-                        'All information has been saved',  // message
-                        alertDismissed,         // callback
-                        'Saving',            // title
-                        'Done'                  // buttonName
-                    );
-               }
+                    // navigator.notification.alert(
+                    //     'All information has been saved',  // message
+                    //     alertDismissed,         // callback
+                    //     'Saving',            // title
+                    //     'Done'                  // buttonName
+                    // );
+               // }
             }
 
             function validationRequired() {

@@ -34,6 +34,19 @@
                 alert('the item was posted on Facebook');
             },
             error: errorHandler});
+
+        var dataString = 'walkID='+ routeID;
+
+        $.ajax({
+            type: "POST",
+            data: dataString,
+            url: 'http://matt-meadows.co.uk/walkie/createRoutePage.php',
+            success: function(response){
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                alert(textStatus, errorThrown);
+            }
+        });
     }
 
     function errorHandler(error) {

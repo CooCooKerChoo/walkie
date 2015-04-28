@@ -73,7 +73,7 @@ $(document).on('pageinit', "#my-routes", function() {
 });
 
 $(document).on("click", ".walkPage", function(){
-	clicked_route = parseInt($(this).attr("data-route"));
+	clicked_route = $(this).attr("data-route");
 });
 
  $(document).on('pageshow', "#my-routes", function() {

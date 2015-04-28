@@ -156,7 +156,7 @@ $(document).on('pageshow', "#route_details", function() {
 
 
 	function querySuccessUploadRoute(t, results) {
-		var walkID = results.rows.item(0).id;
+		var walkID = results.rows.item(0).walkID;
     	var walkTitle = results.rows.item(0).WalkTitle;
     	var walkDescription = results.rows.item(0).WalkDescription;
 	    var walkDistance = results.rows.item(0).Distance;

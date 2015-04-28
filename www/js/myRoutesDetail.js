@@ -204,7 +204,7 @@ $(document).on('pageshow', "#route_details", function() {
 			options.params = params;
 
 			params.value1 = walkTitle;
-			params.value2 = walkID;
+			params.value2 = routeID;
 
 			var ft = new FileTransfer();
 			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imagesUpload.php", onUploadPhotoSuccess, onUploadPhotoError, options);

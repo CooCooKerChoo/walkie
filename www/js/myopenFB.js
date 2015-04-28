@@ -19,8 +19,7 @@
                 console.log(JSON.stringify(data));
                 document.getElementById("userName").innerHTML = data.name;
                 document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-                var output = JSON.parse(data);
-                userEmail = output.email;
+                userEmail = data.email;
             },
             error: errorHandler});
     }

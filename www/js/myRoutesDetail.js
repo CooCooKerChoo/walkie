@@ -150,27 +150,27 @@ $(document).on('pageshow', "#route_details", function() {
 
 	$("button#buttonDone").click(function() {
 	 	db.transaction(function(t){
-			t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessUploadRoute, errorCBDetails);
+			t.executeSql('SELECT * FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessUploadRoute, errorCBDetails);
 	 	});
 	});
 
 
 	function querySuccessUploadRoute(t, results) {
-		var walkID = results.rows.item(0).walkID;
+		var routeID = results.rows.item(0).walkID;
     	var walkTitle = results.rows.item(0).WalkTitle;
     	var walkDescription = results.rows.item(0).WalkDescription;
 	    var walkDistance = results.rows.item(0).Distance;
 	    var walkDuration = results.rows.item(0).Duration;
 	    var walkCoords = results.rows.item(0).PathCoordinates;
 
-	    walkID = encodeURIComponent(walkID);
+	    routeID = encodeURIComponent(routeID);
 	    walkTitle = encodeURIComponent(walkTitle);
 	    walkDescription = encodeURIComponent(walkDescription);
 	    walkDistance = encodeURIComponent(walkDistance);
 	    walkDuration = encodeURIComponent(walkDuration);
 	    walkCoords = encodeURIComponent(walkCoords);
 
-	    var dataString = 'walkID='+ walkID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration;
+	    var dataString = 'walkID='+ routeID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration;
 
 	    // console.log(dataString);
 

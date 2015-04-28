@@ -83,7 +83,7 @@ $(document).on("click", ".walkPage", function(){
 		        if(response.status === 'connected') {
 		        	showFBInfo();
 		        }
-		);
+		)
  	}
 
 	function showFBInfo(){

@@ -10,7 +10,7 @@ $(document).on('pageinit', "#my-routes", function() {
 
 	    for (var i=0; i < results.rows.length; i++){
 	    	var polylinePath = [];
-	    	var walkId = results.rows.item(i).id;
+	    	var walkId = results.rows.item(i).walkID;
 	    	var walkTitle = results.rows.item(i).WalkTitle;
 	    	var walkDistance = results.rows.item(i).Distance;
 	    	var walkDuration = results.rows.item(i).Duration;

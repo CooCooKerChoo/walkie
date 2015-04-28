@@ -4,7 +4,7 @@ $(document).on('pagebeforeshow', "#route_details", function() {
 	Routecoords = [], Routepolys = [];
 
  	db.transaction(function(t){
-		t.executeSql('SELECT * FROM WALKS WHERE id = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
+		t.executeSql('SELECT * FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
  	});
 
 

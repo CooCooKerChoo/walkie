@@ -84,6 +84,7 @@
 		</div>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/openfb.js"></script>
+	<script type="text/javascript" src="js/myopenFB.js"></script>
 	</div>
 
 	<div data-role="page" id="map-page">
@@ -138,6 +139,7 @@
 		<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 		<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
 		<script type="text/javascript" src="js/openfb.js"></script>
+		<script type="text/javascript" src="js/myopenFB.js"></script>
 	</div>
 
 	<div data-role="page" id="my-routes">
@@ -219,38 +221,9 @@
 		</div>
 	    <script type="text/javascript" src="js/myRoutesDetail.js"></script>
 		<script type="text/javascript" src="js/openfb.js"></script>
+		<script type="text/javascript" src="js/myopenFB.js"></script>
 	</div>
 
 <script type="text/javascript" src="cordova.js"></script>
-<script>
-	 openFB.init({appId: '292811390842470', tokenStore: window.localStorage});
-
-	function login() {
-	    openFB.login(
-	            function(response) {
-	                if(response.status === 'connected') {
-	                    alert('Facebook login succeeded, got access token: ' + response.authResponse.token);
-	                } else {
-	                    alert('Facebook login failed: ' + response.error);
-	                }
-	            }, {scope: 'email,read_stream,publish_stream'});
-	    getInfo();
-	}
-
-    function getInfo() {
-        openFB.api({
-            path: '/me',
-            success: function(data) {
-                console.log(JSON.stringify(data));
-                document.getElementById("userName").innerHTML = data.name;
-                document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-            },
-            error: errorHandler});
-    }
-
-            function errorHandler(error) {
-                alert(error.message);
-            }
-</script>
 </body>
 </html>

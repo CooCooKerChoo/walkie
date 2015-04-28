@@ -70,23 +70,23 @@
 
 
             function saveInfo(form) {
-               // if(document.getElementById("walkTitle").value == ""){
-               //  navigator.notification.alert(
-               //      'Walk Title cannot be left blank',  // message
-               //      validationRequired,         // callback
-               //      'Error submitting route',            // title
-               //      'OK'                  // buttonName
-               //  );
-               // } 
-               // else if (document.getElementById("walkDescription").value == "") {
-               //  navigator.notification.alert(
-               //      'Walk Description cannot be left blank',  // message
-               //      validationRequired,         // callback
-               //      'Error submitting route',            // title
-               //      'OK'                  // buttonName
-               //  );
-               // }
-               // else {
+               if(document.getElementById("walkTitle").value == ""){
+                navigator.notification.alert(
+                    'Walk Title cannot be left blank',  // message
+                    validationRequired,         // callback
+                    'Error submitting route',            // title
+                    'OK'                  // buttonName
+                );
+               } 
+               else if (document.getElementById("walkDescription").value == "") {
+                navigator.notification.alert(
+                    'Walk Description cannot be left blank',  // message
+                    validationRequired,         // callback
+                    'Error submitting route',            // title
+                    'OK'                  // buttonName
+                );
+               }
+               else {
                     var walkTitle = document.getElementById("walkTitle").value;
                     var walkDescription = document.getElementById("walkDescription").value;
                     var markersArray = JSON.stringify(markers);
@@ -120,13 +120,13 @@
                             });
                     });
 
-                    // navigator.notification.alert(
-                    //     'All information has been saved',  // message
-                    //     alertDismissed,         // callback
-                    //     'Saving',            // title
-                    //     'Done'                  // buttonName
-                    // );
-               // }
+                    navigator.notification.alert(
+                        'All information has been saved',  // message
+                        alertDismissed,         // callback
+                        'Saving',            // title
+                        'Done'                  // buttonName
+                    );
+               }
             }
 
             function validationRequired() {

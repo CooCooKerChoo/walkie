@@ -12,43 +12,6 @@
 	    getInfo();
 	}
 
-    function getInfo() {
-        openFB.api({
-            path: '/me',
-            success: function(data) {
-                console.log(JSON.stringify(data));
-                document.getElementById("userName").innerHTML = data.name;
-                document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-            },
-            error: errorHandler});
-    }
-
-    function share() {
-        openFB.api({
-            method: 'POST',
-            path: '/me/feed',
-            params: {
-                message: 'http://matt-meadows.co.uk/walkie/route/'+clicked_route
-            },
-            success: function() {
-                alert('the item was posted on Facebook');
-            },
-            error: errorHandler});
-
-        var dataString = 'walkID='+ routeID;
-
-        $.ajax({
-            type: "POST",
-            data: dataString,
-            url: 'http://matt-meadows.co.uk/walkie/createRoutePage.php',
-            success: function(response){
-            },
-            error: function(jqXHR, textStatus, errorThrown){
-                alert(textStatus, errorThrown);
-            }
-        });
-    }
-
     function errorHandler(error) {
         alert(error.message);
     }

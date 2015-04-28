@@ -169,8 +169,9 @@ $(document).on('pageshow', "#route_details", function() {
 	    walkDistance = encodeURIComponent(walkDistance);
 	    walkDuration = encodeURIComponent(walkDuration);
 	    walkCoords = encodeURIComponent(walkCoords);
+	    userEmail = encodeURICompoenent(userEmail);
 
-	    var dataString = 'walkID='+ routeID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration;
+	    var dataString = 'walkID='+ routeID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration+'&userEmail='+userEmail;
 
 	    // console.log(dataString);
 

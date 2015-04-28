@@ -77,25 +77,16 @@ $(document).on("click", ".walkPage", function(){
 });
 
  $(document).on('pageshow', "#my-routes", function() {
- 	function checkFBLogin(){
-		openFB.login(
-			function(response) {
-		        if(response.status === 'connected') {
-		        	showFBInfo();
-		        }
-		)
- 	}
-
-	function showFBInfo(){
-		openFB.api({
-		    path: '/me',
-		    success: function(data) {
-		        console.log(JSON.stringify(data));
-		        document.getElementById("userName").innerHTML = data.name;
-		        document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-		    },
-		    error: errorHandler});
-	}
+    function getInfo() {
+        openFB.api({
+            path: '/me',
+            success: function(data) {
+                console.log(JSON.stringify(data));
+                document.getElementById("userName").innerHTML = data.name;
+                document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+            },
+            error: errorHandler});
+    }
 
 		$('.map').each(function (index, Element) {
 

@@ -169,7 +169,7 @@ $(document).on('pageshow', "#route_details", function() {
 	    walkDistance = encodeURIComponent(walkDistance);
 	    walkDuration = encodeURIComponent(walkDuration);
 	    walkCoords = encodeURIComponent(walkCoords);
-	    userEmail = encodeURICompoenent(userEmail);
+	    userEmail = encodeURIComponent(userEmail);
 
 	    var dataString = 'walkID='+ routeID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration+'&userEmail='+userEmail;
 

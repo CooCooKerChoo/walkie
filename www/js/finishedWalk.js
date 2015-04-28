@@ -90,10 +90,18 @@
                     var walkTitle = document.getElementById("walkTitle").value;
                     var walkDescription = document.getElementById("walkDescription").value;
                     var markersArray = JSON.stringify(markers);
-                    var walkID; 
+                    var text = "";
+                    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+                    for( var i=0; i < 5; i++ )
+                        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+                    var walkID = text; 
+
+                    console.log(text);
 
                     db.transaction(function(t) {
-                        t.executeSql('INSERT INTO WALKS (Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?,?,?,?,?,?)', [dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], 
+                        t.executeSql('INSERT INTO WALKS (walkID, Duration, Distance, PathCoordinates, Images, WalkTitle, WalkDescription) values (?.?,?,?,?,?,?)', [walkID, dbstoreDuration, dbstoreDistance, googleLatLng, imageArray, walkTitle, walkDescription], 
                             function(t, results){
                                 console.log('ok');
                                 walkID = results.insertId;

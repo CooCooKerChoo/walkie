@@ -151,7 +151,7 @@ $(document).on('pageshow', "#route_details", function() {
 	$("button#buttonDone").click(function() {
 	 	db.transaction(function(t){
 			t.executeSql('SELECT * FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessUploadRoute, errorCBDetails);
-			t.executeSql('SELECT * FROM markers where walk_id = "'+clicked_route+'"', [], querySuccessUploadRoute, errorCBDetails);
+			t.executeSql('SELECT * FROM markers where walk_id = "'+clicked_route+'"', [], querySuccessUploadMarkers, errorCBDetails);
 	 	});
 	});
 
@@ -164,26 +164,12 @@ $(document).on('pageshow', "#route_details", function() {
 	    var walkDuration = results.rows.item(0).Duration;
 	    var walkCoords = results.rows.item(0).PathCoordinates;
 
-	    var markerID = results.rows.item(0).markerid;
-	    var markerTitle = results.rows.item(0).title;
-	    var markerInfo = results.rows.item(0).info;
-	    var markerLat = results.rows.item(0).markerLat;
-	    var markerLng = results.rows.item(0).markerLng;
-	    var walkid = results.rows.item(0).walk_id;
-
 	    routeID = encodeURIComponent(routeID);
 	    walkTitle = encodeURIComponent(walkTitle);
 	    walkDescription = encodeURIComponent(walkDescription);
 	    walkDistance = encodeURIComponent(walkDistance);
 	    walkDuration = encodeURIComponent(walkDuration);
 	    walkCoords = encodeURIComponent(walkCoords);
-
-	    markerID = encodeURIComponent(markerID);
-	    markerTitle = encodeURIComponent(markerTitle);
-	    markerInfo = encodeURIComponent(markerInfo);
-	    markerLat = encodeURIComponent(markerLat);
-	    markerLng = encodeURIComponent(markerLng);
-	    walkid = encodeURIComponent(walkid);
 
 	    dataString = 'walkID='+ routeID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration+'&userEmail='+userEmail+'&markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
 
@@ -230,6 +216,48 @@ $(document).on('pageshow', "#route_details", function() {
 			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imagesUpload.php", onUploadPhotoSuccess, onUploadPhotoError, options);
 		}
 
+	}
+
+	function querySuccessUploadMarkers(){
+	    var markerID = results.rows.item(0).markerid;
+	    var markerTitle = results.rows.item(0).title;
+	    var markerInfo = results.rows.item(0).info;
+	    var markerLat = results.rows.item(0).markerLat;
+	    var markerLng = results.rows.item(0).markerLng;
+	    var walkid = results.rows.item(0).walk_id;
+
+	    markerID = encodeURIComponent(markerID);
+	    markerTitle = encodeURIComponent(markerTitle);
+	    markerInfo = encodeURIComponent(markerInfo);
+	    markerLat = encodeURIComponent(markerLat);
+	    markerLng = encodeURIComponent(markerLng);
+	    walkid = encodeURIComponent(walkid);
+
+	    dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
+
+	    // console.log(dataString);
+
+	    // console.log(walkID);
+	    // console.log(walkTitle);
+	    // console.log(walkCoords);
+
+
+		$.ajax({
+			type: "POST",
+	        data: dataStringMarkers,
+	        url: 'http://matt-meadows.co.uk/walkie/ajaxPOSTMarkers.php',
+	        success: function(response){
+                navigator.notification.alert(
+                    'All markers information has been uploaded successfully',  // message
+                    alertDismissed,         // callback
+                    'Saving',            // title
+                    'Done'                  // buttonName
+                );
+	        },
+	        error: function(jqXHR, textStatus, errorThrown){
+	        	alert(textStatus, errorThrown);
+	        }
+	    });
 	}
 
 	function onUploadPhotoSuccess(r){

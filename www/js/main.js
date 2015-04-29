@@ -360,6 +360,7 @@ function capturePhoto() {
 
 function onCameraSuccess(imageURI) {
     imageArray.push(imageURI);
+    console.log(imageArray);
 }
 
 function onCameraFail(message) {

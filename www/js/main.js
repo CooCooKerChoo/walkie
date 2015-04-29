@@ -363,7 +363,6 @@ function onCameraSuccess(imageURI) {
 }
 
 function onCameraFail(message) {
-    alert('Fail because: ' + message);
 }
 
 // ====================================================== FINISH WALK ====================================================== //

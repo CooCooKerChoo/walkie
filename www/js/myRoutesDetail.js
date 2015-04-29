@@ -184,6 +184,12 @@ $(document).on('pageshow', "#route_details", function() {
 	        data: dataString,
 	        url: 'http://matt-meadows.co.uk/walkie/ajaxPOST.php',
 	        success: function(response){
+                navigator.notification.alert(
+                    'All information has been uploaded successfully',  // message
+                    alertDismissed,         // callback
+                    'Saving',            // title
+                    'Done'                  // buttonName
+                );
 	        },
 	        error: function(jqXHR, textStatus, errorThrown){
 	        	alert(textStatus, errorThrown);
@@ -217,6 +223,9 @@ $(document).on('pageshow', "#route_details", function() {
 
 	function onUploadPhotoError(error){
 		// alert("Error Uploading: " + error.code);
+	}
+
+	function alertDismissed(){
 	}
 
 });

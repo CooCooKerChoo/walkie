@@ -151,6 +151,7 @@ $(document).on('pageshow', "#route_details", function() {
 	$("button#buttonDone").click(function() {
 	 	db.transaction(function(t){
 			t.executeSql('SELECT * FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessUploadRoute, errorCBDetails);
+			t.executeSql('SELECT * FROM markers where walkID = "'+clicked_route+'"', [], querySuccessUploadRoute, errorCBDetails);
 	 	});
 	});
 
@@ -163,6 +164,13 @@ $(document).on('pageshow', "#route_details", function() {
 	    var walkDuration = results.rows.item(0).Duration;
 	    var walkCoords = results.rows.item(0).PathCoordinates;
 
+	    var markerID = results.rows.item(0).markerid;
+	    var markerTitle = results.rows.item(0).title;
+	    var markerInfo = results.rows.item(0).info;
+	    var markerLat = results.rows.item(0).markerLat;
+	    var markerLng = results.rows.item(0).markerLng;
+	    var walkid = results.rows.item(0).walkid;
+
 	    routeID = encodeURIComponent(routeID);
 	    walkTitle = encodeURIComponent(walkTitle);
 	    walkDescription = encodeURIComponent(walkDescription);
@@ -170,7 +178,14 @@ $(document).on('pageshow', "#route_details", function() {
 	    walkDuration = encodeURIComponent(walkDuration);
 	    walkCoords = encodeURIComponent(walkCoords);
 
-	    var dataString = 'walkID='+ routeID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration+'&userEmail='+userEmail;
+	    markerID = encodeURIComponent(markerID);
+	    markerTitle = encodeURIComponent(markerTitle);
+	    markerInfo = encodeURIComponent(markerInfo);
+	    markerLat = encodeURIComponent(markerLat);
+	    markerLng = encodeURIComponent(markerLng);
+	    walkid = encodeURIComponent(walkid);
+
+	    dataString = 'walkID='+ routeID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration+'&userEmail='+userEmail+'&markerid='+markerid+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
 
 	    // console.log(dataString);
 

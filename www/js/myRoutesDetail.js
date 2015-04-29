@@ -151,7 +151,7 @@ $(document).on('pageshow', "#route_details", function() {
 	$("button#buttonDone").click(function() {
 	 	db.transaction(function(t){
 			t.executeSql('SELECT * FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessUploadRoute, errorCBDetails);
-			t.executeSql('SELECT * FROM markers where walkID = "'+clicked_route+'"', [], querySuccessUploadRoute, errorCBDetails);
+			t.executeSql('SELECT * FROM markers where walk_id = "'+clicked_route+'"', [], querySuccessUploadRoute, errorCBDetails);
 	 	});
 	});
 
@@ -169,7 +169,7 @@ $(document).on('pageshow', "#route_details", function() {
 	    var markerInfo = results.rows.item(0).info;
 	    var markerLat = results.rows.item(0).markerLat;
 	    var markerLng = results.rows.item(0).markerLng;
-	    var walkid = results.rows.item(0).walkid;
+	    var walkid = results.rows.item(0).walk_id;
 
 	    routeID = encodeURIComponent(routeID);
 	    walkTitle = encodeURIComponent(walkTitle);

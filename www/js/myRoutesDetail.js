@@ -218,7 +218,7 @@ $(document).on('pageshow', "#route_details", function() {
 
 	}
 
-	function querySuccessUploadMarkers(){
+	function querySuccessUploadMarkers(t, results){
 	    var markerID = results.rows.item(0).markerid;
 	    var markerTitle = results.rows.item(0).title;
 	    var markerInfo = results.rows.item(0).info;

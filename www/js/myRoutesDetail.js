@@ -185,7 +185,7 @@ $(document).on('pageshow', "#route_details", function() {
 	    markerLng = encodeURIComponent(markerLng);
 	    walkid = encodeURIComponent(walkid);
 
-	    dataString = 'walkID='+ routeID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration+'&userEmail='+userEmail+'&markerid='+markerid+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
+	    dataString = 'walkID='+ routeID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration+'&userEmail='+userEmail+'&markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
 
 	    // console.log(dataString);
 

@@ -212,11 +212,11 @@ $(document).on('pageshow', "#route_details", function() {
 	}
 
 	function onUploadPhotoSuccess(r){
-		alert("Photo uploaded successfully" + r.response);
+		// alert("Photo uploaded successfully" + r.response);
 	}
 
 	function onUploadPhotoError(error){
-		alert("Error Uploading: " + error.code);
+		// alert("Error Uploading: " + error.code);
 	}
 
 });

@@ -1,5 +1,5 @@
 
-var posOptions = { enableHighAccuracy: true, timeout : 10000, maximumAge: 60000};
+var posOptions = { enableHighAccuracy: true, timeout : 5000, maximumAge: 60000};
 navigator.geolocation.getCurrentPosition(onSuccess, onError, addMapMarker, posOptions);
 
 var initialScreenSize = window.innerHeight;
@@ -105,7 +105,7 @@ var googleLatLng = [],
 // =================================================== START OF CUSTOM MARKERS ================================================== //
 
 function addMapMarker() {
-    navigator.geolocation.getCurrentPosition(addMarker, addMarkerFail, {enableHighAccuracy: true});
+    navigator.geolocation.getCurrentPosition(addMarker, addMarkerFail, {enableHighAccuracy: true, timeout: 5000});
 }
 
 counter = 0;

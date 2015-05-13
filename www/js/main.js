@@ -89,11 +89,11 @@ var googleLatLng = [],
             //create the map, and place it in the HTML map div
             map = new google.maps.Map(document.getElementById("mapPlaceholder"), mapOptions);
 
-            // var marker = new google.maps.Marker({
-            //     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-            //     title: "You are here!",
-            //     map: map
-            // });
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+                title: "You are here!",
+                map: map
+            });
     }
 
     // onError Callback receives a PositionError object

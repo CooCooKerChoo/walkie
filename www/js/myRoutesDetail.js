@@ -243,7 +243,7 @@ $(document).on('pageshow', "#route_details", function() {
 		}
 	}
 
-	function onMarkersUpload(){
+	function onMarkersUpload(dataStringMarkers){
 
 			$.ajax({
 				type: "POST",

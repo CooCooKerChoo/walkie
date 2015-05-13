@@ -218,15 +218,15 @@ $(document).on('pageshow', "#route_details", function() {
 
 	}
 
-	dataStringMarker = '';
-
 	function querySuccessUploadMarkers(t, results){
-		    var markerID = markersArrayFinal[i].id;
-		    var markerTitle = markersArrayFinal[i].title;
-		    var markerInfo = markersArrayFinal[i].info;
-		    var markerLat = markersArrayFinal[i].markerLat;
-		    var markerLng = markersArrayFinal[i].markerLng;
-		    var walkid = markersArrayFinal[i].walk_id;
+		len = results.rows.length;
+		for(i=0; i < len; i++) {
+		    var markerID = results.rows.item(i).markerid;
+		    var markerTitle = results.rows.item(i).title;
+		    var markerInfo = results.rows.item(i).info;
+		    var markerLat = results.rows.item(i).markerLat;
+		    var markerLng = results.rows.item(i).markerLng;
+		    var walkid = results.rows.item(i).walk_id;
 
 		    markerID = encodeURIComponent(markerID);
 		    markerTitle = encodeURIComponent(markerTitle);
@@ -235,10 +235,15 @@ $(document).on('pageshow', "#route_details", function() {
 		    markerLng = encodeURIComponent(markerLng);
 		    walkid = encodeURIComponent(walkid);
 
-		    dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
+		    var dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
 
+		    console.log(dataString);
 
-		    console.log(dataStringMarkers);
+		    onmarkersUpload(dataStringMarkers);
+		}
+	}
+
+	function onMarkersUpload(dataStringMarkers){
 
 			$.ajax({
 				type: "POST",

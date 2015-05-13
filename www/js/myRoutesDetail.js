@@ -199,7 +199,7 @@ $(document).on('pageshow', "#route_details", function() {
                 );
 	        },
 	        error: function(jqXHR, textStatus, errorThrown){
-	        	alert(textStatus, errorThrown);
+	        	alert("Error Submitting Data");
 	        }
 	    });
 
@@ -263,7 +263,7 @@ $(document).on('pageshow', "#route_details", function() {
 		                );
 			        },
 			        error: function(jqXHR, textStatus, errorThrown){
-			        	alert(textStatus, errorThrown);
+			        	alert("Error Submitting Data");
 			        }
 			    });
 

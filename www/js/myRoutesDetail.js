@@ -224,21 +224,21 @@ $(document).on('pageshow', "#route_details", function() {
 	    		markersUploadArray = [];
 		    	markersUploadArray.push(results.rows.item(i));
 
-			    var markerID = markersUploadArray[i].markerid;
+			    // var markerID = markersUploadArray[i].markerid;
 			    var markerTitle = markersUploadArray[i].title;
 			    var markerInfo = markersUploadArray[i].info;
 			    var markerLat = markersUploadArray[i].markerLat;
 			    var markerLng = markersUploadArray[i].markerLng;
 			    var walkid = markersUploadArray[i].walk_id;
 
-			    var markerID = encodeURIComponent(markerID);
+			    // var markerID = encodeURIComponent(markerID);
 			    var markerTitle = encodeURIComponent(markerTitle);
 			    var markerInfo = encodeURIComponent(markerInfo);
 			    var markerLat = encodeURIComponent(markerLat);
 			    var markerLng = encodeURIComponent(markerLng);
 			    var walkid = encodeURIComponent(walkid);
 
-			    var dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
+			    var dataStringMarkers = 'markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
 
 			    console.log(dataStringMarkers);
 

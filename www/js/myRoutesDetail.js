@@ -220,25 +220,23 @@ $(document).on('pageshow', "#route_details", function() {
 
 	function querySuccessUploadMarkers(t, results){
 
-		    for( var i = 0, c = results.rows.length; i < c; i++) {
-	    		markersUploadArray = [];
-		    	markersUploadArray.push(results.rows.item(i));
+		    for( var i = 0, c = results.rows.item.length; i < c; i++) {
 
-			    // var markerID = markersUploadArray[i].markerid;
-			    var markerTitle = markersUploadArray[i].title;
-			    var markerInfo = markersUploadArray[i].info;
-			    var markerLat = markersUploadArray[i].markerLat;
-			    var markerLng = markersUploadArray[i].markerLng;
-			    var walkid = markersUploadArray[i].walk_id;
+			    var markerID = results.rows.item(i).markerid;
+			    var markerTitle = results.rows.item(i).title;
+			    var markerInfo = results.rows.item(i).info;
+			    var markerLat = results.rows.item(i).markerLat;
+			    var markerLng = results.rows.item(i).markerLng;
+			    var walkid = results.rows.item(i).walk_id;
 
-			    // var markerID = encodeURIComponent(markerID);
+			    var markerID = encodeURIComponent(markerID);
 			    var markerTitle = encodeURIComponent(markerTitle);
 			    var markerInfo = encodeURIComponent(markerInfo);
 			    var markerLat = encodeURIComponent(markerLat);
 			    var markerLng = encodeURIComponent(markerLng);
 			    var walkid = encodeURIComponent(walkid);
 
-			    var dataStringMarkers = 'markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
+			    var dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
 
 			    console.log(dataStringMarkers);
 

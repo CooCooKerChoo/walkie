@@ -48,6 +48,9 @@ $(document).on('pageshow', "#route_details", function() {
 
 	Routephotos = [], routePhotosArray = [];
 
+	console.log(dataString); 
+	console.log(markersUploadArray);
+
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);
 		t.executeSql('SELECT Images FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessImages, errorCBDetails);

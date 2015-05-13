@@ -5,6 +5,7 @@ $(document).on('pagebeforeshow', "#route_details", function() {
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
+		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);
  	});
 
 
@@ -46,7 +47,6 @@ $(document).on('pageshow', "#route_details", function() {
 	Routephotos = [], routePhotosArray = [];
 
  	db.transaction(function(t){
-		t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessMarkers, errorCBDetails);
 		t.executeSql('SELECT Images FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessImages, errorCBDetails);
  	});
 

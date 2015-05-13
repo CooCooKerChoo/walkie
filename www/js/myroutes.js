@@ -1,6 +1,6 @@
-$(document).on('pageinit', "#my-routes", function() {
+var userEmail;
 
-	userEmail;
+$(document).on('pageinit', "#my-routes", function() {
 
 	Routecoords = [], Routepolys = [];
 

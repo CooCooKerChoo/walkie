@@ -1,4 +1,4 @@
-userEmail;
+var userEmail;
 
 
 var posOptions = { enableHighAccuracy: true, timeout : 5000, maximumAge: 60000};

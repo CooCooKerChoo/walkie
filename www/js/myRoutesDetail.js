@@ -261,6 +261,8 @@ $(document).on('pageshow', "#route_details", function() {
 			    });
 
 		    }
+
+		    markersUploadArray = [];
 	}
 
 

@@ -219,12 +219,13 @@ $(document).on('pageshow', "#route_details", function() {
 	}
 
 	function querySuccessUploadMarkers(t, results){
-		    var markerID = results.rows.item.markerid;
-		    var markerTitle = results.rows.item.title;
-		    var markerInfo = results.rows.item.info;
-		    var markerLat = results.rows.item.markerLat;
-		    var markerLng = results.rows.item.markerLng;
-		    var walkid = results.rows.item.walk_id;
+		for(i=0; i < results.rows.length; i++) {
+		    var markerID = results.rows.item(i).markerid;
+		    var markerTitle = results.rows.item(i).title;
+		    var markerInfo = results.rows.item(i).info;
+		    var markerLat = results.rows.item(i).markerLat;
+		    var markerLng = results.rows.item(i).markerLng;
+		    var walkid = results.rows.item(i).walk_id;
 
 		    markerID = encodeURIComponent(markerID);
 		    markerTitle = encodeURIComponent(markerTitle);
@@ -258,6 +259,7 @@ $(document).on('pageshow', "#route_details", function() {
 		        	alert(textStatus, errorThrown);
 		        }
 		    });
+		}
 	}
 
 	function onUploadPhotoSuccess(r){

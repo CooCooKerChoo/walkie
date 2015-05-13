@@ -9,7 +9,7 @@
 	                } else {
 	                    alert('Facebook login failed: ' + response.error);
 	                }
-	            }, {scope: 'email,read_stream,publish_stream'});
+	            }, {scope: 'email'});
 	    getInfo();
 	}
 

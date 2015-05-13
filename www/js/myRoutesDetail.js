@@ -239,11 +239,11 @@ $(document).on('pageshow', "#route_details", function() {
 
 		    console.log(dataString);
 
-		    onmarkersUpload(dataStringMarkers);
+		    onMarkersUpload(dataStringMarkers);
 		}
 	}
 
-	function onMarkersUpload(dataStringMarkers){
+	function onMarkersUpload(){
 
 			$.ajax({
 				type: "POST",

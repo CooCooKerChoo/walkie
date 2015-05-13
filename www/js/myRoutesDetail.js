@@ -157,12 +157,12 @@ $(document).on('pageshow', "#route_details", function() {
 
 
 	function querySuccessUploadRoute(t, results) {
-		var routeID = results.rows.item(0).walkID;
-    	var walkTitle = results.rows.item(0).WalkTitle;
-    	var walkDescription = results.rows.item(0).WalkDescription;
-	    var walkDistance = results.rows.item(0).Distance;
-	    var walkDuration = results.rows.item(0).Duration;
-	    var walkCoords = results.rows.item(0).PathCoordinates;
+		var routeID = results.rows.item().walkID;
+    	var walkTitle = results.rows.item().WalkTitle;
+    	var walkDescription = results.rows.item().WalkDescription;
+	    var walkDistance = results.rows.item().Distance;
+	    var walkDuration = results.rows.item().Duration;
+	    var walkCoords = results.rows.item().PathCoordinates;
 
 	    routeID = encodeURIComponent(routeID);
 	    walkTitle = encodeURIComponent(walkTitle);

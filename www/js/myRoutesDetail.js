@@ -255,12 +255,7 @@ $(document).on('pageshow', "#route_details", function() {
 	        data: dataStringMarkers,
 	        url: 'http://matt-meadows.co.uk/walkie/ajaxPOSTMarkers.php',
 	        success: function(response){
-                navigator.notification.alert(
-                    'All markers information has been uploaded successfully',  // message
-                    alertDismissed,         // callback
-                    'Saving',            // title
-                    'Done'                  // buttonName
-                );
+	        	alert(response);
 	        },
 	        error: function(jqXHR, textStatus, errorThrown){
 	        	alert(textStatus, errorThrown);

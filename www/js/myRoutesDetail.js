@@ -220,12 +220,12 @@ $(document).on('pageshow', "#route_details", function() {
 
 	function querySuccessUploadMarkers(t, results){
 		for(i=0; i < markersArrayFinal.length; i++) {
-		    var markerID = markersArrayFinal(i).id;
-		    var markerTitle = markersArrayFinal(i).title;
-		    var markerInfo = markersArrayFinal(i).info;
-		    var markerLat = markersArrayFinal(i).markerLat;
-		    var markerLng = markersArrayFinal(i).markerLng;
-		    var walkid = markersArrayFinal(i).walk_id;
+		    var markerID = markersArrayFinal[i].id;
+		    var markerTitle = markersArrayFinal[i].title;
+		    var markerInfo = markersArrayFinal[i].info;
+		    var markerLat = markersArrayFinal[i].markerLat;
+		    var markerLng = markersArrayFinal[i].markerLng;
+		    var walkid = markersArrayFinal[i].walk_id;
 
 		    markerID = encodeURIComponent(markerID);
 		    markerTitle = encodeURIComponent(markerTitle);

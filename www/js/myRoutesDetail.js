@@ -241,13 +241,9 @@ $(document).on('pageshow', "#route_details", function() {
 	    // console.log(walkTitle);
 	    // console.log(walkCoords);
 
-	    var jsonString = JSON.stringify(markersArray);
-
-	    console.log(jsonString);
-
 		$.ajax({
 			type: "POST",
-	        data: {data: jsonString},
+	        data: dataStringMarkers,
 	        url: 'http://matt-meadows.co.uk/walkie/ajaxPOSTMarkers.php',
 	        success: function(response){
                 navigator.notification.alert(

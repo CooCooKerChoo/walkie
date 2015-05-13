@@ -221,6 +221,9 @@ $(document).on('pageshow', "#route_details", function() {
 	function querySuccessUploadMarkers(t, results){
 		len = results.rows.length;
 		for(i=0; i < len; i++) {
+
+			vardataStringMarkers = '';
+
 		    var markerID = results.rows.item(i).markerid;
 		    var markerTitle = results.rows.item(i).title;
 		    var markerInfo = results.rows.item(i).info;

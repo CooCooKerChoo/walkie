@@ -219,12 +219,12 @@ $(document).on('pageshow', "#route_details", function() {
 	}
 
 	function querySuccessUploadMarkers(t, results, markersArray){
-	    var markerID = results.rows.item(1).markerid;
-	    var markerTitle = results.rows.item(1).title;
-	    var markerInfo = results.rows.item(1).info;
-	    var markerLat = results.rows.item(1).markerLat;
-	    var markerLng = results.rows.item(1).markerLng;
-	    var walkid = results.rows.item(1).walk_id;
+	    var markerID = results.rows.item(0).markerid;
+	    var markerTitle = results.rows.item(0).title;
+	    var markerInfo = results.rows.item(0).info;
+	    var markerLat = results.rows.item(0).markerLat;
+	    var markerLng = results.rows.item(0).markerLng;
+	    var walkid = results.rows.item(0).walk_id;
 
 	    markerID = encodeURIComponent(markerID);
 	    markerTitle = encodeURIComponent(markerTitle);

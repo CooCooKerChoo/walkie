@@ -219,46 +219,45 @@ $(document).on('pageshow', "#route_details", function() {
 	}
 
 	function querySuccessUploadMarkers(t, results){
-		for(i=0; i < results.rows.length; i++) {
-		    var markerID = results.rows.item(i).markerid;
-		    var markerTitle = results.rows.item(i).title;
-		    var markerInfo = results.rows.item(i).info;
-		    var markerLat = results.rows.item(i).markerLat;
-		    var markerLng = results.rows.item(i).markerLng;
-		    var walkid = results.rows.item(i).walk_id;
+	    var markerID = results.rows.item(0).markerid;
+	    var markerTitle = results.rows.item(0).title;
+	    var markerInfo = results.rows.item(0).info;
+	    var markerLat = results.rows.item(0).markerLat;
+	    var markerLng = results.rows.item(0).markerLng;
+	    var walkid = results.rows.item(0).walk_id;
 
-		    markerID = encodeURIComponent(markerID);
-		    markerTitle = encodeURIComponent(markerTitle);
-		    markerInfo = encodeURIComponent(markerInfo);
-		    markerLat = encodeURIComponent(markerLat);
-		    markerLng = encodeURIComponent(markerLng);
-		    walkid = encodeURIComponent(walkid);
+	    markerID = encodeURIComponent(markerID);
+	    markerTitle = encodeURIComponent(markerTitle);
+	    markerInfo = encodeURIComponent(markerInfo);
+	    markerLat = encodeURIComponent(markerLat);
+	    markerLng = encodeURIComponent(markerLng);
+	    walkid = encodeURIComponent(walkid);
 
-		    dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
+	    dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
 
-		    // console.log(dataString);
+	    // console.log(dataString);
 
-		    // console.log(walkID);
-		    // console.log(walkTitle);
-		    // console.log(walkCoords);
-		}
+	    // console.log(walkID);
+	    // console.log(walkTitle);
+	    // console.log(walkCoords);
 
-			$.ajax({
-				type: "POST",
-		        data: dataStringMarkers,
-		        url: 'http://matt-meadows.co.uk/walkie/ajaxPOSTMarkers.php',
-		        success: function(response){
-	                navigator.notification.alert(
-	                    'All markers information has been uploaded successfully',  // message
-	                    alertDismissed,         // callback
-	                    'Saving',            // title
-	                    'Done'                  // buttonName
-	                );
-		        },
-		        error: function(jqXHR, textStatus, errorThrown){
-		        	alert(textStatus, errorThrown);
-		        }
-		    });
+
+		$.ajax({
+			type: "POST",
+	        data: dataStringMarkers,
+	        url: 'http://matt-meadows.co.uk/walkie/ajaxPOSTMarkers.php',
+	        success: function(response){
+                navigator.notification.alert(
+                    'All markers information has been uploaded successfully',  // message
+                    alertDismissed,         // callback
+                    'Saving',            // title
+                    'Done'                  // buttonName
+                );
+	        },
+	        error: function(jqXHR, textStatus, errorThrown){
+	        	alert(textStatus, errorThrown);
+	        }
+	    });
 	}
 
 	function onUploadPhotoSuccess(r){

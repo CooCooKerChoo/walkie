@@ -151,7 +151,7 @@ $(document).on('pageshow', "#route_details", function() {
 	$("button#buttonDone").click(function() {
 	 	db.transaction(function(t){
 			t.executeSql('SELECT * FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessUploadRoute, errorCBDetails);
-			t.executeSql('SELECT * FROM markers where walk_id = "'+clicked_route+'"', [], querySuccessUploadMarkers, errorCBDetails);
+			t.executeSql('SELECT * FROM MARKERS where walk_id = "'+clicked_route+'"', [], querySuccessUploadMarkers, errorCBDetails);
 	 	});
 	});
 
@@ -218,6 +218,14 @@ $(document).on('pageshow', "#route_details", function() {
 
 	}
 
+	function onUploadPhotoSuccess(r){
+		// alert("Photo uploaded successfully" + r.response);
+	}
+
+	function onUploadPhotoError(error){
+		// alert("Error Uploading: " + error.code);
+	}
+
 	function querySuccessUploadMarkers(t, results){
 	    var markerID = results.rows.item(0).markerid;
 	    var markerTitle = results.rows.item(0).title;
@@ -233,7 +241,7 @@ $(document).on('pageshow', "#route_details", function() {
 	    markerLng = encodeURIComponent(markerLng);
 	    walkid = encodeURIComponent(walkid);
 
-	    dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
+	    dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkID='+walkid;
 
 	    // console.log(dataString);
 
@@ -260,13 +268,6 @@ $(document).on('pageshow', "#route_details", function() {
 	    });
 	}
 
-	function onUploadPhotoSuccess(r){
-		// alert("Photo uploaded successfully" + r.response);
-	}
-
-	function onUploadPhotoError(error){
-		// alert("Error Uploading: " + error.code);
-	}
 
 	function alertDismissed(){
 	}

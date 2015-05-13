@@ -224,6 +224,8 @@ $(document).on('pageshow', "#route_details", function() {
 	    		markersUploadArray = [];
 		    	markersUploadArray.push(results.rows.item(i));
 
+		    	console.log(markersUploadArray);
+
 			    var markerID = encodeURIComponent(markersUploadArray[i].markerid);
 			    var markerTitle = encodeURIComponent(markersUploadArray[i].title);
 			    var markerInfo = encodeURIComponent(markersUploadArray[i].info);

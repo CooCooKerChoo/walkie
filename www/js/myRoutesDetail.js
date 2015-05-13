@@ -245,7 +245,7 @@ $(document).on('pageshow', "#route_details", function() {
 
 		$.ajax({
 			type: "POST",
-	        data: dataStringMarkers,
+	        data: markersArrayFinal,
 	        url: 'http://matt-meadows.co.uk/walkie/ajaxPOSTMarkers.php',
 	        success: function(response){
                 navigator.notification.alert(

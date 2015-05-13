@@ -197,6 +197,8 @@ $(document).on('pageshow', "#route_details", function() {
 	        }
 	    });
 
+	    dataString = '';
+
 		for(i=0; i < routePhotosArray.length; i++) {
 			var options = new FileUploadOptions();
 			var imageURI = routePhotosArray[i];

@@ -240,7 +240,7 @@ $(document).on('pageshow', "#route_details", function() {
 
 			    var dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
 
-			    console.log(dataString);
+			    console.log(dataStringMarkers);
 
 				$.ajax({
 					type: "POST",

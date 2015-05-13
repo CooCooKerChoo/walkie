@@ -1,7 +1,7 @@
 $(document).on('pagebeforeshow', "#route_details", function() {
 	$(".photos").empty();
 
-	Routecoords = [], Routepolys = [];
+	Routecoords = [], Routepolys = [], markersArrayFinal = [];
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);

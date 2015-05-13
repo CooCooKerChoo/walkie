@@ -199,24 +199,24 @@ $(document).on('pageshow', "#route_details", function() {
 
 	    delete dataString; 
 
-		for(i=0; i < routePhotosArray.length; i++) {
-			var options = new FileUploadOptions();
-			var imageURI = routePhotosArray[i];
+		// for(i=0; i < routePhotosArray.length; i++) {
+		// 	var options = new FileUploadOptions();
+		// 	var imageURI = routePhotosArray[i];
 
-			console.log(imageURI);
-			options.fileKey = 'file';
-			options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
-			options.mimeType = "image/jpeg";
-			options.chunkedMode = false;
-			var params =  new Object();
-			options.params = params;
+		// 	console.log(imageURI);
+		// 	options.fileKey = 'file';
+		// 	options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+		// 	options.mimeType = "image/jpeg";
+		// 	options.chunkedMode = false;
+		// 	var params =  new Object();
+		// 	options.params = params;
 
-			params.value1 = walkTitle;
-			params.value2 = routeID;
+		// 	params.value1 = walkTitle;
+		// 	params.value2 = routeID;
 
-			var ft = new FileTransfer();
-			ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imagesUpload.php", onUploadPhotoSuccess, onUploadPhotoError, options);
-		}
+		// 	var ft = new FileTransfer();
+		// 	ft.upload(imageURI, "http://matt-meadows.co.uk/walkie/imagesUpload.php", onUploadPhotoSuccess, onUploadPhotoError, options);
+		// }
 
 	}
 
@@ -263,7 +263,7 @@ $(document).on('pageshow', "#route_details", function() {
 			    });
 
 		    }
-
+		    
 		    delete markersUploadArray;
 	}
 

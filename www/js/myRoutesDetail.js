@@ -1,9 +1,6 @@
 $(document).on('pagebeforeshow', "#route_details", function() {
 	$(".photos").empty();
-
-	delete dataString; 
-	delete markersUploadArray;
-
+	
 	Routecoords = [], Routepolys = [];
 
  	db.transaction(function(t){

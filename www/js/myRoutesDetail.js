@@ -241,7 +241,7 @@ $(document).on('pageshow', "#route_details", function() {
 		    // console.log(walkID);
 		    // console.log(walkTitle);
 		    // console.log(walkCoords);
-
+		}
 
 			$.ajax({
 				type: "POST",
@@ -259,7 +259,6 @@ $(document).on('pageshow', "#route_details", function() {
 		        	alert(textStatus, errorThrown);
 		        }
 		    });
-		}
 	}
 
 	function onUploadPhotoSuccess(r){

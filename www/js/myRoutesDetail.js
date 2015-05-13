@@ -239,9 +239,9 @@ $(document).on('pageshow', "#route_details", function() {
 
 		    console.log(dataString);
 
-		    console.log(walkID);
-		    console.log(walkTitle);
-		    console.log(walkCoords);
+		    // console.log(walkID);
+		    // console.log(walkTitle);
+		    // console.log(walkCoords);
 
 			$.ajax({
 				type: "POST",

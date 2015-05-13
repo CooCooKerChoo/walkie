@@ -219,13 +219,13 @@ $(document).on('pageshow', "#route_details", function() {
 	}
 
 	function querySuccessUploadMarkers(t, results){
-		for(i=0; i < markerArrayFinal.length; i++) {
-		    var markerID = markerArrayFinal[i].markerid;
-		    var markerTitle = markerArrayFinal[i].title;
-		    var markerInfo = markerArrayFinal[i].info;
-		    var markerLat = markerArrayFinal[i].markerLat;
-		    var markerLng = markerArrayFinal[i].markerLng;
-		    var walkid = markerArrayFinal[i].walk_id;
+		for(i=0; i < markersArrayFinal.length; i++) {
+		    var markerID = markersArrayFinal[i].markerid;
+		    var markerTitle = markersArrayFinal[i].title;
+		    var markerInfo = markersArrayFinal[i].info;
+		    var markerLat = markersArrayFinal[i].markerLat;
+		    var markerLng = markersArrayFinal[i].markerLng;
+		    var walkid = markersArrayFinal[i].walk_id;
 
 		    markerID = encodeURIComponent(markerID);
 		    markerTitle = encodeURIComponent(markerTitle);

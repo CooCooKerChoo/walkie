@@ -153,6 +153,10 @@ $(document).on('pageshow', "#route_details", function() {
 			t.executeSql('SELECT * FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessUploadRoute, errorCBDetails);
 			t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessUploadMarkers, errorCBDetails);
 	 	});
+
+	 	if userEmail == "" || userEmail == null {
+	 		alert("You must be signed in to upload");
+	 	}
 	});
 
 

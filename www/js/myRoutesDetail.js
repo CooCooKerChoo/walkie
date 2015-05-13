@@ -1,6 +1,9 @@
 $(document).on('pagebeforeshow', "#route_details", function() {
 	$(".photos").empty();
 
+	delete dataString; 
+	delete markersUploadArray;
+
 	Routecoords = [], Routepolys = [];
 
  	db.transaction(function(t){
@@ -41,7 +44,7 @@ $(document).on('pagebeforeshow', "#route_details", function() {
 
 });
 
-$(document).on('pagechange', "#route_details", function() {
+$(document).on('pageshow', "#route_details", function() {
 
 	Routephotos = [], routePhotosArray = [];
 
@@ -197,7 +200,6 @@ $(document).on('pagechange', "#route_details", function() {
 	        }
 	    });
 
-	    delete dataString; 
 
 		// for(i=0; i < routePhotosArray.length; i++) {
 		// 	var options = new FileUploadOptions();
@@ -264,7 +266,6 @@ $(document).on('pagechange', "#route_details", function() {
 
 		    }
 
-		    delete markersUploadArray;
 	}
 
 

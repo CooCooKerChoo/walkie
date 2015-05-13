@@ -219,10 +219,14 @@ $(document).on('pageshow', "#route_details", function() {
 	}
 
 	function querySuccessUploadMarkers(t, results){
-		len = results.rows.length;
-		for(i=0; i < len; i++) {
 
-			var dataStringMarkers = null;
+		    for( var i = 0, c = results.rows.length; i < c; i++) {
+	    		markersUploadArray = [];
+
+		    	markersUploadArray.push(results.rows.item(i));
+		    }
+
+		    console.log(markersUploadArray);
 
 		    var markerID = results.rows.item(i).markerid;
 		    var markerTitle = results.rows.item(i).title;
@@ -243,7 +247,6 @@ $(document).on('pageshow', "#route_details", function() {
 		    console.log(dataString);
 
 		    onMarkersUpload(dataStringMarkers);
-		}
 	}
 
 	function onMarkersUpload(dataStringMarkers){

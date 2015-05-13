@@ -241,8 +241,7 @@ $(document).on('pageshow', "#route_details", function() {
 	    markerLng = encodeURIComponent(markerLng);
 	    walkid = encodeURIComponent(walkid);
 
-	    // dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkID='+walkid;
-
+		dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
 
 	    // console.log(walkID);
 	    // console.log(walkTitle);
@@ -251,7 +250,7 @@ $(document).on('pageshow', "#route_details", function() {
 
 		$.ajax({
 			type: "POST",
-	        data: {markerid: markerID, markerTitle: markerTitle, markerInfo: markerInfo, markerLat: markerLat, markerLng: markerLng, walkID: walkid},
+	        data: dataStringMarkers,
 	        url: 'http://matt-meadows.co.uk/walkie/ajaxPOSTMarkers.php',
 	        success: function(response){
 	        	alert(response);

@@ -222,7 +222,7 @@ $(document).on('pageshow', "#route_details", function() {
 		len = results.rows.length;
 		for(i=0; i < len; i++) {
 
-			vardataStringMarkers = '';
+			var dataStringMarkers = '';
 
 		    var markerID = results.rows.item(i).markerid;
 		    var markerTitle = results.rows.item(i).title;

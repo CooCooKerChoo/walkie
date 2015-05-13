@@ -220,9 +220,13 @@ $(document).on('pageshow', "#route_details", function() {
 
 	function querySuccessUploadMarkers(t, results){
 
-		    for( var i = 0, c = results.rows.item.length; i < c; i++) {
-	    		markersUploadArray = [];
-		    	markersUploadArray.push(results.rows.item(i));
+		markersUploadArray.push(results.rows.item(i));
+
+		console.log(markersUploadArray);
+	}
+
+	function uploadMarkers() {
+			for( var i = 0, c = results.rows.item.length; i < c; i++) {
 
 		    	console.log(markersUploadArray);
 
@@ -256,6 +260,8 @@ $(document).on('pageshow', "#route_details", function() {
 
 		    }
 	}
+
+
 
 	function onUploadPhotoSuccess(r){
 		// alert("Photo uploaded successfully" + r.response);

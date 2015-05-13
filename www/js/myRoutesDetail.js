@@ -219,9 +219,9 @@ $(document).on('pageshow', "#route_details", function() {
 	}
 
 	function querySuccessUploadMarkers(t, results){
+			var markersUploadArray = [];
 
 		for(var i = 0, c = results.rows.length; i < c; i++) {
-			var markersUploadArray = [];
 			markersUploadArray.push(results.rows.item(i));
 			console.log(markersUploadArray);
 		}

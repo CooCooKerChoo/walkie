@@ -219,7 +219,6 @@ $(document).on('pageshow', "#route_details", function() {
 	}
 
 	function querySuccessUploadMarkers(t, results){
-		for(i=0; i < results.rows.length; i++) {
 		    var markerID = results.rows.item(i).markerid;
 		    var markerTitle = results.rows.item(i).title;
 		    var markerInfo = results.rows.item(i).info;
@@ -259,7 +258,6 @@ $(document).on('pageshow', "#route_details", function() {
 		        	alert(textStatus, errorThrown);
 		        }
 		    });
-		}
 	}
 
 	function onUploadPhotoSuccess(r){

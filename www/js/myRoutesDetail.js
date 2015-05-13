@@ -220,10 +220,10 @@ $(document).on('pageshow', "#route_details", function() {
 
 	function querySuccessUploadMarkers(t, results){
 
-		var markersUploadArray = [];
+		markersUploadArray = [];
 
-		for( var i = 0, c = results.rows.item.length; i < c; i++) {
-			var markersUploadArray.push(results.rows.item(i));
+		for(var i = 0, c = results.rows.item.length; i < c; i++) {
+			markersUploadArray.push(results.rows.item(i));
 			console.log(markersUploadArray);
 		}
 

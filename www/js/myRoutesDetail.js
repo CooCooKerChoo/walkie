@@ -41,7 +41,7 @@ $(document).on('pagebeforeshow', "#route_details", function() {
 
 });
 
-$(document).on('pageshow', "#route_details", function() {
+$(document).on('pagechange', "#route_details", function() {
 
 	Routephotos = [], routePhotosArray = [];
 
@@ -263,7 +263,7 @@ $(document).on('pageshow', "#route_details", function() {
 			    });
 
 		    }
-		    
+
 		    delete markersUploadArray;
 	}
 

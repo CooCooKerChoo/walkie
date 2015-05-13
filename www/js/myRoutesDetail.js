@@ -222,12 +222,12 @@ $(document).on('pageshow', "#route_details", function() {
 		var len = results.rows.length;
 
 		for (var i=0; i<len; i++) {
-		    var markerID = results.rows.item(0).markerid;
-		    var markerTitle = results.rows.item(0).title;
-		    var markerInfo = results.rows.item(0).info;
-		    var markerLat = results.rows.item(0).markerLat;
-		    var markerLng = results.rows.item(0).markerLng;
-		    var walkid = results.rows.item(0).walk_id;
+		    var markerID = results.rows.item(i).markerid;
+		    var markerTitle = results.rows.item(i).title;
+		    var markerInfo = results.rows.item(i).info;
+		    var markerLat = results.rows.item(i).markerLat;
+		    var markerLng = results.rows.item(i).markerLng;
+		    var walkid = results.rows.item(i).walk_id;
 
 		    markerID = encodeURIComponent(markerID);
 		    markerTitle = encodeURIComponent(markerTitle);

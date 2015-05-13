@@ -107,22 +107,22 @@ $(document).on('pageshow', "#route_details", function() {
 	}); 
 
 	function querySuccessMarkers(t, results) {
-	    var markersArray = [];
+	    markersArrayFinal = [];
 	    var len = results.rows.length;
 	    console.log("Markers table: " + len + " rows found");
 
 	    for( var i = 0, c = results.rows.length; i < c; i++) {
-	    	markersArray.push(results.rows.item(i));
+	    	markersArrayFinal.push(results.rows.item(i));
 	    }
-	    console.log(markersArray);
+	    console.log(markersArrayFinal);
 
 
 	    var info_window = new google.maps.InfoWindow();
 
-	    for (i = 0; i < markersArray.length; i++) {
+	    for (i = 0; i < markersArrayFinal.length; i++) {
 	            var bridgeIcon = new google.maps.MarkerImage("img/map_markers/warning_map_marker.png", null, null, null);
 	            marker = new google.maps.Marker({
-	                position: new google.maps.LatLng(markersArray[i].markerLat, markersArray[i].markerLng),
+	                position: new google.maps.LatLng(markersArrayFinal[i].markerLat, markersArrayFinal[i].markerLng),
 	                map: mapMyRoutes,
 	                icon: bridgeIcon
 	            });
@@ -132,11 +132,11 @@ $(document).on('pageshow', "#route_details", function() {
 
 		    google.maps.event.addListener(marker, 'click', (function(marker, i) {
 		    	return function() {
-			    	info_window.setContent('<div id="marker-info-win" data-id="'+markersArray[i].markerid+'">' +
+			    	info_window.setContent('<div id="marker-info-win" data-id="'+markersArrayFinal[i].markerid+'">' +
 	            '<h3>Marker Information</h3>' +
-	            '<input id="warning-title" data-text="Warning Title" value="'+markersArray[i].title+'"/>'+
+	            '<input id="warning-title" data-text="Warning Title" value="'+markersArrayFinal[i].title+'"/>'+
 	            '<i class="fa fa-pencil"></i>' +
-	            '<input id="warning-additional-info" data-text="Warning Additional Information" value="'+markersArray[i].info+'"/>'+
+	            '<input id="warning-additional-info" data-text="Warning Additional Information" value="'+markersArrayFinal[i].info+'"/>'+
 	            '<i class="fa fa-pencil"></i>');
 			        info_window.open(mapMyRoutes, this);
 		    	}
@@ -218,7 +218,7 @@ $(document).on('pageshow', "#route_details", function() {
 
 	}
 
-	function querySuccessUploadMarkers(t, results, markersArray){
+	function querySuccessUploadMarkers(t, results){
 	    // var markerID = results.rows.item(0).markerid;
 	    // var markerTitle = results.rows.item(0).title;
 	    // var markerInfo = results.rows.item(0).info;
@@ -236,7 +236,7 @@ $(document).on('pageshow', "#route_details", function() {
 	    // dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
 
 
-	    console.log(markersArray);
+	    console.log(markersArrayFinal);
 	    // console.log(dataString);
 
 	    // console.log(walkID);

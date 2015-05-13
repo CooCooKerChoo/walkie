@@ -1,7 +1,7 @@
 $(document).on('pagebeforeshow', "#route_details", function() {
 	$(".photos").empty();
 
-	Routecoords = [], Routepolys = [], markersArrayFinal = [];
+	Routecoords = [], Routepolys = [];
 
  	db.transaction(function(t){
 		t.executeSql('SELECT * FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessDetails, errorCBDetails);
@@ -107,7 +107,7 @@ $(document).on('pageshow', "#route_details", function() {
 	}); 
 
 	function querySuccessMarkers(t, results) {
-	    markersArrayFinal.length = 0;
+	    markersArrayFinal = [];
 	    var len = results.rows.length;
 	    console.log("Markers table: " + len + " rows found");
 
@@ -219,13 +219,14 @@ $(document).on('pageshow', "#route_details", function() {
 	}
 
 	function querySuccessUploadMarkers(t, results){
-		for(i=0; i < markersArrayFinal.length; i++) {
-		    var markerID = markersArrayFinal[i].markerid;
-		    var markerTitle = markersArrayFinal[i].title;
-		    var markerInfo = markersArrayFinal[i].info;
-		    var markerLat = markersArrayFinal[i].markerLat;
-		    var markerLng = markersArrayFinal[i].markerLng;
-		    var walkid = markersArrayFinal[i].walk_id;
+		len = results.rows.length;
+		for(i=0; i < len; i++) {
+		    var markerID = results.rows.item(i).markerid;
+		    var markerTitle = results.rows.item(i).title;
+		    var markerInfo = results.rows.item(i).info;
+		    var markerLat = results.rows.item(i).markerLat;
+		    var markerLng = results.rows.item(i).markerLng;
+		    var walkid = results.rows.item(i).walk_id;
 
 		    markerID = encodeURIComponent(markerID);
 		    markerTitle = encodeURIComponent(markerTitle);
@@ -239,9 +240,9 @@ $(document).on('pageshow', "#route_details", function() {
 
 		    console.log(dataString);
 
-		    // console.log(walkID);
-		    // console.log(walkTitle);
-		    // console.log(walkCoords);
+		    console.log(walkID);
+		    console.log(walkTitle);
+		    console.log(walkCoords);
 
 			$.ajax({
 				type: "POST",

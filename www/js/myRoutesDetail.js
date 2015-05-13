@@ -222,9 +222,10 @@ $(document).on('pageshow', "#route_details", function() {
 
 		var markersUploadArray = [];
 
-		var markersUploadArray.push(results.rows.item(i));
-
-		console.log(markersUploadArray);
+		for( var i = 0, c = results.rows.item.length; i < c; i++) {
+			var markersUploadArray.push(results.rows.item(i));
+			console.log(markersUploadArray);
+		}
 
 		uploadMarkers(markersUploadArray);
 	}

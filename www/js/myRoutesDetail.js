@@ -243,6 +243,8 @@ $(document).on('pageshow', "#route_details", function() {
 
 	    var jsonString = JSON.stringify(markersArray);
 
+	    console.log(jsonString);
+
 		$.ajax({
 			type: "POST",
 	        data: {data: jsonString},

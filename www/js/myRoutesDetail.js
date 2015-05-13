@@ -227,7 +227,8 @@ $(document).on('pageshow', "#route_details", function() {
 	}
 
 	function querySuccessUploadMarkers(t, results){
-		for(i=0; i < results.rows.length; i++) {
+		while (i != data_lines) {
+			i++;
 		    var markerID = results.rows.item(0).markerid;
 		    var markerTitle = results.rows.item(0).title;
 		    var markerInfo = results.rows.item(0).info;

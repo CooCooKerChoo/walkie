@@ -218,6 +218,8 @@ $(document).on('pageshow', "#route_details", function() {
 
 	}
 
+	dataStringMarker = '';
+
 	function querySuccessUploadMarkers(t, results){
 		for(i=0; i < markersArrayFinal.length; i++) {
 		    var markerID = markersArrayFinal[i].id;
@@ -234,7 +236,7 @@ $(document).on('pageshow', "#route_details", function() {
 		    markerLng = encodeURIComponent(markerLng);
 		    walkid = encodeURIComponent(walkid);
 
-		    var dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
+		    dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
 
 
 		    console.log(dataString);

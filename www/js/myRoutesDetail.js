@@ -243,7 +243,7 @@ $(document).on('pageshow', "#route_details", function() {
 
 	    dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkID='+walkid;
 
-	    // console.log(dataString);
+	    console.log(dataStringMarkers);
 
 	    // console.log(walkID);
 	    // console.log(walkTitle);

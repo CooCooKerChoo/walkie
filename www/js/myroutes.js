@@ -1,5 +1,7 @@
 $(document).on('pageinit', "#my-routes", function() {
 
+	userEmail = "";
+
 	Routecoords = [], Routepolys = [];
 
  	db.transaction(function(t){

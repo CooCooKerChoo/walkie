@@ -1,6 +1,8 @@
 $(document).on('pagebeforeshow', "#route_details", function() {
 	$(".photos").empty();
 
+	userEmail = "";
+
 	Routecoords = [], Routepolys = [];
 
  	db.transaction(function(t){

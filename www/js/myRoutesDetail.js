@@ -173,7 +173,7 @@ $(document).on('pageshow', "#route_details", function() {
 
 	    dataString = 'walkID='+ routeID+'&walkTitle='+walkTitle+'&walkCoords='+walkCoords+'&walkDescription='+walkDescription+'&walkDistance='+walkDistance+'&walkDuration='+walkDuration+'&userEmail='+userEmail;
 
-	    console.log(dataString);
+	    // console.log(dataString);
 
 	    // console.log(walkID);
 	    // console.log(walkTitle);
@@ -242,6 +242,8 @@ $(document).on('pageshow', "#route_details", function() {
 	    walkid = encodeURIComponent(walkid);
 
 		dataStringMarkers = 'markerid='+markerID+'&markerTitle='+markerTitle+'&markerInfo='+markerInfo+'&markerLat='+markerLat+'&markerLng='+markerLng+'&walkid='+walkid;
+
+		console.log(dataStringMarkers);
 
 	    // console.log(walkID);
 	    // console.log(walkTitle);

@@ -151,7 +151,7 @@ $(document).on('pageshow', "#route_details", function() {
 	$("button#buttonDone").click(function() {
 	 	db.transaction(function(t){
 			t.executeSql('SELECT * FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessUploadRoute, errorCBDetails);
-			t.executeSql('SELECT * FROM markers where walk_id = "'+clicked_route+'"', [], querySuccessUploadMarkers, errorCBDetails);
+			t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessUploadMarkers, errorCBDetails);
 	 	});
 	});
 
@@ -220,13 +220,15 @@ $(document).on('pageshow', "#route_details", function() {
 
 	function querySuccessUploadMarkers(t, results){
 
+		var len = results.rows.length;
+
 		    for( var i = 0, c = results.rows.length; i < c; i++) {
 	    		markersUploadArray = [];
-
 		    	markersUploadArray.push(results.rows.item(i));
+
+		    	console.log(markersUploadArray);
 		    }
 
-		    console.log(markersUploadArray);
 
 		    var markerID = results.rows.item(i).markerid;
 		    var markerTitle = results.rows.item(i).title;

@@ -157,7 +157,6 @@ $(document).on('pageshow', "#route_details", function() {
 	 	} else {
 		 	db.transaction(function(t){
 				t.executeSql('SELECT * FROM WALKS WHERE walkID = "'+ clicked_route+ '"', [], querySuccessUploadRoute, errorCBDetails);
-				t.executeSql('SELECT * FROM MARKERS WHERE walk_id = "'+clicked_route+'"',[], querySuccessUploadMarkers, errorCBDetails);
 		 	});
 	 	}
 	});
